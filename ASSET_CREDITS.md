@@ -1,15 +1,17 @@
-# Asset credits and licensing
+# PIT CREW V7 — Asset credits and licensing
 
 PIT CREW uses a fictional racing identity. No official Formula 1 logo, team mark, driver likeness, broadcast footage, soundtrack, radio recording, or third-party 3D model is supplied.
 
 ## Original application assets
 
-- The car, tyres, garage, jacks, tools, pit signal, crew characters, and surrounding scene are built in code from procedural Three.js geometry and materials. No downloaded mesh or texture pack is required.
-- Crew motion, wheel transitions, and scene effects are driven by application code and game state.
-- Audio cues are synthesized with the browser's Web Audio API. They use oscillator/noise envelopes rather than sampled commercial recordings. No licensed music track or imitated broadcaster voice is included.
+- The V7 garage diorama, formula-style car, tyres, jacks, tools, pit signal, low-poly crew characters, floor markings, fictional signage, and environment dressing are built in code from procedural Three.js geometry and materials. No downloaded mesh or texture pack is required.
+- Crew motion, axle lifting/lowering, wheel removal/fitting, gun operation, release, player highlights, and scene effects are original application code driven by game state.
+- Task sounds, UI feedback, and garage ambience are synthesized with the browser's Web Audio API. They use oscillator/noise envelopes rather than sampled commercial recordings. No licensed music track or imitated broadcaster voice is included.
 - The application title, interface layout, and CSS artwork are original to this package. Locally bundled typefaces provide the display, interface, and telemetry text, with system font fallbacks.
 
 These descriptions identify the origin of the supplied assets; they do not grant rights in any real racing organization's branding.
+
+The user-provided low-poly pit-stop image was used as an art-direction reference for composition, lighting, silhouettes, and garage atmosphere. The image itself and its branded text, logos, models, and textures are not copied into the application or distributed as game assets. All in-game team identity is fictional.
 
 ## Bundled typefaces
 
