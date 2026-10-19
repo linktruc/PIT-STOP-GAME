@@ -1,8 +1,8 @@
 // Public runtime configuration. Edit this file after extracting the Netlify ZIP.
 // Use the Supabase publishable/anon PUBLIC key. Never use a service_role or secret key.
 window.PIT_CONFIG = {
-  supabaseUrl: "",
-  supabaseAnonKey: "",
+  supabaseUrl: "https://izemieqxplyvtcsbdhet.supabase.co",
+  supabaseAnonKey: "sb_publishable_kmnR4MXW4im1JFAiv0RXpQ_umFPaCwK",
   // Temporary local-only mode: set false to hide and disable.
   enableSoloTest: true,
   // Mobile reserves the Netlify floating badge footprint when the badge is external
