@@ -4,5 +4,9 @@ window.PIT_CONFIG = {
   supabaseUrl: "",
   supabaseAnonKey: "",
   // Temporary local-only mode: set false to hide and disable.
-  enableSoloTest: true
+  enableSoloTest: true,
+  // Mobile reserves the Netlify floating badge footprint when the badge is external
+  // to this document. Actual readable badge bounds replace that estimate.
+  // Use "none" only when hosting without a floating badge.
+  hudHostingBadge: "netlify"
 };

@@ -1,4 +1,4 @@
-# Pit Stop. Simulator. V10.3 — Asset credits and licensing
+# Pit Stop. Simulator. V11.3 — Asset credits and licensing
 
 PIT CREW uses a fictional racing identity. No official Formula 1 logo, team mark, driver likeness, broadcast footage, soundtrack, radio recording, or third-party 3D model is supplied.
 
@@ -11,7 +11,7 @@ PIT CREW uses a fictional racing identity. No official Formula 1 logo, team mark
 
 These descriptions identify the origin of the supplied assets; they do not grant rights in any real racing organization's branding.
 
-The uploaded real-world pit-stop photographs guide outdoor pit-lane surfaces, markings, booms, lane depth and trackside atmosphere. Under the V10.4 override they do not prescribe a redesign of the playable crew staging. The earlier low-poly reference guides style only. Reference photographs and their branded text, logos, models and textures are not copied into the public application or distributed as game assets. All in-game team identity is fictional. See `REFERENCE_IMPLEMENTATION_REPORT.md` for the file-by-file reference mapping.
+The uploaded real-world pit-stop photographs guide outdoor pit-lane surfaces, markings, booms, lane depth and trackside atmosphere. The V11.3 specification retains that environment-only interpretation and asks only for focused support and gunner corrections. The earlier low-poly reference guides style only. Reference photographs and their branded text, logos, models and textures are not copied into the public application or distributed as game assets. All in-game team identity is fictional. See `REFERENCE_IMPLEMENTATION_REPORT.md` for the current reference boundary and historical mapping location.
 
 ## Bundled typefaces
 
