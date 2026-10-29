@@ -50,7 +50,7 @@ export class TaskAnimationTimeline {
       const startsAt = Math.max(round.goAt, task.completedAt);
       // Preserve every phase during very fast stops, with a short causal visual tail.
       // This presentation interval never contributes to the official pit-stop result.
-      const duration = 120;
+      const duration = durationForTask(task.id);
       const receipt = Object.freeze({ roundId: round.id, taskId: task.id, startsAt, endsAt: startsAt + duration });
       this.receipts.set(this.key(task.id), receipt); this.doneIds.add(task.id); visiting.delete(task.id);
       return receipt;
@@ -74,7 +74,7 @@ export class TaskAnimationTimeline {
       if(old){this.receipts.set(this.key(task.id),old);continue;}
       if(joining)continue;
       const startsAt=Math.max(receipt.startsAt,nowMs);
-      const duration=receipt.endsAt<=nowMs?120:receipt.endsAt-receipt.startsAt;
+      const duration=receipt.endsAt<=nowMs?durationForTask(task.id):receipt.endsAt-receipt.startsAt;
       this.receipts.set(this.key(task.id),Object.freeze({...receipt,startsAt,endsAt:startsAt+duration}));
     }
   }

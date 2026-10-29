@@ -1,3 +1,7 @@
+# Current release: V24.9
+
+See [V24_9_SMOOTH_MOTION_FREE_LOOK.md](docs/V24_9_SMOOTH_MOTION_FREE_LOOK.md) for smooth motion, preserved fast actions and freely rotatable player cameras.
+
 # Current release: V24.8
 
 See [V24_8_GUNNER_CAMERAS.md](docs/V24_8_GUNNER_CAMERAS.md) for gunner contact strokes, reserved crew/tool lanes and the three player camera modes.

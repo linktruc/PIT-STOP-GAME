@@ -39,7 +39,7 @@ describe('V17 UI with V15 animation rollback', () => {
     timeline.ingestRecorded(round);
     const first = timeline.receipt(gun.id);
     expect(first).toBeDefined();
-    expect(first!.endsAt - first!.startsAt).toBe(120);
+    expect(first!.endsAt - first!.startsAt).toBe(350);
     timeline.ingestRecorded(structuredClone(round));
     expect(timeline.receipt(gun.id)).toEqual(first);
     expect(round).toEqual(snapshot);

@@ -1,10 +1,10 @@
 import type {Task} from '../types';
 import {workPhase,fittingPhase} from './work';
+import {SmoothValue} from './easing';
 const clamp=(p:number)=>Math.max(0,Math.min(1,p));
 const smooth=(p:number)=>{const t=clamp(p);return t*t*(3-2*t);};
-const toward=(from:number,to:number,step:number)=>from+Math.max(-step,Math.min(step,to-from));
 export type WheelHandlingFrame={offPrep:number;onPrep:number;extract:number;fit:number;carry:number;lower:number;release:number;onRelease:number;onRetreat:number};
-type State={at:number;offPrep:number;onPrep:number;extract:number;fit:number;carryAt:number|null;fitAt:number|null};
+type State={at:number;offPrep:number;onPrep:number;extract:number;fit:number;ease:SmoothValue[];carryAt:number|null;fitAt:number|null};
 /** Contact preparation, pickup and fitting share one clock. Only a touching
  * worker may pick up a wheel; fitting waits for the outgoing wheel to clear.
  * An unpredictable instant input receives a short bounded handoff, not a jump. */
@@ -26,16 +26,16 @@ export class WheelHandling {
   let state=this.states.get(key);
   const settle=!state||now<state.at||now-state.at>500;
   if(settle){
-   state={at:now,offPrep,onPrep,extract:offPrep>=.999?extract:0,fit:extract>=1&&onPrep>=.999?fit:0,carryAt:extract>=1?end??now:null,fitAt:fit>=1?on?.completedAt??on?.dueAt??now:null};
+   state={at:now,offPrep,onPrep,extract:offPrep>=.999?extract:0,fit:extract>=1&&onPrep>=.999?fit:0,ease:[offPrep,onPrep,offPrep>=.999?extract:0,extract>=1&&onPrep>=.999?fit:0].map(v=>new SmoothValue(v)),carryAt:extract>=1?end??now:null,fitAt:fit>=1?on?.completedAt??on?.dueAt??now:null};
    this.states.set(key,state);
   }else{
    const dt=Math.max(0,now-state!.at);state!.at=now;
    const hadOffContact=state!.offPrep>=.999,hadOnContact=state!.onPrep>=.999,hadExtracted=state!.extract>=1;
-   state!.offPrep=toward(state!.offPrep,Math.max(state!.offPrep,offPrep),dt/140);
-   state!.onPrep=toward(state!.onPrep,Math.max(state!.onPrep,onPrep),dt/220);
-   if(hadOffContact&&canExtract)state!.extract=toward(state!.extract,Math.max(state!.extract,extract),dt/100);
+   state!.offPrep=state!.ease[0].step(Math.max(state!.offPrep,offPrep),dt,.065);
+   state!.onPrep=state!.ease[1].step(Math.max(state!.onPrep,onPrep),dt,.085);
+   if(hadOffContact&&canExtract)state!.extract=state!.ease[2].step(Math.max(state!.extract,extract),dt,.075);
    if(state!.extract>=1&&state!.carryAt===null)state!.carryAt=now;
-   if(hadExtracted&&hadOnContact)state!.fit=toward(state!.fit,Math.max(state!.fit,fit),dt/80);
+   if(hadExtracted&&hadOnContact)state!.fit=state!.ease[3].step(Math.max(state!.fit,fit),dt,.075);
    if(state!.fit>=1&&state!.fitAt===null)state!.fitAt=now;
   }
   const current=state!,carried=current.carryAt===null?-Infinity:now-current.carryAt;

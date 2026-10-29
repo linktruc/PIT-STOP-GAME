@@ -9,7 +9,8 @@ import { SceneClock, FramePacer, CrewMotion } from './motion';
 import {WheelHandling,offWheelStation,onWheelStation,wheelGripAnchors} from './wheelHandling';
 import {DepartureMotion,releaseGesture} from './departure';
 import {GunnerMotion} from './gunnerMotion';
-import {playerCameraPose,type PlayerCameraMode} from './playerCamera';
+import {PlayerCameraRig,type PlayerCameraMode} from './playerCamera';
+import {AxleMotion} from './axleMotion';
 import {stabilizerExitPhase,stabilizerStation,rearJackApproach} from './staging';
 import {workDone,workPhase} from './work';
 import { departurePose, arrivalPose, isCrewTap } from './rig';
@@ -36,6 +37,8 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
  const wheelHandling=new WheelHandling();
  const departureMotion=new DepartureMotion();
  const gunnerMotion=new GunnerMotion();
+ const playerCameraRig=new PlayerCameraRig();
+ const axleMotion=[new AxleMotion(),new AxleMotion()];const jackCueTimes=new Map<string,number>();
  const gunCueTimes=new Map<string,number>();let gunCueRound:string|null=null;
  const fittedGrips=new Map<string,THREE.Vector3[]>();
  const gunNutAnchors=new Map<string,THREE.Vector3>();
@@ -46,7 +49,7 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
  const deselect=()=>{selectedActor.current=null;setSelected(null);renderInvalidated=true;};
  const update=(room?:Room|null,playerId?:string|null,sceneActive=true,presentationTime?:number,serverNow?:number,clockOffsetOverride?:number,poseRevision=0)=>{
   const prior=latest.current; renderInvalidated=true;
-  if(prior.poseRevision!==poseRevision){crewMotion.reset();wheelHandling.reset();departureMotion.reset();gunnerMotion.reset();gunCueTimes.clear();fittedGrips.clear();gunNutAnchors.clear();}
+  if(prior.poseRevision!==poseRevision){crewMotion.reset();wheelHandling.reset();departureMotion.reset();gunnerMotion.reset();playerCameraRig.reset();axleMotion.forEach(v=>v.reset());jackCueTimes.clear();gunCueTimes.clear();fittedGrips.clear();gunNutAnchors.clear();}
   if(prior.room?.id!==room?.id || prior.room?.players.find(p=>p.id===prior.playerId)?.role!==room?.players.find(p=>p.id===playerId)?.role) deselect();
   latest.current={room,playerId,sceneActive,presentationTime,clockOffset:clockOffsetOverride??(room?.solo?0:serverNow===undefined?prior.clockOffset:serverNow-Date.now()),poseRevision};
   // Replay rebuilds the deterministic event clock; live retains visible phases.
@@ -98,6 +101,8 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
     controls.minDistance = 10; controls.maxDistance = 24; controls.minPolarAngle = .04; controls.maxPolarAngle = 1.35; controls.rotateSpeed = .65; controls.zoomSpeed = .5;
     let cameraMode:PlayerCameraMode='overview';
     const resetCamera = () => {
+      playerCameraRig.reset();
+      renderer.domElement.setAttribute('aria-label','Pit lane overview. Drag to rotate; scroll or pinch to zoom.');
       cameraMode='overview';controls.enabled=true;options.onCameraModeChange?.('overview');camera.near=.1;camera.fov=39;camera.updateProjectionMatrix();
       userCamera=false;
       arrivalUserOrbit=false;
@@ -125,6 +130,8 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
     if (!manual) window.addEventListener('pit-camera-reset', resetCamera);
     const setPlayerCamera=(mode:PlayerCameraMode)=>{
       if(mode==='overview'){resetCamera();return;}
+      if(cameraMode!==mode)playerCameraRig.reset();
+      renderer.domElement.setAttribute('aria-label',mode==='first-person'?'First person camera. Drag or swipe to look around. Arrow keys also turn the camera.':'Third person camera. Drag or swipe to orbit your crew member; scroll or pinch to zoom.');
       cameraMode=mode;controls.enabled=false;userCamera=true;arrivalCameraActive=false;renderInvalidated=true;options.onCameraModeChange?.(mode);
     };
     const setCameraView = (view: 'top'|'diagonal'|'front') => {
@@ -146,6 +153,11 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
     };
     if (!manual) window.addEventListener('pit-camera-view', cameraViewEvent);
     const keyCamera = (event: KeyboardEvent) => {
+      if(cameraMode!=='overview'&&['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','+','-','='].includes(event.key)){
+        if(event.key.startsWith('Arrow'))playerCameraRig.turn(event.key==='ArrowLeft'?-.12:event.key==='ArrowRight'?.12:0,event.key==='ArrowUp'?.10:event.key==='ArrowDown'?-.10:0);
+        else playerCameraRig.zoom(event.key==='-'?1.12:1/1.12);
+        renderInvalidated=true;event.preventDefault();return;
+      }
       if (event.key === 'Home' || event.key.toLowerCase() === 'r') { resetCamera(); event.preventDefault(); }
       if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
         userCamera=true;arrivalCameraActive=false;
@@ -358,8 +370,26 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
       hit.userData.animated = true; hit.userData.actorIndex = index; hit.castShadow = false; return hit;
     });
     let down = { x: 0, y: 0, time: 0 }; const raycaster = new THREE.Raycaster();
-    const pointerDown = (event: PointerEvent) => { down = { x: event.clientX, y: event.clientY, time: performance.now() }; };
+    const lookPointers=new Map<number,{x:number;y:number}>();let lookGestureMoved=false;
+    const pointerDown = (event: PointerEvent) => {
+      down = { x: event.clientX, y: event.clientY, time: performance.now() };
+      if(cameraMode==='overview'||event.button!==0)return;
+      if(lookPointers.size===0)lookGestureMoved=false;else lookGestureMoved=true;
+      lookPointers.set(event.pointerId,{x:event.clientX,y:event.clientY});renderer.domElement.setPointerCapture(event.pointerId);renderer.domElement.focus({preventScroll:true});
+    };
+    const pointerMove=(event:PointerEvent)=>{
+      const previous=lookPointers.get(event.pointerId);if(!previous||cameraMode==='overview')return;
+      if(Math.hypot(event.clientX-down.x,event.clientY-down.y)>4)lookGestureMoved=true;
+      const other=[...lookPointers.entries()].find(([id])=>id!==event.pointerId)?.[1];
+      if(other){const before=Math.hypot(previous.x-other.x,previous.y-other.y),after=Math.hypot(event.clientX-other.x,event.clientY-other.y);if(after>1)playerCameraRig.zoom(before/after);}
+      else playerCameraRig.turn(-(event.clientX-previous.x)*.005,(event.clientY-previous.y)*.005);
+      lookPointers.set(event.pointerId,{x:event.clientX,y:event.clientY});renderInvalidated=true;event.preventDefault();
+    };
+    const endLook=(event:PointerEvent)=>{lookPointers.delete(event.pointerId);if(renderer.domElement.hasPointerCapture(event.pointerId))renderer.domElement.releasePointerCapture(event.pointerId);};
+    const wheelLook=(event:WheelEvent)=>{if(cameraMode==='overview')return;playerCameraRig.zoom(Math.exp(Math.max(-100,Math.min(100,event.deltaY))*.002));renderInvalidated=true;event.preventDefault();};
     const pointerUp = (event: PointerEvent) => {
+      endLook(event);
+      if(cameraMode!=='overview'&&lookGestureMoved)return;
       if (!isCrewTap(down, { x: event.clientX, y: event.clientY, time: performance.now() })) return;
       const rect = renderer.domElement.getBoundingClientRect();
       raycaster.setFromCamera(new THREE.Vector2((event.clientX - rect.left) / rect.width * 2 - 1, -(event.clientY - rect.top) / rect.height * 2 + 1), camera);
@@ -387,6 +417,7 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
       setSelected(selection);
     };
     if (!manual) { renderer.domElement.addEventListener('pointerdown', pointerDown); renderer.domElement.addEventListener('pointerup', pointerUp); }
+    if(!manual){renderer.domElement.addEventListener('pointermove',pointerMove);renderer.domElement.addEventListener('pointercancel',endLook);renderer.domElement.addEventListener('lostpointercapture',endLook);renderer.domElement.addEventListener('wheel',wheelLook,{passive:false});}
     batch(scene);
     let mobileLayout = element.clientWidth / element.clientHeight < .95;
     const resize = () => {
@@ -404,8 +435,8 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
     let taskMap = new Map<string, Task>(); const roleTasks=new Map<string,Task[]>(); const noTasks:Task[]=[]; let previousRoom: Room | null | undefined;
     function draw(frameNow: number) {
       if (disposed) return; if (!manual) frame = requestAnimationFrame(draw);
-      if (!latest.current.sceneActive || document.hidden || (!manual && (!visible || !framePacer.accept(frameNow,quality==='low'||motion.matches?30:60)))) return;
-      controls.update();
+      if (!latest.current.sceneActive || document.hidden || (!manual && (!visible || !framePacer.accept(frameNow,motion.matches?30:quality==='low'?60:144)))) return;
+      if(cameraMode==='overview')controls.update();
       const { room, playerId, presentationTime, clockOffset } = latest.current;
       const crewColor = teamCrewColor(room);
       if (crewColor !== appliedCrewColor) {
@@ -424,10 +455,9 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
       if(presentationTime!==undefined && presentationTime===lastPresentationTime && !renderInvalidated)return;
       lastPresentationTime=presentationTime; renderInvalidated=false;
       const now = presentationTime ?? sceneClock.read(frameNow, Date.now() + clockOffset);
-      const workNow=presentationTime??Date.now()+clockOffset;
+      const workNow=now;
       const workTasks=new Map((room?.round?.tasks??[]).map(task=>[task.id,task]));
       const workComplete=(id:string)=>workDone(workTasks.get(id),workNow);
-      const workProgress=(id:string)=>workPhase(workTasks.get(id),workNow);
       const arrival = arrivalPose(room?.round?.goAt, now);
       // The car stays the OrbitControls tracking anchor throughout 3-2-1.
       // Dragging/orbiting changes only the angle: it must not freeze the target
@@ -480,16 +510,8 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
       const animation = timeline.current;
       const done = (id: string) => animation.isDone(id, now);
       const progress = (id: string) => animation.posePhase(id, now);
-      const active = (id: string) => { const receipt = animation.receipt(id); return !!receipt && now >= receipt.startsAt && now < receipt.endsAt; };
-      const localPhase = (id: string) => progress(id);
-      const axleHeight = (prefix: string) => {
-        const lift = workProgress(`${prefix}_LIFT`); const lower = workProgress(`${prefix}_LOWER`);
-        if (workComplete(`${prefix}_LOWER`)) return 0;
-        if (lower !== null) return .27 * (1 - smooth(lower));
-        if (workComplete(`${prefix}_LIFT`)) return .27;
-        return lift === null ? 0 : .27 * smooth(lift);
-      };
-      const frontHeight = axleHeight('FRONT'); const rearHeight = axleHeight('REAR');
+      const axleFrames=['FRONT','REAR'].map((prefix,i)=>axleMotion[i].sample(newRoundId,now,workTasks.get(`${prefix}_LIFT`),workTasks.get(`${prefix}_LOWER`)));
+      const [frontHeight,rearHeight]=axleFrames.map(f=>f.height);
       chassis.position.y = (frontHeight + rearHeight) / 2; chassis.rotation.x = (frontHeight - rearHeight) / 4.2;
       const localActive = animation.activeTaskIds(now);
       // Diagnostic task lists must not be JSON-serialized into DOM every rendered frame.
@@ -512,15 +534,15 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
         // away from the axle before clearing sideways, outside carrier routes.
         jack.group.position.x = jack.front ? 3.5 * retreat : -Math.max(3.5 * retreat,2.2 * clearBeforeArrival);
         jack.group.position.z=(jack.front?-3.12:2.35)+(jack.front?-3:3)*retreat+(jack.front?0:rearJackApproach(clearBeforeArrival).z);
-        const height = jack.front ? frontHeight : rearHeight; const prefix = jack.front ? 'FRONT' : 'REAR'; const taskId = localActive.includes(`${prefix}_LOWER`) || active(`${prefix}_LOWER`) ? `${prefix}_LOWER` : `${prefix}_LIFT`;
-        const pumping = localActive.includes(taskId) || active(taskId); const p = localActive.includes(taskId) ? localPhase(taskId) ?? 0 : progress(taskId) ?? 0;
+        const height = jack.front ? frontHeight : rearHeight;const axle=axleFrames[jack.front?0:1];const pumping=axle.operation!==null,p=axle.phase;
         jack.plate.position.y = .23 + height; jack.piston.scale.y = .2 + height; jack.handle.rotation.x = pumping ? Math.sin(p * Math.PI * 3) * .23 - .12 : -height * .7;
       }
       const green = released;
       redLampMat.color.set(green ? '#301919' : '#ff392c');
       greenLampMat.color.set(green ? '#18db67' : '#172b22');
       if(attachmentRound!==(room?.round?.id??null)){attachmentRound=room?.round?.id??null;fittedGrips.clear();gunNutAnchors.clear();}
-      if(gunCueRound!==(room?.round?.id??null)){gunCueRound=room?.round?.id??null;gunCueTimes.clear();}
+      if(gunCueRound!==(room?.round?.id??null)){gunCueRound=room?.round?.id??null;gunCueTimes.clear();jackCueTimes.clear();}
+      axleFrames.forEach((axle,i)=>{const id=`${i===0?'FRONT':'REAR'}_${axle.operation}`;if(axle.operation&&animation.receipt(id)&&!jackCueTimes.has(id))jackCueTimes.set(id,now);});
       const gunFrames=new Map(corners.map(corner=>[corner.key,gunnerMotion.sample(room?.round?.id??null,corner.key,workNow,workTasks.get(corner.key.startsWith('F')?'FRONT_LIFT':'REAR_LIFT'),workTasks.get(`${corner.key}_GUN_LOOSEN`),workTasks.get(`${corner.key}_WHEEL_ON`),workTasks.get(`${corner.key}_GUN_TIGHTEN`),arrival.entry>=.999,wheelHandling.fitted(corner.key),wheelHandling.extracted(corner.key),wheelHandling.clearForGunner(corner.key,workNow))]));
       const wheelFrames=new Map(corners.map(corner=>[corner.key,wheelHandling.sample(room?.round?.id??null,corner.key,workNow,workTasks.get(`${corner.key}_GUN_LOOSEN`),workTasks.get(`${corner.key}_WHEEL_OFF`),workTasks.get(`${corner.key}_WHEEL_ON`),gunFrames.get(corner.key)!.loosenClear)]));
       const supportExit=stabilizerExitPhase(room?.round?.tasks??[],workNow);
@@ -531,9 +553,8 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
         const actor = actors[index]; const { spec, group, body, arms, legs } = actor;
         const actorRetreat=spec.kind==='gun'?retreat*gunFrames.get(spec.role!.slice(0,2))!.retreatGuard:retreat;
         const ownTasks = roleTasks.get(spec.role??'')??noTasks;
-        const immediate = ownTasks.find(task => localActive.includes(task.id));
-        let task=immediate; if(!task)for(const candidate of ownTasks)if(animation.posePhase(candidate.id,now)!==null)task=candidate; if(!task&&spec.kind==='on')task=ownTasks.find(t=>t.enabledAt!==null&&t.enabledAt<=workNow); const available = arrival.arrived && ownTasks.some(task => task.enabledAt !== null && workNow >= task.enabledAt && (task.completedAt === null || workNow < task.completedAt)); const complete = ownTasks.length > 0 && ownTasks.every(task => workComplete(task.id));
-        const p = task ? immediate ? localPhase(task.id) ?? 0 : progress(task.id) ?? 0 : 0; const work = task ? Math.sin(p * Math.PI) : 0; const t = now * .001 + index * .83; const isYou = !!spec.role && mine?.role === spec.role;
+        const available = arrival.arrived && ownTasks.some(task => task.enabledAt !== null && workNow >= task.enabledAt && (task.completedAt === null || workNow < task.completedAt)); const complete = ownTasks.length > 0 && ownTasks.every(task => workComplete(task.id));
+        const t = now * .001 + index * .83; const isYou = !!spec.role && mine?.role === spec.role;
         const isSelected = selectedActor.current === index && !isYou; actor.selectionRing.visible = isSelected; actor.selectionGlow.visible = isSelected;
         actor.ring.visible = isYou; actor.glow.visible = isYou; actor.ring.scale.setScalar(.48 + (available && !motion.matches ? Math.sin(now * .005) * .025 : 0));
         (actor.glow.material as THREE.MeshBasicMaterial).opacity = available ? .24 : complete ? .08 : .13;
@@ -575,7 +596,8 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
           });
           arms.forEach(arm=>{arm.rotation.x=.3;});
         } else if (spec.kind === 'jack') {
-          body.rotation.x = -.16 - work * .23; body.position.y -= work * .1; arms.forEach(arm => { arm.rotation.x = .9 + (task ? Math.sin(p * Math.PI * 3) * .28 : 0); });
+          const axle=axleFrames[spec.role==='FRONT_JACK'?0:1],effort=Math.sin(axle.phase*Math.PI);
+          body.rotation.x=-.16-effort*.23;body.position.y-=effort*.1;arms.forEach(arm=>{arm.rotation.x=.9+effort*.18;});
           // Front jack stands planted ahead of the car's nose before arrival.
           // The rear jack still advances into position as the car stops.
           group.position.x = spec.role === 'FRONT_JACK' ? 3.5 * retreat : -Math.max(3.5 * retreat,-rearApproach.x);
@@ -611,7 +633,8 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
       if(cameraMode!=='overview'&&followed){
         const root=followed.group.position,head=world(followed.body,new THREE.Vector3(0,1.29,-.008));
         const forward=new THREE.Vector3(0,0,-1).applyQuaternion(followed.group.quaternion);
-        const pose=playerCameraPose(cameraMode,root,head,forward);
+        const pose=playerCameraRig.sample(cameraMode,root,head,forward,now,`${room?.id}/${mine?.role}`);
+        if(sceneDebug)element.dataset.followCamera=JSON.stringify({yaw:pose.yaw,pitch:pose.pitch,distance:pose.distance,target:pose.target});
         camera.position.set(pose.position.x,pose.position.y,pose.position.z);camera.lookAt(pose.target.x,pose.target.y,pose.target.z);
         camera.fov=pose.fov;camera.near=pose.near;camera.updateProjectionMatrix();camera.updateMatrixWorld();
         if(marker.current&&cameraMode==='first-person')marker.current.style.visibility='hidden';
@@ -829,6 +852,7 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
       try { renderer.render(scene, camera); } catch { setFallback(true); disposed = true; return; }
       // Sound follows this exact rendered pose clock, never the snapshot DONE clock.
       const audibleReceipts=options.onTaskCue?Array.from(animation.allReceipts()).flatMap(receipt=>{
+        if(receipt.taskId.endsWith('_LIFT')||receipt.taskId.endsWith('_LOWER')){const startsAt=jackCueTimes.get(receipt.taskId);return startsAt===undefined?[]:[{...receipt,startsAt,endsAt:startsAt+180}];}
         if(!receipt.taskId.includes('_GUN_'))return [receipt];
         const startsAt=gunCueTimes.get(receipt.taskId);return startsAt===undefined?[]:[{...receipt,startsAt,endsAt:startsAt+140}];
       }):[];
@@ -841,6 +865,7 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
     const dispose = () => {
       disposed = true; cancelAnimationFrame(frame); observer.disconnect(); intersection.disconnect(); window.removeEventListener('pit-camera-reset', resetCamera); window.removeEventListener('pit-camera-view', cameraViewEvent); controls.removeEventListener('change', onCameraChange); controls.dispose();
       renderer.domElement.removeEventListener('pointerdown', pointerDown); renderer.domElement.removeEventListener('pointerup', pointerUp); renderer.domElement.removeEventListener('keydown', keyCamera); renderer.domElement.removeEventListener('webglcontextlost', lost);
+      renderer.domElement.removeEventListener('pointermove',pointerMove);renderer.domElement.removeEventListener('pointercancel',endLook);renderer.domElement.removeEventListener('lostpointercapture',endLook);renderer.domElement.removeEventListener('wheel',wheelLook);lookPointers.clear();
       geometries.forEach(geometry => geometry.dispose()); materials.forEach(mat => mat.dispose()); textures.forEach(texture => texture.dispose()); if (!options.renderer) { renderer.dispose(); renderer.domElement.remove(); }
     };
 
