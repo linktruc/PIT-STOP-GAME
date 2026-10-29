@@ -1,3 +1,4 @@
+import type { Task } from '../types';
 import type { AnimationReceipt } from './animation';
 import type { Crew } from './crew';
 const smooth=(v:number)=>{const p=Math.max(0,Math.min(1,v));return p*p*(3-2*p);};
@@ -29,4 +30,24 @@ export function oldWheelMotion(spec:Crew,corner:{x:number;z:number},receipt:Anim
   return {x,z,approach,extract,carry,lower,release,discard,crouch,
     walking:4*approach*(1-approach)+4*carry*(1-carry),
     placedAt:receipt.startsAt+carryAt+OLD_WHEEL_CARRY_MS+OLD_WHEEL_LOWER_MS};
+}
+
+/** Pull the old wheel clear by the work deadline. The carry/set-down can overlap
+ * fitting and tightening, without extending their official work windows. */
+export function oldWheelWorkMotion(spec:Crew,corner:{x:number;z:number},task:Task|undefined,now:number){
+ if(!task||task.enabledAt===null||now<task.enabledAt)return null;
+ const enabled=task.enabledAt,end=task.completedAt??task.dueAt;
+ const bot=task.ownerId===null;
+ const pullEnd=end===null?Infinity:end+(bot?0:80);
+ const pullStart=bot?Math.max(enabled,pullEnd-Math.min(100,(pullEnd-enabled)*.45)):end??Infinity;
+ const approach=smooth((now-enabled)/Math.max(1,Math.min(140,bot&&end!==null?(end-enabled)*.45:140)));
+ const extract=Number.isFinite(pullEnd)?smooth((now-pullStart)/Math.max(1,pullEnd-pullStart)):0;
+ const carry=Number.isFinite(pullEnd)?smooth((now-pullEnd)/OLD_WHEEL_CARRY_MS):0;
+ const lower=Number.isFinite(pullEnd)?smooth((now-pullEnd-OLD_WHEEL_CARRY_MS)/OLD_WHEEL_LOWER_MS):0;
+ const release=Number.isFinite(pullEnd)?smooth((now-pullEnd-OLD_WHEEL_CARRY_MS-OLD_WHEEL_LOWER_MS)/OLD_WHEEL_RELEASE_MS):0;
+ const side=Math.sign(spec.x),discard={x:corner.x+side*4.4,y:.44,z:corner.z+1.1};
+ const pickup={x:corner.x+side*.64,z:corner.z},station={x:discard.x+side*.66,z:discard.z};
+ const x=spec.x+(pickup.x-spec.x)*approach+(station.x-pickup.x)*carry;
+ const z=spec.z+(pickup.z-spec.z)*approach+(station.z-pickup.z)*carry;
+ return {x,z,approach,extract,carry,lower,release,discard,crouch:approach*(1-extract)+lower*(1-release),walking:4*approach*(1-approach)+4*carry*(1-carry),placedAt:pullEnd+OLD_WHEEL_CARRY_MS+OLD_WHEEL_LOWER_MS};
 }

@@ -6,10 +6,11 @@ import { TaskAnimationTimeline } from './animation';
 import { LiveSceneAudio } from './liveAudio';
 import { teamCrewColor } from './colors';
 import { SceneClock, FramePacer, CrewMotion } from './motion';
-import { oldWheelMotion } from './oldWheel';
+import { oldWheelWorkMotion } from './oldWheel';
+import {workDone,workPhase,fittingPhase,gunnerWorkHandoff} from './work';
 import { departurePose, arrivalPose, isCrewTap } from './rig';
 import { buildPitLane, PIT_LANE_LAYOUT } from './environment';
-import { CREW, CORNER_POSITIONS, gunnerKneelingPose, gunnerHandoff, wheelCarrierPosition, supportCrewClear, supportHandAnchors, type Crew } from './crew';
+import { CREW, CORNER_POSITIONS, gunnerKneelingPose, wheelCarrierPosition, supportCrewClear, supportHandAnchors, type Crew } from './crew';
 type KneelingLeg = {thigh:THREE.Mesh;shin:THREE.Mesh;foot:THREE.Mesh;knee:THREE.Mesh};
 type Actor = { spec: Crew; group: THREE.Group; body: THREE.Group; arms: THREE.Group[]; legs: THREE.Group[]; kneelingLegs?:KneelingLeg[]; tool?: THREE.Group; forearms: THREE.Group[]; hands: THREE.Mesh[]; carry: THREE.Group; selectionRing: THREE.Mesh; selectionGlow: THREE.Mesh; ring: THREE.Mesh; glow: THREE.Mesh; suit: THREE.MeshStandardMaterial };
 type WheelCorner = { key: string; x: number; z: number; wheel: THREE.Group; old: THREE.Group; fresh: THREE.Group };
@@ -401,6 +402,10 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
       if(presentationTime!==undefined && presentationTime===lastPresentationTime && !renderInvalidated)return;
       lastPresentationTime=presentationTime; renderInvalidated=false;
       const now = presentationTime ?? sceneClock.read(frameNow, Date.now() + clockOffset);
+      const workNow=presentationTime??Date.now()+clockOffset;
+      const workTasks=new Map((room?.round?.tasks??[]).map(task=>[task.id,task]));
+      const workComplete=(id:string)=>workDone(workTasks.get(id),workNow);
+      const workProgress=(id:string)=>workPhase(workTasks.get(id),workNow);
       const arrival = arrivalPose(room?.round?.goAt, now);
       // The car stays the OrbitControls tracking anchor throughout 3-2-1.
       // Dragging/orbiting changes only the angle: it must not freeze the target
@@ -456,10 +461,10 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
       const active = (id: string) => { const receipt = animation.receipt(id); return !!receipt && now >= receipt.startsAt && now < receipt.endsAt; };
       const localPhase = (id: string) => progress(id);
       const axleHeight = (prefix: string) => {
-        const lift = progress(`${prefix}_LIFT`); const lower = progress(`${prefix}_LOWER`);
-        if (done(`${prefix}_LOWER`)) return 0;
-        if (lower !== null && active(`${prefix}_LOWER`)) return .27 * (1 - smooth(lower));
-        if (done(`${prefix}_LIFT`)) return .27;
+        const lift = workProgress(`${prefix}_LIFT`); const lower = workProgress(`${prefix}_LOWER`);
+        if (workComplete(`${prefix}_LOWER`)) return 0;
+        if (lower !== null) return .27 * (1 - smooth(lower));
+        if (workComplete(`${prefix}_LIFT`)) return .27;
         return lift === null ? 0 : .27 * smooth(lift);
       };
       const frontHeight = axleHeight('FRONT'); const rearHeight = axleHeight('REAR');
@@ -467,10 +472,14 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
       const localActive = animation.activeTaskIds(now);
       // Diagnostic task lists must not be JSON-serialized into DOM every rendered frame.
       element.dataset.frontLift = frontHeight.toFixed(3); element.dataset.rearLift = rearHeight.toFixed(3); element.dataset.animationTasks = motion.matches ? '' : [...new Set([...animation.activeTaskIds(now), ...localActive])].join(',');
-      const released = done('GREEN_RELEASE'); const releasePhase = localPhase('GREEN_RELEASE') ?? progress('GREEN_RELEASE');
+      const released = workComplete('GREEN_RELEASE');
       // Retreat starts only after both visual lower operations. Late snapshots settle immediately.
       const lowerEnds = ['FRONT_LOWER', 'REAR_LOWER'].map(id => animation.receipt(id));
-      const { retreat, drive } = departurePose(lowerEnds, animation.receipt('GREEN_RELEASE'), now, false);
+      const releaseReceipt=animation.receipt('GREEN_RELEASE');
+      const releaseTask=workTasks.get('GREEN_RELEASE');
+      const departReceipt=releaseReceipt?{...releaseReceipt,startsAt:Math.max(releaseReceipt.startsAt,releaseTask?.completedAt??releaseTask?.dueAt??Infinity)}:undefined;
+      const departure=departurePose(lowerEnds,departReceipt,now,false);
+      const retreat=departure.retreat,drive=released?departure.drive:0;
       car.position.z = arrival.carZ + drive * PIT_LANE_LAYOUT.exitZ; car.position.x = arrival.carX;car.rotation.y=arrival.yaw;
       const clearBeforeArrival = 1 - arrival.entry;
       element.dataset.carArrival = arrival.progress.toFixed(3); element.dataset.sceneClock = String(now); element.dataset.carZ = car.position.z.toFixed(3);element.dataset.carX=car.position.x.toFixed(3);element.dataset.carYaw=arrival.yaw.toFixed(3);element.dataset.wheelRoll=arrival.wheelRoll.toFixed(3);element.dataset.workPhase = String(arrival.arrived);
@@ -479,13 +488,13 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
         // Front operator and trolley share the centreline before arrival.
         // Rear operator and trolley approach together. After lowering, pull
         // away from the axle before clearing sideways, outside carrier routes.
-        jack.group.position.x = jack.front ? 3.5 * retreat : -Math.max(3.5 * retreat,5.2 * clearBeforeArrival);
-        jack.group.position.z=(jack.front?-3.12:2.35)+(jack.front?-3:3)*retreat+(jack.front?0:3*clearBeforeArrival);
+        jack.group.position.x = jack.front ? 3.5 * retreat : -Math.max(3.5 * retreat,2.2 * clearBeforeArrival);
+        jack.group.position.z=(jack.front?-3.12:2.35)+(jack.front?-3:3)*retreat;
         const height = jack.front ? frontHeight : rearHeight; const prefix = jack.front ? 'FRONT' : 'REAR'; const taskId = localActive.includes(`${prefix}_LOWER`) || active(`${prefix}_LOWER`) ? `${prefix}_LOWER` : `${prefix}_LIFT`;
         const pumping = localActive.includes(taskId) || active(taskId); const p = localActive.includes(taskId) ? localPhase(taskId) ?? 0 : progress(taskId) ?? 0;
         jack.plate.position.y = .23 + height; jack.piston.scale.y = .2 + height; jack.handle.rotation.x = pumping ? Math.sin(p * Math.PI * 3) * .23 - .12 : -height * .7;
       }
-      const green = released || (releasePhase ?? 0) > .42;
+      const green = released;
       redLampMat.color.set(green ? '#301919' : '#ff392c');
       greenLampMat.color.set(green ? '#18db67' : '#172b22');
       const mine = room?.players.find(player => player.id === playerId);
@@ -494,7 +503,7 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
         const actor = actors[index]; const { spec, group, body, arms, legs } = actor;
         const ownTasks = roleTasks.get(spec.role??'')??noTasks;
         const immediate = ownTasks.find(task => localActive.includes(task.id));
-        let task=immediate; if(!task)for(const candidate of ownTasks)if(animation.posePhase(candidate.id,now)!==null)task=candidate; const available = arrival.arrived && ownTasks.some(task => task.enabledAt !== null && now >= task.enabledAt && (task.completedAt === null || now < task.completedAt)); const complete = ownTasks.length > 0 && ownTasks.every(task => done(task.id));
+        let task=immediate; if(!task)for(const candidate of ownTasks)if(animation.posePhase(candidate.id,now)!==null)task=candidate; if(!task&&spec.kind==='on')task=ownTasks.find(t=>t.enabledAt!==null&&t.enabledAt<=workNow); const available = arrival.arrived && ownTasks.some(task => task.enabledAt !== null && workNow >= task.enabledAt && (task.completedAt === null || workNow < task.completedAt)); const complete = ownTasks.length > 0 && ownTasks.every(task => workComplete(task.id));
         const p = task ? immediate ? localPhase(task.id) ?? 0 : progress(task.id) ?? 0 : 0; const work = task ? Math.sin(p * Math.PI) : 0; const t = now * .001 + index * .83; const isYou = !!spec.role && mine?.role === spec.role;
         const isSelected = selectedActor.current === index && !isYou; actor.selectionRing.visible = isSelected; actor.selectionGlow.visible = isSelected;
         actor.ring.visible = isYou; actor.glow.visible = isYou; actor.ring.scale.setScalar(.48 + (available && !motion.matches ? Math.sin(now * .005) * .025 : 0));
@@ -505,7 +514,7 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
         arms.forEach((arm, side) => { arm.rotation.x = .15 + (motion.matches ? 0 : Math.sin(t * 1.6 + side) * .025); arm.rotation.z = side === 0 ? -.09 : .09; });
         if (spec.kind === 'gun') {
           const corner=spec.role!.slice(0,2);
-          const handoff=gunnerHandoff(progress(`${corner}_GUN_LOOSEN`),done(`${corner}_GUN_LOOSEN`),progress(`${corner}_GUN_TIGHTEN`),done(`${corner}_GUN_TIGHTEN`));
+          const handoff=gunnerWorkHandoff(workTasks.get(`${corner}_GUN_LOOSEN`),workTasks.get(`${corner}_GUN_TIGHTEN`),workNow);
           const pose=gunnerKneelingPose(task?p:0);const standing=Math.max(retreat,clearBeforeArrival,handoff);
           // 1.25m also clears the OFF carrier's outward-leaning helmet. The
           // shorter .85m proposal cleared hips but intersected that head sweep.
@@ -523,23 +532,30 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
           group.position.x+=Math.sign(spec.x)*.23*smooth(((progress(`${corner}_GUN_TIGHTEN`)??0)-.75)/.25);
         } else if (spec.kind === 'off' || spec.kind === 'on') {
           const corner = corners.find(corner => spec.role?.startsWith(corner.key));
-          const placement=spec.kind==='off'&&corner?oldWheelMotion(spec,corner,animation.receipt(`${corner.key}_WHEEL_OFF`),now):null;
+          const placement=spec.kind==='off'&&corner?oldWheelWorkMotion(spec,corner,workTasks.get(`${corner.key}_WHEEL_OFF`),workNow):null;
           if(placement){
             group.position.x=placement.x;group.position.z=placement.z;
             body.position.y-=.10*placement.crouch;body.rotation.x=-.52*placement.crouch;
             arms.forEach(arm=>{arm.rotation.x=mix(.95,.3,placement.release);});
             legs.forEach((leg,side)=>{leg.rotation.x=Math.sin(now*.014+side*Math.PI)*.22*placement.walking;});
           }else if(corner&&task){
-            const carrier=wheelCarrierPosition(spec.kind,spec,corner,p);group.position.x=carrier.x;group.position.z=carrier.z;
+            const stageSpec=spec.kind==='on'?{...spec,x:corner.x+Math.sign(spec.x)*1.4}:spec; const carrier=wheelCarrierPosition(spec.kind,stageSpec,corner,spec.kind==='on'?fittingPhase(workTasks.get(`${corner.key}_WHEEL_ON`),workNow):p);group.position.x=carrier.x;group.position.z=carrier.z;
             body.position.y-=.20*work;body.rotation.x=-.28*work;
             arms.forEach(arm=>{arm.rotation.x=.95+work*.3;});legs.forEach((leg,side)=>{leg.rotation.x=Math.sin(p*17+side*Math.PI)*.25*work;});
-          }else arms.forEach(arm=>{arm.rotation.x=spec.kind==='on'?.7:.3;});
+          }else {
+            // Bring the replacement tyre closer while the old-wheel crew works.
+            const off=corner?workTasks.get(`${corner.key}_WHEEL_OFF`):undefined;
+            if(spec.kind==='on'&&corner&&off?.enabledAt!==null&&off?.enabledAt!==undefined&&workNow>=off.enabledAt){
+              group.position.x=mix(spec.x,corner.x+Math.sign(spec.x)*1.4,smooth((workNow-off.enabledAt)/180));
+            }
+            arms.forEach(arm=>{arm.rotation.x=spec.kind==='on'?.7:.3;});
+          }
         } else if (spec.kind === 'jack') {
           body.rotation.x = -.16 - work * .23; body.position.y -= work * .1; arms.forEach(arm => { arm.rotation.x = .9 + (task ? Math.sin(p * Math.PI * 3) * .28 : 0); });
           // Front jack stands planted ahead of the car's nose before arrival.
           // The rear jack still advances into position as the car stops.
-          group.position.x = spec.role === 'FRONT_JACK' ? 3.5 * retreat : -Math.max(3.5 * retreat,5.2 * clearBeforeArrival);
-          group.position.z=spec.z+(spec.role==='FRONT_JACK'?-3:3)*retreat+(spec.role==='REAR_JACK'?3*clearBeforeArrival:0);
+          group.position.x = spec.role === 'FRONT_JACK' ? 3.5 * retreat : -Math.max(3.5 * retreat,2.2 * clearBeforeArrival);
+          group.position.z=spec.z+(spec.role==='FRONT_JACK'?-3:3)*retreat;
         } else if (spec.kind === 'release') {
           arms[1].rotation.x = task ? 1.1 + smooth(p / .4) * 1.65 : released ? 2.75 : .6; arms[1].rotation.z = task || released ? -.5 : .15; if (green) group.rotation.y += .3;
         } else { body.rotation.x = spec.support === 'sidepod' ? -.11 : spec.support==='nose'?-.055:index < 19 ? -.18 : -.025;
@@ -582,8 +598,8 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
         if (marker.current && mine) {
           const actor=actors.find(a=>a.spec.role===mine.role)!;const group=actor.group;
           const ownTasks=roleTasks.get(mine.role)??noTasks;
-          const available=ownTasks.some(t=>t.enabledAt!==null&&now>=t.enabledAt&&(t.completedAt===null||now<t.completedAt));
-          const complete=ownTasks.length>0&&ownTasks.every(t=>done(t.id));const immediate=ownTasks.some(t=>localActive.includes(t.id));
+          const available=ownTasks.some(t=>t.enabledAt!==null&&workNow>=t.enabledAt&&(t.completedAt===null||workNow<t.completedAt));
+          const complete=ownTasks.length>0&&ownTasks.every(t=>workComplete(t.id));const immediate=ownTasks.some(t=>localActive.includes(t.id));
           markerPosition.set(group.position.x, 1.77 + (available && !motion.matches ? Math.sin(now * .004) * .035 : 0), group.position.z).project(camera);
           const x = (markerPosition.x * .5 + .5) * element.clientWidth; const y = (-markerPosition.y * .5 + .5) * element.clientHeight;
           const labelX = THREE.MathUtils.clamp(x, marker.current.offsetWidth / 2 + 8, element.clientWidth - marker.current.offsetWidth / 2 - 8); marker.current.style.setProperty('--you-pointer-offset', `${x-labelX}px`);
@@ -614,22 +630,22 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
         const side = Math.sign(corner.x); const height = corner.key.startsWith('F') ? frontHeight : rearHeight;
         const hub = world(car, new THREE.Vector3(corner.x, .44 + height, corner.z));
         const offId = `${corner.key}_WHEEL_OFF`, onId = `${corner.key}_WHEEL_ON`;
-        const onP = done(onId) ? 1 : progress(onId) ?? 0;
+        const onP = fittingPhase(workTasks.get(onId),workNow);
         const offActor = actors.find(a => a.spec.role === offId)!; const onActor = actors.find(a => a.spec.role === onId)!;
-        const placement=oldWheelMotion(offActor.spec,corner,animation.receipt(offId),now);
+        const placement=oldWheelWorkMotion(offActor.spec,corner,workTasks.get(offId),workNow);
         const offCarry=world(offActor.group,new THREE.Vector3(0,.74,-.66)),onCarry=world(onActor.carry);
         corner.wheel.position.set(corner.x, .44 + height, corner.z); corner.wheel.rotation.x = arrival.wheelRoll-drive*62;corner.wheel.rotation.y=corner.key.startsWith('F')?arrival.steering:0;
         const extract=placement?.extract??0;
-        corner.wheel.visible=extract<=0||onP>=.86;
-        corner.old.visible=extract>0;
+        corner.wheel.visible=(!workComplete(offId)&&extract<=0)||onP>=1;
+        corner.old.visible=workComplete(offId)||extract>0;
         const discard=placement?new THREE.Vector3(placement.discard.x,placement.discard.y,placement.discard.z):hub;
         // The old tyre stays in the mechanic's grip during carry. Only the
         // local lowering phase blends it down to the adjacent ground point.
         corner.old.position.copy(hub).lerp(offCarry,extract);
         if(placement)corner.old.position.lerp(discard,placement.lower);
         corner.old.quaternion.copy(car.quaternion).slerp(offActor.group.quaternion,extract);
-        const fitting = smooth((onP - .45) / .41);
-        corner.fresh.visible = onP < .86;
+        const fitting = smooth((onP - .45) / .55);
+        corner.fresh.visible = onP < 1;
         corner.fresh.position.copy(onCarry).lerp(hub, fitting);
         corner.fresh.quaternion.copy(onActor.group.quaternion).slerp(car.quaternion, fitting);
         // Hands grip opposite sidewalls; the carry frame leaves clearance ahead of the torso.
@@ -637,23 +653,22 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
           const grips=[-1,1].map(x=>world(corner.old,new THREE.Vector3(x*.22,.12,0)));
           poseHands(offActor,grips.map((grip,i)=>grip.lerp(world(offActor.hands[i]),placement.release)));
         }
-        if (onP < .86) poseHands(onActor, [-1, 1].map(x => world(corner.fresh, new THREE.Vector3(x * .22, .12, 0))));
+        if (onP < 1) poseHands(onActor, [-1, 1].map(x => world(corner.fresh, new THREE.Vector3(x * .22, .12, 0))));
         const gunner = actors.find(a => a.spec.role === `${corner.key}_GUNNER`)!;
         if (gunner.tool) {
-          const gunTask=[`${corner.key}_GUN_LOOSEN`,`${corner.key}_GUN_TIGHTEN`].find(active);
-          const gunPhase=gunTask?progress(gunTask)??0:0;
-          const handoff=gunnerHandoff(active(`${corner.key}_GUN_LOOSEN`)?progress(`${corner.key}_GUN_LOOSEN`):null,done(`${corner.key}_GUN_LOOSEN`),active(`${corner.key}_GUN_TIGHTEN`)?progress(`${corner.key}_GUN_TIGHTEN`):null,done(`${corner.key}_GUN_TIGHTEN`));
+          const gunTask=[`${corner.key}_GUN_LOOSEN`,`${corner.key}_GUN_TIGHTEN`].find(id=>{const task=workTasks.get(id);return task?.enabledAt!==null&&task?.enabledAt!==undefined&&workNow>=task.enabledAt&&!workComplete(id);});
+          const gunPhase=gunTask?workProgress(gunTask)??0:0;
+          const handoff=gunnerWorkHandoff(workTasks.get(`${corner.key}_GUN_LOOSEN`),workTasks.get(`${corner.key}_GUN_TIGHTEN`),workNow);
           // A ready gun is visibly retracted while the bot's measured delay runs.
           // The thrust is tied to the accepted loosen/tighten receipt, never unlock.
           const thrustPhase=gunTask?.endsWith('TIGHTEN')?(gunPhase-.22)/.78:gunPhase;
           const thrust=gunTask?smooth(thrustPhase/.2)*(1-smooth((gunPhase-.65)/.35)):0;
           const nut = hub.clone().add(new THREE.Vector3(side * .22, 0, 0));
           const muzzleBase = nut.clone().add(new THREE.Vector3(side*(.41+.18*(1-thrust)),.10*(1-thrust)+(gunTask?Math.sin(gunPhase*95)*.006:0),0));
-          const lowered=new THREE.Vector3(gunner.group.position.x-side*.18,1.42,gunner.group.position.z-.04);
-          muzzleBase.lerp(lowered,handoff);
-          // Stow the held gun beside the actor during approach and departure.
+          // One body-local held pose for handoff, final tighten and departure.
+          // Never retarget the lowering wheel after the gunner has finished.
           const held = world(gunner.body, new THREE.Vector3(0,.69,-.42));
-          muzzleBase.lerp(held, Math.max(clearBeforeArrival,retreat));
+          muzzleBase.lerp(held, Math.max(handoff,clearBeforeArrival,retreat));
           const shoulders = world(gunner.body,new THREE.Vector3(0,1.03,0));
           const reach = muzzleBase.clone().sub(shoulders);
           if(reach.length()>.50) muzzleBase.copy(shoulders).add(reach.setLength(.50));
@@ -711,10 +726,13 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
         }
       }
       if (sceneDebug) {
+      element.dataset.releaseGreen=String(green);
+      element.dataset.wheelWork=JSON.stringify(corners.map(c=>({corner:c.key,hubVisible:c.wheel.visible,newWheelVisible:c.fresh.visible})));
+      element.dataset.workState=JSON.stringify([...workTasks.values()].map(task=>({id:task.id,phase:workPhase(task,workNow),done:workDone(task,workNow),enabledAt:task.enabledAt,completedAt:task.completedAt})));
       element.dataset.heldToolErrors=JSON.stringify(heldToolErrors);
       element.dataset.oldWheelPlacements=JSON.stringify(corners.map(corner=>{
         const actor=actors.find(a=>a.spec.role===`${corner.key}_WHEEL_OFF`)!;
-        const pose=oldWheelMotion(actor.spec,corner,animation.receipt(`${corner.key}_WHEEL_OFF`),now);
+        const pose=oldWheelWorkMotion(actor.spec,corner,workTasks.get(`${corner.key}_WHEEL_OFF`),workNow);
         return {corner:corner.key,pose,target:motionTargets[actors.indexOf(actor)],position:corner.old.position.toArray(),visible:corner.old.visible,
           handError:pose&&pose.extract>0&&pose.release===0?Math.max(...[-1,1].map((x,i)=>world(actor.hands[i]).distanceTo(world(corner.old,new THREE.Vector3(x*.22,.12,0))))):0};
       }));
@@ -737,7 +755,7 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
       element.dataset.toolPairs=JSON.stringify(toolPairs);
       }
       element.dataset.crewTargets = JSON.stringify(actors.map(a => { const point = new THREE.Vector3(a.group.position.x, 1.35, a.group.position.z).project(camera); return { role: a.spec.role ?? 'SUPPORT', x: (point.x * .5 + .5) * element.clientWidth, y: (-point.y * .5 + .5) * element.clientHeight }; }));
-      element.dataset.gunnerPoses=JSON.stringify(actors.filter(a=>a.spec.kind==='gun').map(a=>({role:a.spec.role,position:a.group.position.toArray(),torso:[a.body.position.y,a.body.position.z,a.body.rotation.x],head:world(a.body,new THREE.Vector3(0,1.29,-.008)).toArray(),feet:a.kneelingLegs?.map(leg=>world(leg.foot).toArray()),knees:a.kneelingLegs?.map(leg=>world(leg.knee).toArray())})));
+      element.dataset.gunnerPoses=JSON.stringify(actors.filter(a=>a.spec.kind==='gun').map(a=>({role:a.spec.role,tightenPhase:progress(`${a.spec.role!.slice(0,2)}_GUN_TIGHTEN`),tightenDone:done(`${a.spec.role!.slice(0,2)}_GUN_TIGHTEN`),position:a.group.position.toArray(),hands:a.hands.map(h=>world(h).toArray()),tool:a.tool?world(a.tool).toArray():null,torso:[a.body.position.y,a.body.position.z,a.body.rotation.x],head:world(a.body,new THREE.Vector3(0,1.29,-.008)).toArray(),feet:a.kneelingLegs?.map(leg=>world(leg.foot).toArray()),knees:a.kneelingLegs?.map(leg=>world(leg.knee).toArray())})));
       element.dataset.crewBodyPositions=JSON.stringify(actors.map(a=>({role:a.spec.role??a.spec.support??'SUPPORT',x:a.group.position.x,z:a.group.position.z,centres:[.61,.84,1.03,1.29].map(y=>world(a.body,new THREE.Vector3(0,y,0)).toArray())})));
       const carPoint=world(car,new THREE.Vector3(0,.5,0)).project(camera);
       element.dataset.carViewport=JSON.stringify({x:(carPoint.x*.5+.5)*element.clientWidth,y:(-carPoint.y*.5+.5)*element.clientHeight,visible:Math.abs(carPoint.x)<1&&Math.abs(carPoint.y)<1&&Math.abs(carPoint.z)<1});

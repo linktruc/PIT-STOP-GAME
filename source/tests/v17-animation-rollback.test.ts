@@ -19,7 +19,7 @@ describe('V17 UI with V15 animation rollback', () => {
     expect(gunnerHandoff(null, true, null, false)).toBe(1);
     expect(gunnerHandoff(null, true, 0, false)).toBe(1);
     expect(gunnerHandoff(null, true, .22, false)).toBe(0);
-    expect(gunnerHandoff(null, true, null, true)).toBe(0);
+    expect(gunnerHandoff(null, true, null, true)).toBe(1);
   });
 
   it('preserves the original crew roster and original V15 wheel animations', () => {
@@ -39,7 +39,7 @@ describe('V17 UI with V15 animation rollback', () => {
     timeline.ingestRecorded(round);
     const first = timeline.receipt(gun.id);
     expect(first).toBeDefined();
-    expect(first!.endsAt - first!.startsAt).toBe(240);
+    expect(first!.endsAt - first!.startsAt).toBe(120);
     timeline.ingestRecorded(structuredClone(round));
     expect(timeline.receipt(gun.id)).toEqual(first);
     expect(round).toEqual(snapshot);

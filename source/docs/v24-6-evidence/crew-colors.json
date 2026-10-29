@@ -1,0 +1,75 @@
+{
+  "palettes": [
+    {
+      "color": "#f4493b",
+      "uniforms": 22,
+      "allMatch": true,
+      "supportUnchanged": true,
+      "otherMaterialsUnchanged": true
+    },
+    {
+      "color": "#f7bd50",
+      "uniforms": 22,
+      "allMatch": true,
+      "supportUnchanged": true,
+      "otherMaterialsUnchanged": true
+    },
+    {
+      "color": "#48c9bc",
+      "uniforms": 22,
+      "allMatch": true,
+      "supportUnchanged": true,
+      "otherMaterialsUnchanged": true
+    },
+    {
+      "color": "#5a94f5",
+      "uniforms": 22,
+      "allMatch": true,
+      "supportUnchanged": true,
+      "otherMaterialsUnchanged": true
+    },
+    {
+      "color": "#b87cf1",
+      "uniforms": 22,
+      "allMatch": true,
+      "supportUnchanged": true,
+      "otherMaterialsUnchanged": true
+    },
+    {
+      "color": "#f28c28",
+      "uniforms": 22,
+      "allMatch": true,
+      "supportUnchanged": true,
+      "otherMaterialsUnchanged": true
+    },
+    {
+      "color": "#e75ba5",
+      "uniforms": 22,
+      "allMatch": true,
+      "supportUnchanged": true,
+      "otherMaterialsUnchanged": true
+    },
+    {
+      "color": "#52b86a",
+      "uniforms": 22,
+      "allMatch": true,
+      "supportUnchanged": true,
+      "otherMaterialsUnchanged": true
+    },
+    {
+      "color": "#f0eee4",
+      "uniforms": 22,
+      "allMatch": true,
+      "supportUnchanged": true,
+      "otherMaterialsUnchanged": true
+    },
+    {
+      "color": "#9bd62c",
+      "uniforms": 22,
+      "allMatch": true,
+      "supportUnchanged": true,
+      "otherMaterialsUnchanged": true
+    }
+  ],
+  "soloRestored": true
+}

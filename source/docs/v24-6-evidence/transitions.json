@@ -1,0 +1,41 @@
+[
+  {
+    "role": "FRONT_JACK",
+    "rearBeforeGo": {
+      "x": -2.2,
+      "z": 4.03
+    },
+    "rearAt450": 0.03147910203792079,
+    "maxHandStep": 0.05605350075971284,
+    "maxGripError": 2.6645352591003757e-15,
+    "waitingFrames": 0,
+    "maxWaitingHandAboveHead": null,
+    "scoreUnchanged": true
+  },
+  {
+    "role": "FL_GUNNER",
+    "rearBeforeGo": {
+      "x": -2.2,
+      "z": 4.03
+    },
+    "rearAt450": 0.03147910203792079,
+    "maxHandStep": 0.07636873184612855,
+    "maxGripError": 2.5510982866352577e-15,
+    "waitingFrames": 0,
+    "maxWaitingHandAboveHead": null,
+    "scoreUnchanged": true
+  },
+  {
+    "role": "FL_GUNNER",
+    "rearBeforeGo": {
+      "x": -2.2,
+      "z": 4.03
+    },
+    "rearAt450": 0.03147910203792079,
+    "maxHandStep": 0.050732759120245434,
+    "maxGripError": 2.8435583831733384e-15,
+    "waitingFrames": 0,
+    "maxWaitingHandAboveHead": null,
+    "scoreUnchanged": true
+  }
+]

@@ -1,0 +1,4 @@
+import {chromium} from 'playwright';
+import fs from 'node:fs';
+const browser=await chromium.launch({channel:process.platform==='win32'?'msedge':undefined,headless:true});
+try{const page=await browser.newPage();await page.goto('http://127.0.0.1:5173/scripts/v24-6-crew-qa.html?sceneDebug=1',{waitUntil:'domcontentloaded',timeout:90000});await page.waitForFunction(()=>window.verifyReadiness);const result=await page.evaluate(()=>window.verifyReadiness());fs.mkdirSync('docs/v24-6-evidence',{recursive:true});fs.writeFileSync('docs/v24-6-evidence/work-readiness.json',JSON.stringify(result,null,2));console.log(result.map(r=>({role:r.role,checks:r.checks,failures:r.failures,scoreUnchanged:r.scoreUnchanged})));if(result.some(r=>r.failures.length||!r.scoreUnchanged))process.exitCode=1;}finally{await browser.close();}

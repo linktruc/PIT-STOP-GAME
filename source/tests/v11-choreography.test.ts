@@ -41,7 +41,7 @@ describe('V11 targeted body posing',()=>{
     expect(gunnerHandoff(null,true,null,false)).toBe(1);
     expect(gunnerHandoff(null,true,0,false)).toBe(1);
     expect(gunnerHandoff(null,true,.22,false)).toBe(0);
-    expect(gunnerHandoff(null,true,null,true)).toBe(0);
+    expect(gunnerHandoff(null,true,null,true)).toBe(1);
     for(const [corner,x,z]of CORNER_POSITIONS){
       const off=CREW.find(c=>c.role===`${corner}_WHEEL_OFF`)!,on=CREW.find(c=>c.role===`${corner}_WHEEL_ON`)!;
       expect(wheelCarrierPosition('off',off,{x,z},0)).toEqual({x:off.x,z:off.z});

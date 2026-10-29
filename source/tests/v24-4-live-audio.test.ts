@@ -4,14 +4,14 @@ import {TaskAnimationTimeline,type AnimationReceipt} from '../src/scene/animatio
 import {createSoloRound,reconcile,submitAction} from '../src/engine';
 const cue=(taskId:string,startsAt:number,endsAt=startsAt+500):AnimationReceipt=>({roundId:'r',taskId,startsAt,endsAt});
 describe('Live sound follows visible animation',()=>{
- it('waits for a queued fast human action instead of playing on its official completion',()=>{
+ it('emits a fast human action only when its receipt is rendered, without an old-wheel carry queue',()=>{
   const round=createSoloRound([{id:'you',role:'FL_WHEEL_ON',nickname:'You',ready:true,joinedAt:0}],1000,'r');
   reconcile(round,3100);submitAction(round,'you','FL_WHEEL_ON',3120,'fast');
   const timeline=new TaskAnimationTimeline();timeline.ingestRecorded(round);
   const receipt=timeline.receipt('FL_WHEEL_ON')!;
-  expect(receipt.startsAt).toBeGreaterThan(3120);
+  expect(receipt.startsAt).toBe(3120);
   const queue=new LiveSceneAudio();queue.poll('r',900,[]);
-  expect(queue.poll('r',3120,timeline.allReceipts())).not.toContain('FL_WHEEL_ON');
+  expect(queue.poll('r',3119,timeline.allReceipts())).not.toContain('FL_WHEEL_ON');
   expect(queue.poll('r',receipt.startsAt-1,timeline.allReceipts())).not.toContain('FL_WHEEL_ON');
   expect(queue.poll('r',receipt.startsAt,timeline.allReceipts())).toContain('FL_WHEEL_ON');
   expect(queue.poll('r',receipt.startsAt+16,timeline.allReceipts())).not.toContain('FL_WHEEL_ON');

@@ -1,3 +1,7 @@
+# Current release: V24.6
+
+See [V24_6_WORK_SYNC_AND_CREW_TRANSITIONS.md](V24_6_WORK_SYNC_AND_CREW_TRANSITIONS.md) for all-role work readiness, quicker Rear Jack approach and continuous Gunner finish/lowering poses.
+
 # Current release: V24.5
 
 See [V24_5_FAST_ANIMATION_AND_CREW_COLOR.md](V24_5_FAST_ANIMATION_AND_CREW_COLOR.md) for faster animation, the Solo Gunner reference correction and 3D team uniforms.

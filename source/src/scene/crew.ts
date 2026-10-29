@@ -84,11 +84,12 @@ export function gunnerKneelingPose(work = 0) {
 
 const smooth = (value:number) => {const p=Math.max(0,Math.min(1,value));return p*p*(3-2*p);};
 /** Clear the unchanged wheel-carrier corridor after loosening. A gunner rises
- * and steps outward, then returns before tightening. It never reaches through
+ * and steps outward, returns for tightening, then withdraws and holds the gun.
+ * Both body and tool use the held endpoint while waiting for DONE. Never reach through
  * an approaching carrier or keeps the gun stretched across the empty hub. */
 export function gunnerHandoff(loosenPhase:number|null,loosenDone:boolean,tightenPhase:number|null,tightenDone:boolean):number {
-  if(tightenDone)return 0;
-  if(tightenPhase!==null)return 1-smooth(tightenPhase/.22);
+  if(tightenDone)return 1;
+  if(tightenPhase!==null)return Math.max(1-smooth(tightenPhase/.22),smooth((tightenPhase-.65)/.35));
   if(loosenDone)return 1;
   return loosenPhase===null?0:smooth((loosenPhase-.65)/.35);
 }

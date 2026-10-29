@@ -1,5 +1,4 @@
 import type { Round, Task } from '../types';
-import { OLD_WHEEL_REMOVE_MS, oldWheelCarryClearAt } from './oldWheel';
 
 export interface AnimationReceipt {
   readonly roundId: string;
@@ -35,9 +34,9 @@ export class TaskAnimationTimeline {
     if (!round) return;
     // Solo bot work uses the authoritative scheduled interval, not a second
     // animation delay after completion. A receipt never marks an AVAILABLE bot done.
-    if(round.soloTiming) for(const task of round.tasks) {
+    for(const task of round.tasks) {
       if(task.ownerId!==null||task.enabledAt===null||task.dueAt===null||!['AVAILABLE','DONE'].includes(task.status))continue;
-      this.receipts.set(this.key(task.id),Object.freeze({roundId:round.id,taskId:task.id,startsAt:task.enabledAt,endsAt:task.enabledAt+(task.cohort==='LIFT'||task.cohort==='GUN_LOOSEN'?Math.max(240,(task.completedAt??task.dueAt)-task.enabledAt):Math.max(task.id.endsWith('_WHEEL_OFF')?OLD_WHEEL_REMOVE_MS:240,Math.min(durationForTask(task.id),(task.completedAt??task.dueAt)-task.enabledAt)))}));
+      this.receipts.set(this.key(task.id),Object.freeze({roundId:round.id,taskId:task.id,startsAt:task.enabledAt,endsAt:task.completedAt??task.dueAt}));
       if(task.status==='DONE')this.doneIds.add(task.id);
     }
     const byId = new Map(round.tasks.map(task => [task.id, task]));
@@ -47,29 +46,18 @@ export class TaskAnimationTimeline {
       if (task.completedAt === null || task.status !== 'DONE' || !Number.isFinite(task.completedAt) || visiting.has(task.id)) return;
       visiting.add(task.id);
       const parents = task.dependencies.map(id => byId.get(id)).filter(Boolean) as Task[];
-      const parentEnds = parents.map(enqueue).filter(Boolean) as AnimationReceipt[];
-      const startsAt = Math.max(round.goAt, task.completedAt, ...parentEnds.map(receipt => receipt.endsAt));
-      const reaction = task.enabledAt === null ? durationForTask(task.id) : Math.max(0, task.completedAt - task.enabledAt);
+      parents.forEach(enqueue);
+      const startsAt = Math.max(round.goAt, task.completedAt);
       // Preserve every phase during very fast stops, with a short causal visual tail.
       // This presentation interval never contributes to the official pit-stop result.
-      const duration = task.id.endsWith('_WHEEL_OFF')?Math.max(OLD_WHEEL_REMOVE_MS,Math.min(durationForTask(task.id),reaction||120)):Math.max(240, Math.min(durationForTask(task.id), reaction || 240));
+      const duration = 120;
       const receipt = Object.freeze({ roundId: round.id, taskId: task.id, startsAt, endsAt: startsAt + duration });
       this.receipts.set(this.key(task.id), receipt); this.doneIds.add(task.id); visiting.delete(task.id);
       return receipt;
     };
     round.tasks.forEach(enqueue);
-    // Keep following tools out of the outgoing carrier corridor. Presentation
-    // receipts may follow through after an official event; task clocks stay unchanged.
-    // Opening fallback gunners still use their complete 700ms interval.
-    if(round.soloTiming)for(const task of round.tasks){
-      if(task.cohort==='GUN_LOOSEN')continue;
-      const receipt=this.receipt(task.id);if(!receipt)continue;
-      const ends=task.dependencies.map(id=>{const parent=this.receipt(id);if(!parent)return round.goAt;return task.id.endsWith('_WHEEL_ON')&&id.endsWith('_WHEEL_OFF')?Math.max(parent.endsAt,oldWheelCarryClearAt(parent)):parent.endsAt;});
-      const startsAt=Math.max(receipt.startsAt,...ends);
-      const minimum=task.id.endsWith('_WHEEL_OFF')?Math.max(OLD_WHEEL_REMOVE_MS,receipt.endsAt-receipt.startsAt):receipt.endsAt-receipt.startsAt;
-      const endsAt=Math.max(receipt.endsAt,startsAt+minimum);
-      this.receipts.set(this.key(task.id),Object.freeze({...receipt,startsAt,endsAt}));
-    }
+    // Carrying, setting down and retreating are independent follow-through.
+    // Their duration must never push another crew member's work past eligibility.
   }
 
   /** Preserve already playing receipts across snapshots; late fast completions
@@ -80,28 +68,15 @@ export class TaskAnimationTimeline {
     const joining = !sameRound && !!round && round.goAt < nowMs;
     this.ingestRecorded(round);
     if (!round) return;
-    const byId = new Map(round.tasks.map(task => [task.id, task]));
-    const visited = new Set<string>();
-    const align = (id: string): AnimationReceipt | undefined => {
-      const receipt = this.receipt(id);
-      if (!receipt || visited.has(id)) return receipt;
-      visited.add(id);
-      const old = previous.get(this.key(id));
-      if (old) { this.receipts.set(this.key(id), old); return old; }
-      const task = byId.get(id)!;
-      const parents = task.dependencies.map(parentId => {
-        const parent = align(parentId);
-        if (!parent) return round.goAt;
-        return id.endsWith('_WHEEL_ON') && parentId.endsWith('_WHEEL_OFF')
-          ? Math.max(parent.endsAt, oldWheelCarryClearAt(parent)) : parent.endsAt;
-      });
-      // A late join settles history; an observed running round must show new work.
-      const startsAt = Math.max(receipt.startsAt, joining ? round.goAt : nowMs, ...parents);
-      const next = Object.freeze({...receipt, startsAt, endsAt:startsAt + receipt.endsAt-receipt.startsAt});
-      this.receipts.set(this.key(id),next);
-      return next;
-    };
-    round.tasks.forEach(task => align(task.id));
+    for (const task of round.tasks) {
+      const receipt=this.receipt(task.id);if(!receipt)continue;
+      const old=previous.get(this.key(task.id));
+      if(old){this.receipts.set(this.key(task.id),old);continue;}
+      if(joining)continue;
+      const startsAt=Math.max(receipt.startsAt,nowMs);
+      const duration=receipt.endsAt<=nowMs?120:receipt.endsAt-receipt.startsAt;
+      this.receipts.set(this.key(task.id),Object.freeze({...receipt,startsAt,endsAt:startsAt+duration}));
+    }
   }
 
   private key(taskId: string): string {

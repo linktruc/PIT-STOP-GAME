@@ -16,13 +16,13 @@ describe('V24.2 animation continuity',()=>{
   expect(timeline.isDone('FL_GUN_LOOSEN',3900)).toBe(true);
   expect(r.tasks.find(t=>t.id==='FL_GUN_LOOSEN')!.completedAt).toBe(3700);
  });
- it('keeps a carrier clear until the human Gunner visual tail ends',()=>{
+ it('starts BOT removal on its authoritative eligibility without waiting for a human follow-through',()=>{
   const r=createSoloRound([{id:'you',role:'FL_GUNNER',nickname:'You',ready:true,joinedAt:0}],1000,'causal');
   reconcile(r,1700);submitAction(r,'you','FL_GUN_LOOSEN',3700,'g');
   const timeline=new TaskAnimationTimeline();timeline.ingestRecorded(r);
   const gun=timeline.receipt('FR_GUN_LOOSEN')!,off=timeline.receipt('FR_WHEEL_OFF')!;
-  expect(off.startsAt).toBeGreaterThanOrEqual(gun.endsAt);
-  expect(off.endsAt-off.startsAt).toBe(900);
+  expect(off.startsAt).toBe(gun.startsAt);
+  expect(off.endsAt-off.startsAt).toBe(1350);
   expect(r.tasks.find(t=>t.id==='FR_WHEEL_OFF')!.dueAt).toBe(5050);
  });
  it('does not rewind for stale UI timestamps or server corrections' ,()=>{

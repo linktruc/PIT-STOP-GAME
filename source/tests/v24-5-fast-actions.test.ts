@@ -39,8 +39,8 @@ describe('V24.5 fast actions',()=>{
   const before=structuredClone(r);a.ingestLive(r,2200);
   const audio=new LiveSceneAudio();audio.poll('live',900,[]);
   const gun=a.receipt('FL_GUN_LOOSEN')!,off=a.receipt('FL_WHEEL_OFF')!;
-  expect(gun.startsAt).toBeGreaterThanOrEqual(2200);expect(gun.endsAt-gun.startsAt).toBeGreaterThanOrEqual(240);
-  expect(off.startsAt).toBeGreaterThanOrEqual(gun.endsAt);
+  expect(gun.startsAt).toBeGreaterThanOrEqual(2200);expect(gun.endsAt-gun.startsAt).toBeGreaterThanOrEqual(120);
+  expect(off.startsAt).toBe(gun.startsAt);
   expect(a.posePhase('FL_GUN_LOOSEN',gun.startsAt+100)).toBeGreaterThan(0);
   expect(a.posePhase('FL_GUN_LOOSEN',gun.startsAt+100)).toBeLessThan(1);
   expect(audio.poll('live',gun.startsAt,a.allReceipts())).toContain('FL_GUN_LOOSEN');
