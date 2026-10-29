@@ -1,0 +1,51 @@
+
+> pit-crew-two-second-challenge@11.4.0 test
+> vitest run --maxWorkers=1
+
+
+ RUN  v3.2.7 /workspace/pit-crew-v11
+
+ ✓ tests/backend.test.ts (26 tests) 26874ms
+   ✓ production PostgreSQL RPC: room membership and authorization > public spectators see every waiting room without consuming a seat or seeing auth UUIDs  842ms
+   ✓ production PostgreSQL RPC: room membership and authorization > creator occupies one player slot, is the host, and duplicate names keep distinct stable team identities  496ms
+   ✓ production PostgreSQL RPC: room membership and authorization > requires a real authenticated player identity for every membership mutation  567ms
+   ✓ production PostgreSQL RPC: room membership and authorization > rejects start with fewer than four members and with any unready member, then accepts all-ready four  690ms
+   ✓ production PostgreSQL RPC: room membership and authorization > limits start and kick to this room host and removes a kicked player authority immediately  424ms
+   ✓ production PostgreSQL RPC: room membership and authorization > transfers a departing lobby host to the oldest remaining member  315ms
+   ✓ production PostgreSQL RPC: room membership and authorization > confines a host to their own room and prevents one authenticated identity from taking two seats  483ms
+   ✓ production PostgreSQL RPC: room membership and authorization > keeps roster and roles locked through countdown  387ms
+   ✓ production PostgreSQL RPC: room membership and authorization > assigns exactly one distinct core role per human, with a human jack, for every team size 4–15  8899ms
+   ✓ production PostgreSQL results, replay and global administrator > replays the same persistent team, averages every completed round, and audits authorized result deletion  506ms
+ ✓ tests/v10-replay-database.test.ts (7 tests) 7817ms
+   ✓ V10 recorded event history and public replay permissions > upgrades V9 twice without changing completed timings, names, lobby roles or Ready  1631ms
+   ✓ V10 recorded event history and public replay permissions > records actual synchronized bot durations, immutable names/roles, and replay after Play again/closed room  354ms
+   ✓ authorized result/replay/Just Finished deletion is atomic > deletes one round, then a team, then all results without disturbing unrelated data or audit  372ms
+ ✓ tests/v9-database.test.ts (5 tests) 4858ms
+   ✓ V8 → V9 production PostgreSQL penalty and admin upgrade > blocks direct accepted-action RPC while a locked task becomes available, without delaying the other human  2174ms
+ ✓ tests/v11-bot-timing.test.ts (9 tests) 3371ms
+   ✓ V11 actual PostgreSQL full-round bot timing matches TS > produces matching enabled/baseline/due/completed/reason for all 21 tasks at 4000ms reactions  358ms
+ ✓ tests/v8-stability.test.ts (4 tests) 2638ms
+ ✓ tests/v9-engine.test.ts (21 tests) 213ms
+ ✓ tests/engine.test.ts (46 tests) 532ms
+ ✓ tests/api.test.ts (14 tests) 171ms
+ ✓ tests/v11-4-regressions.test.tsx (5 tests) 138ms
+ ✓ tests/v11-choreography.test.ts (6 tests) 117ms
+ ✓ tests/audio.test.ts (6 tests) 193ms
+ ✓ tests/v11-hud.test.tsx (11 tests) 23ms
+ ✓ tests/scene-animation.test.ts (8 tests) 104ms
+ ✓ tests/practice.test.ts (2 tests) 48ms
+ ✓ tests/v11-arrival.test.ts (4 tests) 70ms
+ ✓ tests/v8-client.test.ts (7 tests) 82ms
+ ✓ tests/v10-workflow.test.ts (10 tests) 152ms
+ ✓ tests/v10-ui.test.ts (5 tests) 40ms
+ ✓ tests/v9-workflow.test.ts (6 tests) 87ms
+ ✓ tests/v10-scene.test.ts (8 tests) 53ms
+ ✓ tests/v10-replay.test.ts (7 tests) 65ms
+ ✓ tests/v10-engine-events.test.ts (3 tests) 17ms
+ ✓ tests/v11-desktop-log.test.tsx (4 tests) 20ms
+
+ Test Files  23 passed (23)
+      Tests  224 passed (224)
+   Start at  10:06:26
+   Duration  61.57s (transform 1.47s, setup 0ms, collect 4.10s, tests 47.68s, environment 10ms, prepare 3.05s)
+

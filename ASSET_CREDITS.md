@@ -6,7 +6,7 @@ PIT CREW uses a fictional racing identity. No official Formula 1 logo, team mark
 
 - The procedural outdoor pit lane and retained formula-style car, tyres, jacks, tools, pit signal, low-poly crew characters, floor markings, fictional signage, and environment dressing are built in code from procedural Three.js geometry and materials. No downloaded mesh or texture pack is required.
 - Crew motion, axle lifting/lowering, wheel removal/fitting, gun operation, release, player highlights, and scene effects are original application code driven by game state.
-- Task sounds, UI feedback, and pit ambience are synthesized with the browser's Web Audio API. They use oscillator/noise envelopes rather than sampled commercial recordings. No licensed music track or imitated broadcaster voice is included.
+- Task sounds and UI feedback use original Web Audio oscillator/noise envelopes. V20 background ambience is a separately credited user-supplied racetrack crowd recording, not part of the synthetic SFX. No new voice imitation or music is generated.
 - The application title, interface layout, and CSS artwork are original to this package. Locally bundled typefaces provide the display, interface, and telemetry text, with system font fallbacks.
 
 These descriptions identify the origin of the supplied assets; they do not grant rights in any real racing organization's branding.
@@ -44,4 +44,14 @@ Additional production dependencies retained in the notice file are `@supabase/au
 
 The table covers primary direct dependencies, not every development-tool transitive package. Build/test tools are installed from the lockfile for source development; their original installed license files remain applicable. Retain package license files and notices when distributing dependency code. Supabase and Netlify are separately operated services with their own service terms; their inclusion in the deployment instructions does not imply affiliation or a license to their trademarks.
 
-No external image, video, font, audio, or model hotlink is required for the supplied procedural assets. Online multiplayer still requires requests to the configured Supabase service.
+No external asset hotlink is required: the user-supplied crowd ambience is bundled locally. Publication rights for this recording should be checked by the owner. Online multiplayer still requires requests to the configured Supabase service.
+
+### V20 crowd ambience (user-supplied recording)
+
+`public/audio/pit-crowd-loop.wav` is a loop-edited version of the MP3 supplied in this conversation, titled
+"Crowd Cheering For Leclerc On The Last Lap Of The Australian GP - Nuhadracingcar.mp3".
+The edit crossfades the beginning and end into a continuous, 11.694-second, 32 kHz stereo PCM loop.
+It plays on a quiet ambience bus through the Web Audio API with sample-accurate looping;
+procedural wheel-gun/jack/task sounds remain separate.
+**Public use rights for this recording have not been verified.** The project owner should confirm
+permission/license before publishing the sound in a public website, or replace it with a licensed recording.

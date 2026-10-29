@@ -1,0 +1,295 @@
+{
+  "baseline": "Unmodified V10.3 in /workspace/pit-crew-v10",
+  "tests": 180,
+  "measurements": [
+    {
+      "phase": "waiting",
+      "width": 390,
+      "height": 844,
+      "role": {
+        "x": 14,
+        "y": 573,
+        "width": 362,
+        "height": 54,
+        "top": 573,
+        "right": 376,
+        "bottom": 627,
+        "left": 14
+      },
+      "action": {
+        "x": 14,
+        "y": 655,
+        "width": 362,
+        "height": 68,
+        "top": 655,
+        "right": 376,
+        "bottom": 723,
+        "left": 14
+      },
+      "mini": {
+        "x": 14,
+        "y": 135,
+        "width": 362,
+        "height": 62,
+        "top": 135,
+        "right": 376,
+        "bottom": 197,
+        "left": 14
+      },
+      "pageHeight": 844
+    },
+    {
+      "phase": "waiting",
+      "width": 430,
+      "height": 932,
+      "role": {
+        "x": 14,
+        "y": 661,
+        "width": 402,
+        "height": 54,
+        "top": 661,
+        "right": 416,
+        "bottom": 715,
+        "left": 14
+      },
+      "action": {
+        "x": 14,
+        "y": 743,
+        "width": 402,
+        "height": 68,
+        "top": 743,
+        "right": 416,
+        "bottom": 811,
+        "left": 14
+      },
+      "mini": {
+        "x": 14,
+        "y": 135,
+        "width": 402,
+        "height": 62,
+        "top": 135,
+        "right": 416,
+        "bottom": 197,
+        "left": 14
+      },
+      "pageHeight": 932
+    },
+    {
+      "phase": "waiting",
+      "width": 1366,
+      "height": 768,
+      "role": {
+        "x": 30,
+        "y": 510,
+        "width": 370,
+        "height": 54,
+        "top": 510,
+        "right": 400,
+        "bottom": 564,
+        "left": 30
+      },
+      "action": {
+        "x": 427.0703125,
+        "y": 588,
+        "width": 511.859375,
+        "height": 70,
+        "top": 588,
+        "right": 938.9296875,
+        "bottom": 658,
+        "left": 427.0703125
+      },
+      "mini": {
+        "x": 24,
+        "y": 160,
+        "width": 1318,
+        "height": 62,
+        "top": 160,
+        "right": 1342,
+        "bottom": 222,
+        "left": 24
+      },
+      "pageHeight": 768
+    },
+    {
+      "phase": "waiting",
+      "width": 1440,
+      "height": 900,
+      "role": {
+        "x": 30,
+        "y": 642,
+        "width": 370,
+        "height": 54,
+        "top": 642,
+        "right": 400,
+        "bottom": 696,
+        "left": 30
+      },
+      "action": {
+        "x": 461.0703125,
+        "y": 718,
+        "width": 517.859375,
+        "height": 72,
+        "top": 718,
+        "right": 978.9296875,
+        "bottom": 790,
+        "left": 461.0703125
+      },
+      "mini": {
+        "x": 24,
+        "y": 160,
+        "width": 1392,
+        "height": 62,
+        "top": 160,
+        "right": 1416,
+        "bottom": 222,
+        "left": 24
+      },
+      "pageHeight": 900
+    },
+    {
+      "phase": "running",
+      "width": 390,
+      "height": 844,
+      "role": {
+        "x": 14,
+        "y": 573,
+        "width": 362,
+        "height": 54,
+        "top": 573,
+        "right": 376,
+        "bottom": 627,
+        "left": 14
+      },
+      "action": {
+        "x": 14,
+        "y": 631.203125,
+        "width": 362,
+        "height": 104.796875,
+        "top": 631.203125,
+        "right": 376,
+        "bottom": 736,
+        "left": 14
+      },
+      "mini": {
+        "x": 14,
+        "y": 135,
+        "width": 362,
+        "height": 62,
+        "top": 135,
+        "right": 376,
+        "bottom": 197,
+        "left": 14
+      },
+      "pageHeight": 844
+    },
+    {
+      "phase": "running",
+      "width": 430,
+      "height": 932,
+      "role": {
+        "x": 14,
+        "y": 661,
+        "width": 402,
+        "height": 54,
+        "top": 661,
+        "right": 416,
+        "bottom": 715,
+        "left": 14
+      },
+      "action": {
+        "x": 14,
+        "y": 719.203125,
+        "width": 402,
+        "height": 104.796875,
+        "top": 719.203125,
+        "right": 416,
+        "bottom": 824,
+        "left": 14
+      },
+      "mini": {
+        "x": 14,
+        "y": 135,
+        "width": 402,
+        "height": 62,
+        "top": 135,
+        "right": 416,
+        "bottom": 197,
+        "left": 14
+      },
+      "pageHeight": 932
+    },
+    {
+      "phase": "running",
+      "width": 1366,
+      "height": 768,
+      "role": {
+        "x": 30,
+        "y": 510,
+        "width": 370,
+        "height": 54,
+        "top": 510,
+        "right": 400,
+        "bottom": 564,
+        "left": 30
+      },
+      "action": {
+        "x": 392,
+        "y": 556,
+        "width": 582,
+        "height": 102,
+        "top": 556,
+        "right": 974,
+        "bottom": 658,
+        "left": 392
+      },
+      "mini": {
+        "x": 24,
+        "y": 160,
+        "width": 1318,
+        "height": 62,
+        "top": 160,
+        "right": 1342,
+        "bottom": 222,
+        "left": 24
+      },
+      "pageHeight": 768
+    },
+    {
+      "phase": "running",
+      "width": 1440,
+      "height": 900,
+      "role": {
+        "x": 30,
+        "y": 642,
+        "width": 370,
+        "height": 54,
+        "top": 642,
+        "right": 400,
+        "bottom": 696,
+        "left": 30
+      },
+      "action": {
+        "x": 429,
+        "y": 688,
+        "width": 582,
+        "height": 102,
+        "top": 688,
+        "right": 1011,
+        "bottom": 790,
+        "left": 429
+      },
+      "mini": {
+        "x": 24,
+        "y": 160,
+        "width": 1392,
+        "height": 62,
+        "top": 160,
+        "right": 1416,
+        "bottom": 222,
+        "left": 24
+      },
+      "pageHeight": 900
+    }
+  ],
+  "scope": "Actual WebGL/main UI driven by clearly synthetic room snapshots, Chromium software rendering. Same viewport sizes, not physical Safari."
+}

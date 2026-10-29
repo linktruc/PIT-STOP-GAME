@@ -1,0 +1,33 @@
+<!doctype html><body><div id="old" style="width:800px;height:600px"></div><div id="new" style="width:800px;height:600px"></div><script type="module">
+import {createPitGarageScene as oldScene} from '/tests/fixtures/v24-1-scene/src/scene/garage.ts';
+import {createPitGarageScene as newScene} from '/src/scene/garage.ts';
+import {createSoloRound,reconcile,submitAction} from '/src/engine.ts';
+const fake=()=>({domElement:document.createElement('canvas'),shadowMap:{},render(){},setSize(){},setPixelRatio(){}});
+const old=oldScene(document.querySelector('#old'),{renderer:fake(),manual:true});
+const fresh=newScene(document.querySelector('#new'),{renderer:fake(),manual:true});
+const player=role=>({id:'you',role,nickname:'You',ready:true,joinedAt:0});
+const room=r=>({id:r.id,teamId:r.id,solo:true,name:'QA',color:'#f00',code:'QA',hostId:'you',status:r.status,players:r.players,round:r,updatedAt:0});
+const sample=(view,id,r,t)=>{view.update(room(r),'you',true,t);view.render(t);return JSON.parse(document.querySelector(id).dataset.crewBodyPositions);};
+const diff=(a,b)=>Math.max(...a.flatMap((r,i)=>r.centres.map((c,j)=>Math.hypot(...c.map((n,k)=>n-b[i].centres[j][k])))));
+window.testMotion=()=>{
+ const results=[];
+ for(const role of ['FRONT_JACK','FL_GUNNER','FL_WHEEL_OFF','RR_WHEEL_ON','RELEASE_CONTROLLER']){
+  const r=createSoloRound([player(role)],10000,role);let now=10000;
+  for(let i=0;i<100&&r.status!=='COMPLETED';i++){
+   reconcile(r,now);const next=Math.min(...r.tasks.filter(t=>t.status==='AVAILABLE').map(t=>t.ownerId?t.enabledAt+2000:t.dueAt??Infinity));
+   if(!Number.isFinite(next))throw Error('stalled');now=Math.max(now,next);reconcile(r,now);
+   for(const t of r.tasks.filter(t=>t.ownerId&&t.status==='AVAILABLE'&&t.enabledAt+2000<=now))submitAction(r,'you',t.id,now,t.id);
+  }
+  const peaks={old:{delta:0},fresh:{delta:0}};const jumps={old:0,fresh:0};let contacts=0,pairs=0,minBody=Infinity,finalLag=0;let wheelJump=0,wheelHand=0,wheelGroundError=0,handPeak=null;const lastWheels=new Map();const contactSamples=[];let priorOld,priorNew;
+  for(let t=9500;t<r.finishedAt+4000;t+=10){
+   const a=sample(old,'#old',r,t),b=sample(fresh,'#new',r,t);const el=document.querySelector('#new');for(const wheel of JSON.parse(el.dataset.oldWheelPlacements??'[]')){const prior=lastWheels.get(wheel.corner);if(wheel.visible&&prior?.visible)wheelJump=Math.max(wheelJump,Math.hypot(...wheel.position.map((x,i)=>x-prior.position[i])));if(wheel.handError>wheelHand){wheelHand=wheel.handError;handPeak={t,wheel,actor:b.find(a=>a.role===wheel.corner+'_WHEEL_OFF'),neighbours:b.filter(a=>a.role!==wheel.corner+'_WHEEL_OFF').map(a=>({...a,distance:Math.hypot(a.x-wheel.pose.x,a.z-wheel.pose.z)})).sort((a,b)=>a.distance-b.distance).slice(0,3)};}if(wheel.visible&&wheel.pose?.lower===1)wheelGroundError=Math.max(wheelGroundError,Math.hypot(wheel.position[0]-wheel.pose.discard.x,wheel.position[1]-.44,wheel.position[2]-wheel.pose.discard.z));lastWheels.set(wheel.corner,wheel);}const touch=JSON.parse(el.dataset.toolContacts??'[]'),intersect=JSON.parse(el.dataset.toolPairs??'[]');if((touch.length||intersect.length)&&contactSamples.length<40)contactSamples.push({t,touch,intersect});contacts+=touch.length;pairs+=intersect.length;finalLag=Number(el.dataset.motionLag);minBody=Math.min(minBody,...b.flatMap((a,i)=>b.slice(i+1).map(b=>Math.hypot(a.x-b.x,a.z-b.z))));
+   for(const [key,values,prior] of [['old',a,priorOld],['fresh',b,priorNew]])if(prior){const d=diff(values,prior);if(d>peaks[key].delta)peaks[key]={delta:d,t};if(d>.12)jumps[key]++;}
+   priorOld=a;priorNew=b;
+  }
+  results.push({role,peaks,jumps,contacts,pairs,minBody,finalLag,wheelJump,wheelHand,wheelGroundError,handPeak,contactSamples});
+ }
+ const r=createSoloRound([player('FRONT_JACK')],10000,'pending');submitAction(r,'you','FRONT_LIFT',12000,'j');
+ const a=sample(old,'#old',r,12699),b=sample(old,'#old',r,12701),c=sample(fresh,'#new',r,12699),d=sample(fresh,'#new',r,12701);
+ return {results,pendingAck:{old:diff(a,b),fresh:diff(c,d)}};
+};
+</script>

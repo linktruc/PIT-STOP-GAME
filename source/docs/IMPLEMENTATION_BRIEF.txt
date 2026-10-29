@@ -1,0 +1,276 @@
+# CODEX IMPLEMENTATION PROMPT — F1-INSPIRED PIT STOP MULTIPLAYER V5
+# FULL REPLACEMENT FOR ALL EARLIER VERSIONS (V1–V4)
+# Product language: 100% ENGLISH. No Vietnamese text in the app or user-facing messages.
+
+ROLE AND EXPECTED DELIVERABLE
+You are a senior full-stack game developer and real-time systems engineer. Actually IMPLEMENT, TEST, BUILD, and PACKAGE a polished web-based, multiplayer, F1-inspired pit-stop teamwork game. Deliver functioning source code AND a prebuilt static Netlify-ready ZIP, not a design document, mockup, or incomplete prototype. The game is intended for a live classroom presentation and must work simultaneously across smartphones and computers, with a projector spectator view watching EVERY currently active team.
+
+Treat this entire prompt as the single authoritative specification. Do not use contradictory rules from V1, V2, V3, or V4. Preserve realistic pit-stop task dependencies while implementing the intentionally game-specific adaptive bot timing rules specified below. If technical constraints arise, implement the best viable functioning solution and explicitly document limitations instead of pretending it works.
+
+================================================================================
+0. NON-NEGOTIABLE REQUIREMENTS
+================================================================================
+1. A public ROOM DIRECTORY lists all rooms currently WAITING FOR PLAYERS, with live updates. A user can CREATE a room or JOIN any joinable room from the public list; invite code/link/QR can also work. ONE ROOM corresponds to ONE TEAM; several rooms/teams may be active at once.
+2. The room creator becomes the HOST and is visibly labeled "Host" in that room's player roster. They are an actual player and count toward the 4–15 human team size. The host may KICK players from THEIR room and START a round ONLY when every connected roster member (including the host) is Ready and there are 4–15 players. Host is NOT a global administrator and cannot clear global leaderboards. Server must enforce these permissions.
+3. Each team has MINIMUM 4 and MAXIMUM 15 REAL PLAYERS on separate devices. Every player holds EXACTLY ONE randomly assigned playable role from the 15 slots below, with no duplicates. Assignment must always include at least one HUMAN jack operator (front or rear), to ensure the first core game action is human.
+4. There are ALWAYS 15 playable core role slots, even if some are bot-controlled: 4 wheel gunners (each does BOTH loosen and tighten), 4 old-wheel removers, 4 new-wheel fitters, 1 front jack operator (lift and lower), 1 rear jack operator (lift and lower), 1 release/light controller.
+5. 3D also always includes 2 stabilizers, 2 front-wing inspection/adjustment crew, and 2–3 safety/spare crew. These extra characters are VISUAL BOTS ONLY; never assign them to humans, and do not place pointless spare/emergency/optional wing-adjustment actions in the scored task graph.
+6. The entire fixed meaningful pit-stop task graph (DAG) must be present for every team, whether each slot is human or bot. Show real-time dependencies, task owner, stage status, and progress, including core bots. Four wheel corners operate in parallel according to causal dependencies; never force a fake sequential loop around the four wheels.
+7. A HUMAN makes the first core task completion. If exactly one jack is HUMAN, the other jack (BOT) must complete its initial LIFT at PRECISELY THE SAME SERVER TIMESTAMP as the first human jack's completed LIFT. No bot delay after the human lift. That human's observed reaction is the first adaptive-bot reference sample. If BOTH jacks are HUMAN, each reacts independently and the first completion supplies the first sample. No pre-round reaction test and no arbitrary initial bot reaction time.
+8. Once samples exist, bots ordinarily use the arithmetic mean of valid REAL HUMAN reaction times already recorded in the current round. HOWEVER: **A BOT MUST NEVER DELAY THE TEAM IN A SIMULTANEOUS/PARALLEL ACTION GROUP ONCE THE REAL HUMANS IN THAT SAME GROUP HAVE COMPLETED.** Parallel bot deadlines are dynamically capped by the group's real human completion event; detailed deterministic algorithm and examples appear in Sections 5 and 6. This rule OVERRIDES V4's "never shorten a scheduled bot task" rule.
+9. For bot-controlled NON-PARALLEL tasks, and for parallel action groups with NO human participant, use the mean of completed human reactions as the bot's reference delay normally. Keep causal prerequisites. Visual-only crew do not generate scored delays.
+10. A SINGLE SCORING METRIC: PIT STOP TIME = authoritative server timestamp of GREEN RELEASE minus authoritative server GO timestamp. Display that clock LIVE during play; STOP it on release; use exactly that actual elapsed time for the team leaderboard. NEVER sum player reaction times for the team score. No separate team reaction score, no waiting-time statistic, no handicap or recalculation after the round.
+11. ONE GLOBAL LEADERBOARD, ranked by the arithmetic mean of all valid completed Pit Stop Times for each persistent team identity; show each round, round count and average. No filtering/splitting by team size. A separately authenticated GLOBAL ADMIN can delete results through protected server-side permissions; ordinary hosts cannot.
+12. PUBLIC GLOBAL SPECTATOR / PROJECTOR MODE can observe **ALL** currently active teams/rooms LIVE, including simultaneous races. It is independent from playing, does not consume a player slot, and must work without joining any room or having host/admin authority. Provide a multi-team dashboard plus a focused detail/projector view. Details in Section 3.
+13. ALL app UI is written in polished NATURAL ENGLISH: buttons, roles, tooltips, status strings, progress labels, errors, countdown, leaderboards, public room browser, host notices, spectator views, speech/commentary, admin panel, accessibility text, and onboarding. Do not ship any Vietnamese strings or Vietnamese localization control. Technical setup docs may also be English.
+14. Frontend must be a prebuilt, deployable static website on Netlify; Supabase (or carefully justified equivalent) provides transactional, secure, authoritative realtime multiplayer and persistent leaderboard. Netlify ZIP is not a replacement for configuring the backend.
+
+================================================================================
+1. PRODUCT AND USER EXPERIENCE
+================================================================================
+BRAND AND STYLE
+- Use a fictional formula-racing game title, e.g. "PIT CREW: THE 2-SECOND CHALLENGE". Design a premium F1-inspired racing broadcast aesthetic (dark pit lane, red highlights, telemetry-like HUD, dramatic starts), without unauthorized F1 logos, team trademarks, music, likenesses or broadcast footage.
+- Make teamwork dependencies legible, not just a button-mashing contest. Show how crew cooperation controls release.
+- Responsive, touch-friendly player UI with one big contextual action button, a clear blocked/ready/accepted status, individual role explanation, and current team task graph. Optimize for mobile first and 1080p/4K projector desktops.
+
+HOME / PUBLIC ROOM BROWSER
+- Home displays: "Create Room", "Browse Rooms", "Watch Live", "Leaderboard", "How to Play".
+- Public room directory updates in realtime; only list rooms in an appropriate JOINABLE WAITING status, not full/running/deleted rooms as joinable. Show room/team name, host display name, player count (e.g. 6/15), readiness, optional invite code, and "Join".
+- Allow viewing all current WAITING rooms globally; filters/search are optional but avoid hidden rooms by default. Public list must not depend on knowing a private code.
+- Create Room: enter team/room display name, player nickname, optionally choose a fictional team accent color. Room creator automatically joins it as a player and appears in roster with a visible "Host" marker. Ensure unique stable room/team IDs even when human-readable names collide.
+- Join Room: enter nickname, connect, see the roster and host, get a role assigned via the server, then mark Ready. Distinct anonymous identities despite duplicate player names. Disallow 16th participant; handle races with simultaneous joins atomically.
+- Optional invite URL / code / QR for convenience. The public directory remains the primary discovery mechanism.
+
+LOBBY, ROLES AND ROUND START
+- One room = one team = one roster (4–15 players to start). A room can host multiple rounds. Preserve a stable team ID across rounds so averages combine correctly even if some players change.
+- Host label is ALWAYS visible next to the creator in the roster. Host may kick another player from this room; never gain system-wide privileges. Kicking must be validated at backend; kicked player loses the ability to submit ready/actions immediately and receives an explicit "You were removed from this room" message.
+- Host may NOT click Start unless roster size >=4, <=15, and EVERY current player (host included) has Ready=true. Back-end must reject force-start via developer tools or outdated UI; the Start button visibly explains why it is disabled. Start begins a synchronized 3-2-1-GO countdown.
+- Roles are RANDOMLY assigned automatically from the 15 slots per round, with the guaranteed HUMAN JACK constraint. If assignment changes due to a join/leave prior to start, reset readiness where necessary so nobody unknowingly starts under a different role. Lock roster and roles for countdown/live round.
+- Each player sees: their exact task name, car position, which other actions unlock theirs, which tasks they unlock, and for multi-step roles how the contextual button switches tasks. Display exact human/bot ownership on a full team graph.
+- Only one visible action button for a human player; state-dependent labels: "LIFT FRONT", "REMOVE OLD WHEEL", "LOOSEN NUT", "FIT NEW WHEEL", "TIGHTEN NUT", "LOWER FRONT", "RELEASE CAR", etc. If blocked, show what predecessor(s) must finish; if already acted, show "Action completed — wait for your next task". Never accept an early click.
+- "Play Again" after the round returns the same team to lobby and can re-randomize roles; require Ready from all again. Exiting a round, reconnecting, duplicate clicks, and a kicked/left player must not corrupt results.
+- The host is a player; if the host leaves while waiting, clearly handle automatic host transfer to another room member (deterministic oldest active member), or close the room with an informative status. Do not silently orphan a lobby. Host transfer should be transactional and visible.
+- A room progresses through coherent statuses: WAITING -> COUNTDOWN -> RUNNING -> COMPLETED -> WAITING for replay (or CLOSED). Directory and spectator views reflect those transitions in realtime.
+
+================================================================================
+2. CORE F1 PIT STOP ROLES AND WORK DEPENDENCIES
+================================================================================
+CORE PLAYABLE SLOTS — EXACTLY 15 (either HUMAN or BOT)
+Wheel corners: FL = front left, FR = front right, RL = rear left, RR = rear right.
+- FL_GUNNER / FR_GUNNER / RL_GUNNER / RR_GUNNER: ONE person per corner does two separate sequential tasks, GUN_LOOSEN and GUN_TIGHTEN, using a wheel gun on the single central wheel nut.
+- FL_WHEEL_OFF / FR_WHEEL_OFF / RL_WHEEL_OFF / RR_WHEEL_OFF: remove the old wheel when it is safe and the nut is loosened.
+- FL_WHEEL_ON / FR_WHEEL_ON / RL_WHEEL_ON / RR_WHEEL_ON: mount the replacement wheel once the old wheel is removed.
+- FRONT_JACK: lift the front at the start; lower the front after both FL/FR are secure.
+- REAR_JACK: lift the rear at the start; lower the rear after both RL/RR are secure.
+- RELEASE_CONTROLLER: verify completion via the graph and activate green light/release the car as the final core action.
+Total = 4 + 4 + 4 + 2 + 1 = 15. Exactly one HUMAN per assigned role; other core slots become bots. NEVER ask a human to cover two roles just because the room has fewer members. A gunner/jack still performs its TWO steps within that ONE assigned role.
+
+BOT-ONLY AMBIENT CREW (NOT PART OF SCORING DAG)
+- Two stabilizers: stabilize the chassis, animate contextually as the car is lifted/lowered, step aside on release.
+- Two front-wing inspection/adjustment crew: ambient check in a standard four-wheel-change round; only actually adjust wing in a future separate scenario, not this default race.
+- Two to three safety/spares crew: stand by, observe, communicate, move tools. No pretend fires, mechanical failures or made-up mandatory confirmations. These background characters can keep moving without adding delays or blocking the release.
+- Therefore the visible pit crew is 21–22 characters. 15 core operator characters exist at all times, controlled by humans or bots according to assignment, PLUS ambient bot crew. Actors should be tagged HUMAN / BOT where useful; the positions and animations should not disappear when a human slot is absent.
+
+FIXED DAG AND PARALLELISM
+- GO unlocks FRONT_LIFT and REAR_LIFT. At least one is a human action.
+- Front corners FL and FR require FRONT_LIFT; rear corners RL and RR require REAR_LIFT. Front and rear jacking happen concurrently when both are human; if one jack is a bot, see Section 5's EXACT SYNC JACK RULE.
+- Within EACH corner independently: GUN_LOOSEN -> WHEEL_OFF -> WHEEL_ON -> GUN_TIGHTEN.
+- Do NOT add a global stage barrier requiring every wheel's loosen task to finish before any wheel can start wheel-off. Each corner proceeds when its OWN prerequisites clear; all four corners can overlap.
+- FRONT_LOWER can start only when the gun has tightened BOTH front wheels; REAR_LOWER only after BOTH rear wheels are tightened.
+- GREEN_RELEASE can start only after BOTH lowering tasks are done, all 4 wheel nuts secured, and the graph indicates release safe. Release controller (human or bot) completes the final action and fixes Pit Stop Time.
+- The global task graph is the same for a team of 4 or 15; only human/bot ownership changes.
+- Display only meaningful DAG nodes and dependencies. Ambient stabilizers, optional wing checks and spare/safety crew animate in 3D but are not extra required graph steps.
+- All server states: LOCKED, AVAILABLE, ACTIVE/AWAITING_ACTION, DONE. Each step stores actor role, human/bot owner, enable timestamp, completion timestamp; visual animations faithfully reflect server transitions.
+
+================================================================================
+3. GLOBAL SPECTATOR / PROJECTOR MODE — EVERY ACTIVE TEAM
+================================================================================
+A spectator has no room membership, no role and NO player seat. "Watch Live" from the homepage opens a PUBLIC global view without joining anything. Implement:
+A. GLOBAL LIVE DASHBOARD
+- Subscribe to EVERY RUNNING/COUNTDOWN room across the whole app, not merely the user's own room. Also provide a compact "Waiting to Start" section for all WAITING rooms (player count and Ready count), so the projector can see the state of every currently active team from lobby to result. Optionally show recently finished rooms.
+- Show one live card per racing team/room: team name, number of human players, room host, current phase (Countdown / Live / Finished), LIVE authoritative Pit Stop Time, overall completion percentage, four-wheel statuses, bot/human indicator, last actions and release status. Waiting teams show readiness instead of an inapplicable pit timer.
+- Update each card in near-real-time as task events arrive, with no manual refresh. Handle several teams racing at the same time; make long lists scrollable/virtualized, prioritize rendering and bandwidth so the projector does not freeze.
+- When a team starts/stops or a new room becomes RUNNING, cards appear/change automatically. The spectator should NOT have to switch rooms to know what's happening across all teams.
+B. DETAIL / PROJECTOR FOCUS
+- Click a team card to expand to 3D isometric animated pit view with wheel task graph, role owners, key events, big stopwatch, status/green light, and an optional full-screen projector layout.
+- Provide an easy way to return to ALL TEAMS overview. Optional auto-cycle through teams, but never hide the multi-team overview as the only monitoring feature.
+- On finished rounds, show results and leaderboard movement in realtime; completed rooms may remain visible briefly in a "Just Finished" area.
+- Read-only: spectators cannot Ready, Start, Kick, select/own roles, submit actions, change scores or delete results. All permissions enforced server-side, not only by hiding buttons.
+- Global readable spectator data must be limited to public room name, nicknames, role/status/progress, scores and minimal event history; never disclose email, auth IDs, admin claims, security keys or private data.
+- If networking drops, display reconnecting + last-known state and resync from authoritative snapshot when connected; avoid claiming stale game clocks are authoritative.
+
+================================================================================
+4. A SINGLE REALTIME PIT STOP TIMER AND LEADERBOARD
+================================================================================
+- Host START requests trigger server validation, room locking and a shared GO timestamp after synchronized 3-2-1 countdown.
+- LIVE display runs elapsed milliseconds/centiseconds from server GO, with client/server clock offset estimated for smooth rendering. Display only ONE scoring stopwatch called "PIT STOP TIME".
+- Final Pit Stop Time = server GREEN_RELEASE completion time - server GO time. Freeze once, never revise later by summing player actions or by recapping bot timings.
+- The actual causal duration of all steps includes overlaps: four corners are parallel, not sequential. Never add four parallel reaction times together to simulate one elapsed time.
+- After completion show Pit Stop Time, per-player reaction detail (OPTIONAL individual breakdown only, not a team scoring system), player roles, completed steps and replay/leaderboard controls. Do not show a separate WAIT TIME counter.
+- Global leaderboard by persistent team ID, ranked ascending by arithmetic mean Pit Stop Time for ALL its valid completed rounds. Show team name, round count, every round's time and average. Transparent tie-break e.g. best round then earlier attainment. NO team-size filters. Realtime leaderboard refresh.
+- A globally authorized admin may delete a team's rounds, a specific result or clear the board only after server-side authorization and explicit confirmation. Host permissions are narrower and cannot do this.
+- Incomplete, abandoned or invalid rounds are not entered as completed results. Store immutable or audit-friendly event history and robust created/finished timestamps.
+
+================================================================================
+5. ADAPTIVE BOT TIMING WITH PARALLEL NO-BOT-BOTTLENECK RULE
+================================================================================
+This is a GAMEPLAY EQUALIZATION MECHANIC, not a literal description of all real F1 team behavior. The correctness of this mechanic is a top priority. Code it with deterministic transactional server events and thorough tests, not with frontend-only timers.
+
+TIME SAMPLES
+- Reaction time of one HUMAN core ACTION = timestamp of successful server-authorized action click minus its server-recorded AVAILABLE timestamp (do not include time while dependencies were blocked). Store nonnegative bounded/sanity-checked values in milliseconds. For one player with two actions (gunner/jack), record each click separately as a new sample.
+- `current_human_mean_ms = sum(valid_human_reaction_ms_so_far) / number_of_completed_human_actions_so_far`. Average is over ACTION samples, not over number of players. Never read samples from the future, use fixed assumptions, or use the opponent team's data. It updates after EVERY new human completed action.
+- Bot-only ambient crew does not affect samples or scoring time.
+
+SPECIAL FIRST-JACK SYNCHRONIZATION — OVERRIDES NORMAL BOT DELAY
+- EVERY round must allocate at least ONE jack slot to a human.
+- At GO, both front/rear LIFT nodes are logically unlocked. If one jack is HUMAN and the other jack is BOT, the bot lift enters `WAIT_FOR_HUMAN_JACK_SYNC` (do not apply any default bot duration, and do not let it finish before the human).
+- The moment the human jack validly performs its LIFT, record that real reaction (for example 400ms), and in the SAME atomic server state transition mark BOTH the human lift and bot lift DONE at the SAME timestamp. Trigger synchronized visual completion/lift animations. Both front and rear wheel branches become available together; there is no extra 400ms for the bot after the human completes.
+- If BOTH jacks are human, both lift tasks are independently eligible from GO; whichever clicks first creates the first real sample. Neither is artificially forced to wait for the other; each axle unlocks when its own jack completes.
+- Do not apply this first-jack exception to the later FRONT_LOWER/REAR_LOWER stage automatically; they may be concurrently grouped and use the parallel bot rules below if relevant.
+
+NORMAL BOT DEADLINE
+- When a core bot task becomes AVAILABLE after at least one human sample, store `eligible_at` and a snapshot of `current_human_mean_ms` and schedule its baseline completion at `eligible_at + snapshot_mean_ms` (plus any explicitly modeled and uniformly applied gameplay handling, if needed). Snapshot of the baseline does not retroactively change when new human clicks are observed.
+- A bot-only singleton/sequential stage follows that baseline deadline, respecting dependencies. If a stage has NO humans at all, bot tasks should also normally use their baseline delay. Do NOT make all bots instantaneous.
+
+PARALLEL COHORTS AND EARLY COMPLETION CAP — **MUST IMPLEMENT**
+- Define meaningful PARALLEL ACTION COHORTS, not arbitrary physical proximity or unrelated nodes:
+  * `LIFT` contains FRONT_LIFT + REAR_LIFT, with the unique opening sync rule above.
+  * `GUN_LOOSEN` contains four corners' loosen tasks.
+  * `WHEEL_OFF` contains four corners' remove-old-wheel tasks.
+  * `WHEEL_ON` contains four corners' fit-new-wheel tasks.
+  * `GUN_TIGHTEN` contains four corners' tighten tasks.
+  * `LOWER` contains FRONT_LOWER + REAR_LOWER.
+  * `GREEN_RELEASE` is a SINGLETON and uses normal mean when bot controlled.
+- These are *logical peer cohorts* for fairness, NOT global barriers. The wheel DAG still advances independently per corner whenever local prerequisites are satisfied. Cohorts can have different AVAILABLE times due to earlier per-corner dependencies.
+- When a bot peer becomes AVAILABLE, keep its baseline mean deadline. A bot may complete at its own deadline earlier than the humans (that's fine).
+- BUT if a cohort contains one or more REAL HUMAN tasks in this round and **ALL those human tasks in that cohort are DONE**, immediately fast-forward any remaining ELIGIBLE/AVAILABLE bot tasks of the same cohort to DONE in the very same atomic server transition, with completion timestamp no later than that last real human peer completion timestamp (or the bot's eligibility timestamp if it only just became available later). In other words, eligible bot peers must NEVER leave a parallel group waiting after the humans doing those parallel actions have finished.
+- If the last human in a cohort finishes after a bot's baseline deadline, that bot can already be DONE; never delay it waiting for human peers.
+- If human peers complete faster than a bot's baseline reference, the eligible bot completes immediately at the final human completion event — without waiting for its old baseline deadline. This is a deliberate exception to the V4 immutable-deadline rule.
+- Only speed up nodes whose OWN prerequisites are already satisfied. Do not mark a future wheel-on DONE while that corner's wheel-off is not yet done. If a newly eligible bot node enters a cohort whose human peers are already all DONE, fast-forward that newly eligible bot as soon as it becomes eligible, in causal order. This resolves disparate unlock times without breaking the DAG. A chain of dependent BOT-only nodes may still require sequential mean delays for stages without human peers; do not fabricate an impossible completed wheel.
+- If a cohort has ZERO human members, there is nobody to synchronize with. All bots use snapshot mean delays normally, preserving sequencing and causal correctness.
+- In a mixed cohort, a bot must never be the *final outstanding ready/eligible peer action* after all humans in that same cohort are finished. Do not treat unrelated future DAG nodes as peers.
+- The mechanic is enforced by the backend and applied to all subscribers (players + global spectator), including resuming missed events and concurrent requests. Use exact, auditable effective timestamps.
+- Distinguish ACTION SERVER COMPLETION from visually asynchronous animation length. Human action can complete logically at the valid click, triggering a visual animation; do not add inconsistent long animation durations that make bot sync appear wrong. Client animation must align/recover from server state and never override logical completion.
+
+ILLUSTRATIVE EXAMPLES — ACCEPTANCE CRITERIA
+EXAMPLE A — FIRST JACK:
+- FRONT_JACK = HUMAN, REAR_JACK = BOT. GO at t=0. Human clicks LIFT at t=0.400s. Both LIFT nodes DONE at t=0.400s exactly. First mean sample = 400ms. The rear bot does NOT finish at t=0.800s.
+EXAMPLE B — PARALLEL WHEEL-ON FAST-FORWARD:
+- Reference mean is 400ms. Three human WHEEL_ON actions and one eligible bot WHEEL_ON are simultaneously unlocked. Human peers finish after 150ms, 200ms and 250ms. Bot must finish no later than 250ms after common unlock, synchronized to the last human completion. It must NOT wait 400ms.
+EXAMPLE C — BOT FINISHES BEFORE HUMANS:
+- Reference mean 400ms. One human peer takes 800ms; bot peer can complete at t=400ms. Do not hold bot until 800ms.
+EXAMPLE D — ALL-BOT COHORT:
+- All four GUN_LOOSEN actions happen to be bots. They take their eligible-time baseline (current human mean), with ordinary causal unlocks. No magic instantaneous completion.
+EXAMPLE E — NO EARLY CAUSAL VIOLATIONS:
+- Human WHEEL_ON peer finishes before a bot WHEEL_ON at another corner becomes eligible (its old wheel has not yet been removed). The later bot cannot violate its WHEEL_OFF predecessor. The instant it becomes eligible, if all human WHEEL_ON peers are already finished, it can complete right then, but not before.
+EXAMPLE F — BOT RELEASE SINGLETON:
+- RELEASE_CONTROLLER is a bot; when both jacks have lowered, it waits the current human mean and then signals green. No human peers exist in GREEN_RELEASE to force instant completion.
+EXAMPLE G — MIXED LOWER:
+- FRONT_LOWER human, REAR_LOWER bot, both eligible at the same instant. Human finishes in 220ms, mean baseline for bot was 450ms. Rear bot lower also finishes by 220ms. This is distinct from first-jack sync but has the same outcome in this example.
+
+IMPORTANT FAIRNESS NOTE
+This rule prevents bots from becoming the final bottleneck *within a directly comparable parallel action group*, while still assigning realistic adaptive delays to bot-only and sequential work. It does NOT mathematically guarantee identical outcomes for 4-person and 15-person teams because their skill variability and cohort composition differ. Do not secretly normalize or tamper with displayed Pit Stop Time to compensate.
+
+================================================================================
+6. REALTIME GAME ENGINE, BACKEND CLOCK, SCHEDULING AND SECURITY
+================================================================================
+Recommended stack: React + TypeScript + Vite (frontend); React Three Fiber/Three.js for 3D; Supabase Postgres, Realtime, anonymous auth, RLS and transactional Postgres RPC / Edge Functions (backend). Explain a different stack if genuinely required, but static Netlify frontend + real backend remains mandatory.
+
+SERVER IS AUTHORITATIVE
+- Maintain tables/types/migrations for room directory, rooms, stable team IDs, room participants and host claim, 15 per-round assigned slot owners, role definitions, DAG task nodes with dependencies, task events, human reaction samples, bot schedules, round status and GO/release timestamps, scores, admin authorization and audit trail.
+- Only authenticated room members may Ready or submit actions for their own allocated role. Only the current room host may kick/start its room. Only globally authenticated admin may clear leaderboard. Anonymous users can read safe public room directory/spectator state; don't expose privileged columns.
+- Use server-side transactional validations for create/join/leave/kick, assign roles, ready/unready, countdown/start, submit action, bot reconciliation and release. Membership checks, role ownership, readiness, capacity, predecessors, event ordering, duplicate click/idempotency tokens and row locks are mandatory.
+- All timestamps and deadlines used to score must be authoritative. Clients may use local animation and a server-time offset for drawing the clock but cannot decide bot completion, change a result, or send trusted reaction timestamps.
+- Handle concurrent joins/start clicks, host transferring, kick during lobby, late/replayed actions, backgrounded mobile browsers, reconnect, subscribers receiving events out of order, network lag and bot task deadlines. Reconnect downloads a full server snapshot before resuming UI.
+
+REAL-TIME BOT EVENT PROCESSING
+- The special jack pair uses a SAME-TRANSACTION completion event triggered by the human; this must not be a timer or delayed follow-up.
+- For ordinary bots, persist eligibility, mean snapshot, due time, and optional early-completion reason (`BASELINE_DUE`, `PARALLEL_HUMAN_CAP`, `OPENING_JACK_SYNC`, `COHORT_ALREADY_FINISHED`). Use idempotent transactional reconciliation.
+- At every human action, reconcile outstanding due bots and parallel cohorts in causal event order; if that action completes the last human of a cohort, fast-forward eligible bot peers in that SAME transaction and then unlock children as allowed. Re-run propagation until quiescent at the current event time while observing DAG ordering.
+- Need forward progress even if no human clicks for a while and only bot tasks are pending: use timed wakeup/heartbeat requests from connected clients + server-side idempotent reconciliation, or a suitable reliable short-interval server worker/Edge solution. A 60-second cron job is NOT sufficient for 0.2–1s bot tasks. Do not rely on only one host tab staying active to advance the game.
+- Scheduler/reporting delay must not blindly add polling latency to scored time. Persist/reconstruct effective event timestamps from due times, process overdue bot events in chronological causal order, and use same-time atomic commits for parallel cap. Document accuracy limits due to client/server latency. Avoid ordering bot events based on future human samples.
+- Supabase Realtime broadcasts room roster/ready/status, task changes, round clocks, and leaderboard changes; the global spectator subscribes to all currently active rooms efficiently via public read-safe aggregate/snapshot/event streams. Resubscribe for newly active rooms and clean up closed subscriptions.
+- A graceful fallback (non-3D HUD) must work if WebGL/assets fail; the gameplay and server authorization never depend on successful 3D rendering.
+
+SECURITY
+- Anonymous auth permitted for low-friction entry; prevent one device from impersonating another member by editing localStorage, display names, role IDs or HTTP requests. Consider abuse/rate limits on public endpoints.
+- Enable proper Postgres RLS for private state; avoid broad anonymous UPDATE on scores, room host IDs or role assignment. Use narrowly scoped security-definer RPCs with validated claims, fixed search_path and restricted EXECUTE permissions as needed.
+- Separate room host and global admin server-side capabilities; don't put service_role / secret admin keys in the frontend, build ZIP, public runtime configuration or project README.
+- Avoid exposing personal information to spectators. Nicknames, room/team names, role and scoring information are public, so state that clearly in onboarding.
+
+================================================================================
+7. GRAPHICS, AUDIO, ACCESSIBILITY AND PERFORMANCE
+================================================================================
+- Build a convincing stylized 3D pit garage with a fictional formula-style racing car, four visibly removable/replaceable tyres, front/rear jack lifts, wheel guns, pit traffic light, and all 21–22 crew actors. Prefer isometric/top-down 3D for visible four-wheel activity. For mid-range mobile, optimize geometry/texture size and use quality settings or 2D fallback.
+- Every core bot AND human core actor gets corresponding animation: loosen/tighten with wheel gun, carry old wheel away, mount a new wheel, lift/lower chassis, press green release. Human button triggers authoritative action event and animation on ALL viewers. Ambient-only bots are visibly active, contextually animated, but do not create imaginary tasks.
+- The full DAG/progress may be visualized as front/rear axle plus independent FL/FR/RL/RR branches with owner badges, animated completion markers and dependencies. Spectator global cards use lightweight 2D progress instead of rendering 22 animated actors per team simultaneously. 3D render primarily selected team to keep projector stable.
+- Clear feedback: button only enabled when task AVAILABLE; distinguish Locked (waiting for X), Ready (act now), Done, Disconnected, and Finished. Phone taps should be large, high contrast, accessible; use keyboard equivalents on desktop. Respect reduced-motion preference and provide volume/mute controls.
+- Add original or licensed royalty-free motorsport-style music, radio chirps, wheel-gun clicks, jack hydraulics, tyres and green-light sounds; optional ORIGINAL generated commentary with no impersonation of known broadcasters. Browsers normally require interaction to enable audio. Provide controls.
+- You may research and use open-source libraries and 3D/audio assets, but only legally redistributable material with licenses documented in `ASSET_CREDITS.md`. No copyrighted official F1 soundtrack, video, driver likeness, actual team logo or unlicensed assets. Bundle locally when licensing allows; don't rely on fragile hotlinks.
+- Performance on iOS Safari, Android Chrome and desktop, responsive projector view, reasonable WebGL fallback and automatic resizing, loading/error states, and reliable app navigation.
+
+================================================================================
+8. NETLIFY + SUPABASE DEPLOYMENT AND COMPLETE PACKAGE
+================================================================================
+Deliver at minimum these artifacts:
+A) `pit-stop-netlify-ready.zip`: content at ZIP ROOT must include built `index.html`, `/assets/*`, runtime configuration template `config.js` and any `_redirects` / static SPA routing file. User extracts ZIP and drags the EXTRACTED DIST FOLDER to Netlify Drop; no npm/build required on their machine.
+B) `pit-stop-source.zip`: all source files, package.json, lockfile, reusable game logic, static assets with license, Supabase migrations/SQL, tests, project docs, deployment notes; omit node_modules and credentials.
+C) `SUPABASE_SETUP.sql` (or properly ordered migrations + a single setup guide), `NETLIFY_DEPLOY_GUIDE.md`, `ASSET_CREDITS.md`, `TEST_REPORT.md`, `README.md`. All user-facing documentation should be in ENGLISH to match the application.
+D) A configurable public runtime config (example: edit `dist/config.js` after build) for Supabase URL + PUBLISHABLE/ANON PUBLIC key; do NOT require rebuilding with npm just to change project credentials. Clearly show what to edit, and never expose secret/service_role keys.
+E) A complete working database schema, RPCs/functions, RLS policies, realtime subscriptions/permissions, and setup checklist enabling anonymous auth, applying migrations, using Netlify, testing with four real devices, opening global spectator on laptop/projector, hosting rounds, and clearing leaderboard as authorized admin.
+- The static upload to Netlify is not sufficient by itself to activate real multiplayer; configuration and Supabase backend setup are REQUIRED. Explain this honestly.
+- Prefer two archives plus actual final folder contents so the requester can verify `index.html` and runtime `config.js`. Do not claim a ZIP is ready unless the file actually exists.
+- Test `npm install` / `npm ci`, build, typecheck, lint and automated tests. Fix errors. If unavailable external services prevent real multi-device verification, still supply a deterministic local test harness and truthfully disclose unverified live behaviors; don't fake live test results.
+- Include an automated verification of ZIP structure and a predictable one-command local preview for the source package.
+
+================================================================================
+9. TEST PLAN — AUTOMATE THE GAMEPLAY ENGINE AND SECURITY
+================================================================================
+The completed implementation MUST test and report at least:
+ROOMS / HOST
+[ ] Multiple rooms visible in PUBLIC WAITING directory; joinable and non-full statuses update live as players enter, fill, start, finish or close.
+[ ] Room creator automatically joins as a player, clearly marked Host, counts in 4–15; host can kick another room member, but outsider/member/spectator cannot kick.
+[ ] Host Start rejected for 3 members, 16 members, or ANY unready member; accepted only for 4–15 all Ready; countdown/GO synchronized. Host cannot delete global leaderboard.
+[ ] Host disconnection/leave or host reassignment does not strand a waiting room. Kicked person loses permissions instantly.
+[ ] Each room corresponds to one team; many different team rooms may race simultaneously.
+
+ROLES AND DAG
+[ ] For EVERY human team size 4..15, assign exactly N distinct human roles and 15-N bot roles; no human duplicated; at least one jack human; ambient extra roles NEVER assigned.
+[ ] FL/FR/RL/RR per-corner tasks independently follow lift -> loosen -> wheel off -> wheel on -> tighten; front/rear lower wait on their respective two tightened wheels; release waits on both lower and wheel safety.
+[ ] Every core slot appears in task progress even if bot-owned; ambient-only crew shown in graphics but excluded from gameplay DAG.
+[ ] One gunner performs BOTH loosen and tighten of their assigned corner; jacks lift and later lower; human actions are rejected if locked, wrong role or duplicated.
+
+BOT FAIRNESS — PRIORITY TESTS
+[ ] Exactly one human jack: front/rear opening lifts complete at exactly the same server timestamp as that human's first lift, NOT 400ms later. First human reaction seeds bot mean.
+[ ] Both jacks human: their initial lift times are independent; no bot waits by pretending to be the opening actor.
+[ ] Three real WHEEL_ON task completions at +150/+200/+250ms and one eligible bot scheduled at +400ms: bot finishes by +250ms; cannot be cohort bottleneck.
+[ ] A bot whose baseline deadline is earlier than the slow human peer may finish before the human (no artificial wait).
+[ ] Zero humans in GUN_LOOSEN cohort: bots use mean delay; no instant completion just because all nodes are bots.
+[ ] Bot cannot break an earlier task prerequisite even if a human peer cohort has already finished; once it BECOMES eligible with cohort human peers already all finished, it may complete immediately.
+[ ] Mixed front/rear LOWER: if both eligible together and the human finishes first, eligible bot follows no later than the human finish.
+[ ] Single bot GREEN_RELEASE uses reference mean, not parallel acceleration.
+[ ] Bot's snapshot mean excludes samples completed after its scheduling event; parallel early completion is a separate allowed exception to unchanged baseline due time.
+[ ] Multiple simultaneous events, duplicate reconcile calls and delayed sync do not yield negative durations, duplicate completions, invalid timestamp order or future-human-data leakage.
+
+SCORE / REALTIME / SPECTATOR
+[ ] Only `green_release_at - go_at` determines Pit Stop Time and leaderboard, even with tasks overlapping. Timer is live, server-synced, frozen exactly once.
+[ ] Persistent team average combines ALL completed rounds; no size filter; invalid/incomplete rounds excluded; admin-only clear with audit.
+[ ] Global spectator sees ALL teams: WAITING rooms with roster/readiness, plus ALL racing rooms simultaneously with realtime tasks/progress/timer and status; drill into ANY racing room, show selected 3D and full-screen projector; NO player slot consumed and NO write permissions.
+[ ] Starting a second team while already watching the first causes the new team to appear automatically without refresh; finishing a team updates the dashboard and leaderboard.
+[ ] Reconnect, multiple clients, background tabs and stale/missed events recover from authoritative state; client event falsification cannot change scores.
+[ ] Every UI label/notification/voice and user-facing guide is in ENGLISH; scan source for accidental Vietnamese literals.
+
+BUILD / PACKAGING
+[ ] Build succeeds, static ZIP contains root index.html and config.js, source ZIP and complete backend migrations exist. Supabase setup and Netlify upload instructions are reproducible.
+[ ] Every check in TEST_REPORT.md is marked PASS only if actually executed; describe any gaps honestly.
+
+================================================================================
+10. EXECUTION AND FINAL RESPONSE REQUIREMENTS FOR CODEX
+================================================================================
+Do the work, don't simply describe how to do it. Read this specification, implement the complete codebase, create migrations, wire actual realtime subscriptions and room-host permissions, build, test, and package the two ZIPs and ancillary docs.
+
+Work priorities: (1) server-correct rooms/host/spectator and adaptive bot engine; (2) playable responsive UI and DAG; (3) polished 3D/animation/audio; (4) production hardening and tests; (5) verified Netlify/source ZIP packaging. If you must simplify something, simplify visual detail before compromising core multiplayer correctness and honest deployment.
+
+Respond with actual file paths/downloadable deliverables and a concise English summary of what was implemented, tests actually executed, and any external Supabase setup steps still needed. Never invent file paths, pretend to deploy a backend you did not deploy, fabricate licensed assets or report fake tests.
+
+FINAL RULE: THE FULL APP MUST BE IN ENGLISH, HOST CONTROLS ONLY THEIR ROOM, SPECTATOR SEES ALL LIVE TEAMS, AND BOTS NEVER HOLD UP ELIGIBLE PARALLEL COHORTS AFTER THEIR HUMAN PEERS FINISH. THE FIRST BOT JACK LIFT SYNCHRONIZES EXACTLY WITH THE FIRST HUMAN JACK LIFT.

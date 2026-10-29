@@ -1,0 +1,12 @@
+<!doctype html><body style="margin:0"><div id="scene" style="width:100vw;height:100vh"></div><script type="module">
+import * as THREE from '/node_modules/three/build/three.module.js';
+import {createPitGarageScene} from '/src/scene/garage.ts';
+import {createSoloRound,reconcile,submitAction} from '/src/engine.ts';
+const el=document.querySelector('#scene');const renderer=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});renderer.setSize(innerWidth,innerHeight);el.append(renderer.domElement);
+const actual=renderer.render.bind(renderer);renderer.render=()=>{};
+const view=createPitGarageScene(el,{quality:'low',renderer,manual:true});
+const r=createSoloRound([{id:'you',role:'FRONT_JACK',nickname:'You',ready:true,joinedAt:0}],10000,'wheel');let now=10000;
+for(let i=0;i<100&&r.status!=='COMPLETED';i++){reconcile(r,now);now=Math.max(now,Math.min(...r.tasks.filter(t=>t.status==='AVAILABLE').map(t=>t.ownerId?t.enabledAt+2000:t.dueAt??Infinity)));reconcile(r,now);for(const task of r.tasks.filter(t=>t.ownerId&&t.status==='AVAILABLE'&&t.enabledAt+2000<=now))submitAction(r,'you',task.id,now,task.id);}
+const room={id:'wheel',teamId:'wheel',solo:true,name:'Wheel QA',color:'#f00',code:'QA',hostId:'you',status:r.status,players:r.players,round:r,updatedAt:0};let cursor=9500;
+window.captureWheel=t=>{for(;cursor<=t;cursor+=10){view.update(structuredClone(room),'you',true,cursor);view.render(cursor);}renderer.render=(scene,camera)=>{camera.position.set(-6.2,4.2,-7.8);camera.lookAt(-4,.6,-.8);camera.updateMatrixWorld(true);actual(scene,camera);};view.update(room,'you',true,t);view.render(t);renderer.render=()=>{};return JSON.parse(el.dataset.oldWheelPlacements);};
+</script>

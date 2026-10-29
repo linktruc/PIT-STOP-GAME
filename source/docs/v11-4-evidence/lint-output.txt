@@ -1,0 +1,4 @@
+
+> pit-crew-two-second-challenge@11.4.0 lint
+> eslint src tests vite.config.ts eslint.config.js --max-warnings 0
+

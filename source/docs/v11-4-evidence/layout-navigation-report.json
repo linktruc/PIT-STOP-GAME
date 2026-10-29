@@ -1,0 +1,3967 @@
+{
+  "soloRounds": [],
+  "layoutChecks": [
+    {
+      "physicalViewport": [
+        1366,
+        768
+      ],
+      "zoomEquivalent": 1,
+      "seated": true,
+      "measurement": {
+        "width": 1366,
+        "height": 768,
+        "menu": {
+          "x": 68.296875,
+          "y": 82,
+          "width": 305,
+          "height": 674,
+          "top": 82,
+          "right": 373.296875,
+          "bottom": 756,
+          "left": 68.296875
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 1366,
+          "height": 62,
+          "top": 0,
+          "right": 1366,
+          "bottom": 62,
+          "left": 0
+        },
+        "note": {
+          "x": 70.296875,
+          "y": 349.09375,
+          "width": 301,
+          "height": 15.390625,
+          "top": 349.09375,
+          "right": 371.296875,
+          "bottom": 364.484375,
+          "left": 70.296875
+        },
+        "seat": {
+          "x": 70.296875,
+          "y": 298.09375,
+          "width": 301,
+          "height": 43,
+          "top": 298.09375,
+          "right": 371.296875,
+          "bottom": 341.09375,
+          "left": 70.296875
+        },
+        "create": {
+          "x": 70.296875,
+          "y": 376.484375,
+          "width": 301,
+          "height": 43,
+          "top": 376.484375,
+          "right": 371.296875,
+          "bottom": 419.484375,
+          "left": 70.296875
+        },
+        "scrollHeight": 674,
+        "clientHeight": 674,
+        "pageHeight": 768,
+        "hintCount": 0
+      },
+      "navigation": {
+        "panel": {
+          "x": 403,
+          "y": 150.609375,
+          "width": 560,
+          "height": 466.765625,
+          "top": 150.609375,
+          "right": 963,
+          "bottom": 617.375,
+          "left": 403
+        },
+        "items": [
+          {
+            "label": "Resume Team",
+            "box": {
+              "x": 424,
+              "y": 280.1875,
+              "width": 255,
+              "height": 66,
+              "top": 280.1875,
+              "right": 679,
+              "bottom": 346.1875,
+              "left": 424
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Full Workflow",
+            "box": {
+              "x": 687,
+              "y": 280.1875,
+              "width": 255,
+              "height": 66,
+              "top": 280.1875,
+              "right": 942,
+              "bottom": 346.1875,
+              "left": 687
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Team Members",
+            "box": {
+              "x": 424,
+              "y": 354.1875,
+              "width": 255,
+              "height": 66,
+              "top": 354.1875,
+              "right": 679,
+              "bottom": 420.1875,
+              "left": 424
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "All Roles",
+            "box": {
+              "x": 424,
+              "y": 456.375,
+              "width": 255,
+              "height": 66,
+              "top": 456.375,
+              "right": 679,
+              "bottom": 522.375,
+              "left": 424
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Leaderboard",
+            "box": {
+              "x": 687,
+              "y": 456.375,
+              "width": 255,
+              "height": 66,
+              "top": 456.375,
+              "right": 942,
+              "bottom": 522.375,
+              "left": 687
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Watch Live",
+            "box": {
+              "x": 424,
+              "y": 530.375,
+              "width": 255,
+              "height": 66,
+              "top": 530.375,
+              "right": 679,
+              "bottom": 596.375,
+              "left": 424
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Settings",
+            "box": {
+              "x": 687,
+              "y": 530.375,
+              "width": 255,
+              "height": 66,
+              "top": 530.375,
+              "right": 942,
+              "bottom": 596.375,
+              "left": 687
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          }
+        ]
+      }
+    },
+    {
+      "physicalViewport": [
+        1366,
+        768
+      ],
+      "zoomEquivalent": 1.25,
+      "seated": true,
+      "measurement": {
+        "width": 1093,
+        "height": 614,
+        "menu": {
+          "x": 43.71875,
+          "y": 82,
+          "width": 305,
+          "height": 520,
+          "top": 82,
+          "right": 348.71875,
+          "bottom": 602,
+          "left": 43.71875
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 1093,
+          "height": 62,
+          "top": 0,
+          "right": 1093,
+          "bottom": 62,
+          "left": 0
+        },
+        "note": {
+          "x": 45.71875,
+          "y": 272.828125,
+          "width": 301,
+          "height": 15.390625,
+          "top": 272.828125,
+          "right": 346.71875,
+          "bottom": 288.21875,
+          "left": 45.71875
+        },
+        "seat": {
+          "x": 45.71875,
+          "y": 220.828125,
+          "width": 301,
+          "height": 44,
+          "top": 220.828125,
+          "right": 346.71875,
+          "bottom": 264.828125,
+          "left": 45.71875
+        },
+        "create": {
+          "x": 45.71875,
+          "y": 298.21875,
+          "width": 301,
+          "height": 44,
+          "top": 298.21875,
+          "right": 346.71875,
+          "bottom": 342.21875,
+          "left": 45.71875
+        },
+        "scrollHeight": 520,
+        "clientHeight": 520,
+        "pageHeight": 614,
+        "hintCount": 0
+      },
+      "navigation": {
+        "panel": {
+          "x": 266.5,
+          "y": 73.609375,
+          "width": 560,
+          "height": 466.765625,
+          "top": 73.609375,
+          "right": 826.5,
+          "bottom": 540.375,
+          "left": 266.5
+        },
+        "items": [
+          {
+            "label": "Resume Team",
+            "box": {
+              "x": 287.5,
+              "y": 203.1875,
+              "width": 255,
+              "height": 66,
+              "top": 203.1875,
+              "right": 542.5,
+              "bottom": 269.1875,
+              "left": 287.5
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Full Workflow",
+            "box": {
+              "x": 550.5,
+              "y": 203.1875,
+              "width": 255,
+              "height": 66,
+              "top": 203.1875,
+              "right": 805.5,
+              "bottom": 269.1875,
+              "left": 550.5
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Team Members",
+            "box": {
+              "x": 287.5,
+              "y": 277.1875,
+              "width": 255,
+              "height": 66,
+              "top": 277.1875,
+              "right": 542.5,
+              "bottom": 343.1875,
+              "left": 287.5
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "All Roles",
+            "box": {
+              "x": 287.5,
+              "y": 379.375,
+              "width": 255,
+              "height": 66,
+              "top": 379.375,
+              "right": 542.5,
+              "bottom": 445.375,
+              "left": 287.5
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Leaderboard",
+            "box": {
+              "x": 550.5,
+              "y": 379.375,
+              "width": 255,
+              "height": 66,
+              "top": 379.375,
+              "right": 805.5,
+              "bottom": 445.375,
+              "left": 550.5
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Watch Live",
+            "box": {
+              "x": 287.5,
+              "y": 453.375,
+              "width": 255,
+              "height": 66,
+              "top": 453.375,
+              "right": 542.5,
+              "bottom": 519.375,
+              "left": 287.5
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Settings",
+            "box": {
+              "x": 550.5,
+              "y": 453.375,
+              "width": 255,
+              "height": 66,
+              "top": 453.375,
+              "right": 805.5,
+              "bottom": 519.375,
+              "left": 550.5
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          }
+        ]
+      }
+    },
+    {
+      "physicalViewport": [
+        1440,
+        900
+      ],
+      "zoomEquivalent": 1,
+      "seated": true,
+      "measurement": {
+        "width": 1440,
+        "height": 900,
+        "menu": {
+          "x": 72,
+          "y": 82,
+          "width": 355,
+          "height": 806,
+          "top": 82,
+          "right": 427,
+          "bottom": 888,
+          "left": 72
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 62,
+          "top": 0,
+          "right": 1440,
+          "bottom": 62,
+          "left": 0
+        },
+        "note": {
+          "x": 74,
+          "y": 412.921875,
+          "width": 351,
+          "height": 15.390625,
+          "top": 412.921875,
+          "right": 425,
+          "bottom": 428.3125,
+          "left": 74
+        },
+        "seat": {
+          "x": 74,
+          "y": 356.921875,
+          "width": 351,
+          "height": 48,
+          "top": 356.921875,
+          "right": 425,
+          "bottom": 404.921875,
+          "left": 74
+        },
+        "create": {
+          "x": 74,
+          "y": 440.3125,
+          "width": 351,
+          "height": 49,
+          "top": 440.3125,
+          "right": 425,
+          "bottom": 489.3125,
+          "left": 74
+        },
+        "scrollHeight": 806,
+        "clientHeight": 806,
+        "pageHeight": 900,
+        "hintCount": 0
+      },
+      "navigation": {
+        "panel": {
+          "x": 440,
+          "y": 216.609375,
+          "width": 560,
+          "height": 466.765625,
+          "top": 216.609375,
+          "right": 1000,
+          "bottom": 683.375,
+          "left": 440
+        },
+        "items": [
+          {
+            "label": "Resume Team",
+            "box": {
+              "x": 461,
+              "y": 346.1875,
+              "width": 255,
+              "height": 66,
+              "top": 346.1875,
+              "right": 716,
+              "bottom": 412.1875,
+              "left": 461
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Full Workflow",
+            "box": {
+              "x": 724,
+              "y": 346.1875,
+              "width": 255,
+              "height": 66,
+              "top": 346.1875,
+              "right": 979,
+              "bottom": 412.1875,
+              "left": 724
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Team Members",
+            "box": {
+              "x": 461,
+              "y": 420.1875,
+              "width": 255,
+              "height": 66,
+              "top": 420.1875,
+              "right": 716,
+              "bottom": 486.1875,
+              "left": 461
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "All Roles",
+            "box": {
+              "x": 461,
+              "y": 522.375,
+              "width": 255,
+              "height": 66,
+              "top": 522.375,
+              "right": 716,
+              "bottom": 588.375,
+              "left": 461
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Leaderboard",
+            "box": {
+              "x": 724,
+              "y": 522.375,
+              "width": 255,
+              "height": 66,
+              "top": 522.375,
+              "right": 979,
+              "bottom": 588.375,
+              "left": 724
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Watch Live",
+            "box": {
+              "x": 461,
+              "y": 596.375,
+              "width": 255,
+              "height": 66,
+              "top": 596.375,
+              "right": 716,
+              "bottom": 662.375,
+              "left": 461
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Settings",
+            "box": {
+              "x": 724,
+              "y": 596.375,
+              "width": 255,
+              "height": 66,
+              "top": 596.375,
+              "right": 979,
+              "bottom": 662.375,
+              "left": 724
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          }
+        ]
+      }
+    },
+    {
+      "physicalViewport": [
+        1440,
+        900
+      ],
+      "zoomEquivalent": 1.25,
+      "seated": true,
+      "measurement": {
+        "width": 1152,
+        "height": 720,
+        "menu": {
+          "x": 57.59375,
+          "y": 82,
+          "width": 305,
+          "height": 626,
+          "top": 82,
+          "right": 362.59375,
+          "bottom": 708,
+          "left": 57.59375
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 1152,
+          "height": 62,
+          "top": 0,
+          "right": 1152,
+          "bottom": 62,
+          "left": 0
+        },
+        "note": {
+          "x": 59.59375,
+          "y": 335.15625,
+          "width": 301,
+          "height": 15.390625,
+          "top": 335.15625,
+          "right": 360.59375,
+          "bottom": 350.546875,
+          "left": 59.59375
+        },
+        "seat": {
+          "x": 59.59375,
+          "y": 283.15625,
+          "width": 301,
+          "height": 44,
+          "top": 283.15625,
+          "right": 360.59375,
+          "bottom": 327.15625,
+          "left": 59.59375
+        },
+        "create": {
+          "x": 59.59375,
+          "y": 360.546875,
+          "width": 301,
+          "height": 44,
+          "top": 360.546875,
+          "right": 360.59375,
+          "bottom": 404.546875,
+          "left": 59.59375
+        },
+        "scrollHeight": 626,
+        "clientHeight": 626,
+        "pageHeight": 720,
+        "hintCount": 0
+      },
+      "navigation": {
+        "panel": {
+          "x": 296,
+          "y": 126.609375,
+          "width": 560,
+          "height": 466.765625,
+          "top": 126.609375,
+          "right": 856,
+          "bottom": 593.375,
+          "left": 296
+        },
+        "items": [
+          {
+            "label": "Resume Team",
+            "box": {
+              "x": 317,
+              "y": 256.1875,
+              "width": 255,
+              "height": 66,
+              "top": 256.1875,
+              "right": 572,
+              "bottom": 322.1875,
+              "left": 317
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Full Workflow",
+            "box": {
+              "x": 580,
+              "y": 256.1875,
+              "width": 255,
+              "height": 66,
+              "top": 256.1875,
+              "right": 835,
+              "bottom": 322.1875,
+              "left": 580
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Team Members",
+            "box": {
+              "x": 317,
+              "y": 330.1875,
+              "width": 255,
+              "height": 66,
+              "top": 330.1875,
+              "right": 572,
+              "bottom": 396.1875,
+              "left": 317
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "All Roles",
+            "box": {
+              "x": 317,
+              "y": 432.375,
+              "width": 255,
+              "height": 66,
+              "top": 432.375,
+              "right": 572,
+              "bottom": 498.375,
+              "left": 317
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Leaderboard",
+            "box": {
+              "x": 580,
+              "y": 432.375,
+              "width": 255,
+              "height": 66,
+              "top": 432.375,
+              "right": 835,
+              "bottom": 498.375,
+              "left": 580
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Watch Live",
+            "box": {
+              "x": 317,
+              "y": 506.375,
+              "width": 255,
+              "height": 66,
+              "top": 506.375,
+              "right": 572,
+              "bottom": 572.375,
+              "left": 317
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Settings",
+            "box": {
+              "x": 580,
+              "y": 506.375,
+              "width": 255,
+              "height": 66,
+              "top": 506.375,
+              "right": 835,
+              "bottom": 572.375,
+              "left": 580
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          }
+        ]
+      }
+    },
+    {
+      "physicalViewport": [
+        1920,
+        1080
+      ],
+      "zoomEquivalent": 1,
+      "seated": true,
+      "measurement": {
+        "width": 1920,
+        "height": 1080,
+        "menu": {
+          "x": 115.1875,
+          "y": 82,
+          "width": 390,
+          "height": 986,
+          "top": 82,
+          "right": 505.1875,
+          "bottom": 1068,
+          "left": 115.1875
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 1920,
+          "height": 62,
+          "top": 0,
+          "right": 1920,
+          "bottom": 62,
+          "left": 0
+        },
+        "note": {
+          "x": 117.1875,
+          "y": 510.984375,
+          "width": 386,
+          "height": 15.390625,
+          "top": 510.984375,
+          "right": 503.1875,
+          "bottom": 526.375,
+          "left": 117.1875
+        },
+        "seat": {
+          "x": 117.1875,
+          "y": 447.984375,
+          "width": 386,
+          "height": 55,
+          "top": 447.984375,
+          "right": 503.1875,
+          "bottom": 502.984375,
+          "left": 117.1875
+        },
+        "create": {
+          "x": 117.1875,
+          "y": 538.375,
+          "width": 386,
+          "height": 55,
+          "top": 538.375,
+          "right": 503.1875,
+          "bottom": 593.375,
+          "left": 117.1875
+        },
+        "scrollHeight": 986,
+        "clientHeight": 986,
+        "pageHeight": 1080,
+        "hintCount": 0
+      },
+      "navigation": {
+        "panel": {
+          "x": 680,
+          "y": 306.609375,
+          "width": 560,
+          "height": 466.765625,
+          "top": 306.609375,
+          "right": 1240,
+          "bottom": 773.375,
+          "left": 680
+        },
+        "items": [
+          {
+            "label": "Resume Team",
+            "box": {
+              "x": 701,
+              "y": 436.1875,
+              "width": 255,
+              "height": 66,
+              "top": 436.1875,
+              "right": 956,
+              "bottom": 502.1875,
+              "left": 701
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Full Workflow",
+            "box": {
+              "x": 964,
+              "y": 436.1875,
+              "width": 255,
+              "height": 66,
+              "top": 436.1875,
+              "right": 1219,
+              "bottom": 502.1875,
+              "left": 964
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Team Members",
+            "box": {
+              "x": 701,
+              "y": 510.1875,
+              "width": 255,
+              "height": 66,
+              "top": 510.1875,
+              "right": 956,
+              "bottom": 576.1875,
+              "left": 701
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "All Roles",
+            "box": {
+              "x": 701,
+              "y": 612.375,
+              "width": 255,
+              "height": 66,
+              "top": 612.375,
+              "right": 956,
+              "bottom": 678.375,
+              "left": 701
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Leaderboard",
+            "box": {
+              "x": 964,
+              "y": 612.375,
+              "width": 255,
+              "height": 66,
+              "top": 612.375,
+              "right": 1219,
+              "bottom": 678.375,
+              "left": 964
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Watch Live",
+            "box": {
+              "x": 701,
+              "y": 686.375,
+              "width": 255,
+              "height": 66,
+              "top": 686.375,
+              "right": 956,
+              "bottom": 752.375,
+              "left": 701
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Settings",
+            "box": {
+              "x": 964,
+              "y": 686.375,
+              "width": 255,
+              "height": 66,
+              "top": 686.375,
+              "right": 1219,
+              "bottom": 752.375,
+              "left": 964
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          }
+        ]
+      }
+    },
+    {
+      "physicalViewport": [
+        1920,
+        1080
+      ],
+      "zoomEquivalent": 1.25,
+      "seated": true,
+      "measurement": {
+        "width": 1536,
+        "height": 864,
+        "menu": {
+          "x": 76.796875,
+          "y": 82,
+          "width": 355,
+          "height": 770,
+          "top": 82,
+          "right": 431.796875,
+          "bottom": 852,
+          "left": 76.796875
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 1536,
+          "height": 62,
+          "top": 0,
+          "right": 1536,
+          "bottom": 62,
+          "left": 0
+        },
+        "note": {
+          "x": 78.796875,
+          "y": 399.234375,
+          "width": 351,
+          "height": 15.390625,
+          "top": 399.234375,
+          "right": 429.796875,
+          "bottom": 414.625,
+          "left": 78.796875
+        },
+        "seat": {
+          "x": 78.796875,
+          "y": 343.234375,
+          "width": 351,
+          "height": 48,
+          "top": 343.234375,
+          "right": 429.796875,
+          "bottom": 391.234375,
+          "left": 78.796875
+        },
+        "create": {
+          "x": 78.796875,
+          "y": 426.625,
+          "width": 351,
+          "height": 49,
+          "top": 426.625,
+          "right": 429.796875,
+          "bottom": 475.625,
+          "left": 78.796875
+        },
+        "scrollHeight": 770,
+        "clientHeight": 770,
+        "pageHeight": 864,
+        "hintCount": 0
+      },
+      "navigation": {
+        "panel": {
+          "x": 488,
+          "y": 198.609375,
+          "width": 560,
+          "height": 466.765625,
+          "top": 198.609375,
+          "right": 1048,
+          "bottom": 665.375,
+          "left": 488
+        },
+        "items": [
+          {
+            "label": "Resume Team",
+            "box": {
+              "x": 509,
+              "y": 328.1875,
+              "width": 255,
+              "height": 66,
+              "top": 328.1875,
+              "right": 764,
+              "bottom": 394.1875,
+              "left": 509
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Full Workflow",
+            "box": {
+              "x": 772,
+              "y": 328.1875,
+              "width": 255,
+              "height": 66,
+              "top": 328.1875,
+              "right": 1027,
+              "bottom": 394.1875,
+              "left": 772
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Team Members",
+            "box": {
+              "x": 509,
+              "y": 402.1875,
+              "width": 255,
+              "height": 66,
+              "top": 402.1875,
+              "right": 764,
+              "bottom": 468.1875,
+              "left": 509
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "All Roles",
+            "box": {
+              "x": 509,
+              "y": 504.375,
+              "width": 255,
+              "height": 66,
+              "top": 504.375,
+              "right": 764,
+              "bottom": 570.375,
+              "left": 509
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Leaderboard",
+            "box": {
+              "x": 772,
+              "y": 504.375,
+              "width": 255,
+              "height": 66,
+              "top": 504.375,
+              "right": 1027,
+              "bottom": 570.375,
+              "left": 772
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Watch Live",
+            "box": {
+              "x": 509,
+              "y": 578.375,
+              "width": 255,
+              "height": 66,
+              "top": 578.375,
+              "right": 764,
+              "bottom": 644.375,
+              "left": 509
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Settings",
+            "box": {
+              "x": 772,
+              "y": 578.375,
+              "width": 255,
+              "height": 66,
+              "top": 578.375,
+              "right": 1027,
+              "bottom": 644.375,
+              "left": 772
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          }
+        ]
+      }
+    },
+    {
+      "physicalViewport": [
+        1280,
+        720
+      ],
+      "zoomEquivalent": 1,
+      "seated": true,
+      "measurement": {
+        "width": 1280,
+        "height": 720,
+        "menu": {
+          "x": 64,
+          "y": 82,
+          "width": 305,
+          "height": 626,
+          "top": 82,
+          "right": 369,
+          "bottom": 708,
+          "left": 64
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 1280,
+          "height": 62,
+          "top": 0,
+          "right": 1280,
+          "bottom": 62,
+          "left": 0
+        },
+        "note": {
+          "x": 66,
+          "y": 335.15625,
+          "width": 301,
+          "height": 15.390625,
+          "top": 335.15625,
+          "right": 367,
+          "bottom": 350.546875,
+          "left": 66
+        },
+        "seat": {
+          "x": 66,
+          "y": 283.15625,
+          "width": 301,
+          "height": 44,
+          "top": 283.15625,
+          "right": 367,
+          "bottom": 327.15625,
+          "left": 66
+        },
+        "create": {
+          "x": 66,
+          "y": 360.546875,
+          "width": 301,
+          "height": 44,
+          "top": 360.546875,
+          "right": 367,
+          "bottom": 404.546875,
+          "left": 66
+        },
+        "scrollHeight": 626,
+        "clientHeight": 626,
+        "pageHeight": 720,
+        "hintCount": 0
+      },
+      "navigation": {
+        "panel": {
+          "x": 360,
+          "y": 126.609375,
+          "width": 560,
+          "height": 466.765625,
+          "top": 126.609375,
+          "right": 920,
+          "bottom": 593.375,
+          "left": 360
+        },
+        "items": [
+          {
+            "label": "Resume Team",
+            "box": {
+              "x": 381,
+              "y": 256.1875,
+              "width": 255,
+              "height": 66,
+              "top": 256.1875,
+              "right": 636,
+              "bottom": 322.1875,
+              "left": 381
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Full Workflow",
+            "box": {
+              "x": 644,
+              "y": 256.1875,
+              "width": 255,
+              "height": 66,
+              "top": 256.1875,
+              "right": 899,
+              "bottom": 322.1875,
+              "left": 644
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Team Members",
+            "box": {
+              "x": 381,
+              "y": 330.1875,
+              "width": 255,
+              "height": 66,
+              "top": 330.1875,
+              "right": 636,
+              "bottom": 396.1875,
+              "left": 381
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "All Roles",
+            "box": {
+              "x": 381,
+              "y": 432.375,
+              "width": 255,
+              "height": 66,
+              "top": 432.375,
+              "right": 636,
+              "bottom": 498.375,
+              "left": 381
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Leaderboard",
+            "box": {
+              "x": 644,
+              "y": 432.375,
+              "width": 255,
+              "height": 66,
+              "top": 432.375,
+              "right": 899,
+              "bottom": 498.375,
+              "left": 644
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Watch Live",
+            "box": {
+              "x": 381,
+              "y": 506.375,
+              "width": 255,
+              "height": 66,
+              "top": 506.375,
+              "right": 636,
+              "bottom": 572.375,
+              "left": 381
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Settings",
+            "box": {
+              "x": 644,
+              "y": 506.375,
+              "width": 255,
+              "height": 66,
+              "top": 506.375,
+              "right": 899,
+              "bottom": 572.375,
+              "left": 644
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          }
+        ]
+      }
+    },
+    {
+      "physicalViewport": [
+        1280,
+        720
+      ],
+      "zoomEquivalent": 1.25,
+      "seated": true,
+      "measurement": {
+        "width": 1024,
+        "height": 576,
+        "menu": {
+          "x": 40.953125,
+          "y": 82,
+          "width": 305,
+          "height": 482,
+          "top": 82,
+          "right": 345.953125,
+          "bottom": 564,
+          "left": 40.953125
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 1024,
+          "height": 62,
+          "top": 0,
+          "right": 1024,
+          "bottom": 62,
+          "left": 0
+        },
+        "note": {
+          "x": 42.953125,
+          "y": 259.34375,
+          "width": 301,
+          "height": 15.390625,
+          "top": 259.34375,
+          "right": 343.953125,
+          "bottom": 274.734375,
+          "left": 42.953125
+        },
+        "seat": {
+          "x": 42.953125,
+          "y": 207.34375,
+          "width": 301,
+          "height": 44,
+          "top": 207.34375,
+          "right": 343.953125,
+          "bottom": 251.34375,
+          "left": 42.953125
+        },
+        "create": {
+          "x": 42.953125,
+          "y": 284.734375,
+          "width": 301,
+          "height": 44,
+          "top": 284.734375,
+          "right": 343.953125,
+          "bottom": 328.734375,
+          "left": 42.953125
+        },
+        "scrollHeight": 500,
+        "clientHeight": 482,
+        "pageHeight": 576,
+        "hintCount": 0
+      },
+      "navigation": {
+        "panel": {
+          "x": 232,
+          "y": 54.609375,
+          "width": 560,
+          "height": 466.765625,
+          "top": 54.609375,
+          "right": 792,
+          "bottom": 521.375,
+          "left": 232
+        },
+        "items": [
+          {
+            "label": "Resume Team",
+            "box": {
+              "x": 253,
+              "y": 184.1875,
+              "width": 255,
+              "height": 66,
+              "top": 184.1875,
+              "right": 508,
+              "bottom": 250.1875,
+              "left": 253
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Full Workflow",
+            "box": {
+              "x": 516,
+              "y": 184.1875,
+              "width": 255,
+              "height": 66,
+              "top": 184.1875,
+              "right": 771,
+              "bottom": 250.1875,
+              "left": 516
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Team Members",
+            "box": {
+              "x": 253,
+              "y": 258.1875,
+              "width": 255,
+              "height": 66,
+              "top": 258.1875,
+              "right": 508,
+              "bottom": 324.1875,
+              "left": 253
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "All Roles",
+            "box": {
+              "x": 253,
+              "y": 360.375,
+              "width": 255,
+              "height": 66,
+              "top": 360.375,
+              "right": 508,
+              "bottom": 426.375,
+              "left": 253
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Leaderboard",
+            "box": {
+              "x": 516,
+              "y": 360.375,
+              "width": 255,
+              "height": 66,
+              "top": 360.375,
+              "right": 771,
+              "bottom": 426.375,
+              "left": 516
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Watch Live",
+            "box": {
+              "x": 253,
+              "y": 434.375,
+              "width": 255,
+              "height": 66,
+              "top": 434.375,
+              "right": 508,
+              "bottom": 500.375,
+              "left": 253
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Settings",
+            "box": {
+              "x": 516,
+              "y": 434.375,
+              "width": 255,
+              "height": 66,
+              "top": 434.375,
+              "right": 771,
+              "bottom": 500.375,
+              "left": 516
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          }
+        ]
+      }
+    },
+    {
+      "physicalViewport": [
+        1024,
+        600
+      ],
+      "zoomEquivalent": 1,
+      "seated": true,
+      "measurement": {
+        "width": 1024,
+        "height": 600,
+        "menu": {
+          "x": 40.953125,
+          "y": 82,
+          "width": 305,
+          "height": 506,
+          "top": 82,
+          "right": 345.953125,
+          "bottom": 588,
+          "left": 40.953125
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 1024,
+          "height": 62,
+          "top": 0,
+          "right": 1024,
+          "bottom": 62,
+          "left": 0
+        },
+        "note": {
+          "x": 42.953125,
+          "y": 264.59375,
+          "width": 301,
+          "height": 15.390625,
+          "top": 264.59375,
+          "right": 343.953125,
+          "bottom": 279.984375,
+          "left": 42.953125
+        },
+        "seat": {
+          "x": 42.953125,
+          "y": 212.59375,
+          "width": 301,
+          "height": 44,
+          "top": 212.59375,
+          "right": 343.953125,
+          "bottom": 256.59375,
+          "left": 42.953125
+        },
+        "create": {
+          "x": 42.953125,
+          "y": 289.984375,
+          "width": 301,
+          "height": 44,
+          "top": 289.984375,
+          "right": 343.953125,
+          "bottom": 333.984375,
+          "left": 42.953125
+        },
+        "scrollHeight": 506,
+        "clientHeight": 506,
+        "pageHeight": 600,
+        "hintCount": 0
+      },
+      "navigation": {
+        "panel": {
+          "x": 232,
+          "y": 66.609375,
+          "width": 560,
+          "height": 466.765625,
+          "top": 66.609375,
+          "right": 792,
+          "bottom": 533.375,
+          "left": 232
+        },
+        "items": [
+          {
+            "label": "Resume Team",
+            "box": {
+              "x": 253,
+              "y": 196.1875,
+              "width": 255,
+              "height": 66,
+              "top": 196.1875,
+              "right": 508,
+              "bottom": 262.1875,
+              "left": 253
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Full Workflow",
+            "box": {
+              "x": 516,
+              "y": 196.1875,
+              "width": 255,
+              "height": 66,
+              "top": 196.1875,
+              "right": 771,
+              "bottom": 262.1875,
+              "left": 516
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Team Members",
+            "box": {
+              "x": 253,
+              "y": 270.1875,
+              "width": 255,
+              "height": 66,
+              "top": 270.1875,
+              "right": 508,
+              "bottom": 336.1875,
+              "left": 253
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "All Roles",
+            "box": {
+              "x": 253,
+              "y": 372.375,
+              "width": 255,
+              "height": 66,
+              "top": 372.375,
+              "right": 508,
+              "bottom": 438.375,
+              "left": 253
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Leaderboard",
+            "box": {
+              "x": 516,
+              "y": 372.375,
+              "width": 255,
+              "height": 66,
+              "top": 372.375,
+              "right": 771,
+              "bottom": 438.375,
+              "left": 516
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Watch Live",
+            "box": {
+              "x": 253,
+              "y": 446.375,
+              "width": 255,
+              "height": 66,
+              "top": 446.375,
+              "right": 508,
+              "bottom": 512.375,
+              "left": 253
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Settings",
+            "box": {
+              "x": 516,
+              "y": 446.375,
+              "width": 255,
+              "height": 66,
+              "top": 446.375,
+              "right": 771,
+              "bottom": 512.375,
+              "left": 516
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          }
+        ]
+      }
+    },
+    {
+      "physicalViewport": [
+        1024,
+        600
+      ],
+      "zoomEquivalent": 1.25,
+      "seated": true,
+      "measurement": {
+        "width": 819,
+        "height": 480,
+        "menu": {
+          "x": 40.9375,
+          "y": 82,
+          "width": 310,
+          "height": 388,
+          "top": 82,
+          "right": 350.9375,
+          "bottom": 470,
+          "left": 40.9375
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 819,
+          "height": 52,
+          "top": 0,
+          "right": 819,
+          "bottom": 52,
+          "left": 0
+        },
+        "note": {
+          "x": 42.9375,
+          "y": 253.03125,
+          "width": 306,
+          "height": 15.390625,
+          "top": 253.03125,
+          "right": 348.9375,
+          "bottom": 268.421875,
+          "left": 42.9375
+        },
+        "seat": {
+          "x": 42.9375,
+          "y": 201.03125,
+          "width": 306,
+          "height": 44,
+          "top": 201.03125,
+          "right": 348.9375,
+          "bottom": 245.03125,
+          "left": 42.9375
+        },
+        "create": {
+          "x": 42.9375,
+          "y": 278.421875,
+          "width": 306,
+          "height": 49,
+          "top": 278.421875,
+          "right": 348.9375,
+          "bottom": 327.421875,
+          "left": 42.9375
+        },
+        "scrollHeight": 504,
+        "clientHeight": 388,
+        "pageHeight": 480,
+        "hintCount": 0
+      },
+      "navigation": {
+        "panel": {
+          "x": 129.5,
+          "y": 28,
+          "width": 560,
+          "height": 424,
+          "top": 28,
+          "right": 689.5,
+          "bottom": 452,
+          "left": 129.5
+        },
+        "items": [
+          {
+            "label": "Resume Team",
+            "box": {
+              "x": 150.5,
+              "y": 157.578125,
+              "width": 255,
+              "height": 66,
+              "top": 157.578125,
+              "right": 405.5,
+              "bottom": 223.578125,
+              "left": 150.5
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Full Workflow",
+            "box": {
+              "x": 413.5,
+              "y": 157.578125,
+              "width": 255,
+              "height": 66,
+              "top": 157.578125,
+              "right": 668.5,
+              "bottom": 223.578125,
+              "left": 413.5
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Team Members",
+            "box": {
+              "x": 150.5,
+              "y": 231.578125,
+              "width": 255,
+              "height": 66,
+              "top": 231.578125,
+              "right": 405.5,
+              "bottom": 297.578125,
+              "left": 150.5
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "All Roles",
+            "box": {
+              "x": 150.5,
+              "y": 333.765625,
+              "width": 255,
+              "height": 66,
+              "top": 333.765625,
+              "right": 405.5,
+              "bottom": 399.765625,
+              "left": 150.5
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Leaderboard",
+            "box": {
+              "x": 413.5,
+              "y": 333.765625,
+              "width": 255,
+              "height": 66,
+              "top": 333.765625,
+              "right": 668.5,
+              "bottom": 399.765625,
+              "left": 413.5
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Watch Live",
+            "box": {
+              "x": 150.5,
+              "y": 407.765625,
+              "width": 255,
+              "height": 66,
+              "top": 407.765625,
+              "right": 405.5,
+              "bottom": 473.765625,
+              "left": 150.5
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Settings",
+            "box": {
+              "x": 413.5,
+              "y": 407.765625,
+              "width": 255,
+              "height": 66,
+              "top": 407.765625,
+              "right": 668.5,
+              "bottom": 473.765625,
+              "left": 413.5
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          }
+        ]
+      }
+    },
+    {
+      "physicalViewport": [
+        390,
+        844
+      ],
+      "zoomEquivalent": 1,
+      "seated": true,
+      "measurement": {
+        "width": 390,
+        "height": 844,
+        "menu": {
+          "x": 20,
+          "y": 72,
+          "width": 350,
+          "height": 686,
+          "top": 72,
+          "right": 370,
+          "bottom": 758,
+          "left": 20
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 56,
+          "top": 0,
+          "right": 390,
+          "bottom": 56,
+          "left": 0
+        },
+        "note": {
+          "x": 21,
+          "y": 351.453125,
+          "width": 348,
+          "height": 14,
+          "top": 351.453125,
+          "right": 369,
+          "bottom": 365.453125,
+          "left": 21
+        },
+        "seat": {
+          "x": 21,
+          "y": 302.453125,
+          "width": 348,
+          "height": 43,
+          "top": 302.453125,
+          "right": 369,
+          "bottom": 345.453125,
+          "left": 21
+        },
+        "create": {
+          "x": 21,
+          "y": 375.453125,
+          "width": 348,
+          "height": 43,
+          "top": 375.453125,
+          "right": 369,
+          "bottom": 418.453125,
+          "left": 21
+        },
+        "scrollHeight": 686,
+        "clientHeight": 686,
+        "pageHeight": 844,
+        "hintCount": 0
+      },
+      "navigation": {
+        "panel": {
+          "x": 12,
+          "y": 80.109375,
+          "width": 366,
+          "height": 607.765625,
+          "top": 80.109375,
+          "right": 378,
+          "bottom": 687.875,
+          "left": 12
+        },
+        "items": [
+          {
+            "label": "Resume Team",
+            "box": {
+              "x": 27,
+              "y": 198.6875,
+              "width": 336,
+              "height": 58,
+              "top": 198.6875,
+              "right": 363,
+              "bottom": 256.6875,
+              "left": 27
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 56
+          },
+          {
+            "label": "Full Workflow",
+            "box": {
+              "x": 27,
+              "y": 263.6875,
+              "width": 336,
+              "height": 58,
+              "top": 263.6875,
+              "right": 363,
+              "bottom": 321.6875,
+              "left": 27
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 56
+          },
+          {
+            "label": "Team Members",
+            "box": {
+              "x": 27,
+              "y": 328.6875,
+              "width": 336,
+              "height": 58,
+              "top": 328.6875,
+              "right": 363,
+              "bottom": 386.6875,
+              "left": 27
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 56
+          },
+          {
+            "label": "All Roles",
+            "box": {
+              "x": 27,
+              "y": 419.875,
+              "width": 336,
+              "height": 58,
+              "top": 419.875,
+              "right": 363,
+              "bottom": 477.875,
+              "left": 27
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 56
+          },
+          {
+            "label": "Leaderboard",
+            "box": {
+              "x": 27,
+              "y": 484.875,
+              "width": 336,
+              "height": 58,
+              "top": 484.875,
+              "right": 363,
+              "bottom": 542.875,
+              "left": 27
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 56
+          },
+          {
+            "label": "Watch Live",
+            "box": {
+              "x": 27,
+              "y": 549.875,
+              "width": 336,
+              "height": 58,
+              "top": 549.875,
+              "right": 363,
+              "bottom": 607.875,
+              "left": 27
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 56
+          },
+          {
+            "label": "Settings",
+            "box": {
+              "x": 27,
+              "y": 614.875,
+              "width": 336,
+              "height": 58,
+              "top": 614.875,
+              "right": 363,
+              "bottom": 672.875,
+              "left": 27
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 56
+          }
+        ]
+      }
+    },
+    {
+      "physicalViewport": [
+        430,
+        932
+      ],
+      "zoomEquivalent": 1,
+      "seated": true,
+      "measurement": {
+        "width": 430,
+        "height": 932,
+        "menu": {
+          "x": 20,
+          "y": 72,
+          "width": 350,
+          "height": 774,
+          "top": 72,
+          "right": 370,
+          "bottom": 846,
+          "left": 20
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 56,
+          "top": 0,
+          "right": 430,
+          "bottom": 56,
+          "left": 0
+        },
+        "note": {
+          "x": 21,
+          "y": 395.453125,
+          "width": 348,
+          "height": 14,
+          "top": 395.453125,
+          "right": 369,
+          "bottom": 409.453125,
+          "left": 21
+        },
+        "seat": {
+          "x": 21,
+          "y": 346.453125,
+          "width": 348,
+          "height": 43,
+          "top": 346.453125,
+          "right": 369,
+          "bottom": 389.453125,
+          "left": 21
+        },
+        "create": {
+          "x": 21,
+          "y": 419.453125,
+          "width": 348,
+          "height": 43,
+          "top": 419.453125,
+          "right": 369,
+          "bottom": 462.453125,
+          "left": 21
+        },
+        "scrollHeight": 774,
+        "clientHeight": 774,
+        "pageHeight": 932,
+        "hintCount": 0
+      },
+      "navigation": {
+        "panel": {
+          "x": 12,
+          "y": 124.109375,
+          "width": 406,
+          "height": 607.765625,
+          "top": 124.109375,
+          "right": 418,
+          "bottom": 731.875,
+          "left": 12
+        },
+        "items": [
+          {
+            "label": "Resume Team",
+            "box": {
+              "x": 27,
+              "y": 242.6875,
+              "width": 376,
+              "height": 58,
+              "top": 242.6875,
+              "right": 403,
+              "bottom": 300.6875,
+              "left": 27
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 56
+          },
+          {
+            "label": "Full Workflow",
+            "box": {
+              "x": 27,
+              "y": 307.6875,
+              "width": 376,
+              "height": 58,
+              "top": 307.6875,
+              "right": 403,
+              "bottom": 365.6875,
+              "left": 27
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 56
+          },
+          {
+            "label": "Team Members",
+            "box": {
+              "x": 27,
+              "y": 372.6875,
+              "width": 376,
+              "height": 58,
+              "top": 372.6875,
+              "right": 403,
+              "bottom": 430.6875,
+              "left": 27
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 56
+          },
+          {
+            "label": "All Roles",
+            "box": {
+              "x": 27,
+              "y": 463.875,
+              "width": 376,
+              "height": 58,
+              "top": 463.875,
+              "right": 403,
+              "bottom": 521.875,
+              "left": 27
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 56
+          },
+          {
+            "label": "Leaderboard",
+            "box": {
+              "x": 27,
+              "y": 528.875,
+              "width": 376,
+              "height": 58,
+              "top": 528.875,
+              "right": 403,
+              "bottom": 586.875,
+              "left": 27
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 56
+          },
+          {
+            "label": "Watch Live",
+            "box": {
+              "x": 27,
+              "y": 593.875,
+              "width": 376,
+              "height": 58,
+              "top": 593.875,
+              "right": 403,
+              "bottom": 651.875,
+              "left": 27
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 56
+          },
+          {
+            "label": "Settings",
+            "box": {
+              "x": 27,
+              "y": 658.875,
+              "width": 376,
+              "height": 58,
+              "top": 658.875,
+              "right": 403,
+              "bottom": 716.875,
+              "left": 27
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 56
+          }
+        ]
+      }
+    },
+    {
+      "physicalViewport": [
+        1366,
+        768
+      ],
+      "zoomEquivalent": 1,
+      "seated": false,
+      "measurement": {
+        "width": 1366,
+        "height": 768,
+        "menu": {
+          "x": 68.296875,
+          "y": 82,
+          "width": 305,
+          "height": 674,
+          "top": 82,
+          "right": 373.296875,
+          "bottom": 756,
+          "left": 68.296875
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 1366,
+          "height": 62,
+          "top": 0,
+          "right": 1366,
+          "bottom": 62,
+          "left": 0
+        },
+        "note": null,
+        "seat": null,
+        "create": {
+          "x": 70.296875,
+          "y": 337.296875,
+          "width": 301,
+          "height": 43,
+          "top": 337.296875,
+          "right": 371.296875,
+          "bottom": 380.296875,
+          "left": 70.296875
+        },
+        "scrollHeight": 674,
+        "clientHeight": 674,
+        "pageHeight": 768,
+        "hintCount": 0
+      },
+      "navigation": {
+        "panel": {
+          "x": 403,
+          "y": 238.703125,
+          "width": 560,
+          "height": 290.578125,
+          "top": 238.703125,
+          "right": 963,
+          "bottom": 529.28125,
+          "left": 403
+        },
+        "items": [
+          {
+            "label": "All Roles",
+            "box": {
+              "x": 424,
+              "y": 368.28125,
+              "width": 255,
+              "height": 66,
+              "top": 368.28125,
+              "right": 679,
+              "bottom": 434.28125,
+              "left": 424
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Leaderboard",
+            "box": {
+              "x": 687,
+              "y": 368.28125,
+              "width": 255,
+              "height": 66,
+              "top": 368.28125,
+              "right": 942,
+              "bottom": 434.28125,
+              "left": 687
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Watch Live",
+            "box": {
+              "x": 424,
+              "y": 442.28125,
+              "width": 255,
+              "height": 66,
+              "top": 442.28125,
+              "right": 679,
+              "bottom": 508.28125,
+              "left": 424
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Settings",
+            "box": {
+              "x": 687,
+              "y": 442.28125,
+              "width": 255,
+              "height": 66,
+              "top": 442.28125,
+              "right": 942,
+              "bottom": 508.28125,
+              "left": 687
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          }
+        ]
+      }
+    },
+    {
+      "physicalViewport": [
+        1366,
+        768
+      ],
+      "zoomEquivalent": 1.25,
+      "seated": false,
+      "measurement": {
+        "width": 1093,
+        "height": 614,
+        "menu": {
+          "x": 43.71875,
+          "y": 82,
+          "width": 305,
+          "height": 520,
+          "top": 82,
+          "right": 348.71875,
+          "bottom": 602,
+          "left": 43.71875
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 1093,
+          "height": 62,
+          "top": 0,
+          "right": 1093,
+          "bottom": 62,
+          "left": 0
+        },
+        "note": null,
+        "seat": null,
+        "create": {
+          "x": 45.71875,
+          "y": 259.53125,
+          "width": 301,
+          "height": 44,
+          "top": 259.53125,
+          "right": 346.71875,
+          "bottom": 303.53125,
+          "left": 45.71875
+        },
+        "scrollHeight": 520,
+        "clientHeight": 520,
+        "pageHeight": 614,
+        "hintCount": 0
+      },
+      "navigation": {
+        "panel": {
+          "x": 266.5,
+          "y": 161.703125,
+          "width": 560,
+          "height": 290.578125,
+          "top": 161.703125,
+          "right": 826.5,
+          "bottom": 452.28125,
+          "left": 266.5
+        },
+        "items": [
+          {
+            "label": "All Roles",
+            "box": {
+              "x": 287.5,
+              "y": 291.28125,
+              "width": 255,
+              "height": 66,
+              "top": 291.28125,
+              "right": 542.5,
+              "bottom": 357.28125,
+              "left": 287.5
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Leaderboard",
+            "box": {
+              "x": 550.5,
+              "y": 291.28125,
+              "width": 255,
+              "height": 66,
+              "top": 291.28125,
+              "right": 805.5,
+              "bottom": 357.28125,
+              "left": 550.5
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Watch Live",
+            "box": {
+              "x": 287.5,
+              "y": 365.28125,
+              "width": 255,
+              "height": 66,
+              "top": 365.28125,
+              "right": 542.5,
+              "bottom": 431.28125,
+              "left": 287.5
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Settings",
+            "box": {
+              "x": 550.5,
+              "y": 365.28125,
+              "width": 255,
+              "height": 66,
+              "top": 365.28125,
+              "right": 805.5,
+              "bottom": 431.28125,
+              "left": 550.5
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          }
+        ]
+      }
+    },
+    {
+      "physicalViewport": [
+        1440,
+        900
+      ],
+      "zoomEquivalent": 1,
+      "seated": false,
+      "measurement": {
+        "width": 1440,
+        "height": 900,
+        "menu": {
+          "x": 72,
+          "y": 82,
+          "width": 355,
+          "height": 806,
+          "top": 82,
+          "right": 427,
+          "bottom": 888,
+          "left": 72
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 62,
+          "top": 0,
+          "right": 1440,
+          "bottom": 62,
+          "left": 0
+        },
+        "note": null,
+        "seat": null,
+        "create": {
+          "x": 74,
+          "y": 398.625,
+          "width": 351,
+          "height": 49,
+          "top": 398.625,
+          "right": 425,
+          "bottom": 447.625,
+          "left": 74
+        },
+        "scrollHeight": 806,
+        "clientHeight": 806,
+        "pageHeight": 900,
+        "hintCount": 0
+      },
+      "navigation": {
+        "panel": {
+          "x": 440,
+          "y": 304.703125,
+          "width": 560,
+          "height": 290.578125,
+          "top": 304.703125,
+          "right": 1000,
+          "bottom": 595.28125,
+          "left": 440
+        },
+        "items": [
+          {
+            "label": "All Roles",
+            "box": {
+              "x": 461,
+              "y": 434.28125,
+              "width": 255,
+              "height": 66,
+              "top": 434.28125,
+              "right": 716,
+              "bottom": 500.28125,
+              "left": 461
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Leaderboard",
+            "box": {
+              "x": 724,
+              "y": 434.28125,
+              "width": 255,
+              "height": 66,
+              "top": 434.28125,
+              "right": 979,
+              "bottom": 500.28125,
+              "left": 724
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Watch Live",
+            "box": {
+              "x": 461,
+              "y": 508.28125,
+              "width": 255,
+              "height": 66,
+              "top": 508.28125,
+              "right": 716,
+              "bottom": 574.28125,
+              "left": 461
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Settings",
+            "box": {
+              "x": 724,
+              "y": 508.28125,
+              "width": 255,
+              "height": 66,
+              "top": 508.28125,
+              "right": 979,
+              "bottom": 574.28125,
+              "left": 724
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          }
+        ]
+      }
+    },
+    {
+      "physicalViewport": [
+        1440,
+        900
+      ],
+      "zoomEquivalent": 1.25,
+      "seated": false,
+      "measurement": {
+        "width": 1152,
+        "height": 720,
+        "menu": {
+          "x": 57.59375,
+          "y": 82,
+          "width": 305,
+          "height": 626,
+          "top": 82,
+          "right": 362.59375,
+          "bottom": 708,
+          "left": 57.59375
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 1152,
+          "height": 62,
+          "top": 0,
+          "right": 1152,
+          "bottom": 62,
+          "left": 0
+        },
+        "note": null,
+        "seat": null,
+        "create": {
+          "x": 59.59375,
+          "y": 321.859375,
+          "width": 301,
+          "height": 44,
+          "top": 321.859375,
+          "right": 360.59375,
+          "bottom": 365.859375,
+          "left": 59.59375
+        },
+        "scrollHeight": 626,
+        "clientHeight": 626,
+        "pageHeight": 720,
+        "hintCount": 0
+      },
+      "navigation": {
+        "panel": {
+          "x": 296,
+          "y": 214.703125,
+          "width": 560,
+          "height": 290.578125,
+          "top": 214.703125,
+          "right": 856,
+          "bottom": 505.28125,
+          "left": 296
+        },
+        "items": [
+          {
+            "label": "All Roles",
+            "box": {
+              "x": 317,
+              "y": 344.28125,
+              "width": 255,
+              "height": 66,
+              "top": 344.28125,
+              "right": 572,
+              "bottom": 410.28125,
+              "left": 317
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Leaderboard",
+            "box": {
+              "x": 580,
+              "y": 344.28125,
+              "width": 255,
+              "height": 66,
+              "top": 344.28125,
+              "right": 835,
+              "bottom": 410.28125,
+              "left": 580
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Watch Live",
+            "box": {
+              "x": 317,
+              "y": 418.28125,
+              "width": 255,
+              "height": 66,
+              "top": 418.28125,
+              "right": 572,
+              "bottom": 484.28125,
+              "left": 317
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Settings",
+            "box": {
+              "x": 580,
+              "y": 418.28125,
+              "width": 255,
+              "height": 66,
+              "top": 418.28125,
+              "right": 835,
+              "bottom": 484.28125,
+              "left": 580
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          }
+        ]
+      }
+    },
+    {
+      "physicalViewport": [
+        1920,
+        1080
+      ],
+      "zoomEquivalent": 1,
+      "seated": false,
+      "measurement": {
+        "width": 1920,
+        "height": 1080,
+        "menu": {
+          "x": 115.1875,
+          "y": 82,
+          "width": 390,
+          "height": 986,
+          "top": 82,
+          "right": 505.1875,
+          "bottom": 1068,
+          "left": 115.1875
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 1920,
+          "height": 62,
+          "top": 0,
+          "right": 1920,
+          "bottom": 62,
+          "left": 0
+        },
+        "note": null,
+        "seat": null,
+        "create": {
+          "x": 117.1875,
+          "y": 493.1875,
+          "width": 386,
+          "height": 55,
+          "top": 493.1875,
+          "right": 503.1875,
+          "bottom": 548.1875,
+          "left": 117.1875
+        },
+        "scrollHeight": 986,
+        "clientHeight": 986,
+        "pageHeight": 1080,
+        "hintCount": 0
+      },
+      "navigation": {
+        "panel": {
+          "x": 680,
+          "y": 394.703125,
+          "width": 560,
+          "height": 290.578125,
+          "top": 394.703125,
+          "right": 1240,
+          "bottom": 685.28125,
+          "left": 680
+        },
+        "items": [
+          {
+            "label": "All Roles",
+            "box": {
+              "x": 701,
+              "y": 524.28125,
+              "width": 255,
+              "height": 66,
+              "top": 524.28125,
+              "right": 956,
+              "bottom": 590.28125,
+              "left": 701
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Leaderboard",
+            "box": {
+              "x": 964,
+              "y": 524.28125,
+              "width": 255,
+              "height": 66,
+              "top": 524.28125,
+              "right": 1219,
+              "bottom": 590.28125,
+              "left": 964
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Watch Live",
+            "box": {
+              "x": 701,
+              "y": 598.28125,
+              "width": 255,
+              "height": 66,
+              "top": 598.28125,
+              "right": 956,
+              "bottom": 664.28125,
+              "left": 701
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Settings",
+            "box": {
+              "x": 964,
+              "y": 598.28125,
+              "width": 255,
+              "height": 66,
+              "top": 598.28125,
+              "right": 1219,
+              "bottom": 664.28125,
+              "left": 964
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          }
+        ]
+      }
+    },
+    {
+      "physicalViewport": [
+        1920,
+        1080
+      ],
+      "zoomEquivalent": 1.25,
+      "seated": false,
+      "measurement": {
+        "width": 1536,
+        "height": 864,
+        "menu": {
+          "x": 76.796875,
+          "y": 82,
+          "width": 355,
+          "height": 770,
+          "top": 82,
+          "right": 431.796875,
+          "bottom": 852,
+          "left": 76.796875
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 1536,
+          "height": 62,
+          "top": 0,
+          "right": 1536,
+          "bottom": 62,
+          "left": 0
+        },
+        "note": null,
+        "seat": null,
+        "create": {
+          "x": 78.796875,
+          "y": 384.9375,
+          "width": 351,
+          "height": 49,
+          "top": 384.9375,
+          "right": 429.796875,
+          "bottom": 433.9375,
+          "left": 78.796875
+        },
+        "scrollHeight": 770,
+        "clientHeight": 770,
+        "pageHeight": 864,
+        "hintCount": 0
+      },
+      "navigation": {
+        "panel": {
+          "x": 488,
+          "y": 286.703125,
+          "width": 560,
+          "height": 290.578125,
+          "top": 286.703125,
+          "right": 1048,
+          "bottom": 577.28125,
+          "left": 488
+        },
+        "items": [
+          {
+            "label": "All Roles",
+            "box": {
+              "x": 509,
+              "y": 416.28125,
+              "width": 255,
+              "height": 66,
+              "top": 416.28125,
+              "right": 764,
+              "bottom": 482.28125,
+              "left": 509
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Leaderboard",
+            "box": {
+              "x": 772,
+              "y": 416.28125,
+              "width": 255,
+              "height": 66,
+              "top": 416.28125,
+              "right": 1027,
+              "bottom": 482.28125,
+              "left": 772
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Watch Live",
+            "box": {
+              "x": 509,
+              "y": 490.28125,
+              "width": 255,
+              "height": 66,
+              "top": 490.28125,
+              "right": 764,
+              "bottom": 556.28125,
+              "left": 509
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Settings",
+            "box": {
+              "x": 772,
+              "y": 490.28125,
+              "width": 255,
+              "height": 66,
+              "top": 490.28125,
+              "right": 1027,
+              "bottom": 556.28125,
+              "left": 772
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          }
+        ]
+      }
+    },
+    {
+      "physicalViewport": [
+        1280,
+        720
+      ],
+      "zoomEquivalent": 1,
+      "seated": false,
+      "measurement": {
+        "width": 1280,
+        "height": 720,
+        "menu": {
+          "x": 64,
+          "y": 82,
+          "width": 305,
+          "height": 626,
+          "top": 82,
+          "right": 369,
+          "bottom": 708,
+          "left": 64
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 1280,
+          "height": 62,
+          "top": 0,
+          "right": 1280,
+          "bottom": 62,
+          "left": 0
+        },
+        "note": null,
+        "seat": null,
+        "create": {
+          "x": 66,
+          "y": 321.859375,
+          "width": 301,
+          "height": 44,
+          "top": 321.859375,
+          "right": 367,
+          "bottom": 365.859375,
+          "left": 66
+        },
+        "scrollHeight": 626,
+        "clientHeight": 626,
+        "pageHeight": 720,
+        "hintCount": 0
+      },
+      "navigation": {
+        "panel": {
+          "x": 360,
+          "y": 214.703125,
+          "width": 560,
+          "height": 290.578125,
+          "top": 214.703125,
+          "right": 920,
+          "bottom": 505.28125,
+          "left": 360
+        },
+        "items": [
+          {
+            "label": "All Roles",
+            "box": {
+              "x": 381,
+              "y": 344.28125,
+              "width": 255,
+              "height": 66,
+              "top": 344.28125,
+              "right": 636,
+              "bottom": 410.28125,
+              "left": 381
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Leaderboard",
+            "box": {
+              "x": 644,
+              "y": 344.28125,
+              "width": 255,
+              "height": 66,
+              "top": 344.28125,
+              "right": 899,
+              "bottom": 410.28125,
+              "left": 644
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Watch Live",
+            "box": {
+              "x": 381,
+              "y": 418.28125,
+              "width": 255,
+              "height": 66,
+              "top": 418.28125,
+              "right": 636,
+              "bottom": 484.28125,
+              "left": 381
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Settings",
+            "box": {
+              "x": 644,
+              "y": 418.28125,
+              "width": 255,
+              "height": 66,
+              "top": 418.28125,
+              "right": 899,
+              "bottom": 484.28125,
+              "left": 644
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          }
+        ]
+      }
+    },
+    {
+      "physicalViewport": [
+        1280,
+        720
+      ],
+      "zoomEquivalent": 1.25,
+      "seated": false,
+      "measurement": {
+        "width": 1024,
+        "height": 576,
+        "menu": {
+          "x": 40.953125,
+          "y": 82,
+          "width": 305,
+          "height": 482,
+          "top": 82,
+          "right": 345.953125,
+          "bottom": 564,
+          "left": 40.953125
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 1024,
+          "height": 62,
+          "top": 0,
+          "right": 1024,
+          "bottom": 62,
+          "left": 0
+        },
+        "note": null,
+        "seat": null,
+        "create": {
+          "x": 42.953125,
+          "y": 237.171875,
+          "width": 301,
+          "height": 44,
+          "top": 237.171875,
+          "right": 343.953125,
+          "bottom": 281.171875,
+          "left": 42.953125
+        },
+        "scrollHeight": 482,
+        "clientHeight": 482,
+        "pageHeight": 576,
+        "hintCount": 0
+      },
+      "navigation": {
+        "panel": {
+          "x": 232,
+          "y": 142.703125,
+          "width": 560,
+          "height": 290.578125,
+          "top": 142.703125,
+          "right": 792,
+          "bottom": 433.28125,
+          "left": 232
+        },
+        "items": [
+          {
+            "label": "All Roles",
+            "box": {
+              "x": 253,
+              "y": 272.28125,
+              "width": 255,
+              "height": 66,
+              "top": 272.28125,
+              "right": 508,
+              "bottom": 338.28125,
+              "left": 253
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Leaderboard",
+            "box": {
+              "x": 516,
+              "y": 272.28125,
+              "width": 255,
+              "height": 66,
+              "top": 272.28125,
+              "right": 771,
+              "bottom": 338.28125,
+              "left": 516
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Watch Live",
+            "box": {
+              "x": 253,
+              "y": 346.28125,
+              "width": 255,
+              "height": 66,
+              "top": 346.28125,
+              "right": 508,
+              "bottom": 412.28125,
+              "left": 253
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Settings",
+            "box": {
+              "x": 516,
+              "y": 346.28125,
+              "width": 255,
+              "height": 66,
+              "top": 346.28125,
+              "right": 771,
+              "bottom": 412.28125,
+              "left": 516
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          }
+        ]
+      }
+    },
+    {
+      "physicalViewport": [
+        1024,
+        600
+      ],
+      "zoomEquivalent": 1,
+      "seated": false,
+      "measurement": {
+        "width": 1024,
+        "height": 600,
+        "menu": {
+          "x": 40.953125,
+          "y": 82,
+          "width": 305,
+          "height": 506,
+          "top": 82,
+          "right": 345.953125,
+          "bottom": 588,
+          "left": 40.953125
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 1024,
+          "height": 62,
+          "top": 0,
+          "right": 1024,
+          "bottom": 62,
+          "left": 0
+        },
+        "note": null,
+        "seat": null,
+        "create": {
+          "x": 42.953125,
+          "y": 251.296875,
+          "width": 301,
+          "height": 44,
+          "top": 251.296875,
+          "right": 343.953125,
+          "bottom": 295.296875,
+          "left": 42.953125
+        },
+        "scrollHeight": 506,
+        "clientHeight": 506,
+        "pageHeight": 600,
+        "hintCount": 0
+      },
+      "navigation": {
+        "panel": {
+          "x": 232,
+          "y": 154.703125,
+          "width": 560,
+          "height": 290.578125,
+          "top": 154.703125,
+          "right": 792,
+          "bottom": 445.28125,
+          "left": 232
+        },
+        "items": [
+          {
+            "label": "All Roles",
+            "box": {
+              "x": 253,
+              "y": 284.28125,
+              "width": 255,
+              "height": 66,
+              "top": 284.28125,
+              "right": 508,
+              "bottom": 350.28125,
+              "left": 253
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Leaderboard",
+            "box": {
+              "x": 516,
+              "y": 284.28125,
+              "width": 255,
+              "height": 66,
+              "top": 284.28125,
+              "right": 771,
+              "bottom": 350.28125,
+              "left": 516
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Watch Live",
+            "box": {
+              "x": 253,
+              "y": 358.28125,
+              "width": 255,
+              "height": 66,
+              "top": 358.28125,
+              "right": 508,
+              "bottom": 424.28125,
+              "left": 253
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Settings",
+            "box": {
+              "x": 516,
+              "y": 358.28125,
+              "width": 255,
+              "height": 66,
+              "top": 358.28125,
+              "right": 771,
+              "bottom": 424.28125,
+              "left": 516
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          }
+        ]
+      }
+    },
+    {
+      "physicalViewport": [
+        1024,
+        600
+      ],
+      "zoomEquivalent": 1.25,
+      "seated": false,
+      "measurement": {
+        "width": 819,
+        "height": 480,
+        "menu": {
+          "x": 40.9375,
+          "y": 82,
+          "width": 310,
+          "height": 388,
+          "top": 82,
+          "right": 350.9375,
+          "bottom": 470,
+          "left": 40.9375
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 819,
+          "height": 52,
+          "top": 0,
+          "right": 819,
+          "bottom": 52,
+          "left": 0
+        },
+        "note": null,
+        "seat": null,
+        "create": {
+          "x": 42.9375,
+          "y": 201.03125,
+          "width": 306,
+          "height": 49,
+          "top": 201.03125,
+          "right": 348.9375,
+          "bottom": 250.03125,
+          "left": 42.9375
+        },
+        "scrollHeight": 427,
+        "clientHeight": 388,
+        "pageHeight": 480,
+        "hintCount": 0
+      },
+      "navigation": {
+        "panel": {
+          "x": 129.5,
+          "y": 94.703125,
+          "width": 560,
+          "height": 290.578125,
+          "top": 94.703125,
+          "right": 689.5,
+          "bottom": 385.28125,
+          "left": 129.5
+        },
+        "items": [
+          {
+            "label": "All Roles",
+            "box": {
+              "x": 150.5,
+              "y": 224.28125,
+              "width": 255,
+              "height": 66,
+              "top": 224.28125,
+              "right": 405.5,
+              "bottom": 290.28125,
+              "left": 150.5
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Leaderboard",
+            "box": {
+              "x": 413.5,
+              "y": 224.28125,
+              "width": 255,
+              "height": 66,
+              "top": 224.28125,
+              "right": 668.5,
+              "bottom": 290.28125,
+              "left": 413.5
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Watch Live",
+            "box": {
+              "x": 150.5,
+              "y": 298.28125,
+              "width": 255,
+              "height": 66,
+              "top": 298.28125,
+              "right": 405.5,
+              "bottom": 364.28125,
+              "left": 150.5
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          },
+          {
+            "label": "Settings",
+            "box": {
+              "x": 413.5,
+              "y": 298.28125,
+              "width": 255,
+              "height": 66,
+              "top": 298.28125,
+              "right": 668.5,
+              "bottom": 364.28125,
+              "left": 413.5
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 64
+          }
+        ]
+      }
+    },
+    {
+      "physicalViewport": [
+        390,
+        844
+      ],
+      "zoomEquivalent": 1,
+      "seated": false,
+      "measurement": {
+        "width": 390,
+        "height": 844,
+        "menu": {
+          "x": 20,
+          "y": 72,
+          "width": 350,
+          "height": 686,
+          "top": 72,
+          "right": 370,
+          "bottom": 758,
+          "left": 20
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 56,
+          "top": 0,
+          "right": 390,
+          "bottom": 56,
+          "left": 0
+        },
+        "note": null,
+        "seat": null,
+        "create": {
+          "x": 21,
+          "y": 338.953125,
+          "width": 348,
+          "height": 43,
+          "top": 338.953125,
+          "right": 369,
+          "bottom": 381.953125,
+          "left": 21
+        },
+        "scrollHeight": 686,
+        "clientHeight": 686,
+        "pageHeight": 844,
+        "hintCount": 0
+      },
+      "navigation": {
+        "panel": {
+          "x": 12,
+          "y": 190.703125,
+          "width": 366,
+          "height": 386.578125,
+          "top": 190.703125,
+          "right": 378,
+          "bottom": 577.28125,
+          "left": 12
+        },
+        "items": [
+          {
+            "label": "All Roles",
+            "box": {
+              "x": 27,
+              "y": 309.28125,
+              "width": 336,
+              "height": 58,
+              "top": 309.28125,
+              "right": 363,
+              "bottom": 367.28125,
+              "left": 27
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 56
+          },
+          {
+            "label": "Leaderboard",
+            "box": {
+              "x": 27,
+              "y": 374.28125,
+              "width": 336,
+              "height": 58,
+              "top": 374.28125,
+              "right": 363,
+              "bottom": 432.28125,
+              "left": 27
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 56
+          },
+          {
+            "label": "Watch Live",
+            "box": {
+              "x": 27,
+              "y": 439.28125,
+              "width": 336,
+              "height": 58,
+              "top": 439.28125,
+              "right": 363,
+              "bottom": 497.28125,
+              "left": 27
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 56
+          },
+          {
+            "label": "Settings",
+            "box": {
+              "x": 27,
+              "y": 504.28125,
+              "width": 336,
+              "height": 58,
+              "top": 504.28125,
+              "right": 363,
+              "bottom": 562.28125,
+              "left": 27
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 56
+          }
+        ]
+      }
+    },
+    {
+      "physicalViewport": [
+        430,
+        932
+      ],
+      "zoomEquivalent": 1,
+      "seated": false,
+      "measurement": {
+        "width": 430,
+        "height": 932,
+        "menu": {
+          "x": 20,
+          "y": 72,
+          "width": 350,
+          "height": 774,
+          "top": 72,
+          "right": 370,
+          "bottom": 846,
+          "left": 20
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 56,
+          "top": 0,
+          "right": 430,
+          "bottom": 56,
+          "left": 0
+        },
+        "note": null,
+        "seat": null,
+        "create": {
+          "x": 21,
+          "y": 382.953125,
+          "width": 348,
+          "height": 43,
+          "top": 382.953125,
+          "right": 369,
+          "bottom": 425.953125,
+          "left": 21
+        },
+        "scrollHeight": 774,
+        "clientHeight": 774,
+        "pageHeight": 932,
+        "hintCount": 0
+      },
+      "navigation": {
+        "panel": {
+          "x": 12,
+          "y": 234.703125,
+          "width": 406,
+          "height": 386.578125,
+          "top": 234.703125,
+          "right": 418,
+          "bottom": 621.28125,
+          "left": 12
+        },
+        "items": [
+          {
+            "label": "All Roles",
+            "box": {
+              "x": 27,
+              "y": 353.28125,
+              "width": 376,
+              "height": 58,
+              "top": 353.28125,
+              "right": 403,
+              "bottom": 411.28125,
+              "left": 27
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 56
+          },
+          {
+            "label": "Leaderboard",
+            "box": {
+              "x": 27,
+              "y": 418.28125,
+              "width": 376,
+              "height": 58,
+              "top": 418.28125,
+              "right": 403,
+              "bottom": 476.28125,
+              "left": 27
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 56
+          },
+          {
+            "label": "Watch Live",
+            "box": {
+              "x": 27,
+              "y": 483.28125,
+              "width": 376,
+              "height": 58,
+              "top": 483.28125,
+              "right": 403,
+              "bottom": 541.28125,
+              "left": 27
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 56
+          },
+          {
+            "label": "Settings",
+            "box": {
+              "x": 27,
+              "y": 548.28125,
+              "width": 376,
+              "height": 58,
+              "top": 548.28125,
+              "right": 403,
+              "bottom": 606.28125,
+              "left": 27
+            },
+            "icon": true,
+            "border": "1px",
+            "textHeight": 35,
+            "available": 56
+          }
+        ]
+      }
+    }
+  ],
+  "navigationRoutes": [
+    "Main Menu preserves seat",
+    "Resume Team",
+    "Full Workflow",
+    "Team Members",
+    "All Roles",
+    "Leaderboard",
+    "Settings",
+    "Invite Link copies existing directory route",
+    "Watch Live",
+    "My Team"
+  ],
+  "javascriptErrors": [],
+  "scope": "Actual application/native controls and real local Solo/practice adapters, no API/room mocks. Source imports only inspect state. WebGL disabled for fast layout/behavior; screenshots show fallback.125% modeled by equivalentCSSviewport/DPR; physicalOSzoom/Safari/hostedSupabase not tested."
+}

@@ -1,0 +1,37 @@
+PIT STOP. SIMULATOR. — FINAL UI REGRESSION FIX PASS
+CONTINUE THE CURRENT CODEX PROJECT/BRANCH — DO NOT START OVER
+
+The latest build is almost finished and its overall desktop/mobile gameplay scene is good. Make ONLY the focused fixes below, based on the two newly attached desktop screenshots. Preserve all completed work from V11.3 and subsequent changes, including the 3D scene, responsive HUD, vertical desktop workflow, event log, bot behavior, Supabase admin, replay, and multiplayer. Do not rebuild the interface.
+
+1) FIX ALL DESKTOP TEXT OVERLAP, WRAPPING AND SPACING
+- Screenshot 1 (main menu): The small helper text under the Resume Team / Leave Team row ("Your place on the team is saved") is colliding or visually mixing with the subsequent Create Team / Browse Teams controls. Ensure that text belongs in its own properly spaced row directly beneath the Resume/Leave group, without overlapping any buttons or 3D instructions.
+- The "DRAG TO ROTATE · SCROLL TO ZOOM" hint currently overlaps or visually collides with navigation links near the lower-left corner (e.g. Leaderboard). Reposition or hide it in the menu when necessary. Gameplay controls and hints must never overlap navigation.
+- Audit title, helper text, toolbar buttons, status badges, cards, modal text and navigation at common desktop widths/heights. Prevent accidental overlays caused by absolute/fixed positioning, narrow flex items, text wrapping, excessive font-size, or z-index.
+- For ordinary menu content, prefer normal layout flow with flex/grid, consistent row gaps, min-width: 0, deliberate line wrapping, and responsive breakpoints. Do not merely suppress the overlap by clipping important labels.
+- Check 1366x768, 1440x900, 1920x1080, plus smaller laptop sizes and browser zoom at 100% and 125%. The page should remain polished, readable and navigable without overlapping text.
+
+2) RESTORE THE PREVIOUS, MORE POLISHED NAVIGATION PANEL VISUALS
+- Screenshot 2 shows the newly simplified "Quick controls" popup as plain, crowded text links. This regression is NOT desired.
+- Restore the richer, attractive navigation layout from the earlier project versions (before the overly minimal Quick controls makeover). Refer to the existing git history or previous source if available.
+- Make navigation a styled in-game panel with clear icon + readable label for each action, proper hit areas, visual grouping, comfortable spacing, and hover/focus states. It should look like part of the indie game HUD, not a paragraph containing links.
+- Keep all current actions: Main Menu, My Team/Resume, Full Workflow, Team Members, All Roles, Leaderboard, Watch Live, Invite Link, Settings (display context-appropriate options only). Preserve their logic and route targets.
+- Do not introduce a huge overlay that hides the whole 3D scene; use a compact modal/popover with well-arranged one- or two-column navigation items on desktop, and a mobile-friendly stacked layout.
+- Avoid duplicate buttons or entries for the screen the user is already viewing, where appropriate.
+- Restore the PREVIOUS PRESENTATION, not outdated broken application logic. Do not roll back recent backend, game, or security fixes.
+
+3) RESTORE SELECT-ANY-ROLE IN SOLO TEST (REGRESSION)
+- An earlier version of Solo Test allowed selecting ANY of the 15 playable roles, but the latest build lost this feature. Bring it back visibly and make it functional, rather than merely reinstating a decorative selector.
+- Add a clearly labeled "Choose role" control in the Solo Test waiting/ready screen, accessible before the round starts.
+- Include all 15 individual playable positions: 4 wheel gunners, 4 old-wheel removers, 4 new-wheel fitters, front jack, rear jack, and release/signals controller. Label wheel corner explicitly where relevant.
+- Selecting a role must actually assign that role to the solo human player, update the role card, action button(s), the yellow YOU character marker, task ownership and mini/full workflow. All other player-controllable positions should be run by adaptive bots.
+- Ensure role change is only allowed while the solo round is idle/not yet running. If selection changes while waiting, reset solo Ready state if necessary, and cleanly regenerate the local round state so previous role state does not leak.
+- Once the round starts, keep the chosen role stable until that round ends. Replay/reset may retain the previously chosen role, and the owner can change it again before the next round.
+- Maintain SOLO TEST — NOT RANKED; no solo data must enter the global online leaderboard. Do not change online 4–15-person matchmaking or random role assignment.
+- Test jack operator two-stage actions, gunner two-stage actions, and release controller role (including correct GO/lead-bot behavior and eventual completion).
+
+4) SCOPE, VERIFICATION AND DELIVERY
+- These are FINAL POLISH / REGRESSION fixes. Keep the working layout, 3D visuals, action timing, multiplayer, bot behavior, Watch Live/replay and server-backed Global Admin intact.
+- Specifically verify no overlapping labels/buttons in the two screenshot states; navigation must remain visually styled and usable; all 15 solo roles must be selectable and perform their real task logic.
+- Run project type checking, tests, build and packaging; state truthfully what was/wasn't tested.
+- Return the updated editable source and a Netlify-ready ZIP, plus a short list of files changed and problems fixed.
+- Implement these fixes in the CURRENT working project state. Do not answer with a plan only.

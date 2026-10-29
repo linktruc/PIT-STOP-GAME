@@ -1,0 +1,84 @@
+{
+  "checks": [
+    "Audio stays dormant before a gesture, then the actual Watch click unlocks native audio with measurable output",
+    "Native synthesized loosen/tighten, lift/lower, wheel off/on and release cues all produce nonzero output",
+    "Mute stops current sources and blocks new task sounds; native output at zero master volume is silent",
+    "Free Space pauses/resumes the replay; held-key repeat does not repeatedly toggle playback",
+    "Focused Restart, speed, Event Log and Close replay buttons retain native Space activation; Escape closes only the Event Log first"
+  ],
+  "fixture": {
+    "events": 21,
+    "elapsedMs": 4200
+  },
+  "unlocked": {
+    "rms": 0.010737898358807355,
+    "peak": 0.024643495678901672,
+    "starts": 4,
+    "state": "running"
+  },
+  "nativeTaskAudio": [
+    {
+      "taskId": "FL_GUN_LOOSEN",
+      "rms": 0.10652729651979077,
+      "peak": 0.3765253722667694,
+      "starts": 20,
+      "state": "running"
+    },
+    {
+      "taskId": "RR_GUN_TIGHTEN",
+      "rms": 0.09862129536854591,
+      "peak": 0.3975370526313782,
+      "starts": 36,
+      "state": "running"
+    },
+    {
+      "taskId": "FRONT_LIFT",
+      "rms": 0.07225737986849858,
+      "peak": 0.2515953779220581,
+      "starts": 40,
+      "state": "running"
+    },
+    {
+      "taskId": "REAR_LOWER",
+      "rms": 0.06353948797283294,
+      "peak": 0.18567591905593872,
+      "starts": 44,
+      "state": "running"
+    },
+    {
+      "taskId": "RL_WHEEL_OFF",
+      "rms": 0.10413302752564953,
+      "peak": 0.37290796637535095,
+      "starts": 48,
+      "state": "running"
+    },
+    {
+      "taskId": "FR_WHEEL_ON",
+      "rms": 0.18133791225805665,
+      "peak": 0.45383092761039734,
+      "starts": 52,
+      "state": "running"
+    },
+    {
+      "taskId": "GREEN_RELEASE",
+      "rms": 0.1271296263328649,
+      "peak": 0.31463146209716797,
+      "starts": 59,
+      "state": "running"
+    }
+  ],
+  "muted": {
+    "rms": 0,
+    "peak": 0,
+    "starts": 60,
+    "state": "running"
+  },
+  "zeroVolume": {
+    "rms": 0,
+    "peak": 0,
+    "starts": 65,
+    "state": "running"
+  },
+  "javascriptErrors": [],
+  "scope": "Actual React App/ReplayView controls and native Chromium Web Audio. A completed 21-event TypeScript-engine round is supplied through a local API fixture. WebGL disabled to isolate controls/audio. Measured digital output proves synthesis and mute behavior; physical speaker audibility, Safari autoplay and hosted Supabase are not tested here."
+}

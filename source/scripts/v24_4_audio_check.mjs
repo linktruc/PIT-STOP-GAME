@@ -1,0 +1,4 @@
+import {chromium} from 'playwright';
+import fs from 'node:fs';
+const browser=await chromium.launch({channel:process.platform==='win32'?'msedge':undefined,headless:true});
+try{const page=await browser.newPage();await page.goto('http://127.0.0.1:5173/scripts/v24-4-live-audio-qa.html');await page.waitForFunction(()=>window.verifyAudio);const result=await page.evaluate(()=>window.verifyAudio());fs.mkdirSync('docs/v24-4-evidence',{recursive:true});fs.writeFileSync('docs/v24-4-evidence/render-audio.json',JSON.stringify(result,null,2));console.log(result);if(result.some(r=>r.cues!==21||r.unique!==21||r.early||!r.scoreUnchanged||!r.noCuesAfterDispose))process.exitCode=1;}finally{await browser.close();}

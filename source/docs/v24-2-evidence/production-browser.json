@@ -1,0 +1,14 @@
+{
+  "errors": [],
+  "result": "17.105s",
+  "metrics": {
+    "backwards": 0,
+    "frames": 57,
+    "maxGrip": 2.094764613337708e-15,
+    "last": 1793198440868
+  },
+  "replaySeek": {
+    "start": "-3000",
+    "end": "23600"
+  }
+}

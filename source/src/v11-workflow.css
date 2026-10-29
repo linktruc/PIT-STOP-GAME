@@ -1,0 +1,98 @@
+/* A contextual milestone rail. Track/status and total completion are separate. */
+.rail-summary{display:none}
+.mini-chain.rolling-chain.live-workflow.milestone-workflow{left:24px;right:24px;top:154px;width:auto;max-width:900px;height:62px;padding:5px 8px 4px;border:1px solid #77a8b54d;border-radius:5px;background:#101e2be6;overflow:hidden;box-sizing:border-box}
+.milestone-workflow .rail-meta{height:11px;display:flex;justify-content:space-between;gap:8px;align-items:center;font:9px/11px 'Barlow',sans-serif;color:#c4d4da}
+.rail-meta>span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rail-meta>b{display:flex;align-items:center;gap:1px;flex:none;font:9px/11px var(--mono);font-weight:400;color:#b7d5d3}
+.rail-meta .rail-count{display:inline-block;width:15px;text-align:right;font-variant-numeric:tabular-nums;color:#e2eeea}
+.rail-meta .rail-open{margin-left:9px;font:7px/11px var(--mono);letter-spacing:.3px}
+.milestone-rail{position:relative;display:grid;height:36px;margin:1px 0 2px;isolation:isolate}
+.milestone-rail:before{content:'';position:absolute;top:4px;left:0;right:0;height:1px;background:#5b798877;z-index:-1}
+.rail-milestone{animation:milestone-in .22s ease-out;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:0;min-width:0;color:#a8bac6;white-space:nowrap}
+.rail-tick{display:grid;place-items:center;flex:none;width:8px;height:8px;border:1px solid #6d8995;background:#152632;border-radius:50%;margin-bottom:2px;transition:background .24s,border-color .24s,color .24s;box-shadow:0 0 0 2px #101e2b}
+.rail-context{font:500 11px/11px 'Barlow Condensed',sans-serif;color:#a9bfca}
+.rail-action{font:600 11px/12px 'Barlow',sans-serif;letter-spacing:0}
+.rail-milestone.available{color:#b5f2ec}.rail-milestone.available .rail-tick{background:#8be3d4;border-color:#8be3d4;box-shadow:0 0 0 2px #101e2b,0 0 8px #69d5c540}
+.rail-milestone.done{color:#96c7b3}.rail-milestone.done .rail-tick{background:#69b597;border-color:#69b597;color:#102b23}
+.rail-milestone.owned .rail-tick{border-color:#f1cb73;box-shadow:0 0 0 2px #101e2b,0 0 0 3px #d6ac5266}.rail-milestone.owned .rail-context{color:#f0cd7e}
+.rail-total{display:block;position:relative;height:2px;overflow:hidden;border-radius:1px;background:#405766}
+.rail-total-fill{display:block;position:absolute;inset:0;transform-origin:0 50%;background:#81ddbc;will-change:transform}
+/* One viewport: no graph scroll, hidden lanes, or width larger than the dialog. */
+.game-overlay.chain-overlay{width:min(940px,100%);height:min(760px,100%);max-height:100%;min-height:0}
+.chain-overlay .overlay-heading{padding:10px 14px;gap:12px;min-height:57px}
+.chain-overlay .overlay-heading h2{font-size:27px;line-height:1;margin-top:3px}
+.chain-overlay .overlay-heading .eyebrow{font-size:7px;line-height:9px}
+.game-overlay.chain-overlay .overlay-content{display:flex;flex:1;min-height:0;padding:8px 10px!important;overflow:hidden}
+.connected-workflow.v11-board{display:flex;flex-direction:column;height:100%;min-height:0;gap:5px;isolation:isolate}
+.v11-board .graph-summary{height:17px;flex:none;display:flex;flex-direction:row;justify-content:space-between;align-items:center;gap:6px;margin:0;font:600 11px/15px 'Barlow',sans-serif}
+.v11-board .graph-summary>span{font:10px/15px 'Barlow',sans-serif;color:#a7bdc8;align-self:center}
+.connected-workflow.v11-board .connected-graph{display:flex;flex-direction:column;gap:9px;position:relative;flex:1;min-height:0;height:auto;width:100%;min-width:0;max-width:none;margin:0;padding:0 7px;overflow:visible}
+.v11-board .graph-edges{inset:0;z-index:-1;overflow:visible;pointer-events:none}
+.v11-board .graph-edge{stroke-width:1.2;opacity:.85}.v11-board .graph-edge.redundant{stroke-width:.7;opacity:.3;stroke-dasharray:2 3}
+.axle-columns{display:grid;grid-template-columns:1fr 1fr;gap:32px;flex:1;min-height:0}
+.axle-board{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:14px repeat(6,minmax(30px,1fr));gap:9px 14px;min-width:0;min-height:0;align-items:stretch}
+.axle-jack{grid-column:1/-1;display:flex;justify-content:center;min-height:0}
+.wheel-lane-name{text-align:center;color:#d7e3e4;font:600 12px/14px 'Barlow',sans-serif;letter-spacing:.2px}
+.connected-workflow.v11-board .chain-node{position:relative;left:auto;top:auto;transform:none;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2px;width:100%;max-width:none;height:auto;min-height:0;padding:3px 5px;border-radius:4px;text-align:center;overflow:hidden;transition:background .22s,border-color .22s}
+.v11-board .axle-jack>.chain-node{width:72%;max-width:225px}
+.connected-workflow.v11-board .chain-node-title{display:block;max-width:100%;font:600 13px/14px 'Barlow',sans-serif;letter-spacing:0;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}
+.connected-workflow.v11-board .chain-node-owner{display:flex;align-items:center;justify-content:center;gap:3px;max-width:100%;font:11px/12px 'Barlow',sans-serif;color:#bccdd4;min-width:0;white-space:nowrap}
+.v11-board .chain-node-owner>span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.v11-board .chain-node-owner>svg{flex:none}
+.v11-board .chain-node.yours{background:#403829;border-color:#edc15b;box-shadow:0 0 0 1px #e9be5929}
+.connected-workflow.v11-board .board-you{margin:0;flex:none;padding:0 3px;color:#f2ce7d;font:600 9px/11px 'Barlow',sans-serif}
+.v11-board .chain-node.selected{outline:2px solid #83d7e0;outline-offset:0}
+.v11-board .chain-ready-dot{display:block;flex:none;width:5px;height:5px;border-radius:50%;background:#91e8de}
+.release-join{display:flex;justify-content:center;flex:none;height:42px}
+.v11-board .release-join>.chain-node{width:40%;max-width:240px}
+.v11-board .graph-legend{height:16px;display:flex;flex:none;align-items:center;justify-content:center;gap:14px;font:10px/13px 'Barlow',sans-serif;color:#bdd0d9}
+.v11-board .graph-legend>span{display:flex;align-items:center;gap:4px}.v11-board .graph-legend i{display:block;width:6px;height:6px;border:1px solid #647d8c;border-radius:2px}.v11-board .graph-legend .available{background:#75d9d1;border-color:#75d9d1}.v11-board .graph-legend .done{background:#559c7f;border-color:#559c7f}.v11-board .graph-legend .owned{background:#e8c269;border-color:#e8c269}
+.v11-board .chain-inspect{height:28px;min-height:28px;flex:none;display:flex;align-items:center;justify-content:center;padding:2px 7px;margin:0;background:#122b36;border-radius:3px;font:11px/12px 'Barlow',sans-serif;color:#9ab3bf;text-align:center;overflow:hidden;overflow-wrap:anywhere}
+.v11-board .chain-inspect.inspecting{color:#e3ecea}
+/* Existing role guidance stays concise; its content is independent of graph geometry. */
+.v10-role-briefing.role-briefing p{font-size:15px;line-height:1.5;margin-bottom:17px}.v10-role-briefing.role-briefing ol{font:600 16px/1.5 'Barlow',sans-serif}.v10-role-briefing.role-briefing .role-briefing-tip{font-size:12px;color:#a2b9c4;border-top:1px solid #7b9eab33;padding-top:12px}.role-families.all-roles{gap:11px}.role-families.all-roles h3{font:600 18px/1.1 'Barlow',sans-serif;margin:0 0 7px}.role-families.all-roles p{margin:0}.role-families.all-roles>.panel-note{grid-column:1/-1}
+@media(max-width:700px){
+ .mini-chain.rolling-chain.live-workflow.milestone-workflow,.view-watch.focused-room .mini-chain.rolling-chain.live-workflow.milestone-workflow{left:14px;right:14px;width:auto;max-width:none;top:calc(135px + env(safe-area-inset-top));height:62px;padding:5px 8px 4px}
+ .view-watch.focused-room .mini-chain.rolling-chain.live-workflow.milestone-workflow{top:calc(157px + env(safe-area-inset-top))}
+ .chain-overlay .overlay-heading h2{font-size:25px}
+ .chain-overlay .overlay-heading{min-height:55px;padding:8px 12px}
+ .game-overlay.chain-overlay .overlay-content{padding:7px 8px!important}
+ .connected-workflow.v11-board{gap:4px}
+ .connected-workflow.v11-board .connected-graph{gap:7px;padding:0 7px}
+ .v11-board .graph-summary{font-size:11px}.v11-board .graph-summary>span{font-size:9px}
+ .axle-columns{grid-template-columns:1fr;grid-template-rows:1fr 1fr;gap:8px}
+ .axle-board{grid-template-rows:11px repeat(6,minmax(26px,1fr));gap:3px 15px}
+ .wheel-lane-name{font-size:11px;line-height:11px}
+ .connected-workflow.v11-board .chain-node{gap:0;padding:1px 3px}
+ .connected-workflow.v11-board .chain-node-title{font:600 11px/12px 'Barlow',sans-serif}
+ .connected-workflow.v11-board .chain-node-owner{font:10px/11px 'Barlow',sans-serif;gap:3px}
+ .connected-workflow.v11-board .board-you{font-size:8px;line-height:10px;padding:0 2px}
+ .v11-board .axle-jack>.chain-node{width:62%;max-width:220px}
+ .release-join{height:29px}.v11-board .release-join>.chain-node{width:66%}
+ .v11-board .chain-inspect{height:25px;min-height:25px;font-size:10px;line-height:11px}
+ .v11-board .graph-legend{height:14px;font-size:10px;gap:12px}
+}
+@media(max-height:720px) and (max-width:700px){.mini-chain.rolling-chain.live-workflow.milestone-workflow{top:calc(125px + env(safe-area-inset-top));height:58px;padding-top:3px;padding-bottom:2px}}
+@media(prefers-reduced-motion:reduce){.rail-tick,.v11-board .chain-node{transition:none}.v11-board .graph-edge.live{animation:none}}
+
+@keyframes milestone-in{from{opacity:.35;transform:translateY(2px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.rail-milestone{animation:none}}
+
+/* Grouped seven-phase progress: two jack statuses or four wheel-corner statuses
+   are submarkers, not duplicate full-size tasks. Keep the existing compact rail. */
+.milestone-workflow .grouped-milestone{min-width:0;justify-content:flex-start}
+.milestone-workflow .grouped-milestone .rail-tick{margin-bottom:1px}
+.milestone-workflow .rail-group-parts{display:flex;align-items:center;justify-content:center;gap:3px;width:100%;height:12px;overflow:hidden}
+.milestone-workflow .rail-part{display:inline-flex;align-items:center;justify-content:center;gap:1px;min-width:0;font:600 8px/10px 'Barlow Condensed',sans-serif;color:#95a9b4;white-space:nowrap}
+.milestone-workflow .rail-part.done{color:#8cdbb6}.milestone-workflow .rail-part.available{color:#b1eadf}
+.milestone-workflow .rail-part.yours{color:#f6ca6b}
+.milestone-workflow .rail-part svg{flex:none;color:#75dbab}
+.milestone-workflow .part-pip{flex:none;display:inline-block;width:4px;height:4px;border:1px solid #7a909a;border-radius:50%}
+.milestone-workflow .rail-part.available .part-pip{background:#7ddac8;border-color:#7ddac8}
+.milestone-workflow .grouped-milestone .rail-action{display:block;width:100%;font:600 10px/12px 'Barlow Condensed',sans-serif;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(min-width:1100px){
+ .scene-instruments .milestone-workflow .grouped-milestone{grid-template-rows:auto auto;align-content:center}
+ .scene-instruments .milestone-workflow .rail-group-parts{grid-row:1;grid-column:2;justify-content:flex-start;gap:8px;height:14px}
+ .scene-instruments .milestone-workflow .rail-part{font:500 11px/14px 'Barlow Condensed',sans-serif;gap:3px}
+ .scene-instruments .milestone-workflow .grouped-milestone .rail-action{grid-row:2;grid-column:2;text-align:left;font:600 14px/17px 'Barlow',sans-serif}
+}

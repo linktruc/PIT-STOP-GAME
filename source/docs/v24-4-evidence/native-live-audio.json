@@ -1,0 +1,107 @@
+{
+  "errors": [],
+  "humanClickAt": 1793203334610,
+  "events": [
+    {
+      "key": "sine:82",
+      "cue": {
+        "taskId": "FL_WHEEL_ON",
+        "now": 1793203335296,
+        "startsAt": 1793203335193,
+        "endsAt": 1793203336043
+      },
+      "frameClock": 1793203335296,
+      "audioAt": 7.925
+    },
+    {
+      "key": "sine:82",
+      "cue": {
+        "taskId": "FR_WHEEL_ON",
+        "now": 1793203335296,
+        "startsAt": 1793203335193,
+        "endsAt": 1793203335893
+      },
+      "frameClock": 1793203335296,
+      "audioAt": 7.925
+    },
+    {
+      "key": "sine:82",
+      "cue": {
+        "taskId": "RL_WHEEL_ON",
+        "now": 1793203335296,
+        "startsAt": 1793203335193,
+        "endsAt": 1793203335893
+      },
+      "frameClock": 1793203335296,
+      "audioAt": 7.925
+    },
+    {
+      "key": "sine:82",
+      "cue": {
+        "taskId": "RR_WHEEL_ON",
+        "now": 1793203335296,
+        "startsAt": 1793203335193,
+        "endsAt": 1793203335893
+      },
+      "frameClock": 1793203335296,
+      "audioAt": 7.925
+    },
+    {
+      "key": "square:168",
+      "cue": {
+        "taskId": "FR_GUN_TIGHTEN",
+        "now": 1793203336037,
+        "startsAt": 1793203335893,
+        "endsAt": 1793203336593
+      },
+      "frameClock": 1793203336037,
+      "audioAt": 8.666333333333334
+    },
+    {
+      "key": "square:168",
+      "cue": {
+        "taskId": "RL_GUN_TIGHTEN",
+        "now": 1793203336037,
+        "startsAt": 1793203335893,
+        "endsAt": 1793203336593
+      },
+      "frameClock": 1793203336037,
+      "audioAt": 8.666333333333334
+    },
+    {
+      "key": "square:168",
+      "cue": {
+        "taskId": "RR_GUN_TIGHTEN",
+        "now": 1793203336037,
+        "startsAt": 1793203335893,
+        "endsAt": 1793203336593
+      },
+      "frameClock": 1793203336037,
+      "audioAt": 8.666333333333334
+    },
+    {
+      "key": "sawtooth:135",
+      "cue": {
+        "taskId": "FRONT_LOWER",
+        "now": 1793203336981,
+        "startsAt": 1793203336962,
+        "endsAt": 1793203337881
+      },
+      "frameClock": 1793203336981,
+      "audioAt": 9.615666666666668
+    },
+    {
+      "key": "sawtooth:68",
+      "cue": {
+        "taskId": "GREEN_RELEASE",
+        "now": 1793203338110,
+        "startsAt": 1793203337881,
+        "endsAt": 1793203338800
+      },
+      "frameClock": 1793203338110,
+      "audioAt": 10.746333333333334
+    }
+  ],
+  "earlyCount": 0,
+  "humanWheelCueAfterClickMs": 686
+}

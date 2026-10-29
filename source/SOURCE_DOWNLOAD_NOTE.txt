@@ -1,0 +1,7 @@
+V11.4 editable source - lightweight download
+
+All application source, game assets/fonts, package lockfile, tests, backend SQL, build/deployment configuration, guides and QA scripts are unchanged from the full V11.4 source archive.
+
+Only optional evidence screenshots and duplicate evidence videos were omitted to reduce download size. Required evidence videos and one final screenshot remain. Historical evidence galleries may link to omitted screenshots. These are validation captures, not game assets, and are not needed to edit, run, build or deploy the game.
+
+Run: npm ci, npm run dev. Build: npm run build.

@@ -1,0 +1,41 @@
+{
+  "display": "block",
+  "gap": "normal",
+  "buttons": [
+    {
+      "text": "My Team",
+      "height": 21,
+      "border": "0px"
+    },
+    {
+      "text": "Full workflow",
+      "height": 21,
+      "border": "0px"
+    },
+    {
+      "text": "Team Members",
+      "height": 21,
+      "border": "0px"
+    },
+    {
+      "text": "All Roles",
+      "height": 21,
+      "border": "0px"
+    },
+    {
+      "text": "Leaderboard",
+      "height": 21,
+      "border": "0px"
+    },
+    {
+      "text": "Watch Live",
+      "height": 21,
+      "border": "0px"
+    },
+    {
+      "text": "Settings",
+      "height": 21,
+      "border": "0px"
+    }
+  ]
+}

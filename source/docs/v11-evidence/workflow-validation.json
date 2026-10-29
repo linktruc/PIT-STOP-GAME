@@ -1,0 +1,4193 @@
+{
+  "responsive": [
+    {
+      "viewport": 390,
+      "width": 362,
+      "height": 62,
+      "count": 4,
+      "labelWidth": 76,
+      "tasks": [
+        {
+          "id": "REAR_LIFT",
+          "text": "Rear of carLift car",
+          "x": 23,
+          "width": 86,
+          "owned": "false",
+          "clipped": false
+        },
+        {
+          "id": "FL_GUN_LOOSEN",
+          "text": "Front-left wheelLoosen nut",
+          "x": 109,
+          "width": 86,
+          "owned": "false",
+          "clipped": false
+        },
+        {
+          "id": "FR_GUN_LOOSEN",
+          "text": "Front-right wheelLoosen nut",
+          "x": 195,
+          "width": 86,
+          "owned": "false",
+          "clipped": false
+        },
+        {
+          "id": "RL_GUN_LOOSEN",
+          "text": "Rear-left wheelLoosen nut",
+          "x": 281,
+          "width": 86,
+          "owned": "false",
+          "clipped": false
+        }
+      ],
+      "tileBoxes": 0
+    },
+    {
+      "viewport": 430,
+      "width": 402,
+      "height": 62,
+      "count": 5,
+      "labelWidth": 76,
+      "tasks": [
+        {
+          "id": "REAR_LIFT",
+          "text": "Rear of carLift car",
+          "x": 23,
+          "width": 76.796875,
+          "owned": "false",
+          "clipped": false
+        },
+        {
+          "id": "FL_GUN_LOOSEN",
+          "text": "Front-left wheelLoosen nut",
+          "x": 99.796875,
+          "width": 76.796875,
+          "owned": "false",
+          "clipped": false
+        },
+        {
+          "id": "FR_GUN_LOOSEN",
+          "text": "Front-right wheelLoosen nut",
+          "x": 176.59375,
+          "width": 76.796875,
+          "owned": "false",
+          "clipped": false
+        },
+        {
+          "id": "RL_GUN_LOOSEN",
+          "text": "Rear-left wheelLoosen nut",
+          "x": 253.390625,
+          "width": 76.796875,
+          "owned": "false",
+          "clipped": false
+        },
+        {
+          "id": "RR_GUN_LOOSEN",
+          "text": "Rear-right wheelLoosen nut",
+          "x": 330.1875,
+          "width": 76.8125,
+          "owned": "false",
+          "clipped": false
+        }
+      ],
+      "tileBoxes": 0
+    },
+    {
+      "viewport": 768,
+      "width": 720,
+      "height": 62,
+      "count": 9,
+      "labelWidth": 76,
+      "tasks": [
+        {
+          "id": "REAR_LIFT",
+          "text": "Rear of carLift car",
+          "x": 33,
+          "width": 78,
+          "owned": "false",
+          "clipped": false
+        },
+        {
+          "id": "FL_GUN_LOOSEN",
+          "text": "Front-left wheelLoosen nut",
+          "x": 111,
+          "width": 78,
+          "owned": "false",
+          "clipped": false
+        },
+        {
+          "id": "FR_GUN_LOOSEN",
+          "text": "Front-right wheelLoosen nut",
+          "x": 189,
+          "width": 78,
+          "owned": "false",
+          "clipped": false
+        },
+        {
+          "id": "RL_GUN_LOOSEN",
+          "text": "Rear-left wheelLoosen nut",
+          "x": 267,
+          "width": 78,
+          "owned": "false",
+          "clipped": false
+        },
+        {
+          "id": "RR_GUN_LOOSEN",
+          "text": "Rear-right wheelLoosen nut",
+          "x": 345,
+          "width": 78,
+          "owned": "false",
+          "clipped": false
+        },
+        {
+          "id": "FL_WHEEL_OFF",
+          "text": "Front-left wheelRemove wheel",
+          "x": 423,
+          "width": 78,
+          "owned": "false",
+          "clipped": false
+        },
+        {
+          "id": "FR_WHEEL_OFF",
+          "text": "Front-right wheelRemove wheel",
+          "x": 501,
+          "width": 78,
+          "owned": "false",
+          "clipped": false
+        },
+        {
+          "id": "RL_WHEEL_OFF",
+          "text": "Rear-left wheelRemove wheel",
+          "x": 579,
+          "width": 78,
+          "owned": "false",
+          "clipped": false
+        },
+        {
+          "id": "RR_WHEEL_OFF",
+          "text": "Rear-right wheelRemove wheel",
+          "x": 657,
+          "width": 78,
+          "owned": "false",
+          "clipped": false
+        }
+      ],
+      "tileBoxes": 0
+    },
+    {
+      "viewport": 1440,
+      "width": 900,
+      "height": 62,
+      "count": 11,
+      "labelWidth": 76,
+      "tasks": [
+        {
+          "id": "REAR_LIFT",
+          "text": "Rear of carLift car",
+          "x": 33,
+          "width": 80.171875,
+          "owned": "false",
+          "clipped": false
+        },
+        {
+          "id": "FL_GUN_LOOSEN",
+          "text": "Front-left wheelLoosen nut",
+          "x": 113.171875,
+          "width": 80.1875,
+          "owned": "false",
+          "clipped": false
+        },
+        {
+          "id": "FR_GUN_LOOSEN",
+          "text": "Front-right wheelLoosen nut",
+          "x": 193.359375,
+          "width": 80.171875,
+          "owned": "false",
+          "clipped": false
+        },
+        {
+          "id": "RL_GUN_LOOSEN",
+          "text": "Rear-left wheelLoosen nut",
+          "x": 273.53125,
+          "width": 80.1875,
+          "owned": "false",
+          "clipped": false
+        },
+        {
+          "id": "RR_GUN_LOOSEN",
+          "text": "Rear-right wheelLoosen nut",
+          "x": 353.71875,
+          "width": 80.1875,
+          "owned": "false",
+          "clipped": false
+        },
+        {
+          "id": "FL_WHEEL_OFF",
+          "text": "Front-left wheelRemove wheel",
+          "x": 433.90625,
+          "width": 80.171875,
+          "owned": "false",
+          "clipped": false
+        },
+        {
+          "id": "FR_WHEEL_OFF",
+          "text": "Front-right wheelRemove wheel",
+          "x": 514.078125,
+          "width": 80.1875,
+          "owned": "false",
+          "clipped": false
+        },
+        {
+          "id": "RL_WHEEL_OFF",
+          "text": "Rear-left wheelRemove wheel",
+          "x": 594.265625,
+          "width": 80.1875,
+          "owned": "false",
+          "clipped": false
+        },
+        {
+          "id": "RR_WHEEL_OFF",
+          "text": "Rear-right wheelRemove wheel",
+          "x": 674.453125,
+          "width": 80.171875,
+          "owned": "false",
+          "clipped": false
+        },
+        {
+          "id": "FL_WHEEL_ON",
+          "text": "Front-left wheelFit new wheel",
+          "x": 754.625,
+          "width": 80.1875,
+          "owned": "false",
+          "clipped": false
+        },
+        {
+          "id": "FR_WHEEL_ON",
+          "text": "Front-right wheelFit new wheel",
+          "x": 834.8125,
+          "width": 80.171875,
+          "owned": "false",
+          "clipped": false
+        }
+      ],
+      "tileBoxes": 0
+    }
+  ],
+  "burst100ms": [
+    {
+      "ms": -2.100000005961192,
+      "target": 2,
+      "visual": 2,
+      "offset": 1,
+      "ids": [
+        "REAR_LIFT",
+        "FL_GUN_LOOSEN",
+        "FR_GUN_LOOSEN",
+        "RL_GUN_LOOSEN"
+      ]
+    },
+    {
+      "ms": 14.499999994039172,
+      "target": 2,
+      "visual": 2,
+      "offset": 1,
+      "ids": [
+        "REAR_LIFT",
+        "FL_GUN_LOOSEN",
+        "FR_GUN_LOOSEN",
+        "RL_GUN_LOOSEN"
+      ]
+    },
+    {
+      "ms": 31.1999999940399,
+      "target": 2,
+      "visual": 2,
+      "offset": 1,
+      "ids": [
+        "REAR_LIFT",
+        "FL_GUN_LOOSEN",
+        "FR_GUN_LOOSEN",
+        "RL_GUN_LOOSEN"
+      ]
+    },
+    {
+      "ms": 47.79999999404026,
+      "target": 2,
+      "visual": 2,
+      "offset": 1,
+      "ids": [
+        "REAR_LIFT",
+        "FL_GUN_LOOSEN",
+        "FR_GUN_LOOSEN",
+        "RL_GUN_LOOSEN"
+      ]
+    },
+    {
+      "ms": 64.49999999403917,
+      "target": 2,
+      "visual": 2,
+      "offset": 1,
+      "ids": [
+        "REAR_LIFT",
+        "FL_GUN_LOOSEN",
+        "FR_GUN_LOOSEN",
+        "RL_GUN_LOOSEN"
+      ]
+    },
+    {
+      "ms": 114.39999999403881,
+      "target": 2,
+      "visual": 2,
+      "offset": 1,
+      "ids": [
+        "REAR_LIFT",
+        "FL_GUN_LOOSEN",
+        "FR_GUN_LOOSEN",
+        "RL_GUN_LOOSEN"
+      ]
+    },
+    {
+      "ms": 131.1999999940399,
+      "target": 2,
+      "visual": 2,
+      "offset": 1,
+      "ids": [
+        "REAR_LIFT",
+        "FL_GUN_LOOSEN",
+        "FR_GUN_LOOSEN",
+        "RL_GUN_LOOSEN"
+      ]
+    },
+    {
+      "ms": 147.79999999404026,
+      "target": 2,
+      "visual": 2,
+      "offset": 1,
+      "ids": [
+        "REAR_LIFT",
+        "FL_GUN_LOOSEN",
+        "FR_GUN_LOOSEN",
+        "RL_GUN_LOOSEN"
+      ]
+    },
+    {
+      "ms": 164.49999999403917,
+      "target": 2,
+      "visual": 2,
+      "offset": 1,
+      "ids": [
+        "REAR_LIFT",
+        "FL_GUN_LOOSEN",
+        "FR_GUN_LOOSEN",
+        "RL_GUN_LOOSEN"
+      ]
+    },
+    {
+      "ms": 231.09999999403954,
+      "target": 2,
+      "visual": 2,
+      "offset": 1,
+      "ids": [
+        "REAR_LIFT",
+        "FL_GUN_LOOSEN",
+        "FR_GUN_LOOSEN",
+        "RL_GUN_LOOSEN"
+      ]
+    },
+    {
+      "ms": 247.8999999940388,
+      "target": 2,
+      "visual": 2,
+      "offset": 1,
+      "ids": [
+        "REAR_LIFT",
+        "FL_GUN_LOOSEN",
+        "FR_GUN_LOOSEN",
+        "RL_GUN_LOOSEN"
+      ]
+    },
+    {
+      "ms": 297.8999999940388,
+      "target": 2,
+      "visual": 2,
+      "offset": 1,
+      "ids": [
+        "REAR_LIFT",
+        "FL_GUN_LOOSEN",
+        "FR_GUN_LOOSEN",
+        "RL_GUN_LOOSEN"
+      ]
+    },
+    {
+      "ms": 331.1999999940399,
+      "target": 2,
+      "visual": 2,
+      "offset": 1,
+      "ids": [
+        "REAR_LIFT",
+        "FL_GUN_LOOSEN",
+        "FR_GUN_LOOSEN",
+        "RL_GUN_LOOSEN"
+      ]
+    },
+    {
+      "ms": 347.79999999404026,
+      "target": 2,
+      "visual": 2,
+      "offset": 1,
+      "ids": [
+        "REAR_LIFT",
+        "FL_GUN_LOOSEN",
+        "FR_GUN_LOOSEN",
+        "RL_GUN_LOOSEN"
+      ]
+    },
+    {
+      "ms": 364.4999999940392,
+      "target": 2,
+      "visual": 2,
+      "offset": 1,
+      "ids": [
+        "REAR_LIFT",
+        "FL_GUN_LOOSEN",
+        "FR_GUN_LOOSEN",
+        "RL_GUN_LOOSEN"
+      ]
+    },
+    {
+      "ms": 397.8999999940388,
+      "target": 2,
+      "visual": 2,
+      "offset": 1,
+      "ids": [
+        "REAR_LIFT",
+        "FL_GUN_LOOSEN",
+        "FR_GUN_LOOSEN",
+        "RL_GUN_LOOSEN"
+      ]
+    },
+    {
+      "ms": 414.4999999940392,
+      "target": 2,
+      "visual": 2,
+      "offset": 1,
+      "ids": [
+        "REAR_LIFT",
+        "FL_GUN_LOOSEN",
+        "FR_GUN_LOOSEN",
+        "RL_GUN_LOOSEN"
+      ]
+    },
+    {
+      "ms": 431.1999999940399,
+      "target": 2,
+      "visual": 2,
+      "offset": 1,
+      "ids": [
+        "REAR_LIFT",
+        "FL_GUN_LOOSEN",
+        "FR_GUN_LOOSEN",
+        "RL_GUN_LOOSEN"
+      ]
+    },
+    {
+      "ms": 447.79999999404026,
+      "target": 2,
+      "visual": 2,
+      "offset": 1,
+      "ids": [
+        "REAR_LIFT",
+        "FL_GUN_LOOSEN",
+        "FR_GUN_LOOSEN",
+        "RL_GUN_LOOSEN"
+      ]
+    },
+    {
+      "ms": 464.4999999940392,
+      "target": 2,
+      "visual": 2,
+      "offset": 1,
+      "ids": [
+        "REAR_LIFT",
+        "FL_GUN_LOOSEN",
+        "FR_GUN_LOOSEN",
+        "RL_GUN_LOOSEN"
+      ]
+    },
+    {
+      "ms": 481.09999999403954,
+      "target": 6,
+      "visual": 2,
+      "offset": 5,
+      "ids": [
+        "RR_GUN_LOOSEN",
+        "FL_WHEEL_OFF",
+        "FR_WHEEL_OFF",
+        "RL_WHEEL_OFF"
+      ]
+    },
+    {
+      "ms": 497.79999999404026,
+      "target": 6,
+      "visual": 2,
+      "offset": 5,
+      "ids": [
+        "RR_GUN_LOOSEN",
+        "FL_WHEEL_OFF",
+        "FR_WHEEL_OFF",
+        "RL_WHEEL_OFF"
+      ]
+    },
+    {
+      "ms": 514.4999999940392,
+      "target": 6,
+      "visual": 2,
+      "offset": 5,
+      "ids": [
+        "RR_GUN_LOOSEN",
+        "FL_WHEEL_OFF",
+        "FR_WHEEL_OFF",
+        "RL_WHEEL_OFF"
+      ]
+    },
+    {
+      "ms": 547.7999999940403,
+      "target": 6,
+      "visual": 2.177,
+      "offset": 5,
+      "ids": [
+        "RR_GUN_LOOSEN",
+        "FL_WHEEL_OFF",
+        "FR_WHEEL_OFF",
+        "RL_WHEEL_OFF"
+      ]
+    },
+    {
+      "ms": 564.4999999940392,
+      "target": 6,
+      "visual": 3.156,
+      "offset": 5,
+      "ids": [
+        "RR_GUN_LOOSEN",
+        "FL_WHEEL_OFF",
+        "FR_WHEEL_OFF",
+        "RL_WHEEL_OFF"
+      ]
+    },
+    {
+      "ms": 631.0999999940395,
+      "target": 6,
+      "visual": 3.577,
+      "offset": 5,
+      "ids": [
+        "RR_GUN_LOOSEN",
+        "FL_WHEEL_OFF",
+        "FR_WHEEL_OFF",
+        "RL_WHEEL_OFF"
+      ]
+    },
+    {
+      "ms": 697.7999999940403,
+      "target": 6,
+      "visual": 4.844,
+      "offset": 5,
+      "ids": [
+        "RR_GUN_LOOSEN",
+        "FL_WHEEL_OFF",
+        "FR_WHEEL_OFF",
+        "RL_WHEEL_OFF"
+      ]
+    },
+    {
+      "ms": 731.0999999940395,
+      "target": 6,
+      "visual": 5.569,
+      "offset": 5,
+      "ids": [
+        "RR_GUN_LOOSEN",
+        "FL_WHEEL_OFF",
+        "FR_WHEEL_OFF",
+        "RL_WHEEL_OFF"
+      ]
+    },
+    {
+      "ms": 747.7999999940403,
+      "target": 6,
+      "visual": 5.569,
+      "offset": 5,
+      "ids": [
+        "RR_GUN_LOOSEN",
+        "FL_WHEEL_OFF",
+        "FR_WHEEL_OFF",
+        "RL_WHEEL_OFF"
+      ]
+    },
+    {
+      "ms": 847.7999999940403,
+      "target": 6,
+      "visual": 5.847,
+      "offset": 5,
+      "ids": [
+        "RR_GUN_LOOSEN",
+        "FL_WHEEL_OFF",
+        "FR_WHEEL_OFF",
+        "RL_WHEEL_OFF"
+      ]
+    },
+    {
+      "ms": 947.7999999940403,
+      "target": 6,
+      "visual": 5.999,
+      "offset": 5,
+      "ids": [
+        "RR_GUN_LOOSEN",
+        "FL_WHEEL_OFF",
+        "FR_WHEEL_OFF",
+        "RL_WHEEL_OFF"
+      ]
+    },
+    {
+      "ms": 997.7999999940403,
+      "target": 6,
+      "visual": 6,
+      "offset": 5,
+      "ids": [
+        "RR_GUN_LOOSEN",
+        "FL_WHEEL_OFF",
+        "FR_WHEEL_OFF",
+        "RL_WHEEL_OFF"
+      ]
+    },
+    {
+      "ms": 1081.0999999940395,
+      "target": 6,
+      "visual": 6,
+      "offset": 5,
+      "ids": [
+        "RR_GUN_LOOSEN",
+        "FL_WHEEL_OFF",
+        "FR_WHEEL_OFF",
+        "RL_WHEEL_OFF"
+      ]
+    },
+    {
+      "ms": 1097.7999999940403,
+      "target": 6,
+      "visual": 6,
+      "offset": 5,
+      "ids": [
+        "RR_GUN_LOOSEN",
+        "FL_WHEEL_OFF",
+        "FR_WHEEL_OFF",
+        "RL_WHEEL_OFF"
+      ]
+    },
+    {
+      "ms": 1114.3999999940388,
+      "target": 6,
+      "visual": 6,
+      "offset": 5,
+      "ids": [
+        "RR_GUN_LOOSEN",
+        "FL_WHEEL_OFF",
+        "FR_WHEEL_OFF",
+        "RL_WHEEL_OFF"
+      ]
+    }
+  ],
+  "fiveSnapshotAndReconnect": [
+    {
+      "ms": -3.899999999999636,
+      "target": 6,
+      "visual": 6,
+      "offset": 5
+    },
+    {
+      "ms": 29.5,
+      "target": 6,
+      "visual": 6,
+      "offset": 5
+    },
+    {
+      "ms": 62.899999999999636,
+      "target": 6,
+      "visual": 6,
+      "offset": 5
+    },
+    {
+      "ms": 79.5,
+      "target": 6,
+      "visual": 6,
+      "offset": 5
+    },
+    {
+      "ms": 96.20000000000073,
+      "target": 6,
+      "visual": 6,
+      "offset": 5
+    },
+    {
+      "ms": 112.79999999999927,
+      "target": 6,
+      "visual": 6,
+      "offset": 5
+    },
+    {
+      "ms": 129.5,
+      "target": 6,
+      "visual": 6,
+      "offset": 5
+    },
+    {
+      "ms": 146.20000000000073,
+      "target": 6,
+      "visual": 6,
+      "offset": 5
+    },
+    {
+      "ms": 162.79999999999927,
+      "target": 6,
+      "visual": 6,
+      "offset": 5
+    },
+    {
+      "ms": 179.5,
+      "target": 6,
+      "visual": 6,
+      "offset": 5
+    },
+    {
+      "ms": 196.20000000000073,
+      "target": 6,
+      "visual": 6,
+      "offset": 5
+    },
+    {
+      "ms": 212.79999999999927,
+      "target": 6,
+      "visual": 6,
+      "offset": 5
+    },
+    {
+      "ms": 229.5,
+      "target": 6,
+      "visual": 6,
+      "offset": 5
+    },
+    {
+      "ms": 246.20000000000073,
+      "target": 6,
+      "visual": 6,
+      "offset": 5
+    },
+    {
+      "ms": 262.7999999999993,
+      "target": 6,
+      "visual": 6,
+      "offset": 5
+    },
+    {
+      "ms": 279.5,
+      "target": 6,
+      "visual": 6,
+      "offset": 5
+    },
+    {
+      "ms": 296.2000000000007,
+      "target": 6,
+      "visual": 6,
+      "offset": 5
+    },
+    {
+      "ms": 312.7999999999993,
+      "target": 6,
+      "visual": 6,
+      "offset": 5
+    },
+    {
+      "ms": 329.5,
+      "target": 6,
+      "visual": 6,
+      "offset": 5
+    },
+    {
+      "ms": 346.2000000000007,
+      "target": 6,
+      "visual": 6,
+      "offset": 5
+    },
+    {
+      "ms": 362.89999999999964,
+      "target": 6,
+      "visual": 6,
+      "offset": 5
+    },
+    {
+      "ms": 379.5,
+      "target": 11,
+      "visual": 6,
+      "offset": 9
+    },
+    {
+      "ms": 396.2000000000007,
+      "target": 11,
+      "visual": 6,
+      "offset": 9
+    },
+    {
+      "ms": 412.7999999999993,
+      "target": 11,
+      "visual": 6.342,
+      "offset": 9
+    },
+    {
+      "ms": 496.10000000000036,
+      "target": 11,
+      "visual": 6.971,
+      "offset": 9
+    },
+    {
+      "ms": 579.5,
+      "target": 11,
+      "visual": 9.291,
+      "offset": 9
+    },
+    {
+      "ms": 596.2000000000007,
+      "target": 11,
+      "visual": 10.489,
+      "offset": 9
+    },
+    {
+      "ms": 629.5,
+      "target": 11,
+      "visual": 10.627,
+      "offset": 9
+    },
+    {
+      "ms": 662.7999999999993,
+      "target": 11,
+      "visual": 10.823,
+      "offset": 9
+    },
+    {
+      "ms": 679.5,
+      "target": 11,
+      "visual": 10.934,
+      "offset": 9
+    },
+    {
+      "ms": 696.1000000000004,
+      "target": 11,
+      "visual": 10.966,
+      "offset": 9
+    },
+    {
+      "ms": 746.2000000000007,
+      "target": 11,
+      "visual": 10.985,
+      "offset": 9
+    },
+    {
+      "ms": 762.7999999999993,
+      "target": 11,
+      "visual": 11,
+      "offset": 9
+    },
+    {
+      "ms": 779.3999999999996,
+      "target": 11,
+      "visual": 11,
+      "offset": 9
+    },
+    {
+      "ms": 796.1000000000004,
+      "target": 11,
+      "visual": 11,
+      "offset": 9
+    },
+    {
+      "ms": 812.7999999999993,
+      "target": 11,
+      "visual": 11,
+      "offset": 9
+    },
+    {
+      "ms": 862.8999999999996,
+      "target": 11,
+      "visual": 11,
+      "offset": 9
+    },
+    {
+      "ms": 896.2000000000007,
+      "target": 11,
+      "visual": 11,
+      "offset": 9
+    },
+    {
+      "ms": 912.7999999999993,
+      "target": 11,
+      "visual": 11,
+      "offset": 9
+    },
+    {
+      "ms": 929.5,
+      "target": 11,
+      "visual": 11,
+      "offset": 9
+    },
+    {
+      "ms": 946.1000000000004,
+      "target": 11,
+      "visual": 11,
+      "offset": 9
+    },
+    {
+      "ms": 962.8999999999996,
+      "target": 11,
+      "visual": 11,
+      "offset": 9
+    },
+    {
+      "ms": 979.3999999999996,
+      "target": 14,
+      "visual": 11,
+      "offset": 13
+    },
+    {
+      "ms": 996.1000000000004,
+      "target": 14,
+      "visual": 11.215,
+      "offset": 13
+    },
+    {
+      "ms": 1012.7999999999993,
+      "target": 14,
+      "visual": 11.593,
+      "offset": 13
+    },
+    {
+      "ms": 1029.5,
+      "target": 14,
+      "visual": 11.936,
+      "offset": 13
+    },
+    {
+      "ms": 1046.1000000000004,
+      "target": 14,
+      "visual": 12.245,
+      "offset": 13
+    },
+    {
+      "ms": 1079.3999999999996,
+      "target": 14,
+      "visual": 12.519,
+      "offset": 13
+    },
+    {
+      "ms": 1112.7999999999993,
+      "target": 14,
+      "visual": 12.981,
+      "offset": 13
+    },
+    {
+      "ms": 1146.2000000000007,
+      "target": 14,
+      "visual": 13.336,
+      "offset": 13
+    },
+    {
+      "ms": 1162.7999999999993,
+      "target": 14,
+      "visual": 13.597,
+      "offset": 13
+    },
+    {
+      "ms": 1179.5,
+      "target": 14,
+      "visual": 13.696,
+      "offset": 13
+    },
+    {
+      "ms": 1196.1000000000004,
+      "target": 14,
+      "visual": 13.778,
+      "offset": 13
+    },
+    {
+      "ms": 1212.7999999999993,
+      "target": 14,
+      "visual": 13.844,
+      "offset": 13
+    },
+    {
+      "ms": 1229.3999999999996,
+      "target": 14,
+      "visual": 13.895,
+      "offset": 13
+    },
+    {
+      "ms": 1246.1000000000004,
+      "target": 14,
+      "visual": 13.933,
+      "offset": 13
+    },
+    {
+      "ms": 1262.7999999999993,
+      "target": 14,
+      "visual": 13.961,
+      "offset": 13
+    },
+    {
+      "ms": 1279.5,
+      "target": 14,
+      "visual": 13.98,
+      "offset": 13
+    },
+    {
+      "ms": 1296.1000000000004,
+      "target": 14,
+      "visual": 13.991,
+      "offset": 13
+    },
+    {
+      "ms": 1312.7999999999993,
+      "target": 14,
+      "visual": 13.997,
+      "offset": 13
+    },
+    {
+      "ms": 1329.3999999999996,
+      "target": 14,
+      "visual": 14,
+      "offset": 13
+    },
+    {
+      "ms": 1346.2000000000007,
+      "target": 14,
+      "visual": 14,
+      "offset": 13
+    },
+    {
+      "ms": 1362.7999999999993,
+      "target": 14,
+      "visual": 14,
+      "offset": 13
+    },
+    {
+      "ms": 1379.5,
+      "target": 14,
+      "visual": 14,
+      "offset": 13
+    },
+    {
+      "ms": 1396.1000000000004,
+      "target": 14,
+      "visual": 14,
+      "offset": 13
+    },
+    {
+      "ms": 1412.7999999999993,
+      "target": 14,
+      "visual": 14,
+      "offset": 13
+    },
+    {
+      "ms": 1429.5,
+      "target": 14,
+      "visual": 14,
+      "offset": 13
+    },
+    {
+      "ms": 1446.2000000000007,
+      "target": 14,
+      "visual": 14,
+      "offset": 13
+    },
+    {
+      "ms": 1462.7999999999993,
+      "target": 14,
+      "visual": 14,
+      "offset": 13
+    }
+  ],
+  "fullBoards": [
+    {
+      "viewport": [
+        375,
+        667
+      ],
+      "graph": {
+        "x": 21,
+        "y": 97,
+        "width": 333,
+        "height": 413,
+        "top": 97,
+        "right": 354,
+        "bottom": 510,
+        "left": 21
+      },
+      "nodes": [
+        {
+          "id": "FRONT_LIFT",
+          "bounds": {
+            "x": 88.609375,
+            "y": 97,
+            "width": 197.765625,
+            "height": 26,
+            "top": 97,
+            "right": 286.375,
+            "bottom": 123,
+            "left": 88.609375
+          },
+          "inside": true,
+          "name": "Alex Extremelylongnickname",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Lift front of car \u00b7 Alex Extremelylongnickname \u00b7 done"
+        },
+        {
+          "id": "FL_GUN_LOOSEN",
+          "bounds": {
+            "x": 28,
+            "y": 140,
+            "width": 152,
+            "height": 26,
+            "top": 140,
+            "right": 180,
+            "bottom": 166,
+            "left": 28
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Loosen front-left wheel nut \u00b7 Bot \u00b7 available"
+        },
+        {
+          "id": "FR_GUN_LOOSEN",
+          "bounds": {
+            "x": 195,
+            "y": 140,
+            "width": 152,
+            "height": 26,
+            "top": 140,
+            "right": 347,
+            "bottom": 166,
+            "left": 195
+          },
+          "inside": true,
+          "name": "VeryLongCrewNicknameExample",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Loosen front-right wheel nut \u00b7 VeryLongCrewNicknameExample \u00b7 available"
+        },
+        {
+          "id": "FL_WHEEL_OFF",
+          "bounds": {
+            "x": 28,
+            "y": 169,
+            "width": 152,
+            "height": 26,
+            "top": 169,
+            "right": 180,
+            "bottom": 195,
+            "left": 28
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Remove old front-left wheel \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "FR_WHEEL_OFF",
+          "bounds": {
+            "x": 195,
+            "y": 169,
+            "width": 152,
+            "height": 26,
+            "top": 169,
+            "right": 347,
+            "bottom": 195,
+            "left": 195
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Remove old front-right wheel \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "FL_WHEEL_ON",
+          "bounds": {
+            "x": 28,
+            "y": 198,
+            "width": 152,
+            "height": 26,
+            "top": 198,
+            "right": 180,
+            "bottom": 224,
+            "left": 28
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Fit new front-left wheel \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "FR_WHEEL_ON",
+          "bounds": {
+            "x": 195,
+            "y": 198,
+            "width": 152,
+            "height": 26,
+            "top": 198,
+            "right": 347,
+            "bottom": 224,
+            "left": 195
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Fit new front-right wheel \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "FL_GUN_TIGHTEN",
+          "bounds": {
+            "x": 28,
+            "y": 227,
+            "width": 152,
+            "height": 26,
+            "top": 227,
+            "right": 180,
+            "bottom": 253,
+            "left": 28
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Tighten front-left wheel nut \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "FR_GUN_TIGHTEN",
+          "bounds": {
+            "x": 195,
+            "y": 227,
+            "width": 152,
+            "height": 26,
+            "top": 227,
+            "right": 347,
+            "bottom": 253,
+            "left": 195
+          },
+          "inside": true,
+          "name": "VeryLongCrewNicknameExample",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Tighten front-right wheel nut \u00b7 VeryLongCrewNicknameExample \u00b7 locked"
+        },
+        {
+          "id": "FRONT_LOWER",
+          "bounds": {
+            "x": 88.609375,
+            "y": 256,
+            "width": 197.765625,
+            "height": 26,
+            "top": 256,
+            "right": 286.375,
+            "bottom": 282,
+            "left": 88.609375
+          },
+          "inside": true,
+          "name": "Alex Extremelylongnickname",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Lower front of car \u00b7 Alex Extremelylongnickname \u00b7 locked"
+        },
+        {
+          "id": "REAR_LIFT",
+          "bounds": {
+            "x": 88.609375,
+            "y": 289.5,
+            "width": 197.765625,
+            "height": 26,
+            "top": 289.5,
+            "right": 286.375,
+            "bottom": 315.5,
+            "left": 88.609375
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Lift rear of car \u00b7 Bot \u00b7 done"
+        },
+        {
+          "id": "RL_GUN_LOOSEN",
+          "bounds": {
+            "x": 28,
+            "y": 332.5,
+            "width": 152,
+            "height": 26,
+            "top": 332.5,
+            "right": 180,
+            "bottom": 358.5,
+            "left": 28
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Loosen rear-left wheel nut \u00b7 Bot \u00b7 available"
+        },
+        {
+          "id": "RR_GUN_LOOSEN",
+          "bounds": {
+            "x": 195,
+            "y": 332.5,
+            "width": 152,
+            "height": 26,
+            "top": 332.5,
+            "right": 347,
+            "bottom": 358.5,
+            "left": 195
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Loosen rear-right wheel nut \u00b7 Bot \u00b7 available"
+        },
+        {
+          "id": "RL_WHEEL_OFF",
+          "bounds": {
+            "x": 28,
+            "y": 361.5,
+            "width": 152,
+            "height": 26,
+            "top": 361.5,
+            "right": 180,
+            "bottom": 387.5,
+            "left": 28
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Remove old rear-left wheel \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "RR_WHEEL_OFF",
+          "bounds": {
+            "x": 195,
+            "y": 361.5,
+            "width": 152,
+            "height": 26,
+            "top": 361.5,
+            "right": 347,
+            "bottom": 387.5,
+            "left": 195
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Remove old rear-right wheel \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "RL_WHEEL_ON",
+          "bounds": {
+            "x": 28,
+            "y": 390.5,
+            "width": 152,
+            "height": 26,
+            "top": 390.5,
+            "right": 180,
+            "bottom": 416.5,
+            "left": 28
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Fit new rear-left wheel \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "RR_WHEEL_ON",
+          "bounds": {
+            "x": 195,
+            "y": 390.5,
+            "width": 152,
+            "height": 26,
+            "top": 390.5,
+            "right": 347,
+            "bottom": 416.5,
+            "left": 195
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Fit new rear-right wheel \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "RL_GUN_TIGHTEN",
+          "bounds": {
+            "x": 28,
+            "y": 419.5,
+            "width": 152,
+            "height": 26,
+            "top": 419.5,
+            "right": 180,
+            "bottom": 445.5,
+            "left": 28
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Tighten rear-left wheel nut \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "RR_GUN_TIGHTEN",
+          "bounds": {
+            "x": 195,
+            "y": 419.5,
+            "width": 152,
+            "height": 26,
+            "top": 419.5,
+            "right": 347,
+            "bottom": 445.5,
+            "left": 195
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Tighten rear-right wheel nut \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "REAR_LOWER",
+          "bounds": {
+            "x": 88.609375,
+            "y": 448.5,
+            "width": 197.765625,
+            "height": 26,
+            "top": 448.5,
+            "right": 286.375,
+            "bottom": 474.5,
+            "left": 88.609375
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Lower rear of car \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "GREEN_RELEASE",
+          "bounds": {
+            "x": 82.234375,
+            "y": 481,
+            "width": 210.53125,
+            "height": 29,
+            "top": 481,
+            "right": 292.765625,
+            "bottom": 510,
+            "left": 82.234375
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Release car \u00b7 Bot \u00b7 locked"
+        }
+      ],
+      "edges": [
+        {
+          "from": "FRONT_LIFT",
+          "to": "FL_GUN_LOOSEN",
+          "path": "M 166.4921875 26 C 166.4921875 34.5, 83 34.5, 83 43"
+        },
+        {
+          "from": "FL_GUN_LOOSEN",
+          "to": "FL_WHEEL_OFF",
+          "path": "M 83 69 C 83 70.5, 83 70.5, 83 72"
+        },
+        {
+          "from": "FL_WHEEL_OFF",
+          "to": "FL_WHEEL_ON",
+          "path": "M 83 98 C 83 99.5, 83 99.5, 83 101"
+        },
+        {
+          "from": "FL_WHEEL_ON",
+          "to": "FL_GUN_TIGHTEN",
+          "path": "M 83 127 C 83 128.5, 83 128.5, 83 130"
+        },
+        {
+          "from": "FRONT_LIFT",
+          "to": "FR_GUN_LOOSEN",
+          "path": "M 166.4921875 26 C 166.4921875 34.5, 250 34.5, 250 43"
+        },
+        {
+          "from": "FR_GUN_LOOSEN",
+          "to": "FR_WHEEL_OFF",
+          "path": "M 250 69 C 250 70.5, 250 70.5, 250 72"
+        },
+        {
+          "from": "FR_WHEEL_OFF",
+          "to": "FR_WHEEL_ON",
+          "path": "M 250 98 C 250 99.5, 250 99.5, 250 101"
+        },
+        {
+          "from": "FR_WHEEL_ON",
+          "to": "FR_GUN_TIGHTEN",
+          "path": "M 250 127 C 250 128.5, 250 128.5, 250 130"
+        },
+        {
+          "from": "REAR_LIFT",
+          "to": "RL_GUN_LOOSEN",
+          "path": "M 166.4921875 218.5 C 166.4921875 227, 83 227, 83 235.5"
+        },
+        {
+          "from": "RL_GUN_LOOSEN",
+          "to": "RL_WHEEL_OFF",
+          "path": "M 83 261.5 C 83 263, 83 263, 83 264.5"
+        },
+        {
+          "from": "RL_WHEEL_OFF",
+          "to": "RL_WHEEL_ON",
+          "path": "M 83 290.5 C 83 292, 83 292, 83 293.5"
+        },
+        {
+          "from": "RL_WHEEL_ON",
+          "to": "RL_GUN_TIGHTEN",
+          "path": "M 83 319.5 C 83 321, 83 321, 83 322.5"
+        },
+        {
+          "from": "REAR_LIFT",
+          "to": "RR_GUN_LOOSEN",
+          "path": "M 166.4921875 218.5 C 166.4921875 227, 250 227, 250 235.5"
+        },
+        {
+          "from": "RR_GUN_LOOSEN",
+          "to": "RR_WHEEL_OFF",
+          "path": "M 250 261.5 C 250 263, 250 263, 250 264.5"
+        },
+        {
+          "from": "RR_WHEEL_OFF",
+          "to": "RR_WHEEL_ON",
+          "path": "M 250 290.5 C 250 292, 250 292, 250 293.5"
+        },
+        {
+          "from": "RR_WHEEL_ON",
+          "to": "RR_GUN_TIGHTEN",
+          "path": "M 250 319.5 C 250 321, 250 321, 250 322.5"
+        },
+        {
+          "from": "FL_GUN_TIGHTEN",
+          "to": "FRONT_LOWER",
+          "path": "M 83 156 C 83 157.5, 166.4921875 157.5, 166.4921875 159"
+        },
+        {
+          "from": "FR_GUN_TIGHTEN",
+          "to": "FRONT_LOWER",
+          "path": "M 250 156 C 250 157.5, 166.4921875 157.5, 166.4921875 159"
+        },
+        {
+          "from": "RL_GUN_TIGHTEN",
+          "to": "REAR_LOWER",
+          "path": "M 83 348.5 C 83 350, 166.4921875 350, 166.4921875 351.5"
+        },
+        {
+          "from": "RR_GUN_TIGHTEN",
+          "to": "REAR_LOWER",
+          "path": "M 250 348.5 C 250 350, 166.4921875 350, 166.4921875 351.5"
+        },
+        {
+          "from": "FRONT_LOWER",
+          "to": "GREEN_RELEASE",
+          "path": "M 166.4921875 185 V 188 H 3 V 381 H 166.5 V 384"
+        },
+        {
+          "from": "REAR_LOWER",
+          "to": "GREEN_RELEASE",
+          "path": "M 166.4921875 377.5 C 166.4921875 380.75, 166.5 380.75, 166.5 384"
+        },
+        {
+          "from": "FL_GUN_TIGHTEN",
+          "to": "GREEN_RELEASE",
+          "path": "M 83 156 V 159 H 3 V 381 H 166.5 V 384"
+        },
+        {
+          "from": "FR_GUN_TIGHTEN",
+          "to": "GREEN_RELEASE",
+          "path": "M 250 156 V 159 H 330 V 381 H 166.5 V 384"
+        },
+        {
+          "from": "RL_GUN_TIGHTEN",
+          "to": "GREEN_RELEASE",
+          "path": "M 83 348.5 V 351.5 H 3 V 381 H 166.5 V 384"
+        },
+        {
+          "from": "RR_GUN_TIGHTEN",
+          "to": "GREEN_RELEASE",
+          "path": "M 250 348.5 V 351.5 H 330 V 381 H 166.5 V 384"
+        }
+      ],
+      "containers": [
+        {
+          "class": "game-overlay wide chain-overlay",
+          "client": [
+            349,
+            550
+          ],
+          "scroll": [
+            349,
+            550
+          ],
+          "overflow": "hidden"
+        },
+        {
+          "class": "overlay-content",
+          "client": [
+            349,
+            495
+          ],
+          "scroll": [
+            349,
+            495
+          ],
+          "overflow": "hidden"
+        },
+        {
+          "class": "chain-hud connected-workflow v11-board",
+          "client": [
+            333,
+            481
+          ],
+          "scroll": [
+            333,
+            481
+          ],
+          "overflow": "visible"
+        },
+        {
+          "class": "connected-graph",
+          "client": [
+            333,
+            413
+          ],
+          "scroll": [
+            333,
+            413
+          ],
+          "overflow": "visible"
+        },
+        {
+          "class": "axle-columns",
+          "client": [
+            319,
+            377
+          ],
+          "scroll": [
+            319,
+            378
+          ],
+          "overflow": "visible"
+        },
+        {
+          "class": "axle-board",
+          "client": [
+            319,
+            185
+          ],
+          "scroll": [
+            319,
+            185
+          ],
+          "overflow": "visible"
+        },
+        {
+          "class": "axle-board",
+          "client": [
+            319,
+            185
+          ],
+          "scroll": [
+            319,
+            185
+          ],
+          "overflow": "visible"
+        }
+      ],
+      "pageScroll": false
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "graph": {
+        "x": 21,
+        "y": 97,
+        "width": 348,
+        "height": 590,
+        "top": 97,
+        "right": 369,
+        "bottom": 687,
+        "left": 21
+      },
+      "nodes": [
+        {
+          "id": "FRONT_LIFT",
+          "bounds": {
+            "x": 91.453125,
+            "y": 97,
+            "width": 207.078125,
+            "height": 40.65625,
+            "top": 97,
+            "right": 298.53125,
+            "bottom": 137.65625,
+            "left": 91.453125
+          },
+          "inside": true,
+          "name": "Alex Extremelylongnickname",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Lift front of car \u00b7 Alex Extremelylongnickname \u00b7 done"
+        },
+        {
+          "id": "FL_GUN_LOOSEN",
+          "bounds": {
+            "x": 28,
+            "y": 154.65625,
+            "width": 159.5,
+            "height": 40.671875,
+            "top": 154.65625,
+            "right": 187.5,
+            "bottom": 195.328125,
+            "left": 28
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Loosen front-left wheel nut \u00b7 Bot \u00b7 available"
+        },
+        {
+          "id": "FR_GUN_LOOSEN",
+          "bounds": {
+            "x": 202.5,
+            "y": 154.65625,
+            "width": 159.5,
+            "height": 40.671875,
+            "top": 154.65625,
+            "right": 362,
+            "bottom": 195.328125,
+            "left": 202.5
+          },
+          "inside": true,
+          "name": "VeryLongCrewNicknameExample",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Loosen front-right wheel nut \u00b7 VeryLongCrewNicknameExample \u00b7 available"
+        },
+        {
+          "id": "FL_WHEEL_OFF",
+          "bounds": {
+            "x": 28,
+            "y": 198.328125,
+            "width": 159.5,
+            "height": 40.671875,
+            "top": 198.328125,
+            "right": 187.5,
+            "bottom": 239,
+            "left": 28
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Remove old front-left wheel \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "FR_WHEEL_OFF",
+          "bounds": {
+            "x": 202.5,
+            "y": 198.328125,
+            "width": 159.5,
+            "height": 40.671875,
+            "top": 198.328125,
+            "right": 362,
+            "bottom": 239,
+            "left": 202.5
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Remove old front-right wheel \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "FL_WHEEL_ON",
+          "bounds": {
+            "x": 28,
+            "y": 242,
+            "width": 159.5,
+            "height": 40.65625,
+            "top": 242,
+            "right": 187.5,
+            "bottom": 282.65625,
+            "left": 28
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Fit new front-left wheel \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "FR_WHEEL_ON",
+          "bounds": {
+            "x": 202.5,
+            "y": 242,
+            "width": 159.5,
+            "height": 40.65625,
+            "top": 242,
+            "right": 362,
+            "bottom": 282.65625,
+            "left": 202.5
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Fit new front-right wheel \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "FL_GUN_TIGHTEN",
+          "bounds": {
+            "x": 28,
+            "y": 285.65625,
+            "width": 159.5,
+            "height": 40.671875,
+            "top": 285.65625,
+            "right": 187.5,
+            "bottom": 326.328125,
+            "left": 28
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Tighten front-left wheel nut \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "FR_GUN_TIGHTEN",
+          "bounds": {
+            "x": 202.5,
+            "y": 285.65625,
+            "width": 159.5,
+            "height": 40.671875,
+            "top": 285.65625,
+            "right": 362,
+            "bottom": 326.328125,
+            "left": 202.5
+          },
+          "inside": true,
+          "name": "VeryLongCrewNicknameExample",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Tighten front-right wheel nut \u00b7 VeryLongCrewNicknameExample \u00b7 locked"
+        },
+        {
+          "id": "FRONT_LOWER",
+          "bounds": {
+            "x": 91.453125,
+            "y": 329.328125,
+            "width": 207.078125,
+            "height": 40.671875,
+            "top": 329.328125,
+            "right": 298.53125,
+            "bottom": 370,
+            "left": 91.453125
+          },
+          "inside": true,
+          "name": "Alex Extremelylongnickname",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Lower front of car \u00b7 Alex Extremelylongnickname \u00b7 locked"
+        },
+        {
+          "id": "REAR_LIFT",
+          "bounds": {
+            "x": 91.453125,
+            "y": 378,
+            "width": 207.078125,
+            "height": 40.65625,
+            "top": 378,
+            "right": 298.53125,
+            "bottom": 418.65625,
+            "left": 91.453125
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Lift rear of car \u00b7 Bot \u00b7 done"
+        },
+        {
+          "id": "RL_GUN_LOOSEN",
+          "bounds": {
+            "x": 28,
+            "y": 435.65625,
+            "width": 159.5,
+            "height": 40.671875,
+            "top": 435.65625,
+            "right": 187.5,
+            "bottom": 476.328125,
+            "left": 28
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Loosen rear-left wheel nut \u00b7 Bot \u00b7 available"
+        },
+        {
+          "id": "RR_GUN_LOOSEN",
+          "bounds": {
+            "x": 202.5,
+            "y": 435.65625,
+            "width": 159.5,
+            "height": 40.671875,
+            "top": 435.65625,
+            "right": 362,
+            "bottom": 476.328125,
+            "left": 202.5
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Loosen rear-right wheel nut \u00b7 Bot \u00b7 available"
+        },
+        {
+          "id": "RL_WHEEL_OFF",
+          "bounds": {
+            "x": 28,
+            "y": 479.328125,
+            "width": 159.5,
+            "height": 40.671875,
+            "top": 479.328125,
+            "right": 187.5,
+            "bottom": 520,
+            "left": 28
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Remove old rear-left wheel \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "RR_WHEEL_OFF",
+          "bounds": {
+            "x": 202.5,
+            "y": 479.328125,
+            "width": 159.5,
+            "height": 40.671875,
+            "top": 479.328125,
+            "right": 362,
+            "bottom": 520,
+            "left": 202.5
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Remove old rear-right wheel \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "RL_WHEEL_ON",
+          "bounds": {
+            "x": 28,
+            "y": 523,
+            "width": 159.5,
+            "height": 40.65625,
+            "top": 523,
+            "right": 187.5,
+            "bottom": 563.65625,
+            "left": 28
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Fit new rear-left wheel \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "RR_WHEEL_ON",
+          "bounds": {
+            "x": 202.5,
+            "y": 523,
+            "width": 159.5,
+            "height": 40.65625,
+            "top": 523,
+            "right": 362,
+            "bottom": 563.65625,
+            "left": 202.5
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Fit new rear-right wheel \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "RL_GUN_TIGHTEN",
+          "bounds": {
+            "x": 28,
+            "y": 566.65625,
+            "width": 159.5,
+            "height": 40.671875,
+            "top": 566.65625,
+            "right": 187.5,
+            "bottom": 607.328125,
+            "left": 28
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Tighten rear-left wheel nut \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "RR_GUN_TIGHTEN",
+          "bounds": {
+            "x": 202.5,
+            "y": 566.65625,
+            "width": 159.5,
+            "height": 40.671875,
+            "top": 566.65625,
+            "right": 362,
+            "bottom": 607.328125,
+            "left": 202.5
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Tighten rear-right wheel nut \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "REAR_LOWER",
+          "bounds": {
+            "x": 91.453125,
+            "y": 610.328125,
+            "width": 207.078125,
+            "height": 40.671875,
+            "top": 610.328125,
+            "right": 298.53125,
+            "bottom": 651,
+            "left": 91.453125
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Lower rear of car \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "GREEN_RELEASE",
+          "bounds": {
+            "x": 84.78125,
+            "y": 658,
+            "width": 220.4375,
+            "height": 29,
+            "top": 658,
+            "right": 305.21875,
+            "bottom": 687,
+            "left": 84.78125
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Release car \u00b7 Bot \u00b7 locked"
+        }
+      ],
+      "edges": [
+        {
+          "from": "FRONT_LIFT",
+          "to": "FL_GUN_LOOSEN",
+          "path": "M 173.9921875 40.65625 C 173.9921875 49.15625, 86.75 49.15625, 86.75 57.65625"
+        },
+        {
+          "from": "FL_GUN_LOOSEN",
+          "to": "FL_WHEEL_OFF",
+          "path": "M 86.75 98.328125 C 86.75 99.828125, 86.75 99.828125, 86.75 101.328125"
+        },
+        {
+          "from": "FL_WHEEL_OFF",
+          "to": "FL_WHEEL_ON",
+          "path": "M 86.75 142 C 86.75 143.5, 86.75 143.5, 86.75 145"
+        },
+        {
+          "from": "FL_WHEEL_ON",
+          "to": "FL_GUN_TIGHTEN",
+          "path": "M 86.75 185.65625 C 86.75 187.15625, 86.75 187.15625, 86.75 188.65625"
+        },
+        {
+          "from": "FRONT_LIFT",
+          "to": "FR_GUN_LOOSEN",
+          "path": "M 173.9921875 40.65625 C 173.9921875 49.15625, 261.25 49.15625, 261.25 57.65625"
+        },
+        {
+          "from": "FR_GUN_LOOSEN",
+          "to": "FR_WHEEL_OFF",
+          "path": "M 261.25 98.328125 C 261.25 99.828125, 261.25 99.828125, 261.25 101.328125"
+        },
+        {
+          "from": "FR_WHEEL_OFF",
+          "to": "FR_WHEEL_ON",
+          "path": "M 261.25 142 C 261.25 143.5, 261.25 143.5, 261.25 145"
+        },
+        {
+          "from": "FR_WHEEL_ON",
+          "to": "FR_GUN_TIGHTEN",
+          "path": "M 261.25 185.65625 C 261.25 187.15625, 261.25 187.15625, 261.25 188.65625"
+        },
+        {
+          "from": "REAR_LIFT",
+          "to": "RL_GUN_LOOSEN",
+          "path": "M 173.9921875 321.65625 C 173.9921875 330.15625, 86.75 330.15625, 86.75 338.65625"
+        },
+        {
+          "from": "RL_GUN_LOOSEN",
+          "to": "RL_WHEEL_OFF",
+          "path": "M 86.75 379.328125 C 86.75 380.828125, 86.75 380.828125, 86.75 382.328125"
+        },
+        {
+          "from": "RL_WHEEL_OFF",
+          "to": "RL_WHEEL_ON",
+          "path": "M 86.75 423 C 86.75 424.5, 86.75 424.5, 86.75 426"
+        },
+        {
+          "from": "RL_WHEEL_ON",
+          "to": "RL_GUN_TIGHTEN",
+          "path": "M 86.75 466.65625 C 86.75 468.15625, 86.75 468.15625, 86.75 469.65625"
+        },
+        {
+          "from": "REAR_LIFT",
+          "to": "RR_GUN_LOOSEN",
+          "path": "M 173.9921875 321.65625 C 173.9921875 330.15625, 261.25 330.15625, 261.25 338.65625"
+        },
+        {
+          "from": "RR_GUN_LOOSEN",
+          "to": "RR_WHEEL_OFF",
+          "path": "M 261.25 379.328125 C 261.25 380.828125, 261.25 380.828125, 261.25 382.328125"
+        },
+        {
+          "from": "RR_WHEEL_OFF",
+          "to": "RR_WHEEL_ON",
+          "path": "M 261.25 423 C 261.25 424.5, 261.25 424.5, 261.25 426"
+        },
+        {
+          "from": "RR_WHEEL_ON",
+          "to": "RR_GUN_TIGHTEN",
+          "path": "M 261.25 466.65625 C 261.25 468.15625, 261.25 468.15625, 261.25 469.65625"
+        },
+        {
+          "from": "FL_GUN_TIGHTEN",
+          "to": "FRONT_LOWER",
+          "path": "M 86.75 229.328125 C 86.75 230.828125, 173.9921875 230.828125, 173.9921875 232.328125"
+        },
+        {
+          "from": "FR_GUN_TIGHTEN",
+          "to": "FRONT_LOWER",
+          "path": "M 261.25 229.328125 C 261.25 230.828125, 173.9921875 230.828125, 173.9921875 232.328125"
+        },
+        {
+          "from": "RL_GUN_TIGHTEN",
+          "to": "REAR_LOWER",
+          "path": "M 86.75 510.328125 C 86.75 511.828125, 173.9921875 511.828125, 173.9921875 513.328125"
+        },
+        {
+          "from": "RR_GUN_TIGHTEN",
+          "to": "REAR_LOWER",
+          "path": "M 261.25 510.328125 C 261.25 511.828125, 173.9921875 511.828125, 173.9921875 513.328125"
+        },
+        {
+          "from": "FRONT_LOWER",
+          "to": "GREEN_RELEASE",
+          "path": "M 173.9921875 273 V 276 H 3 V 558 H 174 V 561"
+        },
+        {
+          "from": "REAR_LOWER",
+          "to": "GREEN_RELEASE",
+          "path": "M 173.9921875 554 C 173.9921875 557.5, 174 557.5, 174 561"
+        },
+        {
+          "from": "FL_GUN_TIGHTEN",
+          "to": "GREEN_RELEASE",
+          "path": "M 86.75 229.328125 V 232.328125 H 3 V 558 H 174 V 561"
+        },
+        {
+          "from": "FR_GUN_TIGHTEN",
+          "to": "GREEN_RELEASE",
+          "path": "M 261.25 229.328125 V 232.328125 H 345 V 558 H 174 V 561"
+        },
+        {
+          "from": "RL_GUN_TIGHTEN",
+          "to": "GREEN_RELEASE",
+          "path": "M 86.75 510.328125 V 513.328125 H 3 V 558 H 174 V 561"
+        },
+        {
+          "from": "RR_GUN_TIGHTEN",
+          "to": "GREEN_RELEASE",
+          "path": "M 261.25 510.328125 V 513.328125 H 345 V 558 H 174 V 561"
+        }
+      ],
+      "containers": [
+        {
+          "class": "game-overlay wide chain-overlay",
+          "client": [
+            364,
+            727
+          ],
+          "scroll": [
+            364,
+            727
+          ],
+          "overflow": "hidden"
+        },
+        {
+          "class": "overlay-content",
+          "client": [
+            364,
+            672
+          ],
+          "scroll": [
+            364,
+            672
+          ],
+          "overflow": "hidden"
+        },
+        {
+          "class": "chain-hud connected-workflow v11-board",
+          "client": [
+            348,
+            658
+          ],
+          "scroll": [
+            348,
+            658
+          ],
+          "overflow": "visible"
+        },
+        {
+          "class": "connected-graph",
+          "client": [
+            348,
+            590
+          ],
+          "scroll": [
+            348,
+            590
+          ],
+          "overflow": "visible"
+        },
+        {
+          "class": "axle-columns",
+          "client": [
+            334,
+            554
+          ],
+          "scroll": [
+            334,
+            554
+          ],
+          "overflow": "visible"
+        },
+        {
+          "class": "axle-board",
+          "client": [
+            334,
+            273
+          ],
+          "scroll": [
+            334,
+            273
+          ],
+          "overflow": "visible"
+        },
+        {
+          "class": "axle-board",
+          "client": [
+            334,
+            273
+          ],
+          "scroll": [
+            334,
+            273
+          ],
+          "overflow": "visible"
+        }
+      ],
+      "pageScroll": false
+    },
+    {
+      "viewport": [
+        430,
+        932
+      ],
+      "graph": {
+        "x": 21,
+        "y": 126,
+        "width": 388,
+        "height": 620,
+        "top": 126,
+        "right": 409,
+        "bottom": 746,
+        "left": 21
+      },
+      "nodes": [
+        {
+          "id": "FRONT_LIFT",
+          "bounds": {
+            "x": 105,
+            "y": 126,
+            "width": 220,
+            "height": 43.15625,
+            "top": 126,
+            "right": 325,
+            "bottom": 169.15625,
+            "left": 105
+          },
+          "inside": true,
+          "name": "Alex Extremelylongnickname",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Lift front of car \u00b7 Alex Extremelylongnickname \u00b7 done"
+        },
+        {
+          "id": "FL_GUN_LOOSEN",
+          "bounds": {
+            "x": 28,
+            "y": 186.15625,
+            "width": 179.5,
+            "height": 43.171875,
+            "top": 186.15625,
+            "right": 207.5,
+            "bottom": 229.328125,
+            "left": 28
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Loosen front-left wheel nut \u00b7 Bot \u00b7 available"
+        },
+        {
+          "id": "FR_GUN_LOOSEN",
+          "bounds": {
+            "x": 222.5,
+            "y": 186.15625,
+            "width": 179.5,
+            "height": 43.171875,
+            "top": 186.15625,
+            "right": 402,
+            "bottom": 229.328125,
+            "left": 222.5
+          },
+          "inside": true,
+          "name": "VeryLongCrewNicknameExample",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Loosen front-right wheel nut \u00b7 VeryLongCrewNicknameExample \u00b7 available"
+        },
+        {
+          "id": "FL_WHEEL_OFF",
+          "bounds": {
+            "x": 28,
+            "y": 232.328125,
+            "width": 179.5,
+            "height": 43.171875,
+            "top": 232.328125,
+            "right": 207.5,
+            "bottom": 275.5,
+            "left": 28
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Remove old front-left wheel \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "FR_WHEEL_OFF",
+          "bounds": {
+            "x": 222.5,
+            "y": 232.328125,
+            "width": 179.5,
+            "height": 43.171875,
+            "top": 232.328125,
+            "right": 402,
+            "bottom": 275.5,
+            "left": 222.5
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Remove old front-right wheel \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "FL_WHEEL_ON",
+          "bounds": {
+            "x": 28,
+            "y": 278.5,
+            "width": 179.5,
+            "height": 43.15625,
+            "top": 278.5,
+            "right": 207.5,
+            "bottom": 321.65625,
+            "left": 28
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Fit new front-left wheel \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "FR_WHEEL_ON",
+          "bounds": {
+            "x": 222.5,
+            "y": 278.5,
+            "width": 179.5,
+            "height": 43.15625,
+            "top": 278.5,
+            "right": 402,
+            "bottom": 321.65625,
+            "left": 222.5
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Fit new front-right wheel \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "FL_GUN_TIGHTEN",
+          "bounds": {
+            "x": 28,
+            "y": 324.65625,
+            "width": 179.5,
+            "height": 43.171875,
+            "top": 324.65625,
+            "right": 207.5,
+            "bottom": 367.828125,
+            "left": 28
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Tighten front-left wheel nut \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "FR_GUN_TIGHTEN",
+          "bounds": {
+            "x": 222.5,
+            "y": 324.65625,
+            "width": 179.5,
+            "height": 43.171875,
+            "top": 324.65625,
+            "right": 402,
+            "bottom": 367.828125,
+            "left": 222.5
+          },
+          "inside": true,
+          "name": "VeryLongCrewNicknameExample",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Tighten front-right wheel nut \u00b7 VeryLongCrewNicknameExample \u00b7 locked"
+        },
+        {
+          "id": "FRONT_LOWER",
+          "bounds": {
+            "x": 105,
+            "y": 370.828125,
+            "width": 220,
+            "height": 43.171875,
+            "top": 370.828125,
+            "right": 325,
+            "bottom": 414,
+            "left": 105
+          },
+          "inside": true,
+          "name": "Alex Extremelylongnickname",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Lower front of car \u00b7 Alex Extremelylongnickname \u00b7 locked"
+        },
+        {
+          "id": "REAR_LIFT",
+          "bounds": {
+            "x": 105,
+            "y": 422,
+            "width": 220,
+            "height": 43.15625,
+            "top": 422,
+            "right": 325,
+            "bottom": 465.15625,
+            "left": 105
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Lift rear of car \u00b7 Bot \u00b7 done"
+        },
+        {
+          "id": "RL_GUN_LOOSEN",
+          "bounds": {
+            "x": 28,
+            "y": 482.15625,
+            "width": 179.5,
+            "height": 43.171875,
+            "top": 482.15625,
+            "right": 207.5,
+            "bottom": 525.328125,
+            "left": 28
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Loosen rear-left wheel nut \u00b7 Bot \u00b7 available"
+        },
+        {
+          "id": "RR_GUN_LOOSEN",
+          "bounds": {
+            "x": 222.5,
+            "y": 482.15625,
+            "width": 179.5,
+            "height": 43.171875,
+            "top": 482.15625,
+            "right": 402,
+            "bottom": 525.328125,
+            "left": 222.5
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Loosen rear-right wheel nut \u00b7 Bot \u00b7 available"
+        },
+        {
+          "id": "RL_WHEEL_OFF",
+          "bounds": {
+            "x": 28,
+            "y": 528.328125,
+            "width": 179.5,
+            "height": 43.171875,
+            "top": 528.328125,
+            "right": 207.5,
+            "bottom": 571.5,
+            "left": 28
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Remove old rear-left wheel \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "RR_WHEEL_OFF",
+          "bounds": {
+            "x": 222.5,
+            "y": 528.328125,
+            "width": 179.5,
+            "height": 43.171875,
+            "top": 528.328125,
+            "right": 402,
+            "bottom": 571.5,
+            "left": 222.5
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Remove old rear-right wheel \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "RL_WHEEL_ON",
+          "bounds": {
+            "x": 28,
+            "y": 574.5,
+            "width": 179.5,
+            "height": 43.15625,
+            "top": 574.5,
+            "right": 207.5,
+            "bottom": 617.65625,
+            "left": 28
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Fit new rear-left wheel \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "RR_WHEEL_ON",
+          "bounds": {
+            "x": 222.5,
+            "y": 574.5,
+            "width": 179.5,
+            "height": 43.15625,
+            "top": 574.5,
+            "right": 402,
+            "bottom": 617.65625,
+            "left": 222.5
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Fit new rear-right wheel \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "RL_GUN_TIGHTEN",
+          "bounds": {
+            "x": 28,
+            "y": 620.65625,
+            "width": 179.5,
+            "height": 43.171875,
+            "top": 620.65625,
+            "right": 207.5,
+            "bottom": 663.828125,
+            "left": 28
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Tighten rear-left wheel nut \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "RR_GUN_TIGHTEN",
+          "bounds": {
+            "x": 222.5,
+            "y": 620.65625,
+            "width": 179.5,
+            "height": 43.171875,
+            "top": 620.65625,
+            "right": 402,
+            "bottom": 663.828125,
+            "left": 222.5
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Tighten rear-right wheel nut \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "REAR_LOWER",
+          "bounds": {
+            "x": 105,
+            "y": 666.828125,
+            "width": 220,
+            "height": 43.171875,
+            "top": 666.828125,
+            "right": 325,
+            "bottom": 710,
+            "left": 105
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Lower rear of car \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "GREEN_RELEASE",
+          "bounds": {
+            "x": 95,
+            "y": 717,
+            "width": 240,
+            "height": 29,
+            "top": 717,
+            "right": 335,
+            "bottom": 746,
+            "left": 95
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "11px",
+          "ownerFont": "10px",
+          "title": "Release car \u00b7 Bot \u00b7 locked"
+        }
+      ],
+      "edges": [
+        {
+          "from": "FRONT_LIFT",
+          "to": "FL_GUN_LOOSEN",
+          "path": "M 194 43.15625 C 194 51.65625, 96.75 51.65625, 96.75 60.15625"
+        },
+        {
+          "from": "FL_GUN_LOOSEN",
+          "to": "FL_WHEEL_OFF",
+          "path": "M 96.75 103.328125 C 96.75 104.828125, 96.75 104.828125, 96.75 106.328125"
+        },
+        {
+          "from": "FL_WHEEL_OFF",
+          "to": "FL_WHEEL_ON",
+          "path": "M 96.75 149.5 C 96.75 151, 96.75 151, 96.75 152.5"
+        },
+        {
+          "from": "FL_WHEEL_ON",
+          "to": "FL_GUN_TIGHTEN",
+          "path": "M 96.75 195.65625 C 96.75 197.15625, 96.75 197.15625, 96.75 198.65625"
+        },
+        {
+          "from": "FRONT_LIFT",
+          "to": "FR_GUN_LOOSEN",
+          "path": "M 194 43.15625 C 194 51.65625, 291.25 51.65625, 291.25 60.15625"
+        },
+        {
+          "from": "FR_GUN_LOOSEN",
+          "to": "FR_WHEEL_OFF",
+          "path": "M 291.25 103.328125 C 291.25 104.828125, 291.25 104.828125, 291.25 106.328125"
+        },
+        {
+          "from": "FR_WHEEL_OFF",
+          "to": "FR_WHEEL_ON",
+          "path": "M 291.25 149.5 C 291.25 151, 291.25 151, 291.25 152.5"
+        },
+        {
+          "from": "FR_WHEEL_ON",
+          "to": "FR_GUN_TIGHTEN",
+          "path": "M 291.25 195.65625 C 291.25 197.15625, 291.25 197.15625, 291.25 198.65625"
+        },
+        {
+          "from": "REAR_LIFT",
+          "to": "RL_GUN_LOOSEN",
+          "path": "M 194 339.15625 C 194 347.65625, 96.75 347.65625, 96.75 356.15625"
+        },
+        {
+          "from": "RL_GUN_LOOSEN",
+          "to": "RL_WHEEL_OFF",
+          "path": "M 96.75 399.328125 C 96.75 400.828125, 96.75 400.828125, 96.75 402.328125"
+        },
+        {
+          "from": "RL_WHEEL_OFF",
+          "to": "RL_WHEEL_ON",
+          "path": "M 96.75 445.5 C 96.75 447, 96.75 447, 96.75 448.5"
+        },
+        {
+          "from": "RL_WHEEL_ON",
+          "to": "RL_GUN_TIGHTEN",
+          "path": "M 96.75 491.65625 C 96.75 493.15625, 96.75 493.15625, 96.75 494.65625"
+        },
+        {
+          "from": "REAR_LIFT",
+          "to": "RR_GUN_LOOSEN",
+          "path": "M 194 339.15625 C 194 347.65625, 291.25 347.65625, 291.25 356.15625"
+        },
+        {
+          "from": "RR_GUN_LOOSEN",
+          "to": "RR_WHEEL_OFF",
+          "path": "M 291.25 399.328125 C 291.25 400.828125, 291.25 400.828125, 291.25 402.328125"
+        },
+        {
+          "from": "RR_WHEEL_OFF",
+          "to": "RR_WHEEL_ON",
+          "path": "M 291.25 445.5 C 291.25 447, 291.25 447, 291.25 448.5"
+        },
+        {
+          "from": "RR_WHEEL_ON",
+          "to": "RR_GUN_TIGHTEN",
+          "path": "M 291.25 491.65625 C 291.25 493.15625, 291.25 493.15625, 291.25 494.65625"
+        },
+        {
+          "from": "FL_GUN_TIGHTEN",
+          "to": "FRONT_LOWER",
+          "path": "M 96.75 241.828125 C 96.75 243.328125, 194 243.328125, 194 244.828125"
+        },
+        {
+          "from": "FR_GUN_TIGHTEN",
+          "to": "FRONT_LOWER",
+          "path": "M 291.25 241.828125 C 291.25 243.328125, 194 243.328125, 194 244.828125"
+        },
+        {
+          "from": "RL_GUN_TIGHTEN",
+          "to": "REAR_LOWER",
+          "path": "M 96.75 537.828125 C 96.75 539.328125, 194 539.328125, 194 540.828125"
+        },
+        {
+          "from": "RR_GUN_TIGHTEN",
+          "to": "REAR_LOWER",
+          "path": "M 291.25 537.828125 C 291.25 539.328125, 194 539.328125, 194 540.828125"
+        },
+        {
+          "from": "FRONT_LOWER",
+          "to": "GREEN_RELEASE",
+          "path": "M 194 288 V 291 H 385 V 588 H 194 V 591"
+        },
+        {
+          "from": "REAR_LOWER",
+          "to": "GREEN_RELEASE",
+          "path": "M 194 584 C 194 587.5, 194 587.5, 194 591"
+        },
+        {
+          "from": "FL_GUN_TIGHTEN",
+          "to": "GREEN_RELEASE",
+          "path": "M 96.75 241.828125 V 244.828125 H 3 V 588 H 194 V 591"
+        },
+        {
+          "from": "FR_GUN_TIGHTEN",
+          "to": "GREEN_RELEASE",
+          "path": "M 291.25 241.828125 V 244.828125 H 385 V 588 H 194 V 591"
+        },
+        {
+          "from": "RL_GUN_TIGHTEN",
+          "to": "GREEN_RELEASE",
+          "path": "M 96.75 537.828125 V 540.828125 H 3 V 588 H 194 V 591"
+        },
+        {
+          "from": "RR_GUN_TIGHTEN",
+          "to": "GREEN_RELEASE",
+          "path": "M 291.25 537.828125 V 540.828125 H 385 V 588 H 194 V 591"
+        }
+      ],
+      "containers": [
+        {
+          "class": "game-overlay wide chain-overlay",
+          "client": [
+            404,
+            757
+          ],
+          "scroll": [
+            404,
+            757
+          ],
+          "overflow": "hidden"
+        },
+        {
+          "class": "overlay-content",
+          "client": [
+            404,
+            702
+          ],
+          "scroll": [
+            404,
+            702
+          ],
+          "overflow": "hidden"
+        },
+        {
+          "class": "chain-hud connected-workflow v11-board",
+          "client": [
+            388,
+            688
+          ],
+          "scroll": [
+            388,
+            688
+          ],
+          "overflow": "visible"
+        },
+        {
+          "class": "connected-graph",
+          "client": [
+            388,
+            620
+          ],
+          "scroll": [
+            388,
+            620
+          ],
+          "overflow": "visible"
+        },
+        {
+          "class": "axle-columns",
+          "client": [
+            374,
+            584
+          ],
+          "scroll": [
+            374,
+            584
+          ],
+          "overflow": "visible"
+        },
+        {
+          "class": "axle-board",
+          "client": [
+            374,
+            288
+          ],
+          "scroll": [
+            374,
+            288
+          ],
+          "overflow": "visible"
+        },
+        {
+          "class": "axle-board",
+          "client": [
+            374,
+            288
+          ],
+          "scroll": [
+            374,
+            288
+          ],
+          "overflow": "visible"
+        }
+      ],
+      "pageScroll": false
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "graph": {
+        "x": 23,
+        "y": 179,
+        "width": 722,
+        "height": 605,
+        "top": 179,
+        "right": 745,
+        "bottom": 784,
+        "left": 23
+      },
+      "nodes": [
+        {
+          "id": "FRONT_LIFT",
+          "bounds": {
+            "x": 86.5,
+            "y": 179,
+            "width": 225,
+            "height": 81,
+            "top": 179,
+            "right": 311.5,
+            "bottom": 260,
+            "left": 86.5
+          },
+          "inside": true,
+          "name": "Alex Extremelylongnickname",
+          "font": "13px",
+          "ownerFont": "11px",
+          "title": "Lift front of car \u00b7 Alex Extremelylongnickname \u00b7 done"
+        },
+        {
+          "id": "FL_GUN_LOOSEN",
+          "bounds": {
+            "x": 30,
+            "y": 292,
+            "width": 162,
+            "height": 81,
+            "top": 292,
+            "right": 192,
+            "bottom": 373,
+            "left": 30
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "13px",
+          "ownerFont": "11px",
+          "title": "Loosen front-left wheel nut \u00b7 Bot \u00b7 available"
+        },
+        {
+          "id": "FR_GUN_LOOSEN",
+          "bounds": {
+            "x": 206,
+            "y": 292,
+            "width": 162,
+            "height": 81,
+            "top": 292,
+            "right": 368,
+            "bottom": 373,
+            "left": 206
+          },
+          "inside": true,
+          "name": "VeryLongCrewNicknameExample",
+          "font": "13px",
+          "ownerFont": "11px",
+          "title": "Loosen front-right wheel nut \u00b7 VeryLongCrewNicknameExample \u00b7 available"
+        },
+        {
+          "id": "FL_WHEEL_OFF",
+          "bounds": {
+            "x": 30,
+            "y": 382,
+            "width": 162,
+            "height": 81,
+            "top": 382,
+            "right": 192,
+            "bottom": 463,
+            "left": 30
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "13px",
+          "ownerFont": "11px",
+          "title": "Remove old front-left wheel \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "FR_WHEEL_OFF",
+          "bounds": {
+            "x": 206,
+            "y": 382,
+            "width": 162,
+            "height": 81,
+            "top": 382,
+            "right": 368,
+            "bottom": 463,
+            "left": 206
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "13px",
+          "ownerFont": "11px",
+          "title": "Remove old front-right wheel \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "FL_WHEEL_ON",
+          "bounds": {
+            "x": 30,
+            "y": 472,
+            "width": 162,
+            "height": 81,
+            "top": 472,
+            "right": 192,
+            "bottom": 553,
+            "left": 30
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "13px",
+          "ownerFont": "11px",
+          "title": "Fit new front-left wheel \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "FR_WHEEL_ON",
+          "bounds": {
+            "x": 206,
+            "y": 472,
+            "width": 162,
+            "height": 81,
+            "top": 472,
+            "right": 368,
+            "bottom": 553,
+            "left": 206
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "13px",
+          "ownerFont": "11px",
+          "title": "Fit new front-right wheel \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "FL_GUN_TIGHTEN",
+          "bounds": {
+            "x": 30,
+            "y": 562,
+            "width": 162,
+            "height": 81,
+            "top": 562,
+            "right": 192,
+            "bottom": 643,
+            "left": 30
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "13px",
+          "ownerFont": "11px",
+          "title": "Tighten front-left wheel nut \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "FR_GUN_TIGHTEN",
+          "bounds": {
+            "x": 206,
+            "y": 562,
+            "width": 162,
+            "height": 81,
+            "top": 562,
+            "right": 368,
+            "bottom": 643,
+            "left": 206
+          },
+          "inside": true,
+          "name": "VeryLongCrewNicknameExample",
+          "font": "13px",
+          "ownerFont": "11px",
+          "title": "Tighten front-right wheel nut \u00b7 VeryLongCrewNicknameExample \u00b7 locked"
+        },
+        {
+          "id": "FRONT_LOWER",
+          "bounds": {
+            "x": 86.5,
+            "y": 652,
+            "width": 225,
+            "height": 81,
+            "top": 652,
+            "right": 311.5,
+            "bottom": 733,
+            "left": 86.5
+          },
+          "inside": true,
+          "name": "Alex Extremelylongnickname",
+          "font": "13px",
+          "ownerFont": "11px",
+          "title": "Lower front of car \u00b7 Alex Extremelylongnickname \u00b7 locked"
+        },
+        {
+          "id": "REAR_LIFT",
+          "bounds": {
+            "x": 456.5,
+            "y": 179,
+            "width": 225,
+            "height": 81,
+            "top": 179,
+            "right": 681.5,
+            "bottom": 260,
+            "left": 456.5
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "13px",
+          "ownerFont": "11px",
+          "title": "Lift rear of car \u00b7 Bot \u00b7 done"
+        },
+        {
+          "id": "RL_GUN_LOOSEN",
+          "bounds": {
+            "x": 400,
+            "y": 292,
+            "width": 162,
+            "height": 81,
+            "top": 292,
+            "right": 562,
+            "bottom": 373,
+            "left": 400
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "13px",
+          "ownerFont": "11px",
+          "title": "Loosen rear-left wheel nut \u00b7 Bot \u00b7 available"
+        },
+        {
+          "id": "RR_GUN_LOOSEN",
+          "bounds": {
+            "x": 576,
+            "y": 292,
+            "width": 162,
+            "height": 81,
+            "top": 292,
+            "right": 738,
+            "bottom": 373,
+            "left": 576
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "13px",
+          "ownerFont": "11px",
+          "title": "Loosen rear-right wheel nut \u00b7 Bot \u00b7 available"
+        },
+        {
+          "id": "RL_WHEEL_OFF",
+          "bounds": {
+            "x": 400,
+            "y": 382,
+            "width": 162,
+            "height": 81,
+            "top": 382,
+            "right": 562,
+            "bottom": 463,
+            "left": 400
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "13px",
+          "ownerFont": "11px",
+          "title": "Remove old rear-left wheel \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "RR_WHEEL_OFF",
+          "bounds": {
+            "x": 576,
+            "y": 382,
+            "width": 162,
+            "height": 81,
+            "top": 382,
+            "right": 738,
+            "bottom": 463,
+            "left": 576
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "13px",
+          "ownerFont": "11px",
+          "title": "Remove old rear-right wheel \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "RL_WHEEL_ON",
+          "bounds": {
+            "x": 400,
+            "y": 472,
+            "width": 162,
+            "height": 81,
+            "top": 472,
+            "right": 562,
+            "bottom": 553,
+            "left": 400
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "13px",
+          "ownerFont": "11px",
+          "title": "Fit new rear-left wheel \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "RR_WHEEL_ON",
+          "bounds": {
+            "x": 576,
+            "y": 472,
+            "width": 162,
+            "height": 81,
+            "top": 472,
+            "right": 738,
+            "bottom": 553,
+            "left": 576
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "13px",
+          "ownerFont": "11px",
+          "title": "Fit new rear-right wheel \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "RL_GUN_TIGHTEN",
+          "bounds": {
+            "x": 400,
+            "y": 562,
+            "width": 162,
+            "height": 81,
+            "top": 562,
+            "right": 562,
+            "bottom": 643,
+            "left": 400
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "13px",
+          "ownerFont": "11px",
+          "title": "Tighten rear-left wheel nut \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "RR_GUN_TIGHTEN",
+          "bounds": {
+            "x": 576,
+            "y": 562,
+            "width": 162,
+            "height": 81,
+            "top": 562,
+            "right": 738,
+            "bottom": 643,
+            "left": 576
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "13px",
+          "ownerFont": "11px",
+          "title": "Tighten rear-right wheel nut \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "REAR_LOWER",
+          "bounds": {
+            "x": 456.5,
+            "y": 652,
+            "width": 225,
+            "height": 81,
+            "top": 652,
+            "right": 681.5,
+            "bottom": 733,
+            "left": 456.5
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "13px",
+          "ownerFont": "11px",
+          "title": "Lower rear of car \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "GREEN_RELEASE",
+          "bounds": {
+            "x": 264,
+            "y": 742,
+            "width": 240,
+            "height": 42,
+            "top": 742,
+            "right": 504,
+            "bottom": 784,
+            "left": 264
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "13px",
+          "ownerFont": "11px",
+          "title": "Release car \u00b7 Bot \u00b7 locked"
+        }
+      ],
+      "edges": [
+        {
+          "from": "FRONT_LIFT",
+          "to": "FL_GUN_LOOSEN",
+          "path": "M 176 81 C 176 97, 88 97, 88 113"
+        },
+        {
+          "from": "FL_GUN_LOOSEN",
+          "to": "FL_WHEEL_OFF",
+          "path": "M 88 194 C 88 198.5, 88 198.5, 88 203"
+        },
+        {
+          "from": "FL_WHEEL_OFF",
+          "to": "FL_WHEEL_ON",
+          "path": "M 88 284 C 88 288.5, 88 288.5, 88 293"
+        },
+        {
+          "from": "FL_WHEEL_ON",
+          "to": "FL_GUN_TIGHTEN",
+          "path": "M 88 374 C 88 378.5, 88 378.5, 88 383"
+        },
+        {
+          "from": "FRONT_LIFT",
+          "to": "FR_GUN_LOOSEN",
+          "path": "M 176 81 C 176 97, 264 97, 264 113"
+        },
+        {
+          "from": "FR_GUN_LOOSEN",
+          "to": "FR_WHEEL_OFF",
+          "path": "M 264 194 C 264 198.5, 264 198.5, 264 203"
+        },
+        {
+          "from": "FR_WHEEL_OFF",
+          "to": "FR_WHEEL_ON",
+          "path": "M 264 284 C 264 288.5, 264 288.5, 264 293"
+        },
+        {
+          "from": "FR_WHEEL_ON",
+          "to": "FR_GUN_TIGHTEN",
+          "path": "M 264 374 C 264 378.5, 264 378.5, 264 383"
+        },
+        {
+          "from": "REAR_LIFT",
+          "to": "RL_GUN_LOOSEN",
+          "path": "M 546 81 C 546 97, 458 97, 458 113"
+        },
+        {
+          "from": "RL_GUN_LOOSEN",
+          "to": "RL_WHEEL_OFF",
+          "path": "M 458 194 C 458 198.5, 458 198.5, 458 203"
+        },
+        {
+          "from": "RL_WHEEL_OFF",
+          "to": "RL_WHEEL_ON",
+          "path": "M 458 284 C 458 288.5, 458 288.5, 458 293"
+        },
+        {
+          "from": "RL_WHEEL_ON",
+          "to": "RL_GUN_TIGHTEN",
+          "path": "M 458 374 C 458 378.5, 458 378.5, 458 383"
+        },
+        {
+          "from": "REAR_LIFT",
+          "to": "RR_GUN_LOOSEN",
+          "path": "M 546 81 C 546 97, 634 97, 634 113"
+        },
+        {
+          "from": "RR_GUN_LOOSEN",
+          "to": "RR_WHEEL_OFF",
+          "path": "M 634 194 C 634 198.5, 634 198.5, 634 203"
+        },
+        {
+          "from": "RR_WHEEL_OFF",
+          "to": "RR_WHEEL_ON",
+          "path": "M 634 284 C 634 288.5, 634 288.5, 634 293"
+        },
+        {
+          "from": "RR_WHEEL_ON",
+          "to": "RR_GUN_TIGHTEN",
+          "path": "M 634 374 C 634 378.5, 634 378.5, 634 383"
+        },
+        {
+          "from": "FL_GUN_TIGHTEN",
+          "to": "FRONT_LOWER",
+          "path": "M 88 464 C 88 468.5, 176 468.5, 176 473"
+        },
+        {
+          "from": "FR_GUN_TIGHTEN",
+          "to": "FRONT_LOWER",
+          "path": "M 264 464 C 264 468.5, 176 468.5, 176 473"
+        },
+        {
+          "from": "RL_GUN_TIGHTEN",
+          "to": "REAR_LOWER",
+          "path": "M 458 464 C 458 468.5, 546 468.5, 546 473"
+        },
+        {
+          "from": "RR_GUN_TIGHTEN",
+          "to": "REAR_LOWER",
+          "path": "M 634 464 C 634 468.5, 546 468.5, 546 473"
+        },
+        {
+          "from": "FRONT_LOWER",
+          "to": "GREEN_RELEASE",
+          "path": "M 176 554 C 176 558.5, 361 558.5, 361 563"
+        },
+        {
+          "from": "REAR_LOWER",
+          "to": "GREEN_RELEASE",
+          "path": "M 546 554 C 546 558.5, 361 558.5, 361 563"
+        },
+        {
+          "from": "FL_GUN_TIGHTEN",
+          "to": "GREEN_RELEASE",
+          "path": "M 88 464 V 467 H 3 V 560 H 361 V 563"
+        },
+        {
+          "from": "FR_GUN_TIGHTEN",
+          "to": "GREEN_RELEASE",
+          "path": "M 264 464 V 467 H 3 V 560 H 361 V 563"
+        },
+        {
+          "from": "RL_GUN_TIGHTEN",
+          "to": "GREEN_RELEASE",
+          "path": "M 458 464 V 467 H 719 V 560 H 361 V 563"
+        },
+        {
+          "from": "RR_GUN_TIGHTEN",
+          "to": "GREEN_RELEASE",
+          "path": "M 634 464 V 467 H 719 V 560 H 361 V 563"
+        }
+      ],
+      "containers": [
+        {
+          "class": "game-overlay wide chain-overlay",
+          "client": [
+            742,
+            757
+          ],
+          "scroll": [
+            742,
+            757
+          ],
+          "overflow": "hidden"
+        },
+        {
+          "class": "overlay-content",
+          "client": [
+            742,
+            697
+          ],
+          "scroll": [
+            742,
+            697
+          ],
+          "overflow": "hidden"
+        },
+        {
+          "class": "chain-hud connected-workflow v11-board",
+          "client": [
+            722,
+            681
+          ],
+          "scroll": [
+            722,
+            681
+          ],
+          "overflow": "visible"
+        },
+        {
+          "class": "connected-graph",
+          "client": [
+            722,
+            605
+          ],
+          "scroll": [
+            722,
+            605
+          ],
+          "overflow": "visible"
+        },
+        {
+          "class": "axle-columns",
+          "client": [
+            708,
+            554
+          ],
+          "scroll": [
+            708,
+            554
+          ],
+          "overflow": "visible"
+        },
+        {
+          "class": "axle-board",
+          "client": [
+            338,
+            554
+          ],
+          "scroll": [
+            338,
+            554
+          ],
+          "overflow": "visible"
+        },
+        {
+          "class": "axle-board",
+          "client": [
+            338,
+            554
+          ],
+          "scroll": [
+            338,
+            554
+          ],
+          "overflow": "visible"
+        }
+      ],
+      "pageScroll": false
+    },
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "graph": {
+        "x": 321,
+        "y": 117,
+        "width": 798,
+        "height": 605,
+        "top": 117,
+        "right": 1119,
+        "bottom": 722,
+        "left": 321
+      },
+      "nodes": [
+        {
+          "id": "FRONT_LIFT",
+          "bounds": {
+            "x": 403.5,
+            "y": 117,
+            "width": 225,
+            "height": 81,
+            "top": 117,
+            "right": 628.5,
+            "bottom": 198,
+            "left": 403.5
+          },
+          "inside": true,
+          "name": "Alex Extremelylongnickname",
+          "font": "13px",
+          "ownerFont": "11px",
+          "title": "Lift front of car \u00b7 Alex Extremelylongnickname \u00b7 done"
+        },
+        {
+          "id": "FL_GUN_LOOSEN",
+          "bounds": {
+            "x": 328,
+            "y": 230,
+            "width": 181,
+            "height": 81,
+            "top": 230,
+            "right": 509,
+            "bottom": 311,
+            "left": 328
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "13px",
+          "ownerFont": "11px",
+          "title": "Loosen front-left wheel nut \u00b7 Bot \u00b7 available"
+        },
+        {
+          "id": "FR_GUN_LOOSEN",
+          "bounds": {
+            "x": 523,
+            "y": 230,
+            "width": 181,
+            "height": 81,
+            "top": 230,
+            "right": 704,
+            "bottom": 311,
+            "left": 523
+          },
+          "inside": true,
+          "name": "VeryLongCrewNicknameExample",
+          "font": "13px",
+          "ownerFont": "11px",
+          "title": "Loosen front-right wheel nut \u00b7 VeryLongCrewNicknameExample \u00b7 available"
+        },
+        {
+          "id": "FL_WHEEL_OFF",
+          "bounds": {
+            "x": 328,
+            "y": 320,
+            "width": 181,
+            "height": 81,
+            "top": 320,
+            "right": 509,
+            "bottom": 401,
+            "left": 328
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "13px",
+          "ownerFont": "11px",
+          "title": "Remove old front-left wheel \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "FR_WHEEL_OFF",
+          "bounds": {
+            "x": 523,
+            "y": 320,
+            "width": 181,
+            "height": 81,
+            "top": 320,
+            "right": 704,
+            "bottom": 401,
+            "left": 523
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "13px",
+          "ownerFont": "11px",
+          "title": "Remove old front-right wheel \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "FL_WHEEL_ON",
+          "bounds": {
+            "x": 328,
+            "y": 410,
+            "width": 181,
+            "height": 81,
+            "top": 410,
+            "right": 509,
+            "bottom": 491,
+            "left": 328
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "13px",
+          "ownerFont": "11px",
+          "title": "Fit new front-left wheel \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "FR_WHEEL_ON",
+          "bounds": {
+            "x": 523,
+            "y": 410,
+            "width": 181,
+            "height": 81,
+            "top": 410,
+            "right": 704,
+            "bottom": 491,
+            "left": 523
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "13px",
+          "ownerFont": "11px",
+          "title": "Fit new front-right wheel \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "FL_GUN_TIGHTEN",
+          "bounds": {
+            "x": 328,
+            "y": 500,
+            "width": 181,
+            "height": 81,
+            "top": 500,
+            "right": 509,
+            "bottom": 581,
+            "left": 328
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "13px",
+          "ownerFont": "11px",
+          "title": "Tighten front-left wheel nut \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "FR_GUN_TIGHTEN",
+          "bounds": {
+            "x": 523,
+            "y": 500,
+            "width": 181,
+            "height": 81,
+            "top": 500,
+            "right": 704,
+            "bottom": 581,
+            "left": 523
+          },
+          "inside": true,
+          "name": "VeryLongCrewNicknameExample",
+          "font": "13px",
+          "ownerFont": "11px",
+          "title": "Tighten front-right wheel nut \u00b7 VeryLongCrewNicknameExample \u00b7 locked"
+        },
+        {
+          "id": "FRONT_LOWER",
+          "bounds": {
+            "x": 403.5,
+            "y": 590,
+            "width": 225,
+            "height": 81,
+            "top": 590,
+            "right": 628.5,
+            "bottom": 671,
+            "left": 403.5
+          },
+          "inside": true,
+          "name": "Alex Extremelylongnickname",
+          "font": "13px",
+          "ownerFont": "11px",
+          "title": "Lower front of car \u00b7 Alex Extremelylongnickname \u00b7 locked"
+        },
+        {
+          "id": "REAR_LIFT",
+          "bounds": {
+            "x": 811.5,
+            "y": 117,
+            "width": 225,
+            "height": 81,
+            "top": 117,
+            "right": 1036.5,
+            "bottom": 198,
+            "left": 811.5
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "13px",
+          "ownerFont": "11px",
+          "title": "Lift rear of car \u00b7 Bot \u00b7 done"
+        },
+        {
+          "id": "RL_GUN_LOOSEN",
+          "bounds": {
+            "x": 736,
+            "y": 230,
+            "width": 181,
+            "height": 81,
+            "top": 230,
+            "right": 917,
+            "bottom": 311,
+            "left": 736
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "13px",
+          "ownerFont": "11px",
+          "title": "Loosen rear-left wheel nut \u00b7 Bot \u00b7 available"
+        },
+        {
+          "id": "RR_GUN_LOOSEN",
+          "bounds": {
+            "x": 931,
+            "y": 230,
+            "width": 181,
+            "height": 81,
+            "top": 230,
+            "right": 1112,
+            "bottom": 311,
+            "left": 931
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "13px",
+          "ownerFont": "11px",
+          "title": "Loosen rear-right wheel nut \u00b7 Bot \u00b7 available"
+        },
+        {
+          "id": "RL_WHEEL_OFF",
+          "bounds": {
+            "x": 736,
+            "y": 320,
+            "width": 181,
+            "height": 81,
+            "top": 320,
+            "right": 917,
+            "bottom": 401,
+            "left": 736
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "13px",
+          "ownerFont": "11px",
+          "title": "Remove old rear-left wheel \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "RR_WHEEL_OFF",
+          "bounds": {
+            "x": 931,
+            "y": 320,
+            "width": 181,
+            "height": 81,
+            "top": 320,
+            "right": 1112,
+            "bottom": 401,
+            "left": 931
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "13px",
+          "ownerFont": "11px",
+          "title": "Remove old rear-right wheel \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "RL_WHEEL_ON",
+          "bounds": {
+            "x": 736,
+            "y": 410,
+            "width": 181,
+            "height": 81,
+            "top": 410,
+            "right": 917,
+            "bottom": 491,
+            "left": 736
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "13px",
+          "ownerFont": "11px",
+          "title": "Fit new rear-left wheel \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "RR_WHEEL_ON",
+          "bounds": {
+            "x": 931,
+            "y": 410,
+            "width": 181,
+            "height": 81,
+            "top": 410,
+            "right": 1112,
+            "bottom": 491,
+            "left": 931
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "13px",
+          "ownerFont": "11px",
+          "title": "Fit new rear-right wheel \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "RL_GUN_TIGHTEN",
+          "bounds": {
+            "x": 736,
+            "y": 500,
+            "width": 181,
+            "height": 81,
+            "top": 500,
+            "right": 917,
+            "bottom": 581,
+            "left": 736
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "13px",
+          "ownerFont": "11px",
+          "title": "Tighten rear-left wheel nut \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "RR_GUN_TIGHTEN",
+          "bounds": {
+            "x": 931,
+            "y": 500,
+            "width": 181,
+            "height": 81,
+            "top": 500,
+            "right": 1112,
+            "bottom": 581,
+            "left": 931
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "13px",
+          "ownerFont": "11px",
+          "title": "Tighten rear-right wheel nut \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "REAR_LOWER",
+          "bounds": {
+            "x": 811.5,
+            "y": 590,
+            "width": 225,
+            "height": 81,
+            "top": 590,
+            "right": 1036.5,
+            "bottom": 671,
+            "left": 811.5
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "13px",
+          "ownerFont": "11px",
+          "title": "Lower rear of car \u00b7 Bot \u00b7 locked"
+        },
+        {
+          "id": "GREEN_RELEASE",
+          "bounds": {
+            "x": 600,
+            "y": 680,
+            "width": 240,
+            "height": 42,
+            "top": 680,
+            "right": 840,
+            "bottom": 722,
+            "left": 600
+          },
+          "inside": true,
+          "name": "Bot",
+          "font": "13px",
+          "ownerFont": "11px",
+          "title": "Release car \u00b7 Bot \u00b7 locked"
+        }
+      ],
+      "edges": [
+        {
+          "from": "FRONT_LIFT",
+          "to": "FL_GUN_LOOSEN",
+          "path": "M 195 81 C 195 97, 97.5 97, 97.5 113"
+        },
+        {
+          "from": "FL_GUN_LOOSEN",
+          "to": "FL_WHEEL_OFF",
+          "path": "M 97.5 194 C 97.5 198.5, 97.5 198.5, 97.5 203"
+        },
+        {
+          "from": "FL_WHEEL_OFF",
+          "to": "FL_WHEEL_ON",
+          "path": "M 97.5 284 C 97.5 288.5, 97.5 288.5, 97.5 293"
+        },
+        {
+          "from": "FL_WHEEL_ON",
+          "to": "FL_GUN_TIGHTEN",
+          "path": "M 97.5 374 C 97.5 378.5, 97.5 378.5, 97.5 383"
+        },
+        {
+          "from": "FRONT_LIFT",
+          "to": "FR_GUN_LOOSEN",
+          "path": "M 195 81 C 195 97, 292.5 97, 292.5 113"
+        },
+        {
+          "from": "FR_GUN_LOOSEN",
+          "to": "FR_WHEEL_OFF",
+          "path": "M 292.5 194 C 292.5 198.5, 292.5 198.5, 292.5 203"
+        },
+        {
+          "from": "FR_WHEEL_OFF",
+          "to": "FR_WHEEL_ON",
+          "path": "M 292.5 284 C 292.5 288.5, 292.5 288.5, 292.5 293"
+        },
+        {
+          "from": "FR_WHEEL_ON",
+          "to": "FR_GUN_TIGHTEN",
+          "path": "M 292.5 374 C 292.5 378.5, 292.5 378.5, 292.5 383"
+        },
+        {
+          "from": "REAR_LIFT",
+          "to": "RL_GUN_LOOSEN",
+          "path": "M 603 81 C 603 97, 505.5 97, 505.5 113"
+        },
+        {
+          "from": "RL_GUN_LOOSEN",
+          "to": "RL_WHEEL_OFF",
+          "path": "M 505.5 194 C 505.5 198.5, 505.5 198.5, 505.5 203"
+        },
+        {
+          "from": "RL_WHEEL_OFF",
+          "to": "RL_WHEEL_ON",
+          "path": "M 505.5 284 C 505.5 288.5, 505.5 288.5, 505.5 293"
+        },
+        {
+          "from": "RL_WHEEL_ON",
+          "to": "RL_GUN_TIGHTEN",
+          "path": "M 505.5 374 C 505.5 378.5, 505.5 378.5, 505.5 383"
+        },
+        {
+          "from": "REAR_LIFT",
+          "to": "RR_GUN_LOOSEN",
+          "path": "M 603 81 C 603 97, 700.5 97, 700.5 113"
+        },
+        {
+          "from": "RR_GUN_LOOSEN",
+          "to": "RR_WHEEL_OFF",
+          "path": "M 700.5 194 C 700.5 198.5, 700.5 198.5, 700.5 203"
+        },
+        {
+          "from": "RR_WHEEL_OFF",
+          "to": "RR_WHEEL_ON",
+          "path": "M 700.5 284 C 700.5 288.5, 700.5 288.5, 700.5 293"
+        },
+        {
+          "from": "RR_WHEEL_ON",
+          "to": "RR_GUN_TIGHTEN",
+          "path": "M 700.5 374 C 700.5 378.5, 700.5 378.5, 700.5 383"
+        },
+        {
+          "from": "FL_GUN_TIGHTEN",
+          "to": "FRONT_LOWER",
+          "path": "M 97.5 464 C 97.5 468.5, 195 468.5, 195 473"
+        },
+        {
+          "from": "FR_GUN_TIGHTEN",
+          "to": "FRONT_LOWER",
+          "path": "M 292.5 464 C 292.5 468.5, 195 468.5, 195 473"
+        },
+        {
+          "from": "RL_GUN_TIGHTEN",
+          "to": "REAR_LOWER",
+          "path": "M 505.5 464 C 505.5 468.5, 603 468.5, 603 473"
+        },
+        {
+          "from": "RR_GUN_TIGHTEN",
+          "to": "REAR_LOWER",
+          "path": "M 700.5 464 C 700.5 468.5, 603 468.5, 603 473"
+        },
+        {
+          "from": "FRONT_LOWER",
+          "to": "GREEN_RELEASE",
+          "path": "M 195 554 C 195 558.5, 399 558.5, 399 563"
+        },
+        {
+          "from": "REAR_LOWER",
+          "to": "GREEN_RELEASE",
+          "path": "M 603 554 C 603 558.5, 399 558.5, 399 563"
+        },
+        {
+          "from": "FL_GUN_TIGHTEN",
+          "to": "GREEN_RELEASE",
+          "path": "M 97.5 464 V 467 H 3 V 560 H 399 V 563"
+        },
+        {
+          "from": "FR_GUN_TIGHTEN",
+          "to": "GREEN_RELEASE",
+          "path": "M 292.5 464 V 467 H 3 V 560 H 399 V 563"
+        },
+        {
+          "from": "RL_GUN_TIGHTEN",
+          "to": "GREEN_RELEASE",
+          "path": "M 505.5 464 V 467 H 795 V 560 H 399 V 563"
+        },
+        {
+          "from": "RR_GUN_TIGHTEN",
+          "to": "GREEN_RELEASE",
+          "path": "M 700.5 464 V 467 H 795 V 560 H 399 V 563"
+        }
+      ],
+      "containers": [
+        {
+          "class": "game-overlay wide chain-overlay",
+          "client": [
+            818,
+            757
+          ],
+          "scroll": [
+            818,
+            757
+          ],
+          "overflow": "hidden"
+        },
+        {
+          "class": "overlay-content",
+          "client": [
+            818,
+            697
+          ],
+          "scroll": [
+            818,
+            697
+          ],
+          "overflow": "hidden"
+        },
+        {
+          "class": "chain-hud connected-workflow v11-board",
+          "client": [
+            798,
+            681
+          ],
+          "scroll": [
+            798,
+            681
+          ],
+          "overflow": "visible"
+        },
+        {
+          "class": "connected-graph",
+          "client": [
+            798,
+            605
+          ],
+          "scroll": [
+            798,
+            605
+          ],
+          "overflow": "visible"
+        },
+        {
+          "class": "axle-columns",
+          "client": [
+            784,
+            554
+          ],
+          "scroll": [
+            784,
+            554
+          ],
+          "overflow": "visible"
+        },
+        {
+          "class": "axle-board",
+          "client": [
+            376,
+            554
+          ],
+          "scroll": [
+            376,
+            554
+          ],
+          "overflow": "visible"
+        },
+        {
+          "class": "axle-board",
+          "client": [
+            376,
+            554
+          ],
+          "scroll": [
+            376,
+            554
+          ],
+          "overflow": "visible"
+        }
+      ],
+      "pageScroll": false
+    }
+  ],
+  "javascriptErrors": [],
+  "scope": "Actual React MiniChain/ChainHUD components; deterministic authoritative-shaped fixtures. No production Supabase or physical iPhone claim."
+}

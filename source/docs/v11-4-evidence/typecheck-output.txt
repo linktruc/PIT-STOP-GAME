@@ -1,0 +1,4 @@
+
+> pit-crew-two-second-challenge@11.4.0 typecheck
+> tsc --noEmit
+

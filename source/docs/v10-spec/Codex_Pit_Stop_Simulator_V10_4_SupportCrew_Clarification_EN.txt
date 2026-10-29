@@ -1,0 +1,65 @@
+PIT STOP. SIMULATOR. — V10.4 CLARIFICATION / OVERRIDE
+USE THIS AS THE LATEST OVERRIDE FOR V10.3
+
+This file corrects and clarifies one specific area where the previous prompt was too broad.
+
+IMPORTANT CORRECTION
+The real-world F1 pit stop reference images are primarily for the NEW BACKGROUND / ENVIRONMENT only.
+They are NOT meant to force a major rewrite of the current crew posing, general interaction choreography, or full support-crew staging.
+
+The current pose logic, task interaction logic, and most of the crew positioning are already acceptable.
+Do NOT over-correct those parts.
+Do NOT redesign all crew poses from scratch.
+Do NOT reinterpret every support figure from the real photos.
+
+What to preserve:
+- Keep the current overall animation direction and interaction logic from V9.1 / current build.
+- Keep the current main crew action staging unless there is an obvious visual bug.
+- Keep the current player role interactions and task-to-animation mapping.
+- Keep the current general crew layout if it is already close enough.
+
+What to change:
+ONLY refine the SUPPORT CREW BOT placement around the car.
+
+Specific requested behavior:
+1. FRONT / NOSE AREA SUPPORT CREW
+- The older V8 placement at the front/nose area was acceptable.
+- Restore or stay close to the older V8 nose-area support crew placement.
+- Do not worsen the front support crew positions while updating the new pit-lane background.
+
+2. MIDDLE SUPPORT CREW (CENTER-SIDE BOTS)
+- The middle support crew bots are the main issue.
+- They should stand closer to the car.
+- Their hands / tools may visually touch or appear to brace against the car.
+- Their BODIES must NOT overlap or intersect the car mesh.
+- Adjust only enough to remove clipping / interpenetration while keeping them engaged and close.
+- The goal is: near the car, visually involved, but body geometry still clean.
+
+3. DO NOT OVER-CORRECT OTHER POSITIONS
+- If a support crew bot already looks fine, leave it alone.
+- Do not make every support crew member copy a reference photo pose.
+- Do not move everyone dramatically just because new pit-lane references exist.
+- The reference photos are mainly to guide the environment/background, pit-lane context, and overall atmosphere.
+
+BACKGROUND / ENVIRONMENT REFERENCE RULE
+Use the supplied real-world pit stop images mainly to redesign:
+- the pit-lane / racetrack background,
+- pit box markings,
+- lane lines,
+- stop area,
+- race-track surroundings,
+- arrival/departure context.
+
+Do NOT use them as a strict requirement to re-block all crew poses.
+
+ACCEPTANCE CHECK FOR THIS OVERRIDE
+The update is correct only if:
+- the pit-lane background is improved using the reference images as environmental inspiration;
+- the current main interaction staging remains largely intact;
+- the V8-style nose/front support crew placement remains good;
+- the middle support crew bots stand close to the car with hands/tools near the car;
+- no middle support crew body overlaps the car mesh;
+- the 3D scene still looks coherent from multiple camera angles.
+
+FINAL OVERRIDE DIRECTIVE
+If this V10.4 clarification conflicts with any earlier wording in V10.3 about using reference photos for crew staging, follow THIS V10.4 clarification instead.

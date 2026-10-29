@@ -1,0 +1,128 @@
+{
+  "scenarios": [
+    {
+      "role": "FRONT_JACK",
+      "peaks": {
+        "old": {
+          "delta": 1.6523446934534416,
+          "t": 15320
+        },
+        "fresh": {
+          "delta": 0.08000010244211767,
+          "t": 19720
+        }
+      },
+      "jumps": {
+        "old": 37,
+        "fresh": 0
+      },
+      "contacts": 0,
+      "pairs": 0,
+      "minBody": 1.2179782414635947,
+      "finalLag": 9.810143808408611e-10,
+      "wheelJump": 0.060000000000000095,
+      "wheelHand": 2.5121479338940403e-15,
+      "wheelGroundError": 0
+    },
+    {
+      "role": "FL_GUNNER",
+      "peaks": {
+        "old": {
+          "delta": 1.646332041909258,
+          "t": 16580
+        },
+        "fresh": {
+          "delta": 0.08728977717729909,
+          "t": 10060
+        }
+      },
+      "jumps": {
+        "old": 35,
+        "fresh": 0
+      },
+      "contacts": 0,
+      "pairs": 0,
+      "minBody": 1.2220091066255419,
+      "finalLag": 9.810143808408611e-10,
+      "wheelJump": 0.060000000000000206,
+      "wheelHand": 2.482534153247273e-15,
+      "wheelGroundError": 0
+    },
+    {
+      "role": "FL_WHEEL_OFF",
+      "peaks": {
+        "old": {
+          "delta": 1.680726823161724,
+          "t": 12760
+        },
+        "fresh": {
+          "delta": 0.08728977717729909,
+          "t": 10060
+        }
+      },
+      "jumps": {
+        "old": 66,
+        "fresh": 0
+      },
+      "contacts": 0,
+      "pairs": 0,
+      "minBody": 1.2179782414636005,
+      "finalLag": 9.810143808408611e-10,
+      "wheelJump": 0.0600000000000002,
+      "wheelHand": 2.3314683517128287e-15,
+      "wheelGroundError": 0
+    },
+    {
+      "role": "RR_WHEEL_ON",
+      "peaks": {
+        "old": {
+          "delta": 1.680725709676392,
+          "t": 12760
+        },
+        "fresh": {
+          "delta": 0.08728977717729909,
+          "t": 10060
+        }
+      },
+      "jumps": {
+        "old": 66,
+        "fresh": 0
+      },
+      "contacts": 0,
+      "pairs": 0,
+      "minBody": 1.2179782414636005,
+      "finalLag": 9.810143808408611e-10,
+      "wheelJump": 0.060000000000000095,
+      "wheelHand": 2.3314683517128287e-15,
+      "wheelGroundError": 0
+    },
+    {
+      "role": "RELEASE_CONTROLLER",
+      "peaks": {
+        "old": {
+          "delta": 1.680726823161724,
+          "t": 12760
+        },
+        "fresh": {
+          "delta": 0.08728977717729909,
+          "t": 10060
+        }
+      },
+      "jumps": {
+        "old": 57,
+        "fresh": 0
+      },
+      "contacts": 0,
+      "pairs": 0,
+      "minBody": 1.2179782414636005,
+      "finalLag": 9.810143808408611e-10,
+      "wheelJump": 0.060000000000000095,
+      "wheelHand": 2.3314683517128287e-15,
+      "wheelGroundError": 0
+    }
+  ],
+  "pendingAck": {
+    "old": 1.4674934155521453,
+    "fresh": 3.345657209007746e-05
+  }
+}

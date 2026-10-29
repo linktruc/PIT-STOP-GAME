@@ -1,0 +1,306 @@
+PIT STOP. SIMULATOR. — CODEX V11.1 PRECISE FIX / POLISH SPECIFICATION
+SOURCE TO EDIT: pit-stop-v10-3-source.zip
+
+READ THIS FIRST
+The owner approves most of the V10.3 game's mobile art direction. This is a focused corrective pass, NOT permission to rewrite the app from scratch. Implement changes in the EXISTING editable source; preserve live multiplayer, game rules, scenes, assets, Supabase, host/rooms, spectator, replay, leaderboard, solo mode, and Netlify packaging. DO NOT simply write a plan. All visible game copy must stay in English.
+
+PRIORITY ORDER
+P0: restore mobile 3D visibility; replace the misleading LOCAL admin flow with REAL Supabase global sign-in; verify bot timing and visible playback, especially in solo mode.
+P1: DESIGN A NEW compact workflow visualization (not tile cards), single-screen full workflow, credible car approach, and ONE-TAP Watch Live event log from overview cards.
+P2: responsive desktop design, duplication cleanup, precise NOSE bot positioning/posing and gunner animation refinement.
+
+VERIFIED CODE CONTEXT (INSPECT THE FILES, DON'T GUESS)
+- src/App.tsx composes the crew HUD, countdown, live focus and connection indicator.
+- src/v10-ui.css contains mobile layout: .role-card.role-strip bottom:calc(217px + safe-area); .action-console:has(.ready-button) bottom:calc(121px + safe-area); action console .action-button has a different bottom. These overrides visually push the card and action box upward.
+- src/v10-workflow.css sets .connected-workflow.v10-board .connected-graph min-width:700px; height:610px, with graph-scroll overflow:auto and max-height:58–65dvh. This creates both horizontal and vertical scrolling on mobile.
+- src/ChainHUD.tsx renders MiniChain and ChainHUD; src/workflow.ts sorts chronological done/available/upcoming tasks and moves the ribbon window. Individual task status can update in rapid bursts.
+- src/PitScene.tsx, src/scene/environment.ts and src/scene/crew.ts own the procedural 3D, arrival and support bots. PIT_LANE_LAYOUT currently uses approachZ=19 with a mostly longitudinal straight approach. Improve the car's actual path and pace.
+- src/engine.ts has humanMeanAt, enableTasks, botEvent, reconcile. createSoloRound uses a seedMs=400 fallback for non-jack solo roles. src/scene/animation.ts has fixed capped presentation animation durations. Production online timing lives in pit_private.reconcile_round in supabase/001_pit_crew.sql plus additive migrations. Separate LOGIC time from visual animation time; do not assume one is proof of the other.
+- src/ReplayEventLog.tsx exports LiveEventStrip, EventLog and EventLogDrawer. V10.3 currently makes Event Log reachable primarily inside watch FOCUS. Add a clearly visible external Event Log action on the Watch Live overview cards, next to Replay for finished rounds; do not require focus view or replay.
+- src/api.ts currently rejects passwords shorter than 12 before Supabase Auth sees them, and falls back to practice.signInAdmin without a Supabase client; src/GamePanels.tsx advertises Local Test Admin; src/practice.ts implements localAdmin + admin/1234. Remove all local admin paths. Preserve the actual Supabase Auth username-alias flow and backend role authorization.
+- src/v8.css, v9.css, v10-ui.css, v10-workflow.css and game.css cascade; inspect actual precedence/computed styles and consolidate overlapping media query rules.
+- For support bot FRONT/NOSE coordinates, use the V8 version as a narrow reference. In V8 they were approximately (x=-1.62,z=-3.20) and (x=+1.62,z=-3.20); V10.3 moved them toward (+/-1.78,-3.45). Verify V8 geometry before restoring; do NOT bring back V8 center-bot overlap.
+
+==============================
+1. MOBILE: LOWER THE BOTTOM PANELS AGAIN — VERY IMPORTANT
+==============================
+Owner's actual requirement: the ROLE box and the READY / START / ACTION console should be AS LOW AS PRACTICALLY POSSIBLE, so they cover MINIMAL 3D content. Their current positions are too high and were NEVER requested.
+
+REQUIREMENTS:
+- Preserve the current compact role card dimensions/content; DO NOT enlarge either box.
+- Move BOTH the role box and the Ready/Start/action group DOWN on iPhone until their bottoms approach the lowest safe usable area.
+- The ONLY bottom reservation beyond safe area should be what is needed to keep essential boxes from being obscured by the visible third-party “Powered by Netlify” overlay (plus a small gap). Never place an interactive button under it.
+- Maintain small, consistent spacing between role and action boxes; moving the action box down must also move role down. Do not leave a giant empty gap below the action buttons.
+- Inspect browser chrome and safe-area behavior on iOS Safari: 100dvh, dynamic bottom bar show/hide, landscape, address bar changes. Avoid large arbitrary fixed offsets and jitter.
+- Do not remove, overlay-hack, or disguise Netlify's third-party badge. Simply place the GAME'S own UI to avoid collisions.
+- The 3D scene should regain noticeable unobstructed vertical space. Compare before/after at 390x844 and 430x932.
+- Apply the same placement discipline to WAITING (Ready/Start), RUNNING (single action), penalty, and COMPLETED states; do not accidentally push one state higher.
+
+==============================
+2. REMOVE REDUNDANT BUTTONS AND LABELS
+==============================
+- DELETE the in-game “RESET VIEW” button from the HUD. Keep touch/mouse orbit functionality. You may retain camera re-centering via a nonpersistent settings option if truly needed, but no always-visible button.
+- On the SAME screen there must not be two copies of “IN POSITION”. Keep just one meaningful stage/status indicator (prefer by timer or header) or eliminate unnecessary copies.
+- “SOLO TEST — NOT RANKED” should not be repeated around the main scene. Keep ONE concise solo/unranked indicator in a meaningful place (for example in team title when solo); not again in footer/status and action section.
+- Remove any duplicated status/helper copy and reclaim space; do not add more decorative text to compensate.
+- The network indicator must never overlap the timer or header text. Put a tiny status dot/icon at BOTTOM LEFT, where the Netlify badge does not obscure it. In normal CONNECTED state show ONLY the icon/dot, NO text. When reconnecting/disconnected show short text like “Reconnecting…” alongside a warning icon. For SOLO local mode, do NOT show a connection-status label reading “SOLO TEST — NOT RANKED”; either hide online health indicator or show an unobtrusive local-status dot.
+- If on the main menu, do not show a “go to main menu” control. Preserve Resume Team + Leave Team when membership persists.
+
+==============================
+3. MINI WORKFLOW: REPLACE THE TILE DESIGN WITH A NEW, ULTRA-COMPACT PROGRESS RAIL
+==============================
+
+USER CLARIFICATION — THIS IS A REDESIGN, NOT JUST SMOOTHER ANIMATION:
+The current mini workflow uses large rectangular task cards/tiles which are visually crowded and jump around during bursts. Stop using those separate task boxes altogether. The owner asks Codex to devise the clearest, densest possible visual representation of many real tasks, with a strong sense of progress and NO increase in the current compact mini-workflow footprint on MOBILE. More 3D visibility is non-negotiable.
+
+DESIGN GOAL:
+- One low-profile, edge-to-edge-ish compact horizontal strip that is a LIVE INSTRUMENT, not a set of cards.
+- Illustrate the connected, advancing job sequence using a fine continuous track / connected milestone rail with small ticks/nodes, restrained icons, compact legible labels, a clear progress sweep, and tasteful color transitions. This is a STRONGLY PREFERRED design direction; choose an even clearer custom solution if demonstrated superior in screenshots/tests. No giant tiles.
+- There must be space for MORE real jobs, not merely 3 blown-up jobs. The number of simultaneously readable milestones should grow with actual usable width (ResizeObserver/container-based sizing; NEVER hardcode exactly 3). Use spacing density, text width, and minimum readable font size to decide. Desktop can show significantly more than mobile.
+- Keep the mini-workflow at or BELOW the CURRENT V10.3 strip's height on 390px and 430px phones, and no additional intrusion toward the center of the 3D. Match existing overall horizontal extent of the strip.
+- Every visible task label must be a short but self-explanatory phrase such as “Loosen front-left wheel nut”, “Remove rear-right wheel”, or “Lower front of car”. Never show an ambiguous bare “Loosen / Off / On / Tighten”. Shorten only redundant context if the full context is provided immediately adjacent.
+- The CURRENT player's task(s) use restrained yellow/gold markers wherever those tasks happen to be visible. NEVER pin the player's task in the center; the viewport must follow actual ongoing team progress.
+
+IMPORTANT: F1 TASKS HAVE PARALLEL BRANCHES. DO NOT LIE ABOUT DEPENDENCIES.
+- The authoritative 21-task DAG includes simultaneous four-wheel branches. A fully ordered single strip would misrepresent actual dependencies.
+- Use the mini strip as a chronological LIVE PROGRESS SUMMARY / milestone rail, while the full board remains the truthful DAG. The strip should present recent completions plus the active work frontier and next eligible stages, with a consistent grouping policy for simultaneous wheel operations.
+- Maintain two separate concepts: (1) true task statuses/owners/dependencies from the game; (2) a monotonic, visually contiguous TOTAL completion bar representing completedCount/21. The latter can sweep left-to-right without implying that each individual DAG task completed in serial order.
+- For simultaneous work, summarize in a stable concise group (“4 wheels active”) or show compact individual markers when they fit. Do not rapidly reorder individual wheel tasks in response to race timing; all task status colors must remain truthful.
+- Keep a clear progression from start lifts -> parallel wheel work -> lower jacks -> release while preserving real completion counts and branching logic.
+
+ANIMATION / DATA CONTRACT:
+- Server snapshots and task events are authoritative; separate incoming data state from display interpolation.
+- Debounce/coalesce bursts (e.g. 100–200ms) and present ONE coherent target update. Never queue one transition per event when many tasks finish milliseconds apart.
+- One continuously interpolated progress sweep/count animation for completedCount/21; no gaps and no sudden backwards resets. Progress count MUST remain monotonic within a round.
+- Any viewport/label movement must be minimal and cinematic, NOT snapping multiple milestones or fast marquee motion. Favor a stable camera/rail and local highlights rather than constantly translating the full rail.
+- When >3–5 events arrive at once, settle to the new true frontier immediately or with a single restrained transition; DO NOT race through every intermediate screen. A subtle “+4 tasks” hint is acceptable if useful, but never replace actual progress data.
+- Use stable React keys, measured label widths, transforms rather than reflow loops, and reduced-motion fallback. Keep number text anchored to avoid jitter.
+- The full workflow remains available on tap, with all task nodes and assignees.
+
+MANDATORY VISUAL TESTS:
+(a) side-by-side captures at 390px, 430px, tablet, 1440px proving that wider strips show MORE DISTINCT tasks/milestones with readable labels instead of enlarged 3 boxes;
+(b) a recording of four wheel tasks finishing 100ms apart — the rail stays legible and stable, progress moves cleanly once;
+(c) burst of five snapshots and reconnect catch-up — no backlog, flash, flicker, or wrong active task;
+(d) personal task yellow marker only when actually present, not artificially centered;
+(e) 3D visible area is no smaller than V10.3 on phone.
+
+==============================
+4. FULL WORKFLOW: THE ENTIRE 21-STEP GRAPH FITS IN ONE VIEWPORT
+==============================
+Current problem: the full modal board needs horizontal AND vertical scrolling. This is unacceptable for the requested compact overview.
+
+- Remove mandatory `min-width:700px`, `height:610px` / auto-scrolling assumptions that force two-axis scrolling on mobile.
+- Redesign responsively so ALL 21 tasks can be viewed simultaneously IN ONE PAGE of the full workflow dialog on an iPhone portrait at 375/390/430px widths AND desktop. It is okay to adapt the layout, not okay to hide tasks or add a scroll-to-find dependency.
+- Recommended MOBILE board: group FRONT AXLE and REAR AXLE vertically, each with two distinct wheel lanes side-by-side and four compact stage rows; show front/rear lift, each wheel loosen/remove/fit/tighten, corresponding down actions, and release. Preserve real dependencies with small but clear connectors and phase group headings. The graph should fit within the space below the overlay header and above its controls.
+- Use complete-enough contextual labels: wheel column already shows “Front left” so task can say “Loosen wheel nut”, “Remove old wheel”, etc. Do not display meaningless bare verbs; when opened/tapped show the complete task label.
+- Continue to show assigned human nickname or Bot inside each relevant node, compactly; ellipsize safely if long but offer full name on tap. Mark YOU clearly.
+- No giant assignment list, repeated explanation, or sidebar under the graph.
+- On DESKTOP use a spacious single-screen grouped diagram, not giant stretched nodes. Keep it readable while showing all steps simultaneously.
+- Test with real long nicknames and phone safe areas; no horizontal/vertical scrollbar within the full graph at target viewports. If small phones cannot fit verbose labels, adapt labels/context and font hierarchy intelligently, not micro-text below legibility.
+
+==============================
+5. F1 CAR ARRIVAL: FASTER, WITH A REAL TURN FROM THE PIT LANE
+==============================
+Current animation is slow and looks as if the car already starts on the pit apron/pavement and drives STRAIGHT into the crew.
+
+REQUIREMENTS:
+- The car must first be visibly approaching along the FAST/TRAVEL LANE, to the side of the pit box. It must TURN/BLEND laterally into the team's stopping bay following a believable curved route. Not a straight-in from directly ahead or pavement-only line.
+- Clearly show directional steering/yaw, entry trajectory, braking to the precise stop box; wheels roll; stop exactly at the GO signal when 3–2–1 finishes.
+- Appearance is snappy and energetic, NOT sluggish, but keep movement visually sensible for a speed-limited pit lane: brisk approach, decisive turn, rapid slowing near the box. The count remains 3–2–1–GO! and crew acts only once the car is stopped at GO.
+- Drive movement from server-relative goAt/replay time, not random local time or FPS. Live, spectator focused 3D and replay must show the same trajectory at the same timestamps; reconnect must snap/seek to correct position.
+- Do not change official GO-to-release Pit Stop Time or prematurely unlock tasks during approach.
+- Test rotating the 3D camera at various angles; path must remain on paved areas and avoid people, pit booms, jacks and wall.
+- Preserve the existing stylized low-poly car/crew art style and F1 task interaction choreography; reference photos guide the PIT-LANE BACKGROUND/ATMOSPHERE, not a new character-pose reconstruction.
+
+==============================
+6. SUPPORT CREW + GUNNER: PRECISE STAGING AND BELIEVABLE POSES
+==============================
+
+The owner clarifies the current V9+/V10 nose-area support bots are TOO FAR from the car. V8's NOSE SUPPORT BOT positioning was better (though still refine their poses). The middle/sidepod support bots should remain close, with physically credible contact and NO torso/body intersection. The main crew pose choreography is generally approved; do not replace every character pose or reconstruct positions from F1 reference photos. Those reference photos were mainly for the new PIT-LANE BACKGROUND.
+
+NOSE BOTS:
+- Inspect V8 coordinates/scene rendering and restore the more appropriate, closer nose-area stances for both front support crew; don't blindly copy coordinates if the V10 car is scaled differently.
+- Improve pose: feet on ground, torso safely outside car/wing envelope, hands reaching naturally to the relevant front structure and visibly touching or nearly touching the bodywork; no body/wing overlap.
+- Adjust shoulder, elbow, wrist/hand positions rather than relying only on translating whole humanoid groups. Keep stable across lifting, driving-in, and drive-away phases; move clear before car departure when needed.
+
+MIDDLE SUPPORT BOTS:
+- Bring/keep body close to sidepod but OUTSIDE its mesh. Hands/tools can make believable bodywork contact. Do not make them stand far away to evade clipping; use explicit torso/arm/contact anchors and a torso-body collision envelope.
+- Check left/right mirroring; no body parts intersect chassis, wheels, or sidepods. Test from top, front and oblique angles, and orbit camera.
+
+GUNNERS (ADDITIONAL NEW REQUEST):
+- The four gunner animations currently look awkward. Refine only their wheel-gun stance and action sequence: stable feet, sensible kneeling/leaning, two-handed wheel-gun grip, correct tool orientation at the wheel's CENTER NUT, realistic short thrust/retraction on loosen and tighten, return to a plausible ready pose, and clearance when the car leaves.
+- Both loosen AND tighten must work at each of FL/FR/RL/RR; mirrored left/right hands and tool positions must not clip through the wheel/character torso.
+- Keep other already good wheel carrier animations unchanged except necessary anchor corrections. Do not introduce expensive full-character rigs if existing procedural posing can be improved cleanly.
+- No decorative fake animations unrelated to events. Event-timed poses must remain deterministic in player, spectator, and replay.
+
+PRESENT EVIDENCE:
+Before/after close-up screenshots or animated captures of V8 nose bot vs V10.3 nose bot vs corrected bot, middle sidepod from multiple angles, each gunner corner performing loosen/tighten, and clearance during exit.
+
+==============================
+7. BOT ADAPTATION: FIX MEASURED TIME AND THE APPEARANCE OF SPEED IN SOLO/ONLINE
+==============================
+
+USER'S EXACT REPRO CASE:
+“In Solo Test, I intentionally wait several seconds before pressing my action. Yet the bots doing jobs AFTER mine still act surprisingly fast, as though they never learned my measured Step Time.” This is NOT just a subjective fairness debate — reproduce the scenario, inspect actual completion timestamps and visual behavior, and FIX whichever layer causes it.
+
+CONFIRMED CODE PATHS TO INSPECT:
+- src/engine.ts: humanMeanAt(), enableTasks(), botEvent(), reconcile(), submitAction(). It snapshots the average of human reaction samples with sample.at <= the task's enabledAt.
+- createSoloRound() uses soloTiming.seedMs=400 when the chosen solo role is not a jack. Such a fallback may seed BOOTSTRAP bots BEFORE the first human task is reachable; explain and isolate this unavoidable causal case rather than allowing 400ms to govern downstream bots after the first real sample exists.
+- src/solo.ts: room roles and time source; src/practice.ts if applicable.
+- src/scene/animation.ts: durationForTask() uses relatively short fixed VISUAL animation durations (650–1000ms); this can make an accurately delayed bot look artificially quick. Keep official scoring based on server task timestamps, but also make actual visual bot start/wait/complete timeline correspond to those timestamps.
+- Supabase production: pit_private.reconcile_round(), pit_private.samples, task.enabled_at, baseline_mean_ms, due_at, completed_at, bot reason; make online and solo behavior consistent except intentional solo bootstrap.
+
+CORRECT REQUIRED RULES:
+1. The reference bot delay for any newly enabled bot task is the arithmetic mean of valid REAL human unlock-to-click times that were already recorded at that task's eligibility time, not a permanent 0.4-second constant.
+2. Example: Solo human FRONT_JACK action becomes available at GO, human deliberately clicks 4.0 seconds later; any BOT task made eligible BY that completed action must reference a mean of 4.0 seconds and normally wait about 4.0 seconds from its own unlock (subject only to the original synchronized-parallel-task fast-finish rules). This must be verified with event timestamps, not merely visual snapshots.
+3. After a later human sample, future bot tasks use the updated arithmetic mean. A bot already scheduled continues its existing fixed dueAt unless a legitimate cohort cap/sync ends it earlier; do not retroactively adjust in-progress timing on every sample.
+4. Opening front/rear jack synchronization: one human jack and one bot jack should finish simultaneously on the real human's action as specified earlier.
+5. Original PARALLEL-COHORT cap is still mandatory: if all relevant HUMAN tasks in the same simultaneous cohort have already finished before a bot's scheduled dueAt, bot must NOT delay progression; it completes with the final relevant human. Make this reason visible in DEVELOPMENT diagnostics so apparently fast bot finishes are explainable and not misdiagnosed.
+6. If Solo selects a non-jack role, some initial bot jack/other prerequisite tasks must happen before the first human sample. They can use an explicitly scoped bootstrap rule, but as soon as a valid human response exists, newly unlocked downstream bot tasks must use real observed timings. Do not misrepresent this limitation.
+7. Official pit-stop clock is GO -> GREEN RELEASE; do NOT sum reaction times, and do not include any 3D visual-tail time in official score.
+8. Visual feedback must make delayed bots LOOK delayed: before their dueAt, keep actors in a meaningful waiting/ready pose; run the physical action at the event-appropriate moment and use short visually understandable animation; do not play a 0.65s bot work animation immediately at unlock and then secretly wait 4s in game logic. Replay and Watch Live should reflect the same event timeline.
+
+DETERMINISTIC TEST FIXTURES:
+- Solo FRONT_JACK with one 4,000ms response (GO -> click). Check all relevant downstream unlocked bot tasks: baselineMeanMs=4,000, dueAt=enabledAt+4,000 unless documented parallel cohort/sync overrides. Compare events and actual 3D cue timing.
+- Repeat with 250ms click; downstream bot timing should differ significantly, not remain around a fixed 400ms regardless of response.
+- Role chosen as WHEEL_ON or RELEASE_CONTROLLER: document bootstrap bot actions before any sample; after a 3,000ms human response, newly unlocked bot tasks must use that real response where causally applicable.
+- Two or three human samples (200ms, 600ms, 400ms): expected evolving mean 200ms -> 400ms -> 400ms for subsequent eligible tasks.
+- Server SQL vs TS engine parity, multi-device reconnect, concurrency cap, replay; record baselineMeanMs/enabledAt/dueAt/completedAt/reason and screenshots/video.
+- Do not claim a bot adaptation fix merely because tests of the helper function humanMeanAt pass. Run complete rounds, including actual 3D playback.
+
+If SQL/backend logic changes, provide an additive migration and explain that redeploying Netlify does NOT migrate a live Supabase database.
+
+==============================
+8. WATCH LIVE: EVENT LOG BUTTON OUTSIDE, DIRECTLY NEXT TO REPLAY
+==============================
+
+OWNER CLARIFICATION: “Event Log must be accessible FROM THE OUTSIDE, next to the Replay button — I should not need to enter the team detail view or replay first.” The previous prompt talked primarily about an Event Log button within watch FOCUS, which is not enough.
+
+MANDATORY OVERVIEW UX:
+- In the main Watch Live room/team overview/list (not just within a selected team's 3D detail), show a compact obvious “Event Log” button ON EACH RELEVANT TEAM CARD.
+- For a JUST FINISHED team / completed round, render **Event Log** and **Replay** SIDE BY SIDE in that card's existing action row, same hierarchy and easy to tap. Either action opens independently from the overview. The Event Log must not launch Replay or require selecting/focusing the team first.
+- For an ACTIVE team on the clock, show Event Log alongside its Watch/Focus action (there is no replay yet), and let it update live. Do not hide Event Log behind a selected team's panel. Waiting teams with no events need no Event Log button.
+- Maintain the same quick access on mobile Watch Live OVERVIEW (which uses compact progress cards without heavy 3D), and on desktop four-team overview; don't expand cards excessively to make room for actions.
+- Keep the Event Log accessible from inside Watch FOCUS as a secondary entry point, but the overview-side action is the priority.
+
+EVENT LOG DATA & PRESENTATION:
+- Task | By | Step Time | Team Time; By shows nickname + role when applicable; bot clearly identified; Step Time=unlock-to-completion, Team Time=GO-to-event timestamp (not sum of team steps).
+- Data from authoritative recorded live events. Stable order, de-duplicate, update while running, show completed snapshot for Just Finished.
+- Clicking Event Log opens a compact drawer/overlay with controllable internal scroll and a close button, not a full-screen table that buries the central 3D. On overview, do not block the entire room list needlessly.
+- Clicking Replay independently opens the corresponding actual recorded round. Keep Replay disabled/unavailable until a round is finished.
+- Deleting a result globally must invalidate linked Just Finished cards, replay, and event log data together as per V10.3.
+
+ACCEPTANCE: From the Watch Live overview, find a JUST FINISHED room. Click Event Log DIRECTLY beside Replay and read events without navigating to team detail or playback. Then click Replay independently. Repeat on mobile compact cards and desktop. During a running round, Event Log from outside should update live.
+
+==============================
+9. MOBILE GENERAL: KEEP CURRENT LOOK; DESKTOP NEEDS A REAL REDESIGN
+==============================
+MOBILE:
+- Overall V10.3 aesthetic is approved. DO NOT change colors/style/3D layout radically.
+- Correct panel vertical location, workflow behavior, duplication, and network indicator only; no new huge cards.
+
+DESKTOP:
+- Improve game HUD composition significantly, responsive at 1280x720, 1366x768, 1440x900, 1920x1080, 2560x1440 and intermediate sizes.
+- Controls/buttons should be clearly legible and larger than mobile-scaled leftovers; better spacing and visual balance.
+- 3D car + interacting crew must remain the visual CENTERPIECE with ample unobscured center space.
+- Place compact information panels to LEFT and RIGHT side margins instead of stacking floating boxes over the car. A rectangular mini-workflow at an edge is fine; design and orient as makes sense for desktop.
+- Place role/action controls in a stable peripheral group; keep bright primary action visually important without obstructing action on the car.
+- Align timer, room/team name, host/status, controls coherently; no collisions and sensible center alignment where appropriate.
+- Layout should stretch/flow with viewport, not rely on one hardcoded screenshot size. Avoid text truncation except intentionally for very long room names.
+- Mobile and desktop may have DIFFERENT HUD geometry and workflow presentation; share data/logic, not necessarily CSS layout.
+- No scroll of the main gameplay page; only OPTIONAL overlays or observer listings may scroll where necessary.
+- Do not change the core gameplay rules as part of desktop polish.
+
+==============================
+10. ADMIN: REMOVE LOCAL ADMIN ENTIRELY; SUPABASE GLOBAL ADMIN ONLY
+==============================
+
+THE USER IS NOW UNAMBIGUOUS:
+- They DO NOT want hardcoded `admin/1234`, a local-only mock, browser-only deletion rights, a second test admin mode, or different admin experiences for Solo vs online.
+- They ALREADY HAVE an admin username and password configured on Supabase. They want to enter THOSE real credentials and operate GLOBAL ONLINE administration.
+- They report that the present UI sometimes shows “Sign in locally” when outside Solo, and only appears to offer a true global admin in another context. This is broken/contradictory UX; remove the root cause, not just the wording.
+
+CONFIRMED V10.3 SOURCES:
+- `src/GamePanels.tsx` AdminForm receives a `localTest` prop and displays “Local test admin — browser data only. Use admin / 1234” with “Sign in locally”. DELETE this separate experience entirely.
+- `src/App.tsx` routes to AdminForm with `localTest={isPractice && !isSolo}`. Delete the localTest path.
+- `src/api.ts` has `if (!client) practice.signInAdmin(...)`, and a forced password.length<12 rejection BEFORE it contacts Supabase Auth. Remove the local fallback and the arbitrary client password length gate so existing valid SUPABASE credentials are actually tried against Supabase.
+- `src/practice.ts` has `localAdmin` and checks for `admin/1234`, including local destructive controls; eliminate this mock login/admin privilege from the normal user product completely. If local practice mode has offline leaderboards for gameplay testing, it must not advertise any administrative login or pretend to own global results.
+- `src/api.ts` currently blocks sign-in while `solo.active` and may also require leaving an active multiplayer room to avoid changing Auth identity. Make GLOBAL admin entry CONSISTENTLY visible from main menu/leaderboard independent of whether solo is active. Handle any real auth-session/seat identity implications safely and explain/confirm necessary transitions; do not silently switch session or reassign a room player.
+
+IMPLEMENTATION CONTRACT:
+1. ONE AND ONLY ONE Admin Sign In screen: username + password -> Supabase Auth authentication -> server-side `pit_private.admins` / RLS/RPC verification -> global admin tools. No “local admin” or “sign in locally” ANYWHERE.
+2. If Supabase is not configured/unreachable, clearly show “Global administration requires a connection to Supabase” and do not offer a fake login in its place. Game's local Solo Test can still work normally but has no local admin.
+3. Login should work with the username alias already configured in Supabase (e.g., `admin` via existing `pit_admin_login_identity` mapping), without requiring the player to know an internal Auth email. The password is the ACTUAL current password in Supabase Auth, NOT hardcoded and NOT reset by the project code.
+4. No arbitrary 12-character FRONTEND rejection if the configured existing Supabase Auth password is shorter. Let Supabase Auth validate it. Do not expose secret passwords, service-role keys, or bypass server authorization.
+5. Admin login can be initiated from main menu/leaderboard without entering Solo or joining a team. Admin identity must persist appropriately through normal page navigation, refresh, and sign out. No “local vs global” switch; one clear status “Global admin” after server verifies privilege.
+6. ADMIN DELETION MUST OPERATE ON ONLINE DATA: server checks entitlement; clearing a team/round/all results also invalidates linked Replay, Just Finished and Event Log references consistently, with confirmation, audit logging and no orphaned entries.
+7. Leaderboard READING stays public. Users must never need admin credentials just to see ranking.
+8. If the actual Supabase admin account/alias is misconfigured, show exact setup/check steps without guessing account secrets or claiming authentication succeeded.
+
+TESTS:
+- Without Supabase config, opening Admin Access never shows “Local test admin”, admin/1234, or “Sign in locally”; it gives a clear backend-needed state.
+- With a configured Supabase project, log in from the MAIN MENU using an existing Supabase username alias + its actual password. Verify `pit_state.identity.isAdmin = true`, ability to delete ONLINE data, audit log, and linked replay/finished/event cleanup.
+- Navigate to menu, Solo, leaderboard, return; confirm there is no surprise fallback to a local sign-in UI. If entering Solo changes auth identity, protect the global admin session and present a clean non-destructive way to leave Solo/restore admin, rather than redirecting to a mock.
+- Attempt login with a valid existing credential shorter than 12 characters in a controlled test: the frontend must submit it and let Supabase decide. This is not a recommendation to CHOOSE a weak admin password in production.
+- Rejected or non-allowlisted Auth user never gets delete privileges, even if a frontend is tampered with.
+
+==============================
+11. ACCEPTANCE TESTS (REQUIRED, NOT OPTIONAL)
+==============================
+A. Mobile 390x844 and 430x932 with browser safe area / third-party badge placeholder:
+   1. Role and Ready/Action panels visibly lower than V10.3, with more unobstructed central 3D.
+   2. Button never covered by Netlify badge, no overlap between role/action boxes, all tap targets usable.
+   3. No reset view button, no duplicate IN POSITION, no duplicate SOLO label.
+   4. Bottom-left network indicator shows no text when healthy; “Reconnecting…” when unhealthy, no overlap.
+B. Mini workflow: completely new no-task-boxes compact milestone/rail design; more readable job markers at wider widths within SAME mobile height, contiguous monotonic completion sweep + truthful parallel DAG states, stable YOU highlighting, no animation backlog at 4+ rapid completions. Test 390/430/768/1440 widths.
+C. Full workflow: 21 distinct tasks + human/Bot names visible in ONE full-board viewport without needing horizontal or vertical scrolling at 390x844, 430x932, 1440x900; all edges/dependencies correct.
+D. 3D: camera captures at countdown 3,2,1,GO and first active task show car approach from fast lane and TURN into stop box; car is stationary precisely at GO; speed feels energetic. No crew clipping or impossible line crossing.
+E. Support/gunners: front/nose bots restored toward V8 close positions AND posed with hands touching bodywork naturally (zero torso overlap); middle pair stands close with natural hand contact but bodies clear; 4 gunners have convincing two-hand tool grips at central nut for loosen/tighten on all wheel corners. Inspect top/diagonal/front views and show clips.
+F. Bot: Solo FRONT_JACK slow press (4s) causes dependent newly unlocked bots to reference the 4s observed human average unless legitimate parallel cap applies; 250ms comparison clearly differs. Test nonjack bootstrap fallback behavior and the first subsequent human sample. Validate bot timestamps, real 3D wait/execute animation timing, jack sync, parallel cap and production SQL parity. Report actual causes rather than inventing a fix.
+G. Watch LIVE OVERVIEW: Event Log visible OUTSIDE in cards; JUST FINISHED cards show [Event Log] NEXT TO [Replay] with independent actions; running cards show Event Log and Watch/Focus. No focus view/replay prerequisite; rows Task/By/Step Time/Team Time accurately update. UI remains compact.
+H. Desktop: screenshot at 1366x768 and 1440x900 shows attractive side-balanced HUD, large clear buttons, centered dominant 3D without panels on top of car. No main-page scrolling.
+I. ADMIN: NO local mock sign-in anywhere, including practice/solo; one Global Admin UI from main menu; Supabase alias/password works without arbitrary frontend 12-character gate, even if a short existing credential was configured; server allowlist authorizes online deletion; scores/replays/finished/event references cleaned together.
+J. Re-run 4–15-player online rules, solo role picker, READY stability, early-click 2s penalty, bot caps, replay, watch live, leaderboard, host actions and Netlify packaging regressions.
+
+==============================
+12. IMPLEMENTATION & HANDOFF
+==============================
+- Begin with a short issue-to-code mapping and inspect the existing test suite.
+- Do not make huge stylistic rewrites or new decorative prose; solve the listed issues.
+- Prefer a dedicated desktop CSS layout and unified mobile HUD constraints, removing CSS precedence collisions rather than stacking endless overrides.
+- Use existing V10.3 source; request the V8 source from the user only if needed to verify the nose crew coordinates beyond the supplied reference.
+- Run npm ci; npm run typecheck; npm run lint; npm test; npm run build; npm run package; npm run verify:packages. Report actual results.
+- For UI/visual checks, provide BEFORE/AFTER screenshots at mobile and desktop dimensions, plus at least one short captured sequence of rapid workflow transitions and car entering on its curved path.
+- Produce:
+  (1) editable V11 source ZIP;
+  (2) Netlify-ready ZIP;
+  (3) additive Supabase SQL migration(s) ONLY if required;
+  (4) V11_FIX_REPORT.md with changed paths, root causes, tests PASS/FAIL/NOT TESTED, solo vs online differences and setup steps for real admin.
+- Do not claim a production Supabase migration or multi-device live validation occurred if it was not performed.
+- Do not allow optional replay/event tables, badges or panels to block the main car and live 3D view.
+
+FINAL REMINDER
+Mobile UI is ALREADY MOSTLY GOOD: bring lower boxes DOWN (not up), build a NEW compact no-tiles milestone workflow, fix duplicates. Desktop needs a better peripheral HUD. Preserve already-good scene action logic; fix ONLY close-nose support stance, sidepod body clearance and odd gunner tool poses. Bot adaptation must be PROVEN in Solo and online, in timestamps AND in animation. Watch Live Event Log belongs directly NEXT TO Replay in Just Finished overview cards. Admin is ONE REAL Supabase GLOBAL account, never local. Do not expose credentials or weaken server permissions.
+
+====================================================================
+V11.2 INTEGRATED CLARIFICATION — GUNNER POSE PRIORITY
+====================================================================
+
+IMPORTANT CORRECTION
+The main visual problem with the wheel gunners is NOT primarily how they hold the wheel gun.
+The main issue is their KNEELING / CROUCHING POSE. Prioritize fixing the body pose first.
+
+WHAT TO FIX
+1. Rework the gunner kneeling/crouching pose so it looks natural and visually clean.
+2. Improve knee position, leg bend, hip placement, torso lean, shoulder alignment, and overall balance beside the wheel.
+3. The gunner should look stably positioned beside the wheel and actively working on the wheel nut.
+4. Preserve a readable low-poly silhouette.
+5. Avoid collapsed squats, twisted knees, floating crouches, awkward body clipping into the wheel area, and unnatural torso/arm compression.
+
+LOWER PRIORITY
+- As long as the wheel gun is visually acceptable, do NOT over-focus on redesigning the gun grip.
+- Hand/gun placement can be refined, but that is secondary.
+- The body pose is the priority.
+
+FINAL OVERRIDE
+If any earlier wording in this spec made it sound like the wheel gun holding/grip was the main gunner issue, ignore that emphasis. The main issue to fix is the gunner kneeling pose.

@@ -1,0 +1,331 @@
+PIT STOP SIMULATOR — CODEX V8 TARGETED FIX PASS
+PROJECT-SPECIFIC INSTRUCTIONS FOR THE ATTACHED pit-stop-v7-source.zip
+
+ROLE
+You are a senior Three.js animation engineer, multiplayer/backend engineer, and mobile game UI designer. IMPLEMENT changes to the attached V7 editable source project. Do NOT generate a new generic game, do NOT throw away the architecture, do NOT stop at a proposal, and do NOT replace working multiplayer with mocked behavior.
+
+OBJECTIVE
+The owner LIKES the current indie-game aesthetic. Preserve the existing art direction and its large, interactive 3D garage, but address the specific visual, interface, and reliability defects below. This is a targeted, high-quality V8 stabilization and polish pass—not another full rebrand.
+
+APP LANGUAGE: ALL player-facing UI, labels, errors, documentation for players, and control instructions in ENGLISH. Technical source comments/docs may be in English as well.
+
+PROJECT ACTUALLY INSPECTED
+- Source archive: pit-stop-v7-source.zip
+- React 19 + TypeScript + Vite + Three.js 0.180 + @supabase/supabase-js; editable src/ is included.
+- src/App.tsx: main menu, crew view, spectator overview, modals, RoleCard, action control, admin sign-in.
+- src/PitScene.tsx: 3D procedural scene, crew positions, tire/hand/tool animations, lift/release choreography, OrbitControls.
+- src/scene/animation.ts: task-driven animation timeline.
+- src/ChainHUD.tsx and src/chain.css: 21-task workflow and expanded detail roster.
+- src/game.css and src/styles.css: viewport/HUD and mobile styles.
+- src/useGame.ts: polling, server-time interpolation, heartbeat, snapshot state, notifications.
+- src/api.ts: Supabase RPC, realtime invalidation, anonymous sign-in, admin authentication.
+- src/engine.ts and src/practice.ts: reference game logic and local practice.
+- supabase/001_pit_crew.sql and SUPABASE_SETUP.sql: authoritative backend; keep their definitions synchronized.
+- tests/, scripts/, docs/, package.json already exist. EXTEND tests rather than deleting them.
+- Existing deployment workflow: Netlify-ready static build + server-backed Supabase multiplayer.
+
+CRITICAL OBSERVATIONS FROM SOURCE
+1. In the SQL pit_private.assign_roles(p_room), roles are reshuffled randomly AND ready=false is assigned to every active member on roster changes. It is called during create/join/member removal/replay. This directly explains why an otherwise ready member can lose Ready and see a different role when another member joins, leaves or times out. Fix this behavior, not just its visual symptom.
+2. The same SQL expires WAITING members after 90 seconds since last_seen_at. On mobile Safari, backgrounding or intermittent network loss can break heartbeat. Improve robust reconnect and cleanup without letting ghost seats block the event indefinitely.
+3. src/useGame.ts currently polls heartbeat every 250ms whenever ANY room is racing, not merely this client's own room. With 15 devices and a serialized backend advisory lock, this is overly aggressive. Implement an efficient event-driven/retry plan.
+4. src/App.tsx currently hides “Leave crew” inside the settings overlay, renders a large top brand, and uses lengthy RoleCard information (including “YOU UNLOCK”). The mobile progress strip provides only limited task context. These are concrete UI targets.
+5. src/ChainHUD.tsx expanded view renders 21 nodes PLUS verbose task details and an extra chain-roster assignment list; simplify radically.
+6. src/PitScene.tsx has hand/prop/crew positions authored mostly as separate world-space offsets and a simplistic release translation. Improve coordinate-space parenting and choreography rather than only tweaking a few CSS pixels.
+7. Current admin UX calls Supabase email/password login; global admin privilege is checked by pit_private.admins(user_id). It is NOT an existing public username/password account. Do not break server authorization to meet the request for convenient login.
+
+P0 — NO REGRESSIONS (ABSOLUTE)
+- Preserve public room browser, 4–15-player online multiplayer, create/join, host actions, kick, Ready, Start after all present players Ready, random unique core roles, 21-task DAG, 4 wheel branches in parallel, the fixed 15 interactable roles and visually present extra bot crew, adaptive bot timing, spectator, online leaderboard, replay, sound, orbit camera and mobile controls.
+- Preserve server-authoritative action ownership, timestamps, and leaderboard scoring.
+- Bots never slow humans in a mixed parallel cohort; opening jack bot completes with the human jack. Preserve existing V7 fairness logic and tests.
+- No client-side privileged SQL or service_role key.
+- Do not rewrite or drop production scores/rooms when applying a SQL migration.
+- Build and package a Netlify-ready ZIP plus full editable source. Never claim server features are tested live unless they really were.
+
+====================================================================
+A. CORRECT 3D SPATIAL ALIGNMENT + PHYSICAL CHOREOGRAPHY (TOP PRIORITY)
+====================================================================
+PROBLEM:
+Props intersect crew bodies (tires visually merge into torsos instead of being held). Wheel guns, hands, jacks, and operator positions are sometimes offset incorrectly. When lower-lift is done, the jack operator stays in the car's path and the car drives through them.
+
+REQUIRED SOLUTION:
+1. Inspect existing corner anchors, CREW positions, Actor groups and per-task transformations in src/PitScene.tsx. Audit FRONT_LEFT/FRONT_RIGHT/REAR_LEFT/REAR_RIGHT, front/rear jacks, and release.
+2. Establish clean transform hierarchies and dedicated anchor objects for:
+   - wheel axle/hub of each corner;
+   - tire pickup/drop location per corner;
+   - character feet, torso, left/right hand grips;
+   - wheel gun muzzle, wheel handle positions, jack nose/handle;
+   - safe retreat and lane-clear positions.
+3. Derive actual grip/mount positions from those anchors in a coherent coordinate system (world/local conversion, matrixWorld, quaternion; avoid independent ad-hoc offsets). Ensure scale and mirrored left/right side orientation are correct.
+4. The old tire should visibly detach from the hub, move with the assigned wheel-off character's hands/body (not penetrate the torso), and end at a believable set-aside position. The new tire should visibly start at the assigned crew member, stay aligned between arms, travel to the hub, and mount correctly.
+5. Gunner must visibly aim at the center nut on the CORRECT wheel on BOTH loosen and tighten actions, with the tool held in a plausible position.
+6. Front and rear jack animations must involve the correct characters and visible lift/lower motions with believable prop alignment.
+7. Character posing: distinguish idle, ready, approach, grip/work, retreat, clear/safe. Transition smoothly; no teleporting, interpenetration, feet through floor, floating wheels or rotated props that cut through bodies.
+8. Departure safety: once axle lowering is complete, the front/rear jack operators MUST move their jacks and themselves out of the nose/rear vehicle path. All nearby wheel operators must visibly withdraw tools/arms and clear the car. Only animate the car driving out when the visually blocking crew are clear. The server's official GO-to-GREEN_RELEASE PIT STOP TIME must stay authoritative; scene departure/clearance may play as a short post-event visual sequence without changing scoring or delaying accepted server actions.
+9. Implement deterministic task-event animations that can catch up on reconnect and correctly show final poses if an event was received late. A room state reload must not leave props in impossible half-completed positions.
+10. Retain user-controlled orbit/zoom. Test alignments from multiple camera angles, not just the default view.
+11. Keep visual indicators for bots and “YOU”, but avoid highlights making physical errors harder to see.
+
+MUST-TEST SHOTS:
+- Every wheel: old tire before/during/after removal; new tire before/during/after install; gunner using gun (8+ critical viewpoints across left/right).
+- Front and rear lift/lower (one real, one bot; both real; post-lowering retreat).
+- Release/car exiting with ZERO collisions against crew, jacks, or discarded tires.
+- Mobile portrait plus desktop landscape, several orbit angles.
+- Evidence: before/after screenshots or a short capture/sequence, plus an animation test report.
+
+====================================================================
+B. MOBILE SCREEN REAL ESTATE / NETLIFY FLOATING BADGE
+====================================================================
+- A “Powered by Netlify” third-party overlay can appear at the bottom of the deployed page. Do NOT attempt to hack, hide, or remove a platform-owned badge with intrusive DOM injection.
+- Reclaim game-owned bottom screen space: eliminate the persistent bottom utility navigation row; migrate essential controls to a compact TOP HUD/menu or a small top-right ellipsis drawer.
+- Keep the clickable “Leave crew” control prominent directly on the crew screen and accessible in one tap, not buried in Settings.
+- Account for actual iOS Safari address bar, browser UI and safe-area env(safe-area-inset-*); use 100dvh / viewport fitting and responsive HUD layout. Provide enough lower safety clearance for the external overlay so it does not cover important controls.
+- Avoid hiding the scene behind giant panels: 3D should remain the dominant mobile area.
+- No page scrolling in main gameplay; compact overlays can have internal scrolling when necessary.
+- All tap targets >=44 CSS px where possible; avoid accidental presses.
+
+====================================================================
+C. REMOVE TOP LOGO CLUTTER, CHANGE GAME TITLE, SIMPLIFY COPY
+====================================================================
+- Remove the large PITCREW masthead/logo inside game view. Keep only essential controls/top status.
+- Home/menu title must be exactly:
+    PIT STOP.
+    SIMULATOR.
+  Not “ONE CREW. ZERO MARGIN.”
+- Remove ALL promotional copy, especially “Fifteen roles. Four wheels. One perfectly connected pit stop.” and excessive slogans.
+- The app should explain only how to join/create, mark Ready, act when unlocked, see status, and finish.
+- No large empty headings, ornamental copy, jargon-heavy labels or repeated metadata.
+- Keep interface refined and recognizably indie-game styled; less text, better hierarchy.
+
+====================================================================
+D. ULTRA-COMPACT ROLE BRIEFING (MAIN GAME HUD)
+====================================================================
+Current src/App.tsx RoleCard is far too verbose. Redesign as:
+- Large, bold role name.
+- One SHORT actionable sentence immediately beneath it (examples):
+  “Lift the rear at GO, then lower it after both rear wheels are secured.”
+  “Loosen and tighten the front-left wheel nut.”
+  “Fit the new rear-right tire when the old one is removed.”
+  “Release the car once all checks are complete.”
+- Below: one concise status line: “Waiting for GO”, “Waiting for rear wheels”, “YOUR TURN”, “Done”.
+- A secondary affordance “Tap for details” that expands short optional instructions, but NEVER includes a redundant “YOU UNLOCK” section.
+- Role card should not automatically expand into a giant lower-half panel; store expansion state within the current room only, default collapsed on mobile.
+- Preserve prominent, legible ONE action button when task is ready.
+- Present the user's role location in their personal chain (see section E).
+- Do not display “Review your role. Then mark Ready.” as the main default summary.
+
+====================================================================
+E. REDESIGN CHAIN: SMALL ALWAYS VISIBLE + SIMPLE FULL DETAIL
+====================================================================
+E1. PERSISTENT MINI CHAIN (VISIBLE DURING GAME)
+- Replace the current mobile-progress-only strip with a meaningful, very compact personal workflow.
+- Show only the user's relevant path: nearest completed predecessor(s), current role action(s), and the immediately dependent next step(s).
+- If a jack role has two tasks (LIFT and LOWER), make both visible with their appropriate dependency/context, even though other wheel branches happen between.
+- If the player is the release controller, mini chain should summarize “4 WHEELS + JACKS DOWN -> RELEASE”.
+- If spectator (no player role), show aggregate progress by each of four wheels + lift/release instead of pretending a personal path exists.
+- Always show blocked/ready/done with smooth tasteful color/connector animation. Keep the YOU node clearly highlighted. Touching mini-chain opens full workflow.
+- Ensure no unnecessary animation reflows or excessive component updates on every timer tick.
+
+E2. FULL CHAIN (ON DEMAND)
+- Rebuild src/ChainHUD.tsx and src/chain.css for clear, spatially logical structure:
+  FRONT LIFT -> FL and FR wheel flows -> FRONT DOWN
+  REAR LIFT  -> RL and RR wheel flows -> REAR DOWN
+  all completed -> GREEN RELEASE
+- Each wheel flow is compact: LOOSEN -> OFF -> ON -> TIGHTEN.
+- Visually distinguish parallel lanes; avoid intertwined spiderweb curves or very tiny labels on mobile.
+- Node states only: blocked, available, completed, yours. Remove repeated ownership labels/usernames from every node; use terse English, icons and clear legend if needed.
+- Remove the massive “all task assignments” list and below-the-graph verbose explanation/detail block. If node inspected, show ONLY concise action label and state (not an essay).
+- The full chain should be usable on iPhone without zooming the entire browser page; use an intelligently laid-out scaled canvas/grid or internal horizontal lane control, not 21 microscopic text nodes.
+- Current single source of truth remains actual Task.dependencies and Task.status. Never fake progress.
+
+E3. SEPARATE ALL ROLES REFERENCE
+- Create a separate accessible “All Roles” feature in menu (BEFORE joining any room) and in room UI via a lightweight overlay.
+- Show the 15 playable roles clearly grouped by four wheels / jacks / release. Also distinguish extra bot-only crew if listed.
+- This is a generic role catalogue. DO NOT reveal live roster usernames or assign names here, especially before lobby. Plain short descriptions (one sentence max each).
+- Actual room member list remains in its own “Crew” view with names/host/kick controls where permitted.
+
+====================================================================
+F. VISIBLE LEAVE CREW CONTROL
+====================================================================
+- Add a clear, consistently placed “Leave crew” icon/button on the main crew HUD (top-right or compact top action bar), not hidden under Settings.
+- Distinguish “Back to menu” (stay in room) from “Leave crew” (remove membership).
+- Confirm abandonment if countdown or a round is running; maintain current server behavior and do not lose completed results.
+- Avoid mixing up Leave, Kick, Exit fullscreen and browser back.
+- Give immediate, brief feedback.
+
+====================================================================
+G. FIX READY RESET, RANDOM ROLE SWITCH, AND CONNECTION INSTABILITY
+====================================================================
+ROOT CAUSE TO INVESTIGATE (DO NOT GUESS):
+- The current SQL pit_private.assign_roles() randomly reallocates ALL roles and clears ALL Ready flags whenever called.
+- It is called on joins and member removals. This is why roles can switch and Ready can clear even if a player never touched the controls.
+- WAITING membership is removed at last_seen_at older than 90 seconds; mobile/tab suspension or failed RPC could trigger this.
+- src/useGame.ts sends heartbeat every 250ms whenever *any* room races, leading to RPC contention and many redundant snapshots.
+
+REQUIRED SERVER-SIDE FIX:
+1. Roles must become STABLE after first assignment. Joining a WAITING room assigns ONE unused playable role to the new member without rerolling existing members.
+2. Guarantee at least one real jack as the first joined player or through a transparent initial assignment rule. Roles remain unique; max 15.
+3. On normal join, do NOT reset existing ready states if their roles have not changed. The joining person starts Not Ready; host Start still requires every member Ready.
+4. When a player leaves/is kicked in WAITING, preserve all unaffected members' roles and readiness. If the last human jack leaves, perform the MINIMUM necessary explicit reassignment and notify only the affected person; readiness of reassigned person may be cleared with explanation.
+5. Replays need not reroll roles. Prefer “Same crew, same roles” as default; if a new randomization button is intentionally added, it must be host-controlled and visibly reset Ready for reassigned people.
+6. Prevent silent role changes following network reconnect or tab background/foreground. Client should retain server-stable playerId/session.
+7. Adjust WAITING inactivity to account for mobile suspension. Provide explicit disconnection indicator and generous configurable grace; do not kick an ordinary player after only a brief network glitch. At the same time, allow host to remove stale users; choose a documented, tested timeout policy.
+8. Preserve authorization/capacity/unique roles/atomicity and no unintended bypass of server checks. SQL migration must be idempotent and avoid dropping results.
+
+REQUIRED CLIENT FIX:
+1. Replace global 250ms polling with efficient Realtime-triggered refresh (debounced/coalesced), slower fallback fetch/heartbeat and jittered exponential backoff on errors. A running local UI timer should interpolate smoothly between authoritative timestamps without spamming RPC.
+2. Realtime reconnect and auth token refresh must be robust across iOS Safari background/foreground events; protect against out-of-order snapshots.
+3. Do not show stale data as live without a subtle “Reconnecting…” indicator. Preserve last known room/role while reconnecting; avoid flashing the menu or assigning another role based on a transient empty response.
+4. Do not issue duplicate action RPCs after the first one is accepted. Show pending state, recover safely from timeout; backend idempotency must remain enforced.
+5. Fix any race between refresh() and run() and repeated auth/session changes. Log useful diagnostics but never expose credentials in logs.
+6. If an actual server timeout and host handoff occur, inform affected players clearly rather than silently changing roles/Ready.
+
+TEST MULTI-DEVICE CASES:
+- 4 people Ready; 5th joins: existing four remain Ready and keep roles, newcomer Not Ready.
+- A waiting member leaves: everyone else's role and Ready remain unless indispensable jack reassignment occurs.
+- Two phones backgrounded for >2 minutes and return: no unjustified role switch/reset; behavior according to documented longer grace.
+- Multiple rooms active: no 250ms-per-device RPC storm.
+- Reconnecting on flaky network recovers without duplicate player seat.
+- Stable start, host kick, replay, 4–15 cap, parallel bot rules, leaderboard persistence.
+
+====================================================================
+H. ADMIN UX + PUBLIC LEADERBOARD ACCESS — SECURITY-SAFE
+====================================================================
+- LEADERBOARD VIEWING MUST BE PUBLIC and must NEVER require admin credentials. The user should be able to see rankings at any time, from menu or crew.
+- Admin credentials are ONLY for privileged tasks such as clearing results.
+- Inspect src/App.tsx AdminForm/signin flow, src/api.ts signInAdmin(), and pit_private.admins authorization. Produce a clear admin setup guide in plain English, including where the email/password come from (a Supabase Auth user) and how to add that user's UUID to the pit_private.admins table.
+- Owner requests a shortcut login with username “admin” and password “1234”. THIS IS NOT SAFE FOR A PUBLIC INTERNET DEPLOYMENT. Do NOT put a hard-coded public admin password in JS, .env shipped to browser, SQL plaintext, or allow it to clear a real leaderboard.
+- If convenience is essential, implement an explicitly marked, easily removable LOCAL DEVELOPMENT-ONLY mock admin demo with “admin / 1234”, and NO ability to mutate the online production leaderboard. Never enable it in public Netlify builds.
+- For REAL online admin, offer simple initial setup with a custom real password stored through Supabase Auth and server-verified role authorization; provide exact setup instructions and make it clear which credentials to use.
+- Keep deletion confirmation and audit log; support clearing specific team/round and entire leaderboard only if already authorized.
+
+====================================================================
+I. TEMPORARY SOLO TEST MODE — EASY TO DELETE LATER
+====================================================================
+- Add a conspicuous “Solo Test” option available for the owner to test one human player while the other 14 playable roles are bots.
+- This is TEMPORARY and must be encapsulated behind a clear feature flag, e.g. ENABLE_SOLO_TEST_MODE, with easily reversible commit/isolated files. Do not permanently weaken the original 4–15 person PUBLIC multiplayer start validation.
+- Solo should exercise the actual 21-task pipeline, 3D animations, bot synchronization, GO countdown, action buttons, scoreboard rendering and replay. It should not silently fake a multiplayer server response.
+- Prefer a fully local testing room/engine, clearly labeled “SOLO TEST — NOT RANKED”. Do NOT write solo results into the global leaderboard by default.
+- Do not require a Supabase project for local solo testing if that can be avoided; preserve actual online multiplayer behavior unchanged.
+- If the user later requests removing solo, the feature flag and code must be easy to delete. Document exactly how to disable it.
+
+====================================================================
+J. CLICK CREW MEMBERS IN 3D (WITHOUT CLUTTER)
+====================================================================
+- Support tap/click on any crew figure except YOU to show a small elegant tooltip:
+    [Player nickname or “Bot”]
+    [Short role name]
+- NO additional role explanation, controls, or ownership data. Clicking empty space closes it; switching selection updates it.
+- Use Three.js raycasting/hitboxes; include occlusion and touch drag/tap distinction so orbit rotation still works and mobile does not mis-select while dragging.
+- Correctly map role -> room.players[nickname] if human, otherwise “Bot”; ambient/decorative actors can show “Bot” with a generic short role only if appropriate.
+- Position tooltip near selected character but clamp to viewport; avoid obstructing the action button and timer.
+- Do not let another player's selection change YOU marker.
+
+====================================================================
+K. AUTO-DISMISS TOASTS
+====================================================================
+- Informational/success popup/toast should dismiss automatically in approx. 12 seconds (acceptable 10–15s).
+- Error notifications may remain briefly visible for 15 seconds; connection health should persist only as a compact status indicator while actually disconnected.
+- Provide accessible close button and aria-live behavior, but no permanently stuck notification.
+- Reset dismissal timer correctly for a new notice; ensure callbacks/timers clean up on unmount and no toast stacks obscure the game.
+
+====================================================================
+L. SPECTATOR “WATCH LIVE” — ACTIVE TEAM 3D PREVIEWS
+====================================================================
+- On WATCH LIVE overview, show a small live 3D visual preview of EVERY team actively on the clock (COUNTDOWN/RUNNING). The preview should reflect that room's current wheels, jacks and crew state, not a static marketing screenshot.
+- The current src/App.tsx LiveCard only shows text/segments. Redesign active team cards with an actual lightweight 3D stage preview, plus compact name, timer and team progress.
+- Waiting and finished teams DO NOT need a 3D preview; show compact rows/cards only.
+- On selecting an active team, open the existing detailed focus view with large interactive 3D + timeline.
+- Performance matters: avoid a WebGL context per team if there are many simultaneous rooms. Prefer a shared renderer/atlas, throttled preview refresh, render-to-texture snapshots, or an equivalent scalable approach. Restrict GPU work to visible active cards, and fall back gracefully on low-end phones.
+- Match each team's server game state; the spectator is not a player and uses no seat.
+
+====================================================================
+M. UI/UX ACCEPTANCE — WHAT SUCCESS LOOKS LIKE
+====================================================================
+MAIN MENU:
+- Title exactly “PIT STOP. SIMULATOR.”
+- Create Room, Browse Rooms, Watch Live, Leaderboard, How to Play, All Roles.
+- No large promotional tagline/copy.
+- One-screen indie-game interface.
+
+CREW SCREEN (MOBILE):
+- Dominant rotatable 3D scene.
+- Top: team name, timer, sound/settings, visible Leave crew control, essential status.
+- YOU marker on the correct figure.
+- Main role card: large role name + one sentence + small status + “Tap for details”.
+- Compact personal workflow ALWAYS visible, showing real prerequisites and YOU.
+- Big Ready / task action / Start button as appropriate.
+- Essential UI not hidden behind Netlify bottom floating badge.
+- No unnecessary bottom navigation row.
+
+EXPANDED WORKFLOW:
+- Readable grouped 21-step dependency graph.
+- No giant list of role assignments, no repeated usernames under the flow, no essays.
+- Separate All Roles reference lists just job titles + short description, no player names.
+
+WATCH LIVE:
+- Active team cards include 3D preview; waiting and finished are compact.
+- Team focus retains interactive garage view and clear progress.
+- Public leaderboard always visible without admin login.
+
+STABILITY:
+- Same role remains assigned after another player joins/leaves, except clearly explained minimal jack reassignment.
+- Ready does not arbitrarily turn off.
+- Temporary disconnect does not cause immediate room ejection or seat duplication.
+- Solo mode works temporarily, isolated from ranked multiplayer.
+- Car never clips through wheel crew/jack operators on exit.
+- All 4 corner tire meshes remain correctly aligned with hands/tools throughout animations.
+
+====================================================================
+N. IMPLEMENTATION AND VALIDATION DISCIPLINE
+====================================================================
+WORK ORDER:
+1. Inspect and reproduce V7 issues. Create a short issue matrix: symptom, code path, root cause, fix, test.
+2. Stabilize backend role/Ready and connection behavior before UI changes; keep migration backward-compatible.
+3. Fix 3D rig anchor alignment, tire/tool handoff and safe departure.
+4. Clean up mobile layout, role card and two-level workflow UI.
+5. Add solo, model clicking, toast timeout and spectator active 3D previews.
+6. Test desktop + mobile across representative room states; fix all regressions.
+7. Build source and package for Netlify.
+
+VALIDATION COMMANDS:
+- npm ci
+- npm run typecheck
+- npm run lint
+- npm test
+- npm run build
+- npm run package
+- npm run verify:packages
+Use existing scripts/tests as appropriate. Do not fabricate pass results.
+
+ADD AUTOMATED TESTS FOR:
+- stable role assignment across joins/leaves;
+- no Ready reset for unaffected members;
+- lobby heartbeat/reconnect and no unexpected role churn;
+- solo flag and no solo ranked results;
+- notification 12s dismissal using fake timers;
+- correct 21-task status rendering in mini/full chain;
+- gunner's two actions + jack two actions + parallel bot timing preservation;
+- server permission check on leaderboard deletion;
+- rate-limited/batched snapshot polling;
+- UI no page scroll and essential controls visible at 390x844 / 430x932 / 1440x900 when browser UI overlays are simulated;
+- 3D click hit-tests and release/lane-clear state if testable;
+- spectator only previews active teams.
+
+If Supabase/live browser credentials are not available, run all deterministic/local tests, state explicitly which live multiplayer cases remain unverified, and provide reproducible human test instructions. DO NOT claim live cross-device tests have passed when they have not.
+
+DELIVERABLES:
+1. Full editable V8 source ZIP.
+2. Netlify-ready static deploy ZIP (build outputs at correct root).
+3. Additive SQL migration (if needed) and updated SUPABASE_SETUP.sql. CLEARLY instruct owner to apply migration in Supabase SQL Editor; shipping a new ZIP alone does NOT modify the live database.
+4. V8_FIX_REPORT.md: per issue, file locations changed, root cause, how fixed, tests performed, tests NOT performed, and known limitations.
+5. SHORT_DEPLOY_GUIDE.md: install/test/deploy Netlify, Supabase migration, real admin account setup, and disabling temporary Solo Test.
+
+NEVER:
+- overwrite active production database without an explicit migration;
+- ship a fake screenshot in place of live 3D;
+- claim a CSS-only fix solves broken animations or backend role churn;
+- weaken server-side permissions or hard-code privileged admin access in a public JS bundle;
+- regress the current 3D art quality or bury gameplay behind a stack of panels.
+
+FINAL DIRECTIVE
+IMPLEMENT the code changes. Do not just describe suggestions. The V7 design direction is approved; preserve what is already good. Make V8 a cleaner, more intuitive, physically coherent, reliable indie-style multiplayer pit stop game.

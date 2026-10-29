@@ -1,0 +1,4 @@
+import {chromium} from 'playwright';
+import fs from 'node:fs';
+const browser=await chromium.launch({channel:process.platform==='win32'?'msedge':undefined,headless:true,args:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
+try{const page=await browser.newPage({viewport:{width:720,height:540}});page.on('pageerror',e=>console.log('ERROR',e.message));await page.goto((process.env.PIT_QA_URL??'http://127.0.0.1:5173')+'/scripts/v24-3-wheel-visual.html?sceneDebug=1');await page.waitForFunction(()=>window.captureWheel);fs.mkdirSync('work/wheel-frames',{recursive:true});for(let t=13200;t<=17000;t+=50){await page.evaluate(t=>window.captureWheel(t),t);await page.screenshot({path:`work/wheel-frames/${t}.png`});}console.log('77 real WebGL frames rendered');}finally{await browser.close();}

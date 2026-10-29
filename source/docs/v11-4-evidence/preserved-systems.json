@@ -1,0 +1,101 @@
+{
+  "baseline": "delivered pit-stop-v11-3-source.zip",
+  "unchangedFiles": [
+    {
+      "path": "src/scene/animation.ts",
+      "sha256": "fa29029945fc4247a201a7e7c09f94c0143028d43c6b348af0e4294325d7ac30"
+    },
+    {
+      "path": "src/scene/crew.ts",
+      "sha256": "f6704b518c614d74f8cf509ab36ccc78ccc645a0e82d6b0d9342d86642edb2cb"
+    },
+    {
+      "path": "src/scene/environment.ts",
+      "sha256": "2084de8929b694ae4b884b87adf8c42557f4148ff8c1827f48fddfb77cca0952"
+    },
+    {
+      "path": "src/scene/garage.ts",
+      "sha256": "d0a512c46f96c4df6e86655501af95990256a7071a12d6c46c611a47fadfff7d"
+    },
+    {
+      "path": "src/scene/rig.ts",
+      "sha256": "ef1e895dd28d956258d02e40136355290acac4896ceb9665bd655853fceaf2a8"
+    },
+    {
+      "path": "supabase/001_pit_crew.sql",
+      "sha256": "4ccc976e48010b74041daabd45b0e1a73c813ede07ae464ae1914dc2f822bce2"
+    },
+    {
+      "path": "supabase/002_v8_stability.sql",
+      "sha256": "fa8bcb87aedd0d3b17942e15a7cbe04356cac602ba3089ac410779fb724d12a5"
+    },
+    {
+      "path": "supabase/003_v9_early_tap_penalty.sql",
+      "sha256": "95e1c6dc7a4faef410d05f4ba5d4836eab5b8fcf5677591256785c94e8373dcd"
+    },
+    {
+      "path": "supabase/004_v10_recorded_replays.sql",
+      "sha256": "9cb0ebb4c73cca677a48433b47ceec9edcffbb2a5fac3d0d8d3fb3edf6ff1ff0"
+    },
+    {
+      "path": "supabase/README.md",
+      "sha256": "64158da4cc2da184d67f2a89bcedc7dd4edb4038c1fca6d1a3f9ae63eda10e91"
+    },
+    {
+      "path": "src/engine.ts",
+      "sha256": "43d95082ad2e78685e5c442a37d34106dd6b15d543d4ebb8cf1faef440c11fb0"
+    },
+    {
+      "path": "src/api.ts",
+      "sha256": "2b5e0c224f9423729cb1d8d85bbf5135b4e3acde172f432dbe8d27be8f6637fe"
+    },
+    {
+      "path": "src/useGame.ts",
+      "sha256": "837bdd46c33d2309c82aa21b79913444393df291a60a6570324923fca9e8f511"
+    },
+    {
+      "path": "src/practice.ts",
+      "sha256": "136c5efc1547105f148aec6e3d4d981d45653621f28ca2d3b374070a9078e4ce"
+    },
+    {
+      "path": "src/replay.ts",
+      "sha256": "91f5d7191e69c56c8b53ca44b5c0d2c71371d5487345e96bda608b04c1e88f24"
+    },
+    {
+      "path": "src/ReplayView.tsx",
+      "sha256": "1517d6a00b76960c174f928b0d73423fb96155c75be422397451899abd0ba8d4"
+    },
+    {
+      "path": "src/ReplayEventLog.tsx",
+      "sha256": "772796778cd964a7a31bb55e5f7febedf0c1d15442bdc06caa4db486756898e9"
+    },
+    {
+      "path": "src/ChainHUD.tsx",
+      "sha256": "b145a7661af5f533740639f0f464de09e8a4c6bff853c2a1978306805b7ded3a"
+    },
+    {
+      "path": "src/workflow.ts",
+      "sha256": "d257591bf367badf3b7dee0460df718c0a7943cc51c1a14328973a801121b286"
+    },
+    {
+      "path": "src/v11-hud.css",
+      "sha256": "1bef0c6e528e8bf912d50809a418dd57a159d0896f079d665e1f25ee167323ad"
+    },
+    {
+      "path": "src/v11-desktop.css",
+      "sha256": "d2b726c081e44d76e1638d0380ef9396b1f13c7815ae02e839613911070a55a3"
+    },
+    {
+      "path": "src/useHudClearance.ts",
+      "sha256": "fb79f99b26a151907c4a9ba2e6981888e4b4d2ea9e03699cfc13c8a23d265cee"
+    },
+    {
+      "path": "SUPABASE_SETUP.sql",
+      "sha256": "4ccc976e48010b74041daabd45b0e1a73c813ede07ae464ae1914dc2f822bce2"
+    },
+    {
+      "path": "public/config.js",
+      "sha256": "8ff7248694564e9c34c4302d83c22ac8673d488befcd9b5594e9d55318167756"
+    }
+  ]
+}

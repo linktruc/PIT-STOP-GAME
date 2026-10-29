@@ -1,0 +1,1182 @@
+{
+  "measurements": [
+    {
+      "phase": "waiting",
+      "badgeVisible": false,
+      "width": 390,
+      "height": 844,
+      "role": {
+        "x": 14,
+        "y": 677.203125,
+        "width": 362,
+        "height": 54,
+        "top": 677.203125,
+        "right": 376,
+        "bottom": 731.203125,
+        "left": 14
+      },
+      "action": {
+        "x": 14,
+        "y": 737.203125,
+        "width": 362,
+        "height": 98.796875,
+        "top": 737.203125,
+        "right": 376,
+        "bottom": 836,
+        "left": 14
+      },
+      "dock": {
+        "x": 14,
+        "y": 677.203125,
+        "width": 362,
+        "height": 158.796875,
+        "top": 677.203125,
+        "right": 376,
+        "bottom": 836,
+        "left": 14
+      },
+      "mini": {
+        "x": 14,
+        "y": 135,
+        "width": 362,
+        "height": 62,
+        "top": 135,
+        "right": 376,
+        "bottom": 197,
+        "left": 14
+      },
+      "timer": {
+        "x": 251,
+        "y": 70,
+        "width": 125,
+        "height": 49.4375,
+        "top": 70,
+        "right": 376,
+        "bottom": 119.4375,
+        "left": 251
+      },
+      "heading": {
+        "x": 14,
+        "y": 73,
+        "width": 71.484375,
+        "height": 38.1875,
+        "top": 73,
+        "right": 85.484375,
+        "bottom": 111.1875,
+        "left": 14
+      },
+      "badge": null,
+      "pageHeight": 844,
+      "reservation": "0px"
+    },
+    {
+      "phase": "waiting",
+      "badgeVisible": true,
+      "width": 390,
+      "height": 844,
+      "role": {
+        "x": 14,
+        "y": 587.203125,
+        "width": 362,
+        "height": 54,
+        "top": 587.203125,
+        "right": 376,
+        "bottom": 641.203125,
+        "left": 14
+      },
+      "action": {
+        "x": 14,
+        "y": 647.203125,
+        "width": 362,
+        "height": 98.796875,
+        "top": 647.203125,
+        "right": 376,
+        "bottom": 746,
+        "left": 14
+      },
+      "dock": {
+        "x": 14,
+        "y": 587.203125,
+        "width": 362,
+        "height": 158.796875,
+        "top": 587.203125,
+        "right": 376,
+        "bottom": 746,
+        "left": 14
+      },
+      "mini": {
+        "x": 14,
+        "y": 135,
+        "width": 362,
+        "height": 62,
+        "top": 135,
+        "right": 376,
+        "bottom": 197,
+        "left": 14
+      },
+      "timer": {
+        "x": 251,
+        "y": 70,
+        "width": 125,
+        "height": 49.4375,
+        "top": 70,
+        "right": 376,
+        "bottom": 119.4375,
+        "left": 251
+      },
+      "heading": {
+        "x": 14,
+        "y": 73,
+        "width": 71.484375,
+        "height": 38.1875,
+        "top": 73,
+        "right": 85.484375,
+        "bottom": 111.1875,
+        "left": 14
+      },
+      "badge": {
+        "x": 200,
+        "y": 754,
+        "width": 190,
+        "height": 90,
+        "top": 754,
+        "right": 390,
+        "bottom": 844,
+        "left": 200
+      },
+      "pageHeight": 844,
+      "reservation": "90px"
+    },
+    {
+      "phase": "waiting",
+      "badgeVisible": false,
+      "width": 430,
+      "height": 932,
+      "role": {
+        "x": 14,
+        "y": 765.203125,
+        "width": 402,
+        "height": 54,
+        "top": 765.203125,
+        "right": 416,
+        "bottom": 819.203125,
+        "left": 14
+      },
+      "action": {
+        "x": 14,
+        "y": 825.203125,
+        "width": 402,
+        "height": 98.796875,
+        "top": 825.203125,
+        "right": 416,
+        "bottom": 924,
+        "left": 14
+      },
+      "dock": {
+        "x": 14,
+        "y": 765.203125,
+        "width": 402,
+        "height": 158.796875,
+        "top": 765.203125,
+        "right": 416,
+        "bottom": 924,
+        "left": 14
+      },
+      "mini": {
+        "x": 14,
+        "y": 135,
+        "width": 402,
+        "height": 62,
+        "top": 135,
+        "right": 416,
+        "bottom": 197,
+        "left": 14
+      },
+      "timer": {
+        "x": 291,
+        "y": 70,
+        "width": 125,
+        "height": 49.4375,
+        "top": 70,
+        "right": 416,
+        "bottom": 119.4375,
+        "left": 291
+      },
+      "heading": {
+        "x": 14,
+        "y": 73,
+        "width": 71.484375,
+        "height": 38.1875,
+        "top": 73,
+        "right": 85.484375,
+        "bottom": 111.1875,
+        "left": 14
+      },
+      "badge": null,
+      "pageHeight": 932,
+      "reservation": "0px"
+    },
+    {
+      "phase": "waiting",
+      "badgeVisible": true,
+      "width": 430,
+      "height": 932,
+      "role": {
+        "x": 14,
+        "y": 675.203125,
+        "width": 402,
+        "height": 54,
+        "top": 675.203125,
+        "right": 416,
+        "bottom": 729.203125,
+        "left": 14
+      },
+      "action": {
+        "x": 14,
+        "y": 735.203125,
+        "width": 402,
+        "height": 98.796875,
+        "top": 735.203125,
+        "right": 416,
+        "bottom": 834,
+        "left": 14
+      },
+      "dock": {
+        "x": 14,
+        "y": 675.203125,
+        "width": 402,
+        "height": 158.796875,
+        "top": 675.203125,
+        "right": 416,
+        "bottom": 834,
+        "left": 14
+      },
+      "mini": {
+        "x": 14,
+        "y": 135,
+        "width": 402,
+        "height": 62,
+        "top": 135,
+        "right": 416,
+        "bottom": 197,
+        "left": 14
+      },
+      "timer": {
+        "x": 291,
+        "y": 70,
+        "width": 125,
+        "height": 49.4375,
+        "top": 70,
+        "right": 416,
+        "bottom": 119.4375,
+        "left": 291
+      },
+      "heading": {
+        "x": 14,
+        "y": 73,
+        "width": 71.484375,
+        "height": 38.1875,
+        "top": 73,
+        "right": 85.484375,
+        "bottom": 111.1875,
+        "left": 14
+      },
+      "badge": {
+        "x": 240,
+        "y": 842,
+        "width": 190,
+        "height": 90,
+        "top": 842,
+        "right": 430,
+        "bottom": 932,
+        "left": 240
+      },
+      "pageHeight": 932,
+      "reservation": "90px"
+    },
+    {
+      "phase": "waiting",
+      "badgeVisible": false,
+      "width": 1366,
+      "height": 768,
+      "role": {
+        "x": 1000.5,
+        "y": 588,
+        "width": 341.5,
+        "height": 54,
+        "top": 588,
+        "right": 1342,
+        "bottom": 642,
+        "left": 1000.5
+      },
+      "action": {
+        "x": 1000.5,
+        "y": 648,
+        "width": 341.5,
+        "height": 108,
+        "top": 648,
+        "right": 1342,
+        "bottom": 756,
+        "left": 1000.5
+      },
+      "dock": {
+        "x": 1000.5,
+        "y": 588,
+        "width": 341.5,
+        "height": 168,
+        "top": 588,
+        "right": 1342,
+        "bottom": 756,
+        "left": 1000.5
+      },
+      "mini": {
+        "x": 24,
+        "y": 154,
+        "width": 900,
+        "height": 62,
+        "top": 154,
+        "right": 924,
+        "bottom": 216,
+        "left": 24
+      },
+      "timer": {
+        "x": 603.703125,
+        "y": 18,
+        "width": 158.59375,
+        "height": 79.0625,
+        "top": 18,
+        "right": 762.296875,
+        "bottom": 97.0625,
+        "left": 603.703125
+      },
+      "heading": {
+        "x": 24,
+        "y": 101,
+        "width": 86.09375,
+        "height": 45.4375,
+        "top": 101,
+        "right": 110.09375,
+        "bottom": 146.4375,
+        "left": 24
+      },
+      "badge": null,
+      "pageHeight": 768,
+      "reservation": "0px"
+    },
+    {
+      "phase": "waiting",
+      "badgeVisible": true,
+      "width": 1366,
+      "height": 768,
+      "role": {
+        "x": 1000.5,
+        "y": 498,
+        "width": 341.5,
+        "height": 54,
+        "top": 498,
+        "right": 1342,
+        "bottom": 552,
+        "left": 1000.5
+      },
+      "action": {
+        "x": 1000.5,
+        "y": 558,
+        "width": 341.5,
+        "height": 108,
+        "top": 558,
+        "right": 1342,
+        "bottom": 666,
+        "left": 1000.5
+      },
+      "dock": {
+        "x": 1000.5,
+        "y": 498,
+        "width": 341.5,
+        "height": 168,
+        "top": 498,
+        "right": 1342,
+        "bottom": 666,
+        "left": 1000.5
+      },
+      "mini": {
+        "x": 24,
+        "y": 154,
+        "width": 900,
+        "height": 62,
+        "top": 154,
+        "right": 924,
+        "bottom": 216,
+        "left": 24
+      },
+      "timer": {
+        "x": 603.703125,
+        "y": 18,
+        "width": 158.59375,
+        "height": 79.0625,
+        "top": 18,
+        "right": 762.296875,
+        "bottom": 97.0625,
+        "left": 603.703125
+      },
+      "heading": {
+        "x": 24,
+        "y": 101,
+        "width": 86.09375,
+        "height": 45.4375,
+        "top": 101,
+        "right": 110.09375,
+        "bottom": 146.4375,
+        "left": 24
+      },
+      "badge": {
+        "x": 1176,
+        "y": 678,
+        "width": 190,
+        "height": 90,
+        "top": 678,
+        "right": 1366,
+        "bottom": 768,
+        "left": 1176
+      },
+      "pageHeight": 768,
+      "reservation": "90px"
+    },
+    {
+      "phase": "waiting",
+      "badgeVisible": false,
+      "width": 1440,
+      "height": 900,
+      "role": {
+        "x": 1056,
+        "y": 720,
+        "width": 360,
+        "height": 54,
+        "top": 720,
+        "right": 1416,
+        "bottom": 774,
+        "left": 1056
+      },
+      "action": {
+        "x": 1056,
+        "y": 780,
+        "width": 360,
+        "height": 108,
+        "top": 780,
+        "right": 1416,
+        "bottom": 888,
+        "left": 1056
+      },
+      "dock": {
+        "x": 1056,
+        "y": 720,
+        "width": 360,
+        "height": 168,
+        "top": 720,
+        "right": 1416,
+        "bottom": 888,
+        "left": 1056
+      },
+      "mini": {
+        "x": 24,
+        "y": 154,
+        "width": 900,
+        "height": 62,
+        "top": 154,
+        "right": 924,
+        "bottom": 216,
+        "left": 24
+      },
+      "timer": {
+        "x": 636.6015625,
+        "y": 18,
+        "width": 166.796875,
+        "height": 81.9375,
+        "top": 18,
+        "right": 803.3984375,
+        "bottom": 99.9375,
+        "left": 636.6015625
+      },
+      "heading": {
+        "x": 24,
+        "y": 101,
+        "width": 86.09375,
+        "height": 45.4375,
+        "top": 101,
+        "right": 110.09375,
+        "bottom": 146.4375,
+        "left": 24
+      },
+      "badge": null,
+      "pageHeight": 900,
+      "reservation": "0px"
+    },
+    {
+      "phase": "waiting",
+      "badgeVisible": true,
+      "width": 1440,
+      "height": 900,
+      "role": {
+        "x": 1056,
+        "y": 630,
+        "width": 360,
+        "height": 54,
+        "top": 630,
+        "right": 1416,
+        "bottom": 684,
+        "left": 1056
+      },
+      "action": {
+        "x": 1056,
+        "y": 690,
+        "width": 360,
+        "height": 108,
+        "top": 690,
+        "right": 1416,
+        "bottom": 798,
+        "left": 1056
+      },
+      "dock": {
+        "x": 1056,
+        "y": 630,
+        "width": 360,
+        "height": 168,
+        "top": 630,
+        "right": 1416,
+        "bottom": 798,
+        "left": 1056
+      },
+      "mini": {
+        "x": 24,
+        "y": 154,
+        "width": 900,
+        "height": 62,
+        "top": 154,
+        "right": 924,
+        "bottom": 216,
+        "left": 24
+      },
+      "timer": {
+        "x": 636.6015625,
+        "y": 18,
+        "width": 166.796875,
+        "height": 81.9375,
+        "top": 18,
+        "right": 803.3984375,
+        "bottom": 99.9375,
+        "left": 636.6015625
+      },
+      "heading": {
+        "x": 24,
+        "y": 101,
+        "width": 86.09375,
+        "height": 45.4375,
+        "top": 101,
+        "right": 110.09375,
+        "bottom": 146.4375,
+        "left": 24
+      },
+      "badge": {
+        "x": 1250,
+        "y": 810,
+        "width": 190,
+        "height": 90,
+        "top": 810,
+        "right": 1440,
+        "bottom": 900,
+        "left": 1250
+      },
+      "pageHeight": 900,
+      "reservation": "90px"
+    },
+    {
+      "phase": "running",
+      "badgeVisible": false,
+      "width": 390,
+      "height": 844,
+      "role": {
+        "x": 14,
+        "y": 674.203125,
+        "width": 362,
+        "height": 54,
+        "top": 674.203125,
+        "right": 376,
+        "bottom": 728.203125,
+        "left": 14
+      },
+      "action": {
+        "x": 14,
+        "y": 734.203125,
+        "width": 362,
+        "height": 101.796875,
+        "top": 734.203125,
+        "right": 376,
+        "bottom": 836,
+        "left": 14
+      },
+      "dock": {
+        "x": 14,
+        "y": 674.203125,
+        "width": 362,
+        "height": 161.796875,
+        "top": 674.203125,
+        "right": 376,
+        "bottom": 836,
+        "left": 14
+      },
+      "mini": {
+        "x": 14,
+        "y": 135,
+        "width": 362,
+        "height": 62,
+        "top": 135,
+        "right": 376,
+        "bottom": 197,
+        "left": 14
+      },
+      "timer": {
+        "x": 251,
+        "y": 70,
+        "width": 125,
+        "height": 49.4375,
+        "top": 70,
+        "right": 376,
+        "bottom": 119.4375,
+        "left": 251
+      },
+      "heading": {
+        "x": 14,
+        "y": 73,
+        "width": 71.484375,
+        "height": 38.1875,
+        "top": 73,
+        "right": 85.484375,
+        "bottom": 111.1875,
+        "left": 14
+      },
+      "badge": null,
+      "pageHeight": 844,
+      "reservation": "0px"
+    },
+    {
+      "phase": "running",
+      "badgeVisible": true,
+      "width": 390,
+      "height": 844,
+      "role": {
+        "x": 14,
+        "y": 584.203125,
+        "width": 362,
+        "height": 54,
+        "top": 584.203125,
+        "right": 376,
+        "bottom": 638.203125,
+        "left": 14
+      },
+      "action": {
+        "x": 14,
+        "y": 644.203125,
+        "width": 362,
+        "height": 101.796875,
+        "top": 644.203125,
+        "right": 376,
+        "bottom": 746,
+        "left": 14
+      },
+      "dock": {
+        "x": 14,
+        "y": 584.203125,
+        "width": 362,
+        "height": 161.796875,
+        "top": 584.203125,
+        "right": 376,
+        "bottom": 746,
+        "left": 14
+      },
+      "mini": {
+        "x": 14,
+        "y": 135,
+        "width": 362,
+        "height": 62,
+        "top": 135,
+        "right": 376,
+        "bottom": 197,
+        "left": 14
+      },
+      "timer": {
+        "x": 251,
+        "y": 70,
+        "width": 125,
+        "height": 49.4375,
+        "top": 70,
+        "right": 376,
+        "bottom": 119.4375,
+        "left": 251
+      },
+      "heading": {
+        "x": 14,
+        "y": 73,
+        "width": 71.484375,
+        "height": 38.1875,
+        "top": 73,
+        "right": 85.484375,
+        "bottom": 111.1875,
+        "left": 14
+      },
+      "badge": {
+        "x": 200,
+        "y": 754,
+        "width": 190,
+        "height": 90,
+        "top": 754,
+        "right": 390,
+        "bottom": 844,
+        "left": 200
+      },
+      "pageHeight": 844,
+      "reservation": "90px"
+    },
+    {
+      "phase": "running",
+      "badgeVisible": false,
+      "width": 430,
+      "height": 932,
+      "role": {
+        "x": 14,
+        "y": 762.203125,
+        "width": 402,
+        "height": 54,
+        "top": 762.203125,
+        "right": 416,
+        "bottom": 816.203125,
+        "left": 14
+      },
+      "action": {
+        "x": 14,
+        "y": 822.203125,
+        "width": 402,
+        "height": 101.796875,
+        "top": 822.203125,
+        "right": 416,
+        "bottom": 924,
+        "left": 14
+      },
+      "dock": {
+        "x": 14,
+        "y": 762.203125,
+        "width": 402,
+        "height": 161.796875,
+        "top": 762.203125,
+        "right": 416,
+        "bottom": 924,
+        "left": 14
+      },
+      "mini": {
+        "x": 14,
+        "y": 135,
+        "width": 402,
+        "height": 62,
+        "top": 135,
+        "right": 416,
+        "bottom": 197,
+        "left": 14
+      },
+      "timer": {
+        "x": 291,
+        "y": 70,
+        "width": 125,
+        "height": 49.4375,
+        "top": 70,
+        "right": 416,
+        "bottom": 119.4375,
+        "left": 291
+      },
+      "heading": {
+        "x": 14,
+        "y": 73,
+        "width": 71.484375,
+        "height": 38.1875,
+        "top": 73,
+        "right": 85.484375,
+        "bottom": 111.1875,
+        "left": 14
+      },
+      "badge": null,
+      "pageHeight": 932,
+      "reservation": "0px"
+    },
+    {
+      "phase": "running",
+      "badgeVisible": true,
+      "width": 430,
+      "height": 932,
+      "role": {
+        "x": 14,
+        "y": 672.203125,
+        "width": 402,
+        "height": 54,
+        "top": 672.203125,
+        "right": 416,
+        "bottom": 726.203125,
+        "left": 14
+      },
+      "action": {
+        "x": 14,
+        "y": 732.203125,
+        "width": 402,
+        "height": 101.796875,
+        "top": 732.203125,
+        "right": 416,
+        "bottom": 834,
+        "left": 14
+      },
+      "dock": {
+        "x": 14,
+        "y": 672.203125,
+        "width": 402,
+        "height": 161.796875,
+        "top": 672.203125,
+        "right": 416,
+        "bottom": 834,
+        "left": 14
+      },
+      "mini": {
+        "x": 14,
+        "y": 135,
+        "width": 402,
+        "height": 62,
+        "top": 135,
+        "right": 416,
+        "bottom": 197,
+        "left": 14
+      },
+      "timer": {
+        "x": 291,
+        "y": 70,
+        "width": 125,
+        "height": 49.4375,
+        "top": 70,
+        "right": 416,
+        "bottom": 119.4375,
+        "left": 291
+      },
+      "heading": {
+        "x": 14,
+        "y": 73,
+        "width": 71.484375,
+        "height": 38.1875,
+        "top": 73,
+        "right": 85.484375,
+        "bottom": 111.1875,
+        "left": 14
+      },
+      "badge": {
+        "x": 240,
+        "y": 842,
+        "width": 190,
+        "height": 90,
+        "top": 842,
+        "right": 430,
+        "bottom": 932,
+        "left": 240
+      },
+      "pageHeight": 932,
+      "reservation": "90px"
+    },
+    {
+      "phase": "running",
+      "badgeVisible": false,
+      "width": 1366,
+      "height": 768,
+      "role": {
+        "x": 1000.5,
+        "y": 577,
+        "width": 341.5,
+        "height": 54,
+        "top": 577,
+        "right": 1342,
+        "bottom": 631,
+        "left": 1000.5
+      },
+      "action": {
+        "x": 1000.5,
+        "y": 637,
+        "width": 341.5,
+        "height": 119,
+        "top": 637,
+        "right": 1342,
+        "bottom": 756,
+        "left": 1000.5
+      },
+      "dock": {
+        "x": 1000.5,
+        "y": 577,
+        "width": 341.5,
+        "height": 179,
+        "top": 577,
+        "right": 1342,
+        "bottom": 756,
+        "left": 1000.5
+      },
+      "mini": {
+        "x": 24,
+        "y": 154,
+        "width": 900,
+        "height": 62,
+        "top": 154,
+        "right": 924,
+        "bottom": 216,
+        "left": 24
+      },
+      "timer": {
+        "x": 589.5390625,
+        "y": 18,
+        "width": 186.921875,
+        "height": 79.0625,
+        "top": 18,
+        "right": 776.4609375,
+        "bottom": 97.0625,
+        "left": 589.5390625
+      },
+      "heading": {
+        "x": 24,
+        "y": 101,
+        "width": 86.09375,
+        "height": 45.4375,
+        "top": 101,
+        "right": 110.09375,
+        "bottom": 146.4375,
+        "left": 24
+      },
+      "badge": null,
+      "pageHeight": 768,
+      "reservation": "0px"
+    },
+    {
+      "phase": "running",
+      "badgeVisible": true,
+      "width": 1366,
+      "height": 768,
+      "role": {
+        "x": 1000.5,
+        "y": 487,
+        "width": 341.5,
+        "height": 54,
+        "top": 487,
+        "right": 1342,
+        "bottom": 541,
+        "left": 1000.5
+      },
+      "action": {
+        "x": 1000.5,
+        "y": 547,
+        "width": 341.5,
+        "height": 119,
+        "top": 547,
+        "right": 1342,
+        "bottom": 666,
+        "left": 1000.5
+      },
+      "dock": {
+        "x": 1000.5,
+        "y": 487,
+        "width": 341.5,
+        "height": 179,
+        "top": 487,
+        "right": 1342,
+        "bottom": 666,
+        "left": 1000.5
+      },
+      "mini": {
+        "x": 24,
+        "y": 154,
+        "width": 900,
+        "height": 62,
+        "top": 154,
+        "right": 924,
+        "bottom": 216,
+        "left": 24
+      },
+      "timer": {
+        "x": 589.5390625,
+        "y": 18,
+        "width": 186.921875,
+        "height": 79.0625,
+        "top": 18,
+        "right": 776.4609375,
+        "bottom": 97.0625,
+        "left": 589.5390625
+      },
+      "heading": {
+        "x": 24,
+        "y": 101,
+        "width": 86.09375,
+        "height": 45.4375,
+        "top": 101,
+        "right": 110.09375,
+        "bottom": 146.4375,
+        "left": 24
+      },
+      "badge": {
+        "x": 1176,
+        "y": 678,
+        "width": 190,
+        "height": 90,
+        "top": 678,
+        "right": 1366,
+        "bottom": 768,
+        "left": 1176
+      },
+      "pageHeight": 768,
+      "reservation": "90px"
+    },
+    {
+      "phase": "running",
+      "badgeVisible": false,
+      "width": 1440,
+      "height": 900,
+      "role": {
+        "x": 1056,
+        "y": 709,
+        "width": 360,
+        "height": 54,
+        "top": 709,
+        "right": 1416,
+        "bottom": 763,
+        "left": 1056
+      },
+      "action": {
+        "x": 1056,
+        "y": 769,
+        "width": 360,
+        "height": 119,
+        "top": 769,
+        "right": 1416,
+        "bottom": 888,
+        "left": 1056
+      },
+      "dock": {
+        "x": 1056,
+        "y": 709,
+        "width": 360,
+        "height": 179,
+        "top": 709,
+        "right": 1416,
+        "bottom": 888,
+        "left": 1056
+      },
+      "mini": {
+        "x": 24,
+        "y": 154,
+        "width": 900,
+        "height": 62,
+        "top": 154,
+        "right": 924,
+        "bottom": 216,
+        "left": 24
+      },
+      "timer": {
+        "x": 621.6171875,
+        "y": 18,
+        "width": 196.765625,
+        "height": 81.9375,
+        "top": 18,
+        "right": 818.3828125,
+        "bottom": 99.9375,
+        "left": 621.6171875
+      },
+      "heading": {
+        "x": 24,
+        "y": 101,
+        "width": 86.09375,
+        "height": 45.4375,
+        "top": 101,
+        "right": 110.09375,
+        "bottom": 146.4375,
+        "left": 24
+      },
+      "badge": null,
+      "pageHeight": 900,
+      "reservation": "0px"
+    },
+    {
+      "phase": "running",
+      "badgeVisible": true,
+      "width": 1440,
+      "height": 900,
+      "role": {
+        "x": 1056,
+        "y": 619,
+        "width": 360,
+        "height": 54,
+        "top": 619,
+        "right": 1416,
+        "bottom": 673,
+        "left": 1056
+      },
+      "action": {
+        "x": 1056,
+        "y": 679,
+        "width": 360,
+        "height": 119,
+        "top": 679,
+        "right": 1416,
+        "bottom": 798,
+        "left": 1056
+      },
+      "dock": {
+        "x": 1056,
+        "y": 619,
+        "width": 360,
+        "height": 179,
+        "top": 619,
+        "right": 1416,
+        "bottom": 798,
+        "left": 1056
+      },
+      "mini": {
+        "x": 24,
+        "y": 154,
+        "width": 900,
+        "height": 62,
+        "top": 154,
+        "right": 924,
+        "bottom": 216,
+        "left": 24
+      },
+      "timer": {
+        "x": 606.640625,
+        "y": 18,
+        "width": 226.71875,
+        "height": 81.9375,
+        "top": 18,
+        "right": 833.359375,
+        "bottom": 99.9375,
+        "left": 606.640625
+      },
+      "heading": {
+        "x": 24,
+        "y": 101,
+        "width": 86.09375,
+        "height": 45.4375,
+        "top": 101,
+        "right": 110.09375,
+        "bottom": 146.4375,
+        "left": 24
+      },
+      "badge": {
+        "x": 1250,
+        "y": 810,
+        "width": 190,
+        "height": 90,
+        "top": 810,
+        "right": 1440,
+        "bottom": 900,
+        "left": 1250
+      },
+      "pageHeight": 900,
+      "reservation": "90px"
+    }
+  ],
+  "javascriptErrors": [],
+  "scope": "Actual app and software WebGL; synthetic multiplayer-shaped room. 90px hosting badge placeholder is clearly marked and only read for clearance. Physical Safari not tested."
+}

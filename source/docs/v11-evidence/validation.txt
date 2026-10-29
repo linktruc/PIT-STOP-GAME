@@ -1,0 +1,41 @@
+
+> pit-crew-two-second-challenge@11.3.0 test
+> vitest run --maxWorkers=1
+
+
+ RUN  v3.2.7 /workspace/pit-crew-v11
+
+ ✓ tests/backend.test.ts (26 tests) 9168ms
+   ✓ production PostgreSQL RPC: room membership and authorization > assigns exactly one distinct core role per human, with a human jack, for every team size 4–15  3545ms
+ ✓ tests/v9-database.test.ts (5 tests) 5172ms
+   ✓ V8 → V9 production PostgreSQL penalty and admin upgrade > applies twice, keeps historical results and role/Ready stability, exposes no private request tokens  306ms
+   ✓ V8 → V9 production PostgreSQL penalty and admin upgrade > blocks direct accepted-action RPC while a locked task becomes available, without delaying the other human  2216ms
+ ✓ tests/v10-replay-database.test.ts (7 tests) 5283ms
+   ✓ V10 recorded event history and public replay permissions > upgrades V9 twice without changing completed timings, names, lobby roles or Ready  1367ms
+   ✓ authorized result/replay/Just Finished deletion is atomic > deletes one round, then a team, then all results without disturbing unrelated data or audit  320ms
+ ✓ tests/v8-stability.test.ts (4 tests) 2659ms
+ ✓ tests/v11-bot-timing.test.ts (9 tests) 3881ms
+   ✓ V11 actual PostgreSQL full-round bot timing matches TS > produces matching enabled/baseline/due/completed/reason for all 21 tasks at 4000ms reactions  389ms
+ ✓ tests/engine.test.ts (46 tests) 425ms
+ ✓ tests/v9-engine.test.ts (21 tests) 194ms
+ ✓ tests/api.test.ts (14 tests) 148ms
+ ✓ tests/v11-choreography.test.ts (6 tests) 120ms
+ ✓ tests/audio.test.ts (6 tests) 120ms
+ ✓ tests/v9-workflow.test.ts (6 tests) 50ms
+ ✓ tests/scene-animation.test.ts (8 tests) 83ms
+ ✓ tests/v8-client.test.ts (7 tests) 64ms
+ ✓ tests/v11-arrival.test.ts (4 tests) 67ms
+ ✓ tests/v10-workflow.test.ts (10 tests) 63ms
+ ✓ tests/practice.test.ts (2 tests) 77ms
+ ✓ tests/v11-desktop-log.test.tsx (4 tests) 21ms
+ ✓ tests/v10-scene.test.ts (8 tests) 44ms
+ ✓ tests/v10-ui.test.ts (5 tests) 57ms
+ ✓ tests/v11-hud.test.tsx (11 tests) 29ms
+ ✓ tests/v10-engine-events.test.ts (3 tests) 23ms
+ ✓ tests/v10-replay.test.ts (7 tests) 26ms
+
+ Test Files  22 passed (22)
+      Tests  219 passed (219)
+   Start at  08:52:04
+   Duration  37.16s (transform 944ms, setup 0ms, collect 2.81s, tests 27.77s, environment 6ms, prepare 1.97s)
+

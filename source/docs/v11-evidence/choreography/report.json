@@ -1,0 +1,1562 @@
+{
+  "views": [
+    {
+      "corner": "FL",
+      "phase": "loosen",
+      "view": "top",
+      "time": 9380,
+      "pose": {
+        "role": "FL_GUNNER",
+        "position": [
+          -1.9500000000000002,
+          0,
+          -1.58
+        ],
+        "torso": [
+          -0.12499451708687115,
+          0.050005482913128854,
+          0.14499013075636805
+        ],
+        "head": [
+          -2.1784720608552193,
+          1.1526258023185616,
+          -1.58
+        ],
+        "feet": [
+          [
+            -1.5200000000000002,
+            0.075,
+            -1.7700000000000002
+          ],
+          [
+            -2.44,
+            0.075,
+            -1.39
+          ]
+        ],
+        "knees": [
+          [
+            -1.6850000000000003,
+            0.34,
+            -1.77
+          ],
+          [
+            -2.14,
+            0.095,
+            -1.3900000000000001
+          ]
+        ]
+      },
+      "gripError": "0.000",
+      "supportContactError": "0.000"
+    },
+    {
+      "corner": "FL",
+      "phase": "loosen",
+      "view": "front",
+      "time": 9380,
+      "pose": {
+        "role": "FL_GUNNER",
+        "position": [
+          -1.9500000000000002,
+          0,
+          -1.58
+        ],
+        "torso": [
+          -0.12499451708687115,
+          0.050005482913128854,
+          0.14499013075636805
+        ],
+        "head": [
+          -2.1784720608552193,
+          1.1526258023185616,
+          -1.58
+        ],
+        "feet": [
+          [
+            -1.5200000000000002,
+            0.075,
+            -1.7700000000000002
+          ],
+          [
+            -2.44,
+            0.075,
+            -1.39
+          ]
+        ],
+        "knees": [
+          [
+            -1.6850000000000003,
+            0.34,
+            -1.77
+          ],
+          [
+            -2.14,
+            0.095,
+            -1.3900000000000001
+          ]
+        ]
+      },
+      "gripError": "0.000",
+      "supportContactError": "0.000"
+    },
+    {
+      "corner": "FL",
+      "phase": "loosen",
+      "view": "diagonal",
+      "time": 9380,
+      "pose": {
+        "role": "FL_GUNNER",
+        "position": [
+          -1.9500000000000002,
+          0,
+          -1.58
+        ],
+        "torso": [
+          -0.12499451708687115,
+          0.050005482913128854,
+          0.14499013075636805
+        ],
+        "head": [
+          -2.1784720608552193,
+          1.1526258023185616,
+          -1.58
+        ],
+        "feet": [
+          [
+            -1.5200000000000002,
+            0.075,
+            -1.7700000000000002
+          ],
+          [
+            -2.44,
+            0.075,
+            -1.39
+          ]
+        ],
+        "knees": [
+          [
+            -1.6850000000000003,
+            0.34,
+            -1.77
+          ],
+          [
+            -2.14,
+            0.095,
+            -1.3900000000000001
+          ]
+        ]
+      },
+      "gripError": "0.000",
+      "supportContactError": "0.000"
+    },
+    {
+      "corner": "FR",
+      "phase": "loosen",
+      "view": "top",
+      "time": 9380,
+      "pose": {
+        "role": "FR_GUNNER",
+        "position": [
+          1.9500000000000002,
+          0,
+          -1.58
+        ],
+        "torso": [
+          -0.12499451708687115,
+          0.050005482913128854,
+          0.14499013075636805
+        ],
+        "head": [
+          2.1784720608552193,
+          1.1526258023185616,
+          -1.58
+        ],
+        "feet": [
+          [
+            1.52,
+            0.075,
+            -1.3900000000000001
+          ],
+          [
+            2.4400000000000004,
+            0.075,
+            -1.77
+          ]
+        ],
+        "knees": [
+          [
+            1.685,
+            0.34,
+            -1.3900000000000001
+          ],
+          [
+            2.14,
+            0.095,
+            -1.77
+          ]
+        ]
+      },
+      "gripError": "0.000",
+      "supportContactError": "0.000"
+    },
+    {
+      "corner": "FR",
+      "phase": "loosen",
+      "view": "front",
+      "time": 9380,
+      "pose": {
+        "role": "FR_GUNNER",
+        "position": [
+          1.9500000000000002,
+          0,
+          -1.58
+        ],
+        "torso": [
+          -0.12499451708687115,
+          0.050005482913128854,
+          0.14499013075636805
+        ],
+        "head": [
+          2.1784720608552193,
+          1.1526258023185616,
+          -1.58
+        ],
+        "feet": [
+          [
+            1.52,
+            0.075,
+            -1.3900000000000001
+          ],
+          [
+            2.4400000000000004,
+            0.075,
+            -1.77
+          ]
+        ],
+        "knees": [
+          [
+            1.685,
+            0.34,
+            -1.3900000000000001
+          ],
+          [
+            2.14,
+            0.095,
+            -1.77
+          ]
+        ]
+      },
+      "gripError": "0.000",
+      "supportContactError": "0.000"
+    },
+    {
+      "corner": "FR",
+      "phase": "loosen",
+      "view": "diagonal",
+      "time": 9380,
+      "pose": {
+        "role": "FR_GUNNER",
+        "position": [
+          1.9500000000000002,
+          0,
+          -1.58
+        ],
+        "torso": [
+          -0.12499451708687115,
+          0.050005482913128854,
+          0.14499013075636805
+        ],
+        "head": [
+          2.1784720608552193,
+          1.1526258023185616,
+          -1.58
+        ],
+        "feet": [
+          [
+            1.52,
+            0.075,
+            -1.3900000000000001
+          ],
+          [
+            2.4400000000000004,
+            0.075,
+            -1.77
+          ]
+        ],
+        "knees": [
+          [
+            1.685,
+            0.34,
+            -1.3900000000000001
+          ],
+          [
+            2.14,
+            0.095,
+            -1.77
+          ]
+        ]
+      },
+      "gripError": "0.000",
+      "supportContactError": "0.000"
+    },
+    {
+      "corner": "RL",
+      "phase": "loosen",
+      "view": "top",
+      "time": 9380,
+      "pose": {
+        "role": "RL_GUNNER",
+        "position": [
+          -1.9500000000000002,
+          0,
+          1.42
+        ],
+        "torso": [
+          -0.12499451708687115,
+          0.050005482913128854,
+          0.14499013075636805
+        ],
+        "head": [
+          -2.1784720608552193,
+          1.1526258023185616,
+          1.42
+        ],
+        "feet": [
+          [
+            -1.5200000000000002,
+            0.075,
+            1.2299999999999998
+          ],
+          [
+            -2.44,
+            0.075,
+            1.61
+          ]
+        ],
+        "knees": [
+          [
+            -1.6850000000000003,
+            0.34,
+            1.23
+          ],
+          [
+            -2.14,
+            0.095,
+            1.6099999999999999
+          ]
+        ]
+      },
+      "gripError": "0.000",
+      "supportContactError": "0.000"
+    },
+    {
+      "corner": "RL",
+      "phase": "loosen",
+      "view": "front",
+      "time": 9380,
+      "pose": {
+        "role": "RL_GUNNER",
+        "position": [
+          -1.9500000000000002,
+          0,
+          1.42
+        ],
+        "torso": [
+          -0.12499451708687115,
+          0.050005482913128854,
+          0.14499013075636805
+        ],
+        "head": [
+          -2.1784720608552193,
+          1.1526258023185616,
+          1.42
+        ],
+        "feet": [
+          [
+            -1.5200000000000002,
+            0.075,
+            1.2299999999999998
+          ],
+          [
+            -2.44,
+            0.075,
+            1.61
+          ]
+        ],
+        "knees": [
+          [
+            -1.6850000000000003,
+            0.34,
+            1.23
+          ],
+          [
+            -2.14,
+            0.095,
+            1.6099999999999999
+          ]
+        ]
+      },
+      "gripError": "0.000",
+      "supportContactError": "0.000"
+    },
+    {
+      "corner": "RL",
+      "phase": "loosen",
+      "view": "diagonal",
+      "time": 9380,
+      "pose": {
+        "role": "RL_GUNNER",
+        "position": [
+          -1.9500000000000002,
+          0,
+          1.42
+        ],
+        "torso": [
+          -0.12499451708687115,
+          0.050005482913128854,
+          0.14499013075636805
+        ],
+        "head": [
+          -2.1784720608552193,
+          1.1526258023185616,
+          1.42
+        ],
+        "feet": [
+          [
+            -1.5200000000000002,
+            0.075,
+            1.2299999999999998
+          ],
+          [
+            -2.44,
+            0.075,
+            1.61
+          ]
+        ],
+        "knees": [
+          [
+            -1.6850000000000003,
+            0.34,
+            1.23
+          ],
+          [
+            -2.14,
+            0.095,
+            1.6099999999999999
+          ]
+        ]
+      },
+      "gripError": "0.000",
+      "supportContactError": "0.000"
+    },
+    {
+      "corner": "RR",
+      "phase": "loosen",
+      "view": "top",
+      "time": 9380,
+      "pose": {
+        "role": "RR_GUNNER",
+        "position": [
+          1.9500000000000002,
+          0,
+          1.42
+        ],
+        "torso": [
+          -0.12499451708687115,
+          0.050005482913128854,
+          0.14499013075636805
+        ],
+        "head": [
+          2.1784720608552193,
+          1.1526258023185616,
+          1.42
+        ],
+        "feet": [
+          [
+            1.52,
+            0.075,
+            1.6099999999999999
+          ],
+          [
+            2.4400000000000004,
+            0.075,
+            1.23
+          ]
+        ],
+        "knees": [
+          [
+            1.685,
+            0.34,
+            1.6099999999999999
+          ],
+          [
+            2.14,
+            0.095,
+            1.23
+          ]
+        ]
+      },
+      "gripError": "0.000",
+      "supportContactError": "0.000"
+    },
+    {
+      "corner": "RR",
+      "phase": "loosen",
+      "view": "front",
+      "time": 9380,
+      "pose": {
+        "role": "RR_GUNNER",
+        "position": [
+          1.9500000000000002,
+          0,
+          1.42
+        ],
+        "torso": [
+          -0.12499451708687115,
+          0.050005482913128854,
+          0.14499013075636805
+        ],
+        "head": [
+          2.1784720608552193,
+          1.1526258023185616,
+          1.42
+        ],
+        "feet": [
+          [
+            1.52,
+            0.075,
+            1.6099999999999999
+          ],
+          [
+            2.4400000000000004,
+            0.075,
+            1.23
+          ]
+        ],
+        "knees": [
+          [
+            1.685,
+            0.34,
+            1.6099999999999999
+          ],
+          [
+            2.14,
+            0.095,
+            1.23
+          ]
+        ]
+      },
+      "gripError": "0.000",
+      "supportContactError": "0.000"
+    },
+    {
+      "corner": "RR",
+      "phase": "loosen",
+      "view": "diagonal",
+      "time": 9380,
+      "pose": {
+        "role": "RR_GUNNER",
+        "position": [
+          1.9500000000000002,
+          0,
+          1.42
+        ],
+        "torso": [
+          -0.12499451708687115,
+          0.050005482913128854,
+          0.14499013075636805
+        ],
+        "head": [
+          2.1784720608552193,
+          1.1526258023185616,
+          1.42
+        ],
+        "feet": [
+          [
+            1.52,
+            0.075,
+            1.6099999999999999
+          ],
+          [
+            2.4400000000000004,
+            0.075,
+            1.23
+          ]
+        ],
+        "knees": [
+          [
+            1.685,
+            0.34,
+            1.6099999999999999
+          ],
+          [
+            2.14,
+            0.095,
+            1.23
+          ]
+        ]
+      },
+      "gripError": "0.000",
+      "supportContactError": "0.000"
+    },
+    {
+      "corner": "FL",
+      "phase": "tighten",
+      "view": "top",
+      "time": 21380,
+      "pose": {
+        "role": "FL_GUNNER",
+        "position": [
+          -1.9500000000000002,
+          0,
+          -1.58
+        ],
+        "torso": [
+          -0.12499451708687115,
+          0.050005482913128854,
+          0.14499013075636805
+        ],
+        "head": [
+          -2.1784720608552193,
+          1.1526258023185616,
+          -1.58
+        ],
+        "feet": [
+          [
+            -1.5200000000000002,
+            0.075,
+            -1.7700000000000002
+          ],
+          [
+            -2.44,
+            0.075,
+            -1.39
+          ]
+        ],
+        "knees": [
+          [
+            -1.6850000000000003,
+            0.34,
+            -1.77
+          ],
+          [
+            -2.14,
+            0.095,
+            -1.3900000000000001
+          ]
+        ]
+      },
+      "gripError": "0.000",
+      "supportContactError": "0.000"
+    },
+    {
+      "corner": "FL",
+      "phase": "tighten",
+      "view": "front",
+      "time": 21380,
+      "pose": {
+        "role": "FL_GUNNER",
+        "position": [
+          -1.9500000000000002,
+          0,
+          -1.58
+        ],
+        "torso": [
+          -0.12499451708687115,
+          0.050005482913128854,
+          0.14499013075636805
+        ],
+        "head": [
+          -2.1784720608552193,
+          1.1526258023185616,
+          -1.58
+        ],
+        "feet": [
+          [
+            -1.5200000000000002,
+            0.075,
+            -1.7700000000000002
+          ],
+          [
+            -2.44,
+            0.075,
+            -1.39
+          ]
+        ],
+        "knees": [
+          [
+            -1.6850000000000003,
+            0.34,
+            -1.77
+          ],
+          [
+            -2.14,
+            0.095,
+            -1.3900000000000001
+          ]
+        ]
+      },
+      "gripError": "0.000",
+      "supportContactError": "0.000"
+    },
+    {
+      "corner": "FL",
+      "phase": "tighten",
+      "view": "diagonal",
+      "time": 21380,
+      "pose": {
+        "role": "FL_GUNNER",
+        "position": [
+          -1.9500000000000002,
+          0,
+          -1.58
+        ],
+        "torso": [
+          -0.12499451708687115,
+          0.050005482913128854,
+          0.14499013075636805
+        ],
+        "head": [
+          -2.1784720608552193,
+          1.1526258023185616,
+          -1.58
+        ],
+        "feet": [
+          [
+            -1.5200000000000002,
+            0.075,
+            -1.7700000000000002
+          ],
+          [
+            -2.44,
+            0.075,
+            -1.39
+          ]
+        ],
+        "knees": [
+          [
+            -1.6850000000000003,
+            0.34,
+            -1.77
+          ],
+          [
+            -2.14,
+            0.095,
+            -1.3900000000000001
+          ]
+        ]
+      },
+      "gripError": "0.000",
+      "supportContactError": "0.000"
+    },
+    {
+      "corner": "FR",
+      "phase": "tighten",
+      "view": "top",
+      "time": 21380,
+      "pose": {
+        "role": "FR_GUNNER",
+        "position": [
+          1.9500000000000002,
+          0,
+          -1.58
+        ],
+        "torso": [
+          -0.12499451708687115,
+          0.050005482913128854,
+          0.14499013075636805
+        ],
+        "head": [
+          2.1784720608552193,
+          1.1526258023185616,
+          -1.58
+        ],
+        "feet": [
+          [
+            1.52,
+            0.075,
+            -1.3900000000000001
+          ],
+          [
+            2.4400000000000004,
+            0.075,
+            -1.77
+          ]
+        ],
+        "knees": [
+          [
+            1.685,
+            0.34,
+            -1.3900000000000001
+          ],
+          [
+            2.14,
+            0.095,
+            -1.77
+          ]
+        ]
+      },
+      "gripError": "0.000",
+      "supportContactError": "0.000"
+    },
+    {
+      "corner": "FR",
+      "phase": "tighten",
+      "view": "front",
+      "time": 21380,
+      "pose": {
+        "role": "FR_GUNNER",
+        "position": [
+          1.9500000000000002,
+          0,
+          -1.58
+        ],
+        "torso": [
+          -0.12499451708687115,
+          0.050005482913128854,
+          0.14499013075636805
+        ],
+        "head": [
+          2.1784720608552193,
+          1.1526258023185616,
+          -1.58
+        ],
+        "feet": [
+          [
+            1.52,
+            0.075,
+            -1.3900000000000001
+          ],
+          [
+            2.4400000000000004,
+            0.075,
+            -1.77
+          ]
+        ],
+        "knees": [
+          [
+            1.685,
+            0.34,
+            -1.3900000000000001
+          ],
+          [
+            2.14,
+            0.095,
+            -1.77
+          ]
+        ]
+      },
+      "gripError": "0.000",
+      "supportContactError": "0.000"
+    },
+    {
+      "corner": "FR",
+      "phase": "tighten",
+      "view": "diagonal",
+      "time": 21380,
+      "pose": {
+        "role": "FR_GUNNER",
+        "position": [
+          1.9500000000000002,
+          0,
+          -1.58
+        ],
+        "torso": [
+          -0.12499451708687115,
+          0.050005482913128854,
+          0.14499013075636805
+        ],
+        "head": [
+          2.1784720608552193,
+          1.1526258023185616,
+          -1.58
+        ],
+        "feet": [
+          [
+            1.52,
+            0.075,
+            -1.3900000000000001
+          ],
+          [
+            2.4400000000000004,
+            0.075,
+            -1.77
+          ]
+        ],
+        "knees": [
+          [
+            1.685,
+            0.34,
+            -1.3900000000000001
+          ],
+          [
+            2.14,
+            0.095,
+            -1.77
+          ]
+        ]
+      },
+      "gripError": "0.000",
+      "supportContactError": "0.000"
+    },
+    {
+      "corner": "RL",
+      "phase": "tighten",
+      "view": "top",
+      "time": 21380,
+      "pose": {
+        "role": "RL_GUNNER",
+        "position": [
+          -1.9500000000000002,
+          0,
+          1.42
+        ],
+        "torso": [
+          -0.12499451708687115,
+          0.050005482913128854,
+          0.14499013075636805
+        ],
+        "head": [
+          -2.1784720608552193,
+          1.1526258023185616,
+          1.42
+        ],
+        "feet": [
+          [
+            -1.5200000000000002,
+            0.075,
+            1.2299999999999998
+          ],
+          [
+            -2.44,
+            0.075,
+            1.61
+          ]
+        ],
+        "knees": [
+          [
+            -1.6850000000000003,
+            0.34,
+            1.23
+          ],
+          [
+            -2.14,
+            0.095,
+            1.6099999999999999
+          ]
+        ]
+      },
+      "gripError": "0.000",
+      "supportContactError": "0.000"
+    },
+    {
+      "corner": "RL",
+      "phase": "tighten",
+      "view": "front",
+      "time": 21380,
+      "pose": {
+        "role": "RL_GUNNER",
+        "position": [
+          -1.9500000000000002,
+          0,
+          1.42
+        ],
+        "torso": [
+          -0.12499451708687115,
+          0.050005482913128854,
+          0.14499013075636805
+        ],
+        "head": [
+          -2.1784720608552193,
+          1.1526258023185616,
+          1.42
+        ],
+        "feet": [
+          [
+            -1.5200000000000002,
+            0.075,
+            1.2299999999999998
+          ],
+          [
+            -2.44,
+            0.075,
+            1.61
+          ]
+        ],
+        "knees": [
+          [
+            -1.6850000000000003,
+            0.34,
+            1.23
+          ],
+          [
+            -2.14,
+            0.095,
+            1.6099999999999999
+          ]
+        ]
+      },
+      "gripError": "0.000",
+      "supportContactError": "0.000"
+    },
+    {
+      "corner": "RL",
+      "phase": "tighten",
+      "view": "diagonal",
+      "time": 21380,
+      "pose": {
+        "role": "RL_GUNNER",
+        "position": [
+          -1.9500000000000002,
+          0,
+          1.42
+        ],
+        "torso": [
+          -0.12499451708687115,
+          0.050005482913128854,
+          0.14499013075636805
+        ],
+        "head": [
+          -2.1784720608552193,
+          1.1526258023185616,
+          1.42
+        ],
+        "feet": [
+          [
+            -1.5200000000000002,
+            0.075,
+            1.2299999999999998
+          ],
+          [
+            -2.44,
+            0.075,
+            1.61
+          ]
+        ],
+        "knees": [
+          [
+            -1.6850000000000003,
+            0.34,
+            1.23
+          ],
+          [
+            -2.14,
+            0.095,
+            1.6099999999999999
+          ]
+        ]
+      },
+      "gripError": "0.000",
+      "supportContactError": "0.000"
+    },
+    {
+      "corner": "RR",
+      "phase": "tighten",
+      "view": "top",
+      "time": 21380,
+      "pose": {
+        "role": "RR_GUNNER",
+        "position": [
+          1.9500000000000002,
+          0,
+          1.42
+        ],
+        "torso": [
+          -0.12499451708687115,
+          0.050005482913128854,
+          0.14499013075636805
+        ],
+        "head": [
+          2.1784720608552193,
+          1.1526258023185616,
+          1.42
+        ],
+        "feet": [
+          [
+            1.52,
+            0.075,
+            1.6099999999999999
+          ],
+          [
+            2.4400000000000004,
+            0.075,
+            1.23
+          ]
+        ],
+        "knees": [
+          [
+            1.685,
+            0.34,
+            1.6099999999999999
+          ],
+          [
+            2.14,
+            0.095,
+            1.23
+          ]
+        ]
+      },
+      "gripError": "0.000",
+      "supportContactError": "0.000"
+    },
+    {
+      "corner": "RR",
+      "phase": "tighten",
+      "view": "front",
+      "time": 21380,
+      "pose": {
+        "role": "RR_GUNNER",
+        "position": [
+          1.9500000000000002,
+          0,
+          1.42
+        ],
+        "torso": [
+          -0.12499451708687115,
+          0.050005482913128854,
+          0.14499013075636805
+        ],
+        "head": [
+          2.1784720608552193,
+          1.1526258023185616,
+          1.42
+        ],
+        "feet": [
+          [
+            1.52,
+            0.075,
+            1.6099999999999999
+          ],
+          [
+            2.4400000000000004,
+            0.075,
+            1.23
+          ]
+        ],
+        "knees": [
+          [
+            1.685,
+            0.34,
+            1.6099999999999999
+          ],
+          [
+            2.14,
+            0.095,
+            1.23
+          ]
+        ]
+      },
+      "gripError": "0.000",
+      "supportContactError": "0.000"
+    },
+    {
+      "corner": "RR",
+      "phase": "tighten",
+      "view": "diagonal",
+      "time": 21380,
+      "pose": {
+        "role": "RR_GUNNER",
+        "position": [
+          1.9500000000000002,
+          0,
+          1.42
+        ],
+        "torso": [
+          -0.12499451708687115,
+          0.050005482913128854,
+          0.14499013075636805
+        ],
+        "head": [
+          2.1784720608552193,
+          1.1526258023185616,
+          1.42
+        ],
+        "feet": [
+          [
+            1.52,
+            0.075,
+            1.6099999999999999
+          ],
+          [
+            2.4400000000000004,
+            0.075,
+            1.23
+          ]
+        ],
+        "knees": [
+          [
+            1.685,
+            0.34,
+            1.6099999999999999
+          ],
+          [
+            2.14,
+            0.095,
+            1.23
+          ]
+        ]
+      },
+      "gripError": "0.000",
+      "supportContactError": "0.000"
+    },
+    {
+      "support": "NOSE_LEFT",
+      "view": "top",
+      "bodyClear": "true",
+      "contactError": "0.000"
+    },
+    {
+      "support": "NOSE_LEFT",
+      "view": "front",
+      "bodyClear": "true",
+      "contactError": "0.000"
+    },
+    {
+      "support": "NOSE_LEFT",
+      "view": "diagonal",
+      "bodyClear": "true",
+      "contactError": "0.000"
+    },
+    {
+      "support": "NOSE_RIGHT",
+      "view": "top",
+      "bodyClear": "true",
+      "contactError": "0.000"
+    },
+    {
+      "support": "NOSE_RIGHT",
+      "view": "front",
+      "bodyClear": "true",
+      "contactError": "0.000"
+    },
+    {
+      "support": "NOSE_RIGHT",
+      "view": "diagonal",
+      "bodyClear": "true",
+      "contactError": "0.000"
+    },
+    {
+      "support": "SIDEPOD_LEFT",
+      "view": "top",
+      "bodyClear": "true",
+      "contactError": "0.000"
+    },
+    {
+      "support": "SIDEPOD_LEFT",
+      "view": "front",
+      "bodyClear": "true",
+      "contactError": "0.000"
+    },
+    {
+      "support": "SIDEPOD_LEFT",
+      "view": "diagonal",
+      "bodyClear": "true",
+      "contactError": "0.000"
+    },
+    {
+      "support": "SIDEPOD_RIGHT",
+      "view": "top",
+      "bodyClear": "true",
+      "contactError": "0.000"
+    },
+    {
+      "support": "SIDEPOD_RIGHT",
+      "view": "front",
+      "bodyClear": "true",
+      "contactError": "0.000"
+    },
+    {
+      "support": "SIDEPOD_RIGHT",
+      "view": "diagonal",
+      "bodyClear": "true",
+      "contactError": "0.000"
+    }
+  ],
+  "botCues": [
+    {
+      "fixture": "soloFrontJack4000",
+      "time": 5500,
+      "cue": {
+        "taskId": "FL_GUN_LOOSEN",
+        "state": "WAIT",
+        "enabledAt": 5000,
+        "baselineMeanMs": 4000,
+        "dueAt": 9000,
+        "eventAt": 9000,
+        "visualStartsAt": 9000,
+        "visualEndsAt": 9750,
+        "reason": "BASELINE_DUE"
+      },
+      "active": "FRONT_LIFT,REAR_LIFT"
+    },
+    {
+      "fixture": "soloFrontJack4000",
+      "time": 8000,
+      "cue": {
+        "taskId": "FL_GUN_LOOSEN",
+        "state": "WAIT",
+        "enabledAt": 5000,
+        "baselineMeanMs": 4000,
+        "dueAt": 9000,
+        "eventAt": 9000,
+        "visualStartsAt": 9000,
+        "visualEndsAt": 9750,
+        "reason": "BASELINE_DUE"
+      },
+      "active": ""
+    },
+    {
+      "fixture": "soloFrontJack4000",
+      "time": 8999,
+      "cue": {
+        "taskId": "FL_GUN_LOOSEN",
+        "state": "WAIT",
+        "enabledAt": 5000,
+        "baselineMeanMs": 4000,
+        "dueAt": 9000,
+        "eventAt": 9000,
+        "visualStartsAt": 9000,
+        "visualEndsAt": 9750,
+        "reason": "BASELINE_DUE"
+      },
+      "active": ""
+    },
+    {
+      "fixture": "soloFrontJack4000",
+      "time": 9001,
+      "cue": {
+        "taskId": "FL_GUN_LOOSEN",
+        "state": "WORK",
+        "enabledAt": 5000,
+        "baselineMeanMs": 4000,
+        "dueAt": 9000,
+        "eventAt": 9000,
+        "visualStartsAt": 9000,
+        "visualEndsAt": 9750,
+        "reason": "BASELINE_DUE"
+      },
+      "active": "FL_GUN_LOOSEN,FR_GUN_LOOSEN,RL_GUN_LOOSEN,RR_GUN_LOOSEN"
+    },
+    {
+      "fixture": "soloFrontJack4000",
+      "time": 9380,
+      "cue": {
+        "taskId": "FL_GUN_LOOSEN",
+        "state": "WORK",
+        "enabledAt": 5000,
+        "baselineMeanMs": 4000,
+        "dueAt": 9000,
+        "eventAt": 9000,
+        "visualStartsAt": 9000,
+        "visualEndsAt": 9750,
+        "reason": "BASELINE_DUE"
+      },
+      "active": "FL_GUN_LOOSEN,FR_GUN_LOOSEN,RL_GUN_LOOSEN,RR_GUN_LOOSEN"
+    },
+    {
+      "fixture": "soloFrontJack4000",
+      "time": 9800,
+      "cue": {
+        "taskId": "FL_GUN_LOOSEN",
+        "state": "DONE",
+        "enabledAt": 5000,
+        "baselineMeanMs": 4000,
+        "dueAt": 9000,
+        "eventAt": 9000,
+        "visualStartsAt": 9000,
+        "visualEndsAt": 9750,
+        "reason": "BASELINE_DUE"
+      },
+      "active": ""
+    },
+    {
+      "fixture": "soloFrontJack250",
+      "time": 1275,
+      "cue": {
+        "taskId": "FL_GUN_LOOSEN",
+        "state": "WAIT",
+        "enabledAt": 1250,
+        "baselineMeanMs": 250,
+        "dueAt": 1500,
+        "eventAt": 1500,
+        "visualStartsAt": 1500,
+        "visualEndsAt": 1750,
+        "reason": "BASELINE_DUE"
+      },
+      "active": "FRONT_LIFT,REAR_LIFT"
+    },
+    {
+      "fixture": "soloFrontJack250",
+      "time": 1499,
+      "cue": {
+        "taskId": "FL_GUN_LOOSEN",
+        "state": "WAIT",
+        "enabledAt": 1250,
+        "baselineMeanMs": 250,
+        "dueAt": 1500,
+        "eventAt": 1500,
+        "visualStartsAt": 1500,
+        "visualEndsAt": 1750,
+        "reason": "BASELINE_DUE"
+      },
+      "active": "FRONT_LIFT,REAR_LIFT"
+    },
+    {
+      "fixture": "soloFrontJack250",
+      "time": 1560,
+      "cue": {
+        "taskId": "FL_GUN_LOOSEN",
+        "state": "WORK",
+        "enabledAt": 1250,
+        "baselineMeanMs": 250,
+        "dueAt": 1500,
+        "eventAt": 1500,
+        "visualStartsAt": 1500,
+        "visualEndsAt": 1750,
+        "reason": "BASELINE_DUE"
+      },
+      "active": "FL_GUN_LOOSEN,FR_GUN_LOOSEN,RL_GUN_LOOSEN,RR_GUN_LOOSEN"
+    },
+    {
+      "fixture": "soloFrontJack250",
+      "time": 1880,
+      "cue": {
+        "taskId": "FL_GUN_LOOSEN",
+        "state": "DONE",
+        "enabledAt": 1250,
+        "baselineMeanMs": 250,
+        "dueAt": 1500,
+        "eventAt": 1500,
+        "visualStartsAt": 1500,
+        "visualEndsAt": 1750,
+        "reason": "BASELINE_DUE"
+      },
+      "active": "FL_WHEEL_OFF,FR_WHEEL_OFF,RL_WHEEL_OFF,RR_WHEEL_OFF"
+    },
+    {
+      "fixture": "soloFrontJack250",
+      "time": 2400,
+      "cue": {
+        "taskId": "FL_GUN_LOOSEN",
+        "state": "DONE",
+        "enabledAt": 1250,
+        "baselineMeanMs": 250,
+        "dueAt": 1500,
+        "eventAt": 1500,
+        "visualStartsAt": 1500,
+        "visualEndsAt": 1750,
+        "reason": "BASELINE_DUE"
+      },
+      "active": "FL_GUN_TIGHTEN,FR_GUN_TIGHTEN,RL_GUN_TIGHTEN,RR_GUN_TIGHTEN"
+    }
+  ],
+  "errors": [],
+  "carrierClearanceMinimumCentreDistanceMetres": 0.6580591805973021,
+  "exit": {
+    "laneClear": "true",
+    "carDeparture": "1.000",
+    "supportClear": "true",
+    "carZ": "-28.000"
+  },
+  "deterministicReverseSeek": true,
+  "captureMethod": "Actual shared Three.js scene, explicit authoritative seek/render, framebuffer JPEG frames encoded with ffmpeg. No synthetic character poses or altered event times.",
+  "limits": "Software Chromium/WebGL only; no physical mobile GPU or production multi-device session used by this choreography check.",
+  "video": [
+    "docs/v11-evidence/choreography/bot-4000-wait-then-work.mp4",
+    "docs/v11-evidence/choreography/gunners-loosen-handoff-tighten.mp4",
+    "docs/v11-evidence/choreography/bot-250-wait-then-work.mp4"
+  ],
+  "baselineGeometryAudit": {
+    "v8": {
+      "source": "/workspace/pit-crew-v8/src/PitScene.tsx",
+      "noseOrigins": [
+        [
+          -1.62,
+          -3.2
+        ],
+        [
+          1.62,
+          -3.2
+        ]
+      ],
+      "middleOrigins": [
+        [
+          -0.84,
+          0.19
+        ],
+        [
+          0.84,
+          0.19
+        ]
+      ],
+      "note": "V8 nose origin is restored; its intersecting middle origins are not restored."
+    },
+    "v10": {
+      "source": "/workspace/pit-crew-v10/src/scene/crew.ts",
+      "noseOrigins": [
+        [
+          -1.78,
+          -3.45
+        ],
+        [
+          1.78,
+          -3.45
+        ]
+      ]
+    },
+    "v11": {
+      "source": "src/scene/crew.ts",
+      "noseOrigins": [
+        [
+          -1.62,
+          -3.2
+        ],
+        [
+          1.62,
+          -3.2
+        ]
+      ],
+      "noseTorsoLocalOutwardOffset": 0.13,
+      "middleOrigins": [
+        [
+          -1.37,
+          0.19
+        ],
+        [
+          1.37,
+          0.19
+        ]
+      ]
+    },
+    "visualScope": "Corrected actual close-ups plus preserved V10 whole-scene before captures; V8 coordinate geometry was source-verified, not newly re-rendered in this pass."
+  },
+  "rootCauses": [
+    "Rigid lower legs and compressed torso produced an unnatural crouch; replaced by explicit planted ankle/boot and separate knee/hip anchors, with a forward body lean.",
+    "Natural low gunner bodies occupied the unchanged carrier path. A short 0.85m step cleared hips but not the OFF carrier outward-leaning helmet. The 1.25m transient step is swept against both complete routes and neighbors, while carrier positions are numerically unchanged.",
+    "The gun previously remained pressed against the wheel nut throughout measured waits. Ready tools now retract; work thrusts occur only during accepted event receipts, and the tool lowers for carrier handoff.",
+    "Human-mean bot timestamps were already causal. Evidence verifies the existing 4,000ms versus 250ms schedules and meaningful visual waits; no official reaction/score timings were changed by scene work.",
+    "Support hand centres previously sat slightly inside bodywork. Anchors now use the actual sidepod rotated outer face plus glove radius, and front endplate top plus glove height, without moving support bodies."
+  ],
+  "timingExamples": {
+    "slow": {
+      "unlock": 5000,
+      "referenceMeanMs": 4000,
+      "event": 9000,
+      "visualWork": [
+        9000,
+        9750
+      ]
+    },
+    "fast": {
+      "unlock": 1250,
+      "referenceMeanMs": 250,
+      "event": 1500,
+      "visualWork": [
+        1500,
+        1750
+      ]
+    },
+    "score": "GO to GREEN_RELEASE only; presentation acknowledgement and exit tails do not contribute."
+  }
+}

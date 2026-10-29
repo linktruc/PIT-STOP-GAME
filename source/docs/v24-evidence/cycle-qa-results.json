@@ -1,0 +1,2938 @@
+[
+  {
+    "role": "FRONT_JACK",
+    "time": 7000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.047382306668854e-15,
+    "departure": 0
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 7400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.42055475210265e-16,
+    "departure": 0
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 7800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.1102230246251565e-15,
+    "departure": 0
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 8200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.3732700395566711e-15,
+    "departure": 0
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 8600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.1102230246251565e-15,
+    "departure": 0
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 9000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.0934428697813141e-15,
+    "departure": 0
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 9400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.0565363201361521e-15,
+    "departure": 0
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 9800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.0565363201361521e-15,
+    "departure": 0
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 10200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.485749680535094e-16,
+    "departure": 0
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 10600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.945640348601413e-16,
+    "departure": 0
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 11000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 7.021666937153402e-16,
+    "departure": 0
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 11400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.42055475210265e-16,
+    "departure": 0
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 11800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 8.989550626504553e-16,
+    "departure": 0
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 12200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.485749680535094e-16,
+    "departure": 0
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 12600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.057848289240456e-16,
+    "departure": 0
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 13000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.0835344452754878e-15,
+    "departure": 0
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 13400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 13800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 14200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 14600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 15000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 15400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 15800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 16200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 7.108895957933346e-16,
+    "departure": 0
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 16600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.292938109463748e-16,
+    "departure": 0
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 17000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.226380847435024e-16,
+    "departure": 0
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 17400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.371360918460988e-16,
+    "departure": 0
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 17800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.104505742017336e-16,
+    "departure": 0
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 18200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.964986097963502e-16,
+    "departure": 0
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 18600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.292938109463748e-16,
+    "departure": 0
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 19000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 6.497413668604471e-16,
+    "departure": 0
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 19400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.682678848994769e-16,
+    "departure": 0
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 19800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 8.989550626504553e-16,
+    "departure": 0
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 20200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.019494489765868e-16,
+    "departure": 0
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 20600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.4895204919483639e-15,
+    "departure": 0
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 21000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.0175362097255202e-15,
+    "departure": 0.104
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 21400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.1957467920563633e-15,
+    "departure": 0.648
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 21800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.2560739669470201e-15,
+    "departure": 1
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 22200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.2755491433176288e-15,
+    "departure": 1
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 22600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.047382306668854e-15,
+    "departure": 1
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 23000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.1801832636420706e-15,
+    "departure": 1
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 23400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.6616296724220897e-15,
+    "departure": 1
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 23800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.1102230246251565e-15,
+    "departure": 1
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 24200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 2.094764613337708e-15,
+    "departure": 1
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 24600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.538370149106851e-15,
+    "departure": 1
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 25000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.4043333874306805e-15,
+    "departure": 1
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 25400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.1102230246251565e-15,
+    "departure": 1
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 25800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.6616296724220897e-15,
+    "departure": 1
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 26200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.3506446028928519e-15,
+    "departure": 1
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 26600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.7342238036525468e-15,
+    "departure": 1
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 27000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.831026719408895e-15,
+    "departure": 1
+  },
+  {
+    "role": "FRONT_JACK",
+    "time": 27400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.2994827337208943e-15,
+    "departure": 1
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 7000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.047382306668854e-15,
+    "departure": 0
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 7400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.42055475210265e-16,
+    "departure": 0
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 7800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.1102230246251565e-15,
+    "departure": 0
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 8200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.3732700395566711e-15,
+    "departure": 0
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 8600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.1102230246251565e-15,
+    "departure": 0
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 9000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.0934428697813141e-15,
+    "departure": 0
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 9400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.0565363201361521e-15,
+    "departure": 0
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 9800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.964986097963502e-16,
+    "departure": 0
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 10200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.485749680535094e-16,
+    "departure": 0
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 10600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.945640348601413e-16,
+    "departure": 0
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 11000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 7.021666937153402e-16,
+    "departure": 0
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 11400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.42055475210265e-16,
+    "departure": 0
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 11800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 8.989550626504553e-16,
+    "departure": 0
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 12200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.485749680535094e-16,
+    "departure": 0
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 12600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.057848289240456e-16,
+    "departure": 0
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 13000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.0835344452754878e-15,
+    "departure": 0
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 13400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 13800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 14200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 14600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 15000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 15400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 15800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 16200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 7.108895957933346e-16,
+    "departure": 0
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 16600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.292938109463748e-16,
+    "departure": 0
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 17000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.226380847435024e-16,
+    "departure": 0
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 17400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.036560719766055e-16,
+    "departure": 0
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 17800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 5.551115123125783e-16,
+    "departure": 0
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 18200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.1270951119217139e-15,
+    "departure": 0
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 18600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.964986097963502e-16,
+    "departure": 0
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 19000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 7.656716496459005e-16,
+    "departure": 0
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 19400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.371360918460988e-16,
+    "departure": 0
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 19800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.057848289240456e-16,
+    "departure": 0
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 20200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.019494489765868e-16,
+    "departure": 0
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 20600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.4895204919483639e-15,
+    "departure": 0
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 21000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.0175362097255202e-15,
+    "departure": 0.104
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 21400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.1957467920563633e-15,
+    "departure": 0.648
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 21800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.2560739669470201e-15,
+    "departure": 1
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 22200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.2755491433176288e-15,
+    "departure": 1
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 22600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.047382306668854e-15,
+    "departure": 1
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 23000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.1801832636420706e-15,
+    "departure": 1
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 23400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.6616296724220897e-15,
+    "departure": 1
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 23800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.1102230246251565e-15,
+    "departure": 1
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 24200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 2.094764613337708e-15,
+    "departure": 1
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 24600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.538370149106851e-15,
+    "departure": 1
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 25000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.4043333874306805e-15,
+    "departure": 1
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 25400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.1102230246251565e-15,
+    "departure": 1
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 25800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.6616296724220897e-15,
+    "departure": 1
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 26200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.3506446028928519e-15,
+    "departure": 1
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 26600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.7342238036525468e-15,
+    "departure": 1
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 27000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.831026719408895e-15,
+    "departure": 1
+  },
+  {
+    "role": "REAR_JACK",
+    "time": 27400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.2994827337208943e-15,
+    "departure": 1
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 7000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.047382306668854e-15,
+    "departure": 0
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 7400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.42055475210265e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 7800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.1102230246251565e-15,
+    "departure": 0
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 8200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.3732700395566711e-15,
+    "departure": 0
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 8600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.1102230246251565e-15,
+    "departure": 0
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 9000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.0934428697813141e-15,
+    "departure": 0
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 9400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.0565363201361521e-15,
+    "departure": 0
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 9800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.964986097963502e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 10200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.42055475210265e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 10600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.3348671786163112e-15,
+    "departure": 0
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 11000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 6.661338147750939e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 11400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 8.95090418262362e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 11800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.682678848994769e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 12200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.742167503148516e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 12600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.457282200365136e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 13000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.0835344452754878e-15,
+    "departure": 0
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 13400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 7.108895957933346e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 13800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 14200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 14600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 15000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 15400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 15800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 16200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 16600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 17000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 17400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 17800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.104505742017336e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 18200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.964986097963502e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 18600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.292938109463748e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 19000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 6.661338147750939e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 19400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.457282200365136e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 19800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 8.95090418262362e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 20200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 8.08254562088053e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 20600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.0175362097255202e-15,
+    "departure": 0
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 21000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 8.955206467987463e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 21400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.964986097963502e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 21800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.0388893785358512e-15,
+    "departure": 0
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 22200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 6.866350197783356e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 22600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.4432899320127035e-15,
+    "departure": 0
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 23000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.1801832636420706e-15,
+    "departure": 0.104
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 23400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.6616296724220897e-15,
+    "departure": 0.648
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 23800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.1102230246251565e-15,
+    "departure": 1
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 24200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 2.094764613337708e-15,
+    "departure": 1
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 24600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.538370149106851e-15,
+    "departure": 1
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 25000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.4043333874306805e-15,
+    "departure": 1
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 25400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.1102230246251565e-15,
+    "departure": 1
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 25800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.6616296724220897e-15,
+    "departure": 1
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 26200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.3506446028928519e-15,
+    "departure": 1
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 26600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.7342238036525468e-15,
+    "departure": 1
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 27000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.831026719408895e-15,
+    "departure": 1
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 27400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.2994827337208943e-15,
+    "departure": 1
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 27800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.831026719408895e-15,
+    "departure": 1
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 28200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 8.881784197001252e-16,
+    "departure": 1
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 28600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.047382306668854e-15,
+    "departure": 1
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 29000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 2.094764613337708e-15,
+    "departure": 1
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 29400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.3322676295501878e-15,
+    "departure": 1
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 29800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.3322676295501878e-15,
+    "departure": 1
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 30200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.3322676295501878e-15,
+    "departure": 1
+  },
+  {
+    "role": "FL_GUNNER",
+    "time": 30600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.5543122344752192e-15,
+    "departure": 1
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 7000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.047382306668854e-15,
+    "departure": 0
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 7400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.42055475210265e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 7800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.1102230246251565e-15,
+    "departure": 0
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 8200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.3732700395566711e-15,
+    "departure": 0
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 8600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.1102230246251565e-15,
+    "departure": 0
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 9000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.0934428697813141e-15,
+    "departure": 0
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 9400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.0565363201361521e-15,
+    "departure": 0
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 9800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.964986097963502e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 10200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.42055475210265e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 10600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.3348671786163112e-15,
+    "departure": 0
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 11000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 6.661338147750939e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 11400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 8.95090418262362e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 11800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.682678848994769e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 12200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.742167503148516e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 12600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.457282200365136e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 13000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.0835344452754878e-15,
+    "departure": 0
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 13400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 7.108895957933346e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 13800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 14200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 14600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 15000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 15400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 15800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 16200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 16600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 17000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 17400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 17800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.104505742017336e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 18200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.964986097963502e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 18600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.292938109463748e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 19000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 6.661338147750939e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 19400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.457282200365136e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 19800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 8.95090418262362e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 20200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 5.978733960281817e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 20600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.0175362097255202e-15,
+    "departure": 0
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 21000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 8.955206467987463e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 21400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.964986097963502e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 21800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.0388893785358512e-15,
+    "departure": 0
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 22200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 6.866350197783356e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 22600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.4432899320127035e-15,
+    "departure": 0
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 23000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.1801832636420706e-15,
+    "departure": 0.104
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 23400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.6616296724220897e-15,
+    "departure": 0.648
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 23800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.1102230246251565e-15,
+    "departure": 1
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 24200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 2.094764613337708e-15,
+    "departure": 1
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 24600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.538370149106851e-15,
+    "departure": 1
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 25000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.4043333874306805e-15,
+    "departure": 1
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 25400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.1102230246251565e-15,
+    "departure": 1
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 25800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.6616296724220897e-15,
+    "departure": 1
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 26200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.3506446028928519e-15,
+    "departure": 1
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 26600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.7342238036525468e-15,
+    "departure": 1
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 27000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.831026719408895e-15,
+    "departure": 1
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 27400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.2994827337208943e-15,
+    "departure": 1
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 27800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.831026719408895e-15,
+    "departure": 1
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 28200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 8.881784197001252e-16,
+    "departure": 1
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 28600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.047382306668854e-15,
+    "departure": 1
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 29000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 2.094764613337708e-15,
+    "departure": 1
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 29400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.3322676295501878e-15,
+    "departure": 1
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 29800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.3322676295501878e-15,
+    "departure": 1
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 30200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.3322676295501878e-15,
+    "departure": 1
+  },
+  {
+    "role": "RR_GUNNER",
+    "time": 30600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.5543122344752192e-15,
+    "departure": 1
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 7000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.047382306668854e-15,
+    "departure": 0
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 7400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.42055475210265e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 7800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.1102230246251565e-15,
+    "departure": 0
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 8200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.3732700395566711e-15,
+    "departure": 0
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 8600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.1102230246251565e-15,
+    "departure": 0
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 9000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.0934428697813141e-15,
+    "departure": 0
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 9400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.0565363201361521e-15,
+    "departure": 0
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 9800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.964986097963502e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 10200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.42055475210265e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 10600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.3348671786163112e-15,
+    "departure": 0
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 11000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 5.551115123125783e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 11400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 11800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 12200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 12600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 13000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.0835344452754878e-15,
+    "departure": 0
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 13400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 5.087681048627601e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 13800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 8.400361489980555e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 14200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 7.021666937153402e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 14600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.155133597044475e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 15000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 7.216449660063518e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 15400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 6.866350197783356e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 15800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 7.021666937153402e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 16200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 5.117875266520903e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 16600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.292938109463748e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 17000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.226380847435024e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 17400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 4.742874840267547e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 17800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 8.989550626504553e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 18200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.522225673746189e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 18600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.036560719766055e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 19000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 6.497413668604471e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 19400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.371360918460988e-16,
+    "departure": 0
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 19800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.1801832636420706e-15,
+    "departure": 0
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 20200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.4895204919483639e-15,
+    "departure": 0.007
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 20600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.6011864169946884e-15,
+    "departure": 0.425
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 21000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.0175362097255202e-15,
+    "departure": 0.939
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 21400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.1957467920563633e-15,
+    "departure": 1
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 21800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.2560739669470201e-15,
+    "departure": 1
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 22200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.2755491433176288e-15,
+    "departure": 1
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 22600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.047382306668854e-15,
+    "departure": 1
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 23000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.1801832636420706e-15,
+    "departure": 1
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 23400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.6616296724220897e-15,
+    "departure": 1
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 23800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.1102230246251565e-15,
+    "departure": 1
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 24200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 2.094764613337708e-15,
+    "departure": 1
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 24600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.538370149106851e-15,
+    "departure": 1
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 25000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.4043333874306805e-15,
+    "departure": 1
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 25400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.1102230246251565e-15,
+    "departure": 1
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 25800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.6616296724220897e-15,
+    "departure": 1
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 26200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.3506446028928519e-15,
+    "departure": 1
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 26600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.7342238036525468e-15,
+    "departure": 1
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 27000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.831026719408895e-15,
+    "departure": 1
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 27400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.2994827337208943e-15,
+    "departure": 1
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "time": 27800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.831026719408895e-15,
+    "departure": 1
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 7000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.047382306668854e-15,
+    "departure": 0
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 7400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.42055475210265e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 7800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.1102230246251565e-15,
+    "departure": 0
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 8200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.3732700395566711e-15,
+    "departure": 0
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 8600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.1102230246251565e-15,
+    "departure": 0
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 9000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.0934428697813141e-15,
+    "departure": 0
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 9400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.0565363201361521e-15,
+    "departure": 0
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 9800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.964986097963502e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 10200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.42055475210265e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 10600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.3348671786163112e-15,
+    "departure": 0
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 11000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 5.551115123125783e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 11400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 11800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 12200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 12600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 13000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.0835344452754878e-15,
+    "departure": 0
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 13400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 6.280369834735101e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 13800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 8.899114524108741e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 14200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 6.280369834735101e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 14600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.0026641665932502e-15,
+    "departure": 0
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 15000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 5.034405433428661e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 15400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.25971927890472e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 15800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 5.551115123125783e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 16200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.566618574882216e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 16600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.0388893785358512e-15,
+    "departure": 0
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 17000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 5.095246377785861e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 17400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 4.965068306494546e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 17800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.2190354978790368e-15,
+    "departure": 0
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 18200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 7.108895957933346e-16,
+    "departure": 0
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 18600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.0175362097255202e-15,
+    "departure": 0
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 19000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.1102230246251565e-15,
+    "departure": 0
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 19400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 2.5989654674417885e-15,
+    "departure": 0.156
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 19800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.137640067256873e-15,
+    "departure": 0.718
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 20200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.4895204919483639e-15,
+    "departure": 1
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 20600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.6011864169946884e-15,
+    "departure": 1
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 21000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.0175362097255202e-15,
+    "departure": 1
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 21400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.1957467920563633e-15,
+    "departure": 1
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 21800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.2560739669470201e-15,
+    "departure": 1
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 22200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.2755491433176288e-15,
+    "departure": 1
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 22600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.047382306668854e-15,
+    "departure": 1
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 23000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.1801832636420706e-15,
+    "departure": 1
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 23400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.6616296724220897e-15,
+    "departure": 1
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 23800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.1102230246251565e-15,
+    "departure": 1
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 24200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 2.094764613337708e-15,
+    "departure": 1
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 24600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.538370149106851e-15,
+    "departure": 1
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 25000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.4043333874306805e-15,
+    "departure": 1
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 25400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.1102230246251565e-15,
+    "departure": 1
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 25800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.6616296724220897e-15,
+    "departure": 1
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 26200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.3506446028928519e-15,
+    "departure": 1
+  },
+  {
+    "role": "RR_WHEEL_ON",
+    "time": 26600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.7342238036525468e-15,
+    "departure": 1
+  },
+  {
+    "role": "RELEASE_CONTROLLER",
+    "time": 7000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.047382306668854e-15,
+    "departure": 0
+  },
+  {
+    "role": "RELEASE_CONTROLLER",
+    "time": 7400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.42055475210265e-16,
+    "departure": 0
+  },
+  {
+    "role": "RELEASE_CONTROLLER",
+    "time": 7800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.1102230246251565e-15,
+    "departure": 0
+  },
+  {
+    "role": "RELEASE_CONTROLLER",
+    "time": 8200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.3732700395566711e-15,
+    "departure": 0
+  },
+  {
+    "role": "RELEASE_CONTROLLER",
+    "time": 8600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.1102230246251565e-15,
+    "departure": 0
+  },
+  {
+    "role": "RELEASE_CONTROLLER",
+    "time": 9000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.0934428697813141e-15,
+    "departure": 0
+  },
+  {
+    "role": "RELEASE_CONTROLLER",
+    "time": 9400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.0565363201361521e-15,
+    "departure": 0
+  },
+  {
+    "role": "RELEASE_CONTROLLER",
+    "time": 9800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.964986097963502e-16,
+    "departure": 0
+  },
+  {
+    "role": "RELEASE_CONTROLLER",
+    "time": 10200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.42055475210265e-16,
+    "departure": 0
+  },
+  {
+    "role": "RELEASE_CONTROLLER",
+    "time": 10600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.3348671786163112e-15,
+    "departure": 0
+  },
+  {
+    "role": "RELEASE_CONTROLLER",
+    "time": 11000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 5.551115123125783e-16,
+    "departure": 0
+  },
+  {
+    "role": "RELEASE_CONTROLLER",
+    "time": 11400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "RELEASE_CONTROLLER",
+    "time": 11800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "RELEASE_CONTROLLER",
+    "time": 12200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "RELEASE_CONTROLLER",
+    "time": 12600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "RELEASE_CONTROLLER",
+    "time": 13000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.0835344452754878e-15,
+    "departure": 0
+  },
+  {
+    "role": "RELEASE_CONTROLLER",
+    "time": 13400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 5.087681048627601e-16,
+    "departure": 0
+  },
+  {
+    "role": "RELEASE_CONTROLLER",
+    "time": 13800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 8.899114524108741e-16,
+    "departure": 0
+  },
+  {
+    "role": "RELEASE_CONTROLLER",
+    "time": 14200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 4.742874840267547e-16,
+    "departure": 0
+  },
+  {
+    "role": "RELEASE_CONTROLLER",
+    "time": 14600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.992007221626409e-16,
+    "departure": 0
+  },
+  {
+    "role": "RELEASE_CONTROLLER",
+    "time": 15000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.1957467920563633e-15,
+    "departure": 0
+  },
+  {
+    "role": "RELEASE_CONTROLLER",
+    "time": 15400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.1957467920563633e-15,
+    "departure": 0
+  },
+  {
+    "role": "RELEASE_CONTROLLER",
+    "time": 15800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 2.0350724194510405e-15,
+    "departure": 0
+  },
+  {
+    "role": "RELEASE_CONTROLLER",
+    "time": 16200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 2.220446049250313e-15,
+    "departure": 0
+  },
+  {
+    "role": "RELEASE_CONTROLLER",
+    "time": 16600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 9.930136612989092e-16,
+    "departure": 0.352
+  },
+  {
+    "role": "RELEASE_CONTROLLER",
+    "time": 17000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.0877919644084146e-15,
+    "departure": 0.896
+  },
+  {
+    "role": "RELEASE_CONTROLLER",
+    "time": 17400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.2755491433176288e-15,
+    "departure": 1
+  },
+  {
+    "role": "RELEASE_CONTROLLER",
+    "time": 17800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.2609709600486848e-15,
+    "departure": 1
+  },
+  {
+    "role": "RELEASE_CONTROLLER",
+    "time": 18200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.4217791915866692e-15,
+    "departure": 1
+  },
+  {
+    "role": "RELEASE_CONTROLLER",
+    "time": 18600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.4087150935148696e-15,
+    "departure": 1
+  },
+  {
+    "role": "RELEASE_CONTROLLER",
+    "time": 19000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.3322676295501878e-15,
+    "departure": 1
+  },
+  {
+    "role": "RELEASE_CONTROLLER",
+    "time": 19400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 2.5989654674417885e-15,
+    "departure": 1
+  },
+  {
+    "role": "RELEASE_CONTROLLER",
+    "time": 19800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.137640067256873e-15,
+    "departure": 1
+  },
+  {
+    "role": "RELEASE_CONTROLLER",
+    "time": 20200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.4895204919483639e-15,
+    "departure": 1
+  },
+  {
+    "role": "RELEASE_CONTROLLER",
+    "time": 20600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.6011864169946884e-15,
+    "departure": 1
+  },
+  {
+    "role": "RELEASE_CONTROLLER",
+    "time": 21000,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.0175362097255202e-15,
+    "departure": 1
+  },
+  {
+    "role": "RELEASE_CONTROLLER",
+    "time": 21400,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.1957467920563633e-15,
+    "departure": 1
+  },
+  {
+    "role": "RELEASE_CONTROLLER",
+    "time": 21800,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.2560739669470201e-15,
+    "departure": 1
+  },
+  {
+    "role": "RELEASE_CONTROLLER",
+    "time": 22200,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.2755491433176288e-15,
+    "departure": 1
+  },
+  {
+    "role": "RELEASE_CONTROLLER",
+    "time": 22600,
+    "contacts": [],
+    "pairs": [],
+    "grip": 1.047382306668854e-15,
+    "departure": 1
+  }
+]
