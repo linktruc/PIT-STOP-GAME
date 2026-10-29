@@ -12,7 +12,7 @@ export const CREW: Crew[] = CORNER_POSITIONS.flatMap(([corner, x, z]) => {
 CREW.push(
   { role: 'FRONT_JACK', x: 0, z: -4.78, angle: Math.PI, kind: 'jack' },
   { role: 'REAR_JACK', x: 0, z: 4.03, kind: 'jack' },
-  { role: 'RELEASE_CONTROLLER', x: 3.61, z: -3.11, angle: Math.PI / 2, kind: 'release' },
+  { role: 'RELEASE_CONTROLLER', x: 4.9, z: -3.9, angle: Math.PI / 2, kind: 'release' },
   { x: -1.37, z: .19, angle: -Math.PI / 2, kind: 'ambient', support: 'sidepod' },
   { x: 1.37, z: .19, angle: Math.PI / 2, kind: 'ambient', support: 'sidepod' },
   { x: -1.62, z: -3.2, angle: -Math.PI / 3, kind: 'ambient', support: 'nose' },

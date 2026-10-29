@@ -1,0 +1,3 @@
+import {chromium} from 'playwright';
+const browser=await chromium.launch({channel:process.platform==='win32'?'msedge':undefined,headless:true,args:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
+try{for(const mode of ['off','fit','release']){const page=await browser.newPage({viewport:{width:900,height:700}});await page.goto('http://127.0.0.1:5173/scripts/v24-7-wheel-qa.html?sceneDebug=1',{waitUntil:'domcontentloaded',timeout:90000});await page.waitForFunction(()=>window.captureWheelPose);console.log(await page.evaluate(mode=>window.captureWheelPose(mode),mode));await page.screenshot({path:`docs/v24-7-evidence/${mode}-pose.png`,clip:{x:0,y:0,width:800,height:600},timeout:90000});await page.close();}}finally{await browser.close();}

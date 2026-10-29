@@ -6,11 +6,12 @@ import { TaskAnimationTimeline } from './animation';
 import { LiveSceneAudio } from './liveAudio';
 import { teamCrewColor } from './colors';
 import { SceneClock, FramePacer, CrewMotion } from './motion';
-import { oldWheelWorkMotion } from './oldWheel';
-import {workDone,workPhase,fittingPhase,gunnerWorkHandoff} from './work';
+import {WheelHandling,offWheelStation,onWheelStation,wheelGripAnchors} from './wheelHandling';
+import {DepartureMotion,releaseGesture} from './departure';
+import {workDone,workPhase,gunnerWorkHandoff} from './work';
 import { departurePose, arrivalPose, isCrewTap } from './rig';
 import { buildPitLane, PIT_LANE_LAYOUT } from './environment';
-import { CREW, CORNER_POSITIONS, gunnerKneelingPose, wheelCarrierPosition, supportCrewClear, supportHandAnchors, type Crew } from './crew';
+import { CREW, CORNER_POSITIONS, gunnerKneelingPose, supportCrewClear, supportHandAnchors, type Crew } from './crew';
 type KneelingLeg = {thigh:THREE.Mesh;shin:THREE.Mesh;foot:THREE.Mesh;knee:THREE.Mesh};
 type Actor = { spec: Crew; group: THREE.Group; body: THREE.Group; arms: THREE.Group[]; legs: THREE.Group[]; kneelingLegs?:KneelingLeg[]; tool?: THREE.Group; forearms: THREE.Group[]; hands: THREE.Mesh[]; carry: THREE.Group; selectionRing: THREE.Mesh; selectionGlow: THREE.Mesh; ring: THREE.Mesh; glow: THREE.Mesh; suit: THREE.MeshStandardMaterial };
 type WheelCorner = { key: string; x: number; z: number; wheel: THREE.Group; old: THREE.Group; fresh: THREE.Group };
@@ -29,13 +30,18 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
  const framePacer=new FramePacer();
  const liveAudio=new LiveSceneAudio();
  const crewMotion=new CrewMotion();
+ const wheelHandling=new WheelHandling();
+ const departureMotion=new DepartureMotion();
+ const fittedGrips=new Map<string,THREE.Vector3[]>();
+ const gunNutAnchors=new Map<string,THREE.Vector3>();
+ let attachmentRound:string|null=null;
  const gunGripAnchors=[new THREE.Vector3(0,-.16,0),new THREE.Vector3(0,0,-.22)];
  let renderInvalidated=true;
  let appliedCrewColor: string | null | undefined;
  const deselect=()=>{selectedActor.current=null;setSelected(null);renderInvalidated=true;};
  const update=(room?:Room|null,playerId?:string|null,sceneActive=true,presentationTime?:number,serverNow?:number,clockOffsetOverride?:number,poseRevision=0)=>{
   const prior=latest.current; renderInvalidated=true;
-  if(prior.poseRevision!==poseRevision)crewMotion.reset();
+  if(prior.poseRevision!==poseRevision){crewMotion.reset();wheelHandling.reset();departureMotion.reset();fittedGrips.clear();gunNutAnchors.clear();}
   if(prior.room?.id!==room?.id || prior.room?.players.find(p=>p.id===prior.playerId)?.role!==room?.players.find(p=>p.id===playerId)?.role) deselect();
   latest.current={room,playerId,sceneActive,presentationTime,clockOffset:clockOffsetOverride??(room?.solo?0:serverNow===undefined?prior.clockOffset:serverNow-Date.now()),poseRevision};
   // Replay rebuilds the deterministic event clock; live retains visible phases.
@@ -275,7 +281,7 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
       const suit = material(spec.role ? '#ef3039' : index % 2 ? '#577380' : '#2e4659', .81, .03);
       suit.name = 'crew-suit';
       const legs: THREE.Group[] = [];
-      const kneelingLegs: KneelingLeg[] | undefined=spec.kind==='gun'?[]:undefined;
+      const kneelingLegs: KneelingLeg[] | undefined=['gun','off','on'].includes(spec.kind)?[]:undefined;
       for (const side of [-1, 1]) {
         const leg = new THREE.Group(); leg.position.set(side * .115, .56, 0); group.add(leg); legs.push(leg);
         if(kneelingLegs){
@@ -330,7 +336,7 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
       }
     }
     // Cache immutable role categories once; no per-pair closure or string search in each frame.
-    const mobileCrew = actors.map(actor => actor.spec.kind === 'gun' || actor.spec.kind === 'off' || actor.spec.kind === 'on' || actor.spec.kind === 'release');
+    const mobileCrew = actors.map(actor => actor.spec.kind === 'gun');
     const picks = actors.map((actor, index) => {
       const hit = mesh(boxGeo, basic('#ffffff', 0), actor.group, 0, .83, 0, .79, 1.75, .79);
       hit.userData.animated = true; hit.userData.actorIndex = index; hit.castShadow = false; return hit;
@@ -479,7 +485,7 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
       const releaseTask=workTasks.get('GREEN_RELEASE');
       const departReceipt=releaseReceipt?{...releaseReceipt,startsAt:Math.max(releaseReceipt.startsAt,releaseTask?.completedAt??releaseTask?.dueAt??Infinity)}:undefined;
       const departure=departurePose(lowerEnds,departReceipt,now,false);
-      const retreat=departure.retreat,drive=released?departure.drive:0;
+      const retreat=departure.retreat;let drive=0;
       car.position.z = arrival.carZ + drive * PIT_LANE_LAYOUT.exitZ; car.position.x = arrival.carX;car.rotation.y=arrival.yaw;
       const clearBeforeArrival = 1 - arrival.entry;
       element.dataset.carArrival = arrival.progress.toFixed(3); element.dataset.sceneClock = String(now); element.dataset.carZ = car.position.z.toFixed(3);element.dataset.carX=car.position.x.toFixed(3);element.dataset.carYaw=arrival.yaw.toFixed(3);element.dataset.wheelRoll=arrival.wheelRoll.toFixed(3);element.dataset.workPhase = String(arrival.arrived);
@@ -497,6 +503,8 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
       const green = released;
       redLampMat.color.set(green ? '#301919' : '#ff392c');
       greenLampMat.color.set(green ? '#18db67' : '#172b22');
+      if(attachmentRound!==(room?.round?.id??null)){attachmentRound=room?.round?.id??null;fittedGrips.clear();gunNutAnchors.clear();}
+      const wheelFrames=new Map(corners.map(corner=>[corner.key,wheelHandling.sample(room?.round?.id??null,corner.key,workNow,workTasks.get(`${corner.key}_GUN_LOOSEN`),workTasks.get(`${corner.key}_WHEEL_OFF`),workTasks.get(`${corner.key}_WHEEL_ON`))]));
       const mine = room?.players.find(player => player.id === playerId);
       if (marker.current) marker.current.style.display = mine ? 'block' : 'none';
       for (let index = 0; index < actors.length; index++) {
@@ -518,7 +526,7 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
           const pose=gunnerKneelingPose(task?p:0);const standing=Math.max(retreat,clearBeforeArrival,handoff);
           // 1.25m also clears the OFF carrier's outward-leaning helmet. The
           // shorter .85m proposal cleared hips but intersected that head sweep.
-          group.position.z+=1.35*handoff;
+          group.position.x+=Math.sign(spec.x)*1.25*handoff;
           body.position.set(0,mix(pose.torsoY,0,standing),mix(pose.torsoZ,0,standing));body.rotation.x=mix(pose.lean,-.03,standing);
           actor.kneelingLegs?.forEach((leg,i)=>{
             const anchor=pose.legs[i],side=i===0?-1:1;
@@ -531,25 +539,21 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
           arms.forEach(arm=>{arm.rotation.x=.85;});
           group.position.x+=Math.sign(spec.x)*.23*smooth(((progress(`${corner}_GUN_TIGHTEN`)??0)-.75)/.25);
         } else if (spec.kind === 'off' || spec.kind === 'on') {
-          const corner = corners.find(corner => spec.role?.startsWith(corner.key));
-          const placement=spec.kind==='off'&&corner?oldWheelWorkMotion(spec,corner,workTasks.get(`${corner.key}_WHEEL_OFF`),workNow):null;
-          if(placement){
-            group.position.x=placement.x;group.position.z=placement.z;
-            body.position.y-=.10*placement.crouch;body.rotation.x=-.52*placement.crouch;
-            arms.forEach(arm=>{arm.rotation.x=mix(.95,.3,placement.release);});
-            legs.forEach((leg,side)=>{leg.rotation.x=Math.sin(now*.014+side*Math.PI)*.22*placement.walking;});
-          }else if(corner&&task){
-            const stageSpec=spec.kind==='on'?{...spec,x:corner.x+Math.sign(spec.x)*1.4}:spec; const carrier=wheelCarrierPosition(spec.kind,stageSpec,corner,spec.kind==='on'?fittingPhase(workTasks.get(`${corner.key}_WHEEL_ON`),workNow):p);group.position.x=carrier.x;group.position.z=carrier.z;
-            body.position.y-=.20*work;body.rotation.x=-.28*work;
-            arms.forEach(arm=>{arm.rotation.x=.95+work*.3;});legs.forEach((leg,side)=>{leg.rotation.x=Math.sin(p*17+side*Math.PI)*.25*work;});
-          }else {
-            // Bring the replacement tyre closer while the old-wheel crew works.
-            const off=corner?workTasks.get(`${corner.key}_WHEEL_OFF`):undefined;
-            if(spec.kind==='on'&&corner&&off?.enabledAt!==null&&off?.enabledAt!==undefined&&workNow>=off.enabledAt){
-              group.position.x=mix(spec.x,corner.x+Math.sign(spec.x)*1.4,smooth((workNow-off.enabledAt)/180));
-            }
-            arms.forEach(arm=>{arm.rotation.x=spec.kind==='on'?.7:.3;});
-          }
+          const corner=corners.find(c=>spec.role?.startsWith(c.key))!,frame=wheelFrames.get(corner.key)!;
+          const height=corner.key.startsWith('F')?frontHeight:rearHeight;
+          const station=spec.kind==='off'?offWheelStation(corner,frame,height):onWheelStation(corner,frame,height);
+          group.position.x=station.x;group.position.z=station.z;
+          const crouch=station.crouch,standing=1-crouch,pose=gunnerKneelingPose(0);
+          body.position.set(0,-.10*crouch,.04*crouch);body.rotation.x=-.04*crouch;
+          actor.kneelingLegs?.forEach((leg,i)=>{
+            const anchor=pose.legs[i],side=i===0?-1:1;
+            const hip=new THREE.Vector3(...anchor.hip).lerp(new THREE.Vector3(side*.115,.56,0),standing);
+            const knee=(i===0?new THREE.Vector3(-.19,.30,-.18):new THREE.Vector3(...anchor.knee)).lerp(new THREE.Vector3(side*.115,.31,-.025),standing);
+            const ankle=(i===0?new THREE.Vector3(-.19,.10,-.18):new THREE.Vector3(...anchor.ankle)).lerp(new THREE.Vector3(side*.115,.10,0),standing);
+            for(const [part,a,b]of [[leg.thigh,hip,knee],[leg.shin,knee,ankle]]as const){part.position.copy(a).add(b).multiplyScalar(.5);part.scale.y=a.distanceTo(b);part.quaternion.setFromUnitVectors(new THREE.Vector3(0,-1,0),b.clone().sub(a).normalize());}
+            leg.knee.position.copy(knee);leg.foot.position.copy(i===0?new THREE.Vector3(-.19,.075,-.22):new THREE.Vector3(...anchor.foot)).lerp(new THREE.Vector3(side*.115,.075,-.065),standing);
+          });
+          arms.forEach(arm=>{arm.rotation.x=.3;});
         } else if (spec.kind === 'jack') {
           body.rotation.x = -.16 - work * .23; body.position.y -= work * .1; arms.forEach(arm => { arm.rotation.x = .9 + (task ? Math.sin(p * Math.PI * 3) * .28 : 0); });
           // Front jack stands planted ahead of the car's nose before arrival.
@@ -557,11 +561,12 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
           group.position.x = spec.role === 'FRONT_JACK' ? 3.5 * retreat : -Math.max(3.5 * retreat,2.2 * clearBeforeArrival);
           group.position.z=spec.z+(spec.role==='FRONT_JACK'?-3:3)*retreat;
         } else if (spec.kind === 'release') {
-          arms[1].rotation.x = task ? 1.1 + smooth(p / .4) * 1.65 : released ? 2.75 : .6; arms[1].rotation.z = task || released ? -.5 : .15; if (green) group.rotation.y += .3;
+          const signal=releaseGesture(releaseTask?.completedAt,workNow);
+          arms[1].rotation.x=.6+signal*2.15;arms[1].rotation.z=.15-signal*.65;group.rotation.y+=(signal*.3);
         } else { body.rotation.x = spec.support === 'sidepod' ? -.11 : spec.support==='nose'?-.055:index < 19 ? -.18 : -.025;
           if(spec.support==='nose'){body.position.z=.13;legs.forEach(leg=>{leg.position.z=.07;});}
           if (index < 19) arms.forEach(arm => { arm.rotation.x = .75; }); if (released) { arms[0].rotation.x = 1.8; group.position.x += Math.sign(spec.x) * .3; } }
-        if (spec.kind !== 'jack') group.position.x = mix(group.position.x, Math.sign(spec.x || 1) * Math.max(Math.abs(group.position.x),2.7), Math.max(retreat, clearBeforeArrival));
+        if (spec.kind !== 'jack' && spec.kind !== 'off' && spec.kind !== 'on' && spec.kind !== 'release') group.position.x = mix(group.position.x, Math.sign(spec.x || 1) * Math.max(Math.abs(group.position.x),2.7), Math.max(retreat, clearBeforeArrival));
 
       }
       // Resolve carrier / waiting / handoff crowding before attaching tools and hands.
@@ -576,16 +581,17 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
           if (!mobileCrew[i] && !mobileCrew[j]) continue;
           const a=actors[i], b=actors[j];
           const dx=b.group.position.x-a.group.position.x, dz=b.group.position.z-a.group.position.z;
-          if (Math.abs(dx)>=1.35 || Math.abs(dz)>=1.35) continue;
+          const sameCorner=a.spec.role?.slice(0,2)===b.spec.role?.slice(0,2);const spacing=sameCorner ? .90 : 1.35;
+          if (Math.abs(dx)>=spacing || Math.abs(dz)>=spacing) continue;
           const distance=Math.hypot(dx,dz);
-          if (distance>=1.35) continue;
+          if (distance>=spacing) continue;
           const mover=mobileCrew[j]?b:a;
-          mover.group.position.x+=Math.sign(mover.spec.x||1)*(1.35-distance+.02);
+          mover.group.position.x+=Math.sign(mover.spec.x||1)*(spacing-distance+.02);
           moved=true;
         }
         if (!moved) break;
       }
-      const motionTargets=actors.map((actor,i)=>({x:actor.group.position.x,z:actor.group.position.z,fixed:!mobileCrew[i]}));
+      const motionTargets=actors.map((actor,i)=>({x:actor.group.position.x,z:actor.group.position.z,fixed:!mobileCrew[i],exact:actor.spec.kind==='off'||actor.spec.kind==='on'}));
       const positions=crewMotion.sample(room?.round?.id??null,now,motionTargets);
       if(sceneDebug)element.dataset.motionLag=String(Math.max(...positions.map((p,i)=>Math.hypot(p.x-motionTargets[i].x,p.z-motionTargets[i].z))));
       actors.forEach((actor,i)=>{actor.group.position.x=positions[i].x;actor.group.position.z=positions[i].z;});
@@ -594,6 +600,9 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
         jack.group.position.x=operator.group.position.x;
         jack.group.position.z=operator.group.position.z+(jack.front?1.66:-1.68);
       }
+      const laneClear=actors.every(actor=>Math.abs(actor.group.position.x)>=2.2)&&jacks.every(jack=>Math.abs(jack.group.position.x)>=2.1);
+      drive=departureMotion.sample(room?.round?.id??null,now,released?departure.drive:0,laneClear);
+      car.position.z=arrival.carZ+drive*PIT_LANE_LAYOUT.exitZ;
       scene.updateMatrixWorld(true);
         if (marker.current && mine) {
           const actor=actors.find(a=>a.spec.role===mine.role)!;const group=actor.group;
@@ -630,30 +639,30 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
         const side = Math.sign(corner.x); const height = corner.key.startsWith('F') ? frontHeight : rearHeight;
         const hub = world(car, new THREE.Vector3(corner.x, .44 + height, corner.z));
         const offId = `${corner.key}_WHEEL_OFF`, onId = `${corner.key}_WHEEL_ON`;
-        const onP = fittingPhase(workTasks.get(onId),workNow);
-        const offActor = actors.find(a => a.spec.role === offId)!; const onActor = actors.find(a => a.spec.role === onId)!;
-        const placement=oldWheelWorkMotion(offActor.spec,corner,workTasks.get(offId),workNow);
-        const offCarry=world(offActor.group,new THREE.Vector3(0,.74,-.66)),onCarry=world(onActor.carry);
-        corner.wheel.position.set(corner.x, .44 + height, corner.z); corner.wheel.rotation.x = arrival.wheelRoll-drive*62;corner.wheel.rotation.y=corner.key.startsWith('F')?arrival.steering:0;
-        const extract=placement?.extract??0;
-        corner.wheel.visible=(!workComplete(offId)&&extract<=0)||onP>=1;
-        corner.old.visible=workComplete(offId)||extract>0;
-        const discard=placement?new THREE.Vector3(placement.discard.x,placement.discard.y,placement.discard.z):hub;
-        // The old tyre stays in the mechanic's grip during carry. Only the
-        // local lowering phase blends it down to the adjacent ground point.
-        corner.old.position.copy(hub).lerp(offCarry,extract);
-        if(placement)corner.old.position.lerp(discard,placement.lower);
-        corner.old.quaternion.copy(car.quaternion).slerp(offActor.group.quaternion,extract);
-        const fitting = smooth((onP - .45) / .55);
-        corner.fresh.visible = onP < 1;
-        corner.fresh.position.copy(onCarry).lerp(hub, fitting);
-        corner.fresh.quaternion.copy(onActor.group.quaternion).slerp(car.quaternion, fitting);
-        // Hands grip opposite sidewalls; the carry frame leaves clearance ahead of the torso.
-        if(placement&&placement.extract>0&&placement.release<1){
-          const grips=[-1,1].map(x=>world(corner.old,new THREE.Vector3(x*.22,.12,0)));
-          poseHands(offActor,grips.map((grip,i)=>grip.lerp(world(offActor.hands[i]),placement.release)));
+        const frame=wheelFrames.get(corner.key)!;
+        const offActor=actors.find(a=>a.spec.role===offId)!,onActor=actors.find(a=>a.spec.role===onId)!;
+        const offCarry=world(offActor.group,new THREE.Vector3(0,.74,-.64));
+        const onCarry=world(onActor.group,new THREE.Vector3(0,.74,-.54));
+        corner.wheel.position.set(corner.x,.44+height,corner.z);corner.wheel.rotation.x=arrival.wheelRoll-drive*62;corner.wheel.rotation.y=corner.key.startsWith('F')?arrival.steering:0;
+        corner.wheel.visible=frame.extract<=0||frame.fit>=1;
+        corner.old.visible=frame.extract>0;
+        const discard=new THREE.Vector3(corner.x+side*4.4,.44,corner.z+1.1);
+        corner.old.position.copy(hub).lerp(offCarry,frame.extract).lerp(discard,frame.lower);
+        corner.old.quaternion.identity();
+        corner.fresh.visible=frame.fit<1;
+        corner.fresh.position.copy(onCarry).lerp(hub,frame.fit);corner.fresh.quaternion.identity();
+        const grips=wheelGripAnchors(side);
+        if(frame.offPrep>.82&&frame.release<1){
+          const grab=smooth((frame.offPrep-.82)/.18)*(1-frame.release);
+          const targets=grips.map((p,i)=>world(corner.old,new THREE.Vector3(...p)).lerp(world(offActor.hands[i]),1-grab));
+          poseHands(offActor,targets);
         }
-        if (onP < 1) poseHands(onActor, [-1, 1].map(x => world(corner.fresh, new THREE.Vector3(x * .22, .12, 0))));
+        if(frame.fit>=1&&!fittedGrips.has(corner.key))fittedGrips.set(corner.key,grips.map(p=>world(corner.fresh,new THREE.Vector3(...p))));
+        if(frame.onRelease<1){
+          const frozen=frame.fit>=1?fittedGrips.get(corner.key):undefined;
+          const targets=grips.map((p,i)=>(frozen?.[i].clone()??world(corner.fresh,new THREE.Vector3(...p))).lerp(world(onActor.hands[i]),frame.onRelease));
+          poseHands(onActor,targets);
+        }
         const gunner = actors.find(a => a.spec.role === `${corner.key}_GUNNER`)!;
         if (gunner.tool) {
           const gunTask=[`${corner.key}_GUN_LOOSEN`,`${corner.key}_GUN_TIGHTEN`].find(id=>{const task=workTasks.get(id);return task?.enabledAt!==null&&task?.enabledAt!==undefined&&workNow>=task.enabledAt&&!workComplete(id);});
@@ -663,7 +672,9 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
           // The thrust is tied to the accepted loosen/tighten receipt, never unlock.
           const thrustPhase=gunTask?.endsWith('TIGHTEN')?(gunPhase-.22)/.78:gunPhase;
           const thrust=gunTask?smooth(thrustPhase/.2)*(1-smooth((gunPhase-.65)/.35)):0;
-          const nut = hub.clone().add(new THREE.Vector3(side * .22, 0, 0));
+          const liveNut=hub.clone().add(new THREE.Vector3(side*.22,0,0));
+          if(gunTask||!gunNutAnchors.has(corner.key))gunNutAnchors.set(corner.key,liveNut);
+          const nut=(gunTask?liveNut:gunNutAnchors.get(corner.key)!).clone();
           const muzzleBase = nut.clone().add(new THREE.Vector3(side*(.41+.18*(1-thrust)),.10*(1-thrust)+(gunTask?Math.sin(gunPhase*95)*.006:0),0));
           // One body-local held pose for handoff, final tighten and departure.
           // Never retarget the lowering wheel after the gunner has finished.
@@ -711,10 +722,8 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
         poseHands(operator,grips);
         if (heldToolErrors) heldToolErrors[operator.spec.role!]=Math.max(...grips.map((grip,i)=>world(operator.hands[i]).distanceTo(grip)));
       }
-      const laneClear = actors.every(actor => Math.abs(actor.group.position.x) >= 2.2) && jacks.every(jack => Math.abs(jack.group.position.x) >= 2.1);
-      if (!laneClear && drive > 0) car.position.z = 0;
       element.dataset.sceneModel = 'full-pit-lane-v11'; element.dataset.crewCount = String(actors.length); element.dataset.supportClear = String(supportCrewClear(car.position.z, Math.max(retreat, clearBeforeArrival))); element.dataset.selectedRole = selectedActor.current === null ? '' : actors[selectedActor.current].spec.role ?? 'SUPPORT'; element.dataset.selectedColor = selectedActor.current === null ? '' : '#6ce8d9';
-      element.dataset.laneClear = String(laneClear); element.dataset.carDeparture = (laneClear ? drive : 0).toFixed(3); element.dataset.maxGripError = maxGripError.toFixed(3); element.dataset.supportContactError = supportContactError.toFixed(3); element.dataset.supportBodyClear = element.dataset.supportClear; element.dataset.carZ = car.position.z.toFixed(3);
+      element.dataset.laneClear = String(laneClear); element.dataset.carDeparture = drive.toFixed(3); element.dataset.maxGripError = maxGripError.toFixed(3); element.dataset.supportContactError = supportContactError.toFixed(3); element.dataset.supportBodyClear = element.dataset.supportClear; element.dataset.carZ = car.position.z.toFixed(3);
       // V10.3: the nameplate is owned by React, not a detached body element.
       if (tooltip.current && selectedActor.current !== null) {
         const actor=actors[selectedActor.current];
@@ -727,14 +736,34 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
       }
       if (sceneDebug) {
       element.dataset.releaseGreen=String(green);
+      element.dataset.wheelRig=JSON.stringify(corners.map(corner=>{
+        const frame=wheelFrames.get(corner.key)!;
+        return {corner:corner.key,frame,hub:{position:world(corner.wheel).toArray(),visible:corner.wheel.visible},old:{position:corner.old.position.toArray(),visible:corner.old.visible},fresh:{position:corner.fresh.position.toArray(),visible:corner.fresh.visible},owners:['off','on'].map(kind=>{
+          const actor=actors.find(a=>a.spec.role===`${corner.key}_WHEEL_${kind==='off'?'OFF':'ON'}`)!;
+          const wheel=kind==='off'?corner.old:corner.fresh;
+          const targets=wheelGripAnchors(Math.sign(corner.x)).map(p=>world(wheel,new THREE.Vector3(...p)));
+          const clearance=actors.map(other=>{
+            const points=[.61,.84,1.03,1.29].map((y,i)=>({point:world(other.body,new THREE.Vector3(0,y,0)),radius:i===3?.235:.21}));
+            if(other.kneelingLegs)for(const leg of other.kneelingLegs){points.push({point:world(leg.foot),radius:.14},{point:world(leg.knee),radius:.095});}
+            else for(const x of [-.115,.115])points.push({point:world(other.group,new THREE.Vector3(x,.075,-.065)),radius:.14});
+            return {role:other.spec.role??other.spec.support??'ambient',value:Math.min(...points.map(({point,radius})=>{
+              const local=wheel.worldToLocal(point),axial=Math.abs(local.x)-.225,radial=Math.hypot(local.y,local.z)-.43;
+              return Math.hypot(Math.max(axial,0),Math.max(radial,0))+Math.min(Math.max(axial,radial),0)-radius;
+            }))};
+          });
+          return {kind,position:actor.group.position.toArray(),yaw:actor.group.rotation.y,hands:actor.hands.map(h=>world(h).toArray()),gripError:Math.max(...actor.hands.map((h,i)=>world(h).distanceTo(targets[i]))),clearance};
+        })};
+      }));
+      const signalActor=actors.find(a=>a.spec.kind==='release')!;
+      element.dataset.releasePose=JSON.stringify({position:signalActor.group.position.toArray(),yaw:signalActor.group.rotation.y,arm:signalActor.arms[1].rotation.toArray()});
       element.dataset.wheelWork=JSON.stringify(corners.map(c=>({corner:c.key,hubVisible:c.wheel.visible,newWheelVisible:c.fresh.visible})));
       element.dataset.workState=JSON.stringify([...workTasks.values()].map(task=>({id:task.id,phase:workPhase(task,workNow),done:workDone(task,workNow),enabledAt:task.enabledAt,completedAt:task.completedAt})));
       element.dataset.heldToolErrors=JSON.stringify(heldToolErrors);
       element.dataset.oldWheelPlacements=JSON.stringify(corners.map(corner=>{
         const actor=actors.find(a=>a.spec.role===`${corner.key}_WHEEL_OFF`)!;
-        const pose=oldWheelWorkMotion(actor.spec,corner,workTasks.get(`${corner.key}_WHEEL_OFF`),workNow);
+        const pose=wheelFrames.get(corner.key)!;
         return {corner:corner.key,pose,target:motionTargets[actors.indexOf(actor)],position:corner.old.position.toArray(),visible:corner.old.visible,
-          handError:pose&&pose.extract>0&&pose.release===0?Math.max(...[-1,1].map((x,i)=>world(actor.hands[i]).distanceTo(world(corner.old,new THREE.Vector3(x*.22,.12,0))))):0};
+          handError:pose&&pose.extract>0&&pose.release===0?Math.max(...wheelGripAnchors(Math.sign(corner.x)).map((p,i)=>world(actor.hands[i]).distanceTo(world(corner.old,new THREE.Vector3(...p))))):0};
       }));
       if(contactDebug){
       const hardware: {owner:Actor;box:THREE.Box3}[] = actors.filter(a=>a.tool).map(owner=>({owner,box:new THREE.Box3().setFromObject(owner.tool!)}));

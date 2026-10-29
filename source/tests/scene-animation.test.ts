@@ -109,7 +109,8 @@ describe('safe departure and crew selection', () => {
     }
     expect(departurePose([lower, undefined], release, 9999).drive).toBe(0);
     const settled = { ...lower, startsAt: 10, endsAt: 10 };
-    expect(departurePose([settled, settled], settled, 10)).toEqual({ drive: 1, retreat: 1 });
+    expect(departurePose([settled, settled], settled, 10)).toEqual({ drive: 0, retreat: 0 });
+    expect(departurePose([settled, settled], settled, 1760)).toEqual({ drive: 1, retreat: 1 });
   });
   it('distinguishes camera drags and long presses from model taps', async () => {
     const { isCrewTap } = await import('../src/scene/rig');

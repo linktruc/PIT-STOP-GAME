@@ -1,3 +1,7 @@
+# Current release: V24.7
+
+See [V24_7_WHEEL_CONTACT_AND_RELEASE.md](V24_7_WHEEL_CONTACT_AND_RELEASE.md) for contact-driven wheel handling, clear handler poses and stable fast release.
+
 # Current release: V24.6
 
 See [V24_6_WORK_SYNC_AND_CREW_TRANSITIONS.md](V24_6_WORK_SYNC_AND_CREW_TRANSITIONS.md) for all-role work readiness, quicker Rear Jack approach and continuous Gunner finish/lowering poses.

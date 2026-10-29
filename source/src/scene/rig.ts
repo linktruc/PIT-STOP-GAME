@@ -5,11 +5,10 @@ const smooth = (value: number) => { const p = MathUtils.clamp(value, 0, 1); retu
 /** Deterministic presentation clock. No official timings or task state are changed. */
 export function departurePose(lowerEnds: (AnimationReceipt | undefined)[], release: AnimationReceipt | undefined, now: number, reduced = false) {
   if (!lowerEnds.every(Boolean)) return { retreat: 0, drive: 0 };
-  const settled = lowerEnds.every(r => r!.startsAt === r!.endsAt);
   const lowerAt = Math.max(...lowerEnds.map(r => r!.endsAt));
-  const retreat = reduced || settled ? Number(now >= lowerAt) : smooth((now - lowerAt) / 750);
-  const departAt = Math.max(release?.startsAt ?? Infinity, lowerAt + (settled || reduced ? 0 : 750));
-  const drive = !release ? 0 : release.startsAt === release.endsAt && settled ? 1 : smooth((now - departAt) / (reduced ? 1 : 1000));
+  const retreat = reduced ? Number(now >= lowerAt) : smooth((now - lowerAt) / 750);
+  const departAt = Math.max(release?.startsAt ?? Infinity, lowerAt + (reduced ? 0 : 750));
+  const drive = !release ? 0 : smooth((now - departAt) / (reduced ? 1 : 1000));
   return { retreat, drive };
 }
 export function isCrewTap(down: { x: number; y: number; time: number }, up: { x: number; y: number; time: number }) {

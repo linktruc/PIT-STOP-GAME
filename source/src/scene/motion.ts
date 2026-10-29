@@ -28,7 +28,7 @@ export class FramePacer {
   }
 }
 export type GroundPoint = { x: number; z: number };
-export type MotionTarget = GroundPoint & { fixed: boolean };
+export type MotionTarget = GroundPoint & { fixed: boolean; exact?:boolean };
 /** Limit movement of rendered roots, never the authoritative tasks or scores.
  * Initial views and explicit seeks settle immediately; normal playback follows
  * continuously, steering around occupied body space instead of teleporting. */
@@ -48,6 +48,7 @@ export class CrewMotion {
     const order = targets.map((_,i)=>i).sort((a,b)=>Number(targets[b].fixed)-Number(targets[a].fixed));
     for (const i of order) {
       const current=this.positions[i], target=targets[i];
+      if(target.exact){this.positions[i]={x:target.x,z:target.z};continue;}
       const dx=target.x-current.x,dz=target.z-current.z,d=Math.hypot(dx,dz);
       if(d<1e-9)continue;
       const step=Math.min(d*alpha,(target.fixed?8:6)*dt);
