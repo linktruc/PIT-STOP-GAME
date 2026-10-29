@@ -19,6 +19,8 @@ export function useGame(watching = false) {
   const refreshRef = useRef<(heartbeat?: boolean) => Promise<void>>(async () => {});
   const earlyTokens = useRef(new Map<string, string>());
   const actionTokens = useRef(new Map<string, string>()); const unresolved = useRef<{room: string; task: string} | null>(null);
+  const mutationSequence=useRef(0);
+  const actionFlight=useRef<{sequence:number;room:string;round:string|undefined;task:string;acknowledged:boolean}|null>(null);
   const coalescer = useRef<RefreshCoalescer | null>(null);
   const globalFlight = useRef<Promise<void> | null>(null);
   const globalFlightRevision = useRef(0);
@@ -56,11 +58,16 @@ export function useGame(watching = false) {
   const enqueue = useCallback(<T,>(job: () => Promise<T>): Promise<T> => {
     const result = queue.current.then(job, job); queue.current = result.then(() => undefined, () => undefined); return result;
   }, []);
-  const receive = useCallback((next: Snapshot, sentAt: number, readRevision = api.globalRevision) => {
+  const receive = useCallback((next: Snapshot, sentAt: number, readRevision = api.globalRevision, pushed=false) => {
     const old = snapshot.current;
     if (!alive.current || !Number.isFinite(next.serverNow) || (!!next.local === !!old.local && next.serverNow < latest.current)) return;
     const prior = old.rooms.find(room => room.players.some(player => player.id === old.identity.playerId));
     const room = next.rooms.find(room => room.players.some(player => player.id === next.identity.playerId));
+    const flight=actionFlight.current;
+    if(flight&&room?.id===flight.room&&room.round&&room.round.id===flight.round&&room.round.tasks.some(t=>t.id===flight.task&&t.status==='DONE')){
+      flight.acknowledged=true;
+      if(flight.sequence===mutationSequence.current){mutation.current=false;setBusy('');actionFlight.current=null;}
+    }
     if (prior && !room && !intentionalLeave.current && ++missing.current < 2) { coalescer.current?.request(); return; }
     missing.current = 0;
     if (prior && !room && !intentionalLeave.current) setNotice('Your crew membership ended. You may have been removed or exceeded the 15-minute lobby grace period.');
@@ -73,7 +80,7 @@ export function useGame(watching = false) {
     }
     const unknown = unresolved.current;
     if (unknown && (next.rooms.find(item => item.id === unknown.room)?.round?.tasks.find(task => task.id === unknown.task) || !next.rooms.some(item => item.id === unknown.room))) { unresolved.current = null; setBusy(''); }
-    latest.current = next.serverNow; offset.current = next.local ? 0 : next.serverNow - (sentAt + Date.now()) / 2;
+    latest.current = next.serverNow; if(!pushed)offset.current = next.local ? 0 : next.serverNow - (sentAt + Date.now()) / 2;
     snapshot.current = next; intentionalLeave.current = false; setState(next); setLoaded(true); setLastSync(Date.now()); failures.current = 0;
     if (api.hasBackend && !next.local) acceptGlobalState(next, readRevision);
   }, [acceptGlobalState]);
@@ -99,14 +106,15 @@ export function useGame(watching = false) {
   refreshRef.current = refresh;
   useEffect(() => {
     alive.current = true; void refresh(true);
-    const unsubscribe = api.subscribe(() => {
-      coalescer.current?.request();
+    const unsubscribe = api.subscribe(update => {
+      if(update&&!snapshot.current.local&&latest.current>0)receive({...update,identity:snapshot.current.identity},Date.now(),api.globalRevision,true);
+      else coalescer.current?.request();
       if (snapshot.current.rooms.some(room => room.solo)) globalCoalescer.current?.request();
     });
     const recover = () => { if (!document.hidden) { failures.current = 0; void api.recoverSession().then(() => refreshRef.current(true)).catch(() => refreshRef.current(true)); } };
     document.addEventListener('visibilitychange', recover); window.addEventListener('online', recover);
     return () => { alive.current = false; unsubscribe(); coalescer.current?.dispose(); globalCoalescer.current?.dispose(); if (poll.current) clearTimeout(poll.current); document.removeEventListener('visibilitychange', recover); window.removeEventListener('online', recover); };
-  }, [refresh, refreshGlobalState]);
+  }, [refresh, refreshGlobalState, receive]);
   useEffect(() => { schedule(); }, [state, watching, schedule]);
   useEffect(() => {
     if (!api.hasBackend || !state.local) return;
@@ -125,6 +133,9 @@ export function useGame(watching = false) {
   const run = useCallback(async (op: string, roomId?: string | null, payload: Record<string, unknown> = {}): Promise<boolean> => {
     if (mutation.current || unresolved.current) return false;
     mutation.current = true; setBusy(op); setError('');
+    const sequence=++mutationSequence.current;
+    const flight=op==='action'&&roomId?{sequence,room:roomId,round:snapshot.current.rooms.find(r=>r.id===roomId)?.round?.id,task:String(payload.taskId),acknowledged:false}:null;
+    if(flight)actionFlight.current=flight;
     if (op === 'leave') intentionalLeave.current = true;
     let accepted = false;
     const earlyKey = `${snapshot.current.rooms.find(room => room.id === roomId)?.round?.id}/${payload.taskId}`;
@@ -135,15 +146,19 @@ export function useGame(watching = false) {
       payload = { ...payload, requestId: actionTokens.current.get(key) };
     }
     try {
-      await enqueue(async () => {
+      const execute=async () => {
         const sent = Date.now();
         const next = await api.call(op, roomId, payload);
         if (op === 'admin_delete') {
           acceptGlobalState(next);
           receive(snapshot.current.rooms.some(room => room.solo) ? await api.getState() : next, sent);
         } else receive(next, sent);
-      }); accepted = true; if (op === 'early_action') earlyTokens.current.delete(earlyKey); return true;
+      };
+      // An in-flight heartbeat/read must never hold a player's press in a queue.
+      if(op==='action'||op==='early_action')await execute();else await enqueue(execute);
+      accepted = true; if (op === 'early_action') earlyTokens.current.delete(earlyKey); return true;
     } catch (error) {
+      if(flight?.acknowledged)return true;
       intentionalLeave.current = false;
       const message = error instanceof Error ? error.message : 'Request failed. Please try again.';
       if ((op === 'action' || op === 'early_action') && roomId && /timeout|timed out|network|fetch|connection/i.test(message)) {
@@ -155,7 +170,7 @@ export function useGame(watching = false) {
         } catch { failures.current++; setLastSync(0); }
       } else setError(message);
       return false;
-    } finally { mutation.current = false; if (!unresolved.current) setBusy(''); schedule(); }
+    } finally { if(sequence===mutationSequence.current){mutation.current = false;if(actionFlight.current===flight)actionFlight.current=null;if (!unresolved.current) setBusy('');} schedule(); }
   }, [acceptGlobalState, enqueue, receive, schedule]);
   return { state, globalState, refreshGlobalState, myRoom, now: clock + offset.current, clockOffset: offset.current, busy, error, notice, loaded, stale: lastSync === 0 || clock - lastSync > (myRoom?.status === 'RUNNING' || watching ? 10000 : 30000), refresh, run, setError, setNotice };
 }

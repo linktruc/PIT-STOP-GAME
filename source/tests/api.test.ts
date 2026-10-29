@@ -21,6 +21,26 @@ describe('production transport identity boundaries', () => {
   });
   afterEach(() => { vi.useRealTimers(); vi.unstubAllGlobals(); });
 
+  it('uses committed realtime state without copying a public identity or recalibrating timestamps from receipt time',async()=>{
+    const {publicUpdate}=await import('../src/api');
+    const updated_at='2026-10-30T00:00:00.123Z';
+    expect(publicUpdate({new:{state:{...empty,identity:{playerId:'other',isAdmin:true}},updated_at}})).toEqual({rooms:[],leaderboard:[],serverNow:Date.parse(updated_at)});
+    expect(publicUpdate({new:{state:empty,updated_at:'invalid'}})).toBeUndefined();
+    expect(publicUpdate({new:{updated_at}})).toBeUndefined();
+    expect(publicUpdate({new:{state:{rooms:[]},updated_at}})).toBeUndefined();
+  });
+
+  it('delivers realtime rows directly without making a refresh RPC for each event',async()=>{
+    let deliver:(payload:unknown)=>void=()=>{};
+    const channel={on:vi.fn((_kind,_filter,callback)=>{deliver=callback;return channel;}),subscribe:vi.fn(()=>channel)};
+    const unsubscribe=vi.fn(),removeChannel=vi.fn();
+    mock.createClient.mockReturnValue({channel:()=>channel,removeChannel,auth:{onAuthStateChange:()=>({data:{subscription:{unsubscribe}}})}});
+    const {api}=await import('../src/api');const callback=vi.fn();const stop=api.subscribe(callback);
+    deliver({new:{state:empty,updated_at:'2026-10-30T00:00:00Z'}});
+    expect(callback).toHaveBeenCalledWith({rooms:[],leaderboard:[],serverNow:Date.parse('2026-10-30T00:00:00Z')});expect(mock.rpc).not.toHaveBeenCalled();
+    stop();expect(removeChannel).toHaveBeenCalledWith(channel);expect(unsubscribe).toHaveBeenCalledOnce();
+  });
+
   it('spectators read and reconcile without creating a player authentication session', async () => {
     const { api } = await import('../src/api');
     expect(api.hasBackend).toBe(true);

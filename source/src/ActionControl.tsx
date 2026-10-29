@@ -34,9 +34,10 @@ export default function ActionControl({room,playerId,now,busy,onAction}: {room: 
  const remaining=Math.max(0,(penalty?.until??0)-now);
  const seconds=(Math.ceil(remaining/100)/10).toFixed(1);
  const enabled=!!task&&task.status==='AVAILABLE'&&!countdown&&room.status==='RUNNING'&&!locked;
+ const sending=busy==='action';
  const previous=useRef<number|null>(null);const [flash,setFlash]=useState(false);
  useEffect(()=>{if(penalty&&penalty.at!==previous.current){previous.current=penalty.at;if(penalty.until>now){playCue('error');setFlash(true);const t=setTimeout(()=>setFlash(false),500);return()=>clearTimeout(t);}}},[penalty?.at]);
  return <><div className="action-hint"><span>{locked?`Too early — ${seconds}s lockout`:pendingDependency(room,task,countdown)}</span>{locked&&<small>{countdown?'Penalty started immediately.':'The team clock keeps running.'}</small>}</div>
- <button className={`game-button action-button ${done?'secondary complete':'gold'} ${locked?'penalized':''} ${flash?'penalty-flash':''}`} disabled={!!busy||done||locked} aria-disabled={!enabled} data-ready={enabled} data-penalty-until={penalty?.until??0} onClick={()=>task&&void onAction(task)}>{busy?<LoaderCircle className="spin" size={25}/>:done?<Check size={25}/>:<Zap size={25}/>}<span>{locked?`Too early — ${seconds}s lockout`:done?'ACTION COMPLETE':task?actionLabel(task):'ACTION COMPLETE'}<small>{locked?'PERSONAL LOCKOUT':done?'THANK YOU, CREW':'TAP OR PRESS SPACE'}</small></span>{!done&&!locked&&<ChevronRight size={22}/>}</button>
+ <button className={`game-button action-button ${done?'secondary complete':'gold'} ${locked?'penalized':''} ${flash?'penalty-flash':''}`} disabled={!!busy||done||locked} aria-disabled={!enabled||sending} data-ready={enabled&&!sending} data-pending={sending} data-penalty-until={penalty?.until??0} onClick={()=>task&&void onAction(task)}>{sending||done?<Check size={25}/>:busy?<LoaderCircle className="spin" size={25}/>:<Zap size={25}/>}<span>{sending?'ACTION SENT':locked?`Too early — ${seconds}s lockout`:done?'ACTION COMPLETE':task?actionLabel(task):'ACTION COMPLETE'}<small>{sending?'WAITING FOR SERVER':locked?'PERSONAL LOCKOUT':done?'THANK YOU, CREW':'TAP OR PRESS SPACE'}</small></span>{!done&&!locked&&!sending&&<ChevronRight size={22}/>}</button>
  <span className="early-press-notice">Early press = 2s lockout.</span></>;
 }

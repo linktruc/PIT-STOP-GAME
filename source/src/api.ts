@@ -24,6 +24,15 @@ if (configured) {
 } else if (url || key) configurationError = 'Complete both public values in config.js: supabaseUrl and supabaseAnonKey.';
 
 const listeners = new Set<() => void>();
+export type PublicUpdate = Pick<Snapshot,'rooms'|'leaderboard'|'serverNow'>;
+/** Realtime rows are written by the server. Keep Auth identity private to this
+ * session and derive the ordering stamp from the committed row timestamp. */
+export function publicUpdate(payload:{new?:Record<string,unknown>}):PublicUpdate|undefined {
+ const row=payload.new,state=row?.state as Partial<Snapshot>|undefined;
+ const serverNow=typeof row?.updated_at==='string'?Date.parse(row.updated_at):NaN;
+ if(!Array.isArray(state?.rooms)||!Array.isArray(state?.leaderboard)||!Number.isFinite(serverNow))return;
+ return {rooms:state.rooms,leaderboard:state.leaderboard,serverNow};
+}
 // Invalidate older reads when Auth or destructive global data changes. This is
 // transport ordering only; the database remains the source of authorization.
 let globalRevision = 0;
@@ -114,11 +123,11 @@ export const api = {
     const { data } = await client.auth.getSession();
     if (data.session?.expires_at && data.session.expires_at * 1000 < Date.now() + 60000) await client.auth.refreshSession();
   },
-  subscribe: (callback: () => void): (() => void) => {
+  subscribe: (callback: (update?:PublicUpdate) => void): (() => void) => {
     listeners.add(callback);
     if (!client) return () => { listeners.delete(callback); };
     const channel = client.channel(`pit-global-${crypto.randomUUID()}`)
-      .on('postgres_changes', { event: '*', schema: 'public', table: 'pit_public_state' }, callback)
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'pit_public_state' }, payload=>callback(publicUpdate(payload)))
       .subscribe((status) => { if (status === 'SUBSCRIBED' || status === 'CHANNEL_ERROR' || status === 'TIMED_OUT') callback(); });
     const authSubscription = client.auth.onAuthStateChange(() => callback());
     return () => { listeners.delete(callback); void client!.removeChannel(channel); authSubscription.data.subscription.unsubscribe(); };

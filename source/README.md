@@ -1,3 +1,7 @@
+# Current release: V24.10
+
+See [multiplayer latency notes](docs/V24_10_MULTIPLAYER_ACTION_LATENCY.md) for direct action dispatch, realtime room updates and responsive action feedback. No SQL migration is required.
+
 # Current release: V24.9
 
 See [V24_9_SMOOTH_MOTION_FREE_LOOK.md](docs/V24_9_SMOOTH_MOTION_FREE_LOOK.md) for smooth motion, preserved fast actions and freely rotatable player cameras.

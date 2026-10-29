@@ -1,9 +1,9 @@
-# PIT STOP GAME - V24.9
+# PIT STOP GAME - V24.10
 
 The repository root contains the production build for static hosting. Keep the Netlify publish directory at the repository root.
 
-Editable source, tests and build scripts are in `source/`. See [V24.9 release notes](source/docs/V24_9_SMOOTH_MOTION_FREE_LOOK.md).
+Editable source, tests and build scripts are in `source/`. See [V24.10 release notes](source/docs/V24_10_MULTIPLAYER_ACTION_LATENCY.md).
 
-V24.9 smooths crew, wheel, jack and tool transitions while preserving fast action strokes. First person now supports free look; third person supports full orbit and zoom. Both cameras use a smooth follow anchor independent of body rotations.
+Multiplayer actions bypass background reads. Server realtime updates confirm actions and unlock subsequent work without a second state RPC. Immediate sent feedback replaces the action spinner while official timing and validation remain server-controlled. V24.9 motion and free-look cameras are retained. No SQL migration is required.
 
-Official timing, bot references, ten crew colors, gray support uniforms and public connection settings are preserved. Rebuild with `npm ci` and `npm run build` from `source/`; publish `source/dist/`.
+Rebuild with `npm ci` and `npm run build` from `source/`; publish `source/dist/`. Existing Supabase configuration is preserved.

@@ -1,0 +1,29 @@
+<!doctype html><div id="app"></div><script type="module">
+import React from 'react';import {createRoot} from 'react-dom/client';
+import {api} from '/src/api.ts';import {useGame} from '/src/useGame.ts';import ActionControl from '/src/ActionControl.tsx';
+import {createSoloRound,reconcile} from '/src/engine.ts';
+const time=Date.now(),players=[{id:'you',role:'FRONT_JACK',nickname:'QA',ready:true,joinedAt:0}];
+const round=createSoloRound(players,time-100,'qa');reconcile(round,time);
+const initial={rooms:[{id:'qa-room',teamId:'qa-team',name:'QA',color:'#f00',hostId:'you',status:'RUNNING',players,round}],leaderboard:[],serverNow:time,identity:{playerId:'you',isAdmin:false}};
+let push;window.calls=[];window.responses={};window.pressAt=0;
+document.addEventListener('click',e=>{if(e.target.closest('.action-button'))window.pressAt=performance.now();},true);
+api.getState=async()=>structuredClone(initial);
+api.subscribe=callback=>{push=callback;return()=>{};};
+api.call=async(op,room,payload)=>{
+ if(op==='heartbeat')return structuredClone(initial);
+ window.calls.push({op,room,task:payload.taskId,at:performance.now(),requestId:payload.requestId});
+ return new Promise((resolve,reject)=>{window.responses[payload.taskId]={resolve,reject};});
+};
+function Probe(){const game=useGame();window.game=game;return React.createElement('div',null,
+ React.createElement('output',{id:'busy'},game.busy),React.createElement('output',{id:'error'},game.error),
+ game.myRoom&&React.createElement(ActionControl,{room:game.myRoom,playerId:'you',now:game.now,busy:game.busy,onAction:task=>game.run('action','qa-room',{taskId:task.id})}));}
+createRoot(document.querySelector('#app')).render(React.createElement(Probe));
+window.holdRead=()=>{api.getState=()=>new Promise(resolve=>{window.readStarted=true;window.releaseRead=()=>resolve(structuredClone(initial));});window.game.refresh();};
+window.ack=(task,unlock=false)=>{
+ const snapshot=structuredClone(window.game.state);snapshot.serverNow+=100;
+ const r=snapshot.rooms[0].round;r.tasks.find(t=>t.id===task).status='DONE';r.tasks.find(t=>t.id===task).completedAt=snapshot.serverNow;
+ if(unlock){const lower=r.tasks.find(t=>t.id==='FRONT_LOWER');lower.status='AVAILABLE';lower.enabledAt=time;}
+ push({rooms:snapshot.rooms,leaderboard:[],serverNow:snapshot.serverNow});return snapshot;
+};
+window.resolveLower=()=>{const snapshot=window.ack('FRONT_LOWER');window.responses.FRONT_LOWER.resolve(snapshot);};
+</script>

@@ -1,0 +1,23 @@
+{
+  "dispatchMs": 0.8999999985098839,
+  "passed": [
+    "action bypasses blocked read",
+    "immediate sent feedback without spinner",
+    "no optimistic completion or unlock",
+    "realtime ACK releases next action before RPC reply",
+    "late acknowledged timeout cannot clear newer action",
+    "stale read cannot roll back confirmed work",
+    "push preserves clock calibration"
+  ],
+  "calls": [
+    {
+      "op": "action",
+      "task": "FRONT_LIFT"
+    },
+    {
+      "op": "action",
+      "task": "FRONT_LOWER"
+    }
+  ],
+  "errors": []
+}

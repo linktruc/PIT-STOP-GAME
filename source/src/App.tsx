@@ -134,7 +134,8 @@ export default function App() {
   const perform = useCallback(async (task: Task) => {
     if (!myRoom || busy || (myRoom.round?.penalties?.[me?.id ?? '']?.until ?? 0) > now) return;
     const early = now < (myRoom.round?.goAt ?? Infinity) || task.status === 'LOCKED';
-    if (await run(early ? 'early_action' : 'action', myRoom.id, { taskId: task.id, requestId: crypto.randomUUID() })) { if (!early) playCue('action'); }
+    if(!early)playCue('action');
+    await run(early ? 'early_action' : 'action', myRoom.id, { taskId: task.id, requestId: crypto.randomUUID() });
   }, [myRoom, busy, run, me?.id, now]);
   useEffect(() => {
     const key = (event: KeyboardEvent) => {
