@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import type { Room } from './types';
 import { LiveSceneAudio } from './scene/liveAudio';
+import { teamCrewColor } from './scene/colors';
 import { CREW, CORNER_POSITIONS } from './scene/crew';
 import { createPitGarageScene, type PitView, type CrewSelection } from './scene/garage';
 type Props={room?:Room|null;playerId?:string|null;quality?:'low'|'high';className?:string;active?:boolean;presentationTime?:number;serverNow?:number;clockOffset?:number;poseRevision?:number;onTaskCue?:(taskId:string)=>void};
@@ -31,7 +32,7 @@ function Fallback({ room, playerId, presentationTime }: { room?: Room | null; pl
         const complete = tasks.some(task => task.role === crew.role) && tasks.filter(task => task.role === crew.role).every(task => task.status === 'DONE');
         return <g key={index} transform={`translate(${crew.x} ${crew.z})`}>
           {you && <><circle r=".38" fill="#efc74d22" stroke="#ffda57" strokeWidth=".05" /><text className="you-marker" y="-.51" textAnchor="middle" fill="#ffda57" fontSize=".22" fontWeight="bold">YOU{available ? ' • READY' : complete ? ' ✓' : ''}</text></>}
-          <rect x="-.18" y="-.08" width=".36" height=".37" rx=".07" fill={crew.role ? '#e9343b' : '#5e6d79'} /><circle cy="-.13" r=".16" fill="#fa453c" /><path d="M-.11 -.12H.11" stroke="#111e2b" strokeWidth=".1" />
+          <rect x="-.18" y="-.08" width=".36" height=".37" rx=".07" fill={crew.role ? teamCrewColor(room) ?? '#e9343b' : '#5e6d79'} /><circle cy="-.13" r=".16" fill={crew.role ? teamCrewColor(room) ?? '#fa453c' : '#5e6d79'} /><path d="M-.11 -.12H.11" stroke="#111e2b" strokeWidth=".1" />
         </g>;
       })}
       <text x="0" y="5.1" textAnchor="middle" fill="#c3d7db" fontSize=".18" fontFamily="monospace">LIVE PIT MAP · 22 CREW · 3D UNAVAILABLE</text>

@@ -1,0 +1,68 @@
+[
+  {
+    "role": "FRONT_JACK",
+    "cues": 21,
+    "unique": 21,
+    "early": 0,
+    "maxDelay": 14.5,
+    "queuedAfterOfficial": 11,
+    "scoreUnchanged": true,
+    "renders": 1620,
+    "noCuesAfterDispose": true
+  },
+  {
+    "role": "FL_GUNNER",
+    "cues": 21,
+    "unique": 21,
+    "early": 0,
+    "maxDelay": 14.5,
+    "queuedAfterOfficial": 11,
+    "scoreUnchanged": true,
+    "renders": 1634,
+    "noCuesAfterDispose": true
+  },
+  {
+    "role": "RL_GUNNER",
+    "cues": 21,
+    "unique": 21,
+    "early": 0,
+    "maxDelay": 14.5,
+    "queuedAfterOfficial": 11,
+    "scoreUnchanged": true,
+    "renders": 1634,
+    "noCuesAfterDispose": true
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "cues": 21,
+    "unique": 21,
+    "early": 0,
+    "maxDelay": 2.5,
+    "queuedAfterOfficial": 11,
+    "scoreUnchanged": true,
+    "renders": 1664,
+    "noCuesAfterDispose": true
+  },
+  {
+    "role": "FL_WHEEL_ON",
+    "cues": 21,
+    "unique": 21,
+    "early": 0,
+    "maxDelay": 12.5,
+    "queuedAfterOfficial": 11,
+    "scoreUnchanged": true,
+    "renders": 1660,
+    "noCuesAfterDispose": true
+  },
+  {
+    "role": "RELEASE_CONTROLLER",
+    "cues": 21,
+    "unique": 21,
+    "early": 0,
+    "maxDelay": 12.5,
+    "queuedAfterOfficial": 0,
+    "scoreUnchanged": true,
+    "renders": 1748,
+    "noCuesAfterDispose": true
+  }
+]

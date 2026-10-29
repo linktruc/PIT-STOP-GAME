@@ -3,6 +3,7 @@ import { ArrowRight, Check, ChevronDown, Crown, Flag, LoaderCircle, LockKeyhole,
 import type { Room, Snapshot } from './types';
 import { roleLabel } from './types';
 import { formatTime } from './view';
+import { TEAM_COLORS } from './teamColors';
 
 export function OverlayFrame({ title, eyebrow, children, onClose, wide = false, className = '', busy = false }: { title: string; eyebrow: string; children: ReactNode; onClose: () => void; wide?: boolean; className?: string; busy?: boolean }) {
   const panel = useRef<HTMLDivElement>(null);
@@ -44,13 +45,12 @@ export function RoomBrowser({ rooms, loaded, myRoom, onJoin, onCreate }: { rooms
 
 export function NewCrewForm({ room, busy, configured, blocked, onSubmit }: { room?: Room; busy: boolean; configured: boolean; blocked: boolean; onSubmit: (name: string, nickname: string, color: string) => void }) {
   const [name, setName] = useState(''); const [nickname, setNickname] = useState(''); const [color, setColor] = useState('#f4493b');
-  const colors = ['#f4493b', '#f7bd50', '#48c9bc', '#5a94f5', '#b87cf1'];
   return <form className="create-form" onSubmit={event => { event.preventDefault(); onSubmit(name.trim(), nickname.trim(), color); }}>
     <p className="panel-description">{room ? `Take a place with ${room.name}.` : 'One room. One team. You host and play.'}</p>
     {blocked && <p className="inline-warning">Leave your current team before creating or joining another.</p>}
     {!room && <label>TEAM NAME<input required minLength={2} maxLength={40} placeholder="e.g. Apex Collective" value={name} onChange={event => setName(event.target.value)} autoComplete="off" /></label>}
     <label>YOUR NICKNAME<input required minLength={2} maxLength={24} placeholder="Your crew calls you…" value={nickname} onChange={event => setNickname(event.target.value)} autoComplete="nickname" /></label>
-    {!room && <fieldset className="accent-picker"><legend>CREW COLOR</legend><div>{colors.map(item => <button key={item} type="button" style={{ background: item }} className={color === item ? 'selected' : ''} onClick={() => setColor(item)} aria-label={`Choose ${item} color`} aria-pressed={color === item}>{color === item && <Check size={17} />}</button>)}</div></fieldset>}
+    {!room && <fieldset className="accent-picker"><legend>CREW COLOR</legend><div>{TEAM_COLORS.map(item => <button key={item} type="button" style={{ background: item }} className={color === item ? 'selected' : ''} onClick={() => setColor(item)} aria-label={`Choose ${item} color`} aria-pressed={color === item}>{color === item && <Check size={17} />}</button>)}</div></fieldset>}
     <p className="panel-note">Nicknames, roles and results are public. Each real teammate joins on their own device.</p>
     {!configured && <p role="alert" className="inline-warning">Online teams require Supabase configuration. Set the project URL and public key in config.js, then reload. Solo Test works offline.</p>}
     <button className="game-button primary full" disabled={!configured || busy || blocked || nickname.trim().length < 2 || (!room && name.trim().length < 2)}>{busy ? <LoaderCircle className="spin" size={18} /> : <Flag size={18} />}{room ? 'Join Team' : 'Create Team'}<ArrowRight size={18} /></button>

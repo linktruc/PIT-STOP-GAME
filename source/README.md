@@ -1,3 +1,7 @@
+# Current release: V24.5
+
+See [V24_5_FAST_ANIMATION_AND_CREW_COLOR.md](V24_5_FAST_ANIMATION_AND_CREW_COLOR.md) for faster animation, the Solo Gunner reference correction and 3D team uniforms.
+
 # Current release: V24.4
 
 See [V24_4_LIVE_AUDIO_SYNC.md](V24_4_LIVE_AUDIO_SYNC.md) for live audio/animation synchronization and validation. Replay and gameplay clocks are unchanged.

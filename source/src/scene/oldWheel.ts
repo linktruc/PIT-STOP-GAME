@@ -1,10 +1,10 @@
 import type { AnimationReceipt } from './animation';
 import type { Crew } from './crew';
 const smooth=(v:number)=>{const p=Math.max(0,Math.min(1,v));return p*p*(3-2*p);};
-export const OLD_WHEEL_REMOVE_MS=1600;
-export const OLD_WHEEL_CARRY_MS=1600;
-export const OLD_WHEEL_LOWER_MS=450;
-export const OLD_WHEEL_RELEASE_MS=300;
+export const OLD_WHEEL_REMOVE_MS=900;
+export const OLD_WHEEL_CARRY_MS=900;
+export const OLD_WHEEL_LOWER_MS=280;
+export const OLD_WHEEL_RELEASE_MS=180;
 /** New-wheel staff enter once the outgoing carrier clears the shared corridor. */
 export function oldWheelCarryClearAt(receipt:AnimationReceipt){
   return receipt.startsAt+Math.max(OLD_WHEEL_REMOVE_MS,receipt.endsAt-receipt.startsAt)*.875+OLD_WHEEL_CARRY_MS*.5;

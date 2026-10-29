@@ -22,8 +22,8 @@ describe('V24.2 animation continuity',()=>{
   const timeline=new TaskAnimationTimeline();timeline.ingestRecorded(r);
   const gun=timeline.receipt('FR_GUN_LOOSEN')!,off=timeline.receipt('FR_WHEEL_OFF')!;
   expect(off.startsAt).toBeGreaterThanOrEqual(gun.endsAt);
-  expect(off.endsAt).toBe(off.startsAt+2000);
-  expect(r.tasks.find(t=>t.id==='FR_WHEEL_OFF')!.dueAt).toBe(5700);
+  expect(off.endsAt-off.startsAt).toBe(900);
+  expect(r.tasks.find(t=>t.id==='FR_WHEEL_OFF')!.dueAt).toBe(5050);
  });
  it('does not rewind for stale UI timestamps or server corrections' ,()=>{
   const clock=new SceneClock();let last=clock.read(0,10000);

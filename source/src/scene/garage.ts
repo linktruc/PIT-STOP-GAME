@@ -4,6 +4,7 @@ import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 import type { Room, Task } from '../types';
 import { TaskAnimationTimeline } from './animation';
 import { LiveSceneAudio } from './liveAudio';
+import { teamCrewColor } from './colors';
 import { SceneClock, FramePacer, CrewMotion } from './motion';
 import { oldWheelMotion } from './oldWheel';
 import { departurePose, arrivalPose, isCrewTap } from './rig';
@@ -29,15 +30,17 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
  const crewMotion=new CrewMotion();
  const gunGripAnchors=[new THREE.Vector3(0,-.16,0),new THREE.Vector3(0,0,-.22)];
  let renderInvalidated=true;
+ let appliedCrewColor: string | null | undefined;
  const deselect=()=>{selectedActor.current=null;setSelected(null);renderInvalidated=true;};
  const update=(room?:Room|null,playerId?:string|null,sceneActive=true,presentationTime?:number,serverNow?:number,clockOffsetOverride?:number,poseRevision=0)=>{
   const prior=latest.current; renderInvalidated=true;
   if(prior.poseRevision!==poseRevision)crewMotion.reset();
   if(prior.room?.id!==room?.id || prior.room?.players.find(p=>p.id===prior.playerId)?.role!==room?.players.find(p=>p.id===playerId)?.role) deselect();
   latest.current={room,playerId,sceneActive,presentationTime,clockOffset:clockOffsetOverride??(room?.solo?0:serverNow===undefined?prior.clockOffset:serverNow-Date.now()),poseRevision};
-  // Match the proven V10.3 event schedule in both live and replay.
-  // Snapshot updates are signature-deduplicated; never predict or replay bot cues.
-  timeline.current.ingestRecorded(room?.round ?? null);
+  // Replay rebuilds the deterministic event clock; live retains visible phases.
+  if ((prior.presentationTime === undefined) !== (presentationTime === undefined)) timeline.current = new TaskAnimationTimeline();
+  if (presentationTime !== undefined) timeline.current.ingestRecorded(room?.round ?? null);
+  else timeline.current.ingestLive(room?.round ?? null, Date.now()+latest.current.clockOffset);
  };
     let renderer: THREE.WebGLRenderer;
     try { renderer = options.renderer ?? new THREE.WebGLRenderer({ antialias: quality === 'high', alpha: false, powerPreference: 'high-performance' }); setFallback(false); }
@@ -269,6 +272,7 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
       const group = new THREE.Group(); group.position.set(spec.x, 0, spec.z); group.rotation.y = spec.angle ?? 0; scene.add(group);
       const body = new THREE.Group(); group.add(body);
       const suit = material(spec.role ? '#ef3039' : index % 2 ? '#577380' : '#2e4659', .81, .03);
+      suit.name = 'crew-suit';
       const legs: THREE.Group[] = [];
       const kneelingLegs: KneelingLeg[] | undefined=spec.kind==='gun'?[]:undefined;
       for (const side of [-1, 1]) {
@@ -380,6 +384,11 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
       if (!latest.current.sceneActive || document.hidden || (!manual && (!visible || !framePacer.accept(frameNow,quality==='low'||motion.matches?30:60)))) return;
       controls.update();
       const { room, playerId, presentationTime, clockOffset } = latest.current;
+      const crewColor = teamCrewColor(room);
+      if (crewColor !== appliedCrewColor) {
+        actors.forEach((actor, index) => actor.suit.color.set(actor.spec.role ? crewColor ?? '#ef3039' : index % 2 ? '#577380' : '#2e4659'));
+        appliedCrewColor = crewColor;
+      }
       // A new pit stop must restore the automatic approach camera. Manual
       // drag/zoom can still take over for the remainder of this round.
       const newRoundId=room?.round?.id??null;

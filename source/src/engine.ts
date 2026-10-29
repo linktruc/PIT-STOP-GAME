@@ -133,6 +133,16 @@ export function humanMeanAt(round: Round, at: number): number | null {
     // One parallel gunner cohort is one reference observation, never four samples.
     return (samples.reduce((total, sample) => total + sample.ms, 0) + round.soloTiming!.seedMs) / (samples.length + 1);
   }
+  // Solo without a human Jack still has one real opening Jack BOT observation.
+  // Parallel Jack bots count once; never let a 36ms Gunner erase their 700ms lift.
+  if (round.soloTiming && !round.tasks.some(t => t.cohort === 'LIFT' && t.ownerId !== null) && round.tasks.some(t => t.cohort === 'GUN_LOOSEN' && t.ownerId !== null)) {
+    const jack = round.tasks.find(t => t.cohort === 'LIFT' && t.completedAt !== null && t.completedAt <= at && t.enabledAt !== null);
+    if (!jack) return null;
+    const gunner = round.tasks.find(t => t.cohort === 'GUN_LOOSEN' && t.completedAt !== null && t.completedAt <= at && t.enabledAt !== null && t.ownerId !== null);
+    if (!gunner) return null;
+    const bootstrap = [jack.completedAt! - jack.enabledAt!];
+    return (samples.reduce((total, sample) => total + sample.ms, 0) + bootstrap.reduce((a,b) => a+b,0)) / (samples.length + bootstrap.length);
+  }
   return samples.length ? samples.reduce((total, sample) => total + sample.ms, 0) / samples.length : null;
 }
 

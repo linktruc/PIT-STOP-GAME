@@ -4,14 +4,14 @@ import { CORNER_POSITIONS, CREW, gunnerHandoff } from '../src/scene/crew';
 import type { Round } from '../src/types';
 
 describe('V17 UI with V15 animation rollback', () => {
-  it('uses the exact V15 presentation durations', () => {
-    expect(durationForTask('FL_GUN_LOOSEN')).toBe(750);
-    expect(durationForTask('FL_GUN_TIGHTEN')).toBe(750);
-    expect(durationForTask('FL_WHEEL_OFF')).toBe(850);
-    expect(durationForTask('FL_WHEEL_ON')).toBe(850);
-    expect(durationForTask('FRONT_LIFT')).toBe(650);
-    expect(durationForTask('REAR_LOWER')).toBe(650);
-    expect(durationForTask('GREEN_RELEASE')).toBe(1000);
+  it('uses the faster V24.5 presentation durations', () => {
+    expect(durationForTask('FL_GUN_LOOSEN')).toBe(350);
+    expect(durationForTask('FL_GUN_TIGHTEN')).toBe(350);
+    expect(durationForTask('FL_WHEEL_OFF')).toBe(450);
+    expect(durationForTask('FL_WHEEL_ON')).toBe(450);
+    expect(durationForTask('FRONT_LIFT')).toBe(350);
+    expect(durationForTask('REAR_LOWER')).toBe(350);
+    expect(durationForTask('GREEN_RELEASE')).toBe(450);
   });
 
   it('restores the V15 gunner step-out / step-back behavior', () => {
@@ -39,7 +39,7 @@ describe('V17 UI with V15 animation rollback', () => {
     timeline.ingestRecorded(round);
     const first = timeline.receipt(gun.id);
     expect(first).toBeDefined();
-    expect(first!.endsAt - first!.startsAt).toBe(120);
+    expect(first!.endsAt - first!.startsAt).toBe(240);
     timeline.ingestRecorded(structuredClone(round));
     expect(timeline.receipt(gun.id)).toEqual(first);
     expect(round).toEqual(snapshot);
