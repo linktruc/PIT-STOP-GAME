@@ -8,17 +8,20 @@ import { teamCrewColor } from './colors';
 import { SceneClock, FramePacer, CrewMotion } from './motion';
 import {WheelHandling,offWheelStation,onWheelStation,wheelGripAnchors} from './wheelHandling';
 import {DepartureMotion,releaseGesture} from './departure';
-import {workDone,workPhase,gunnerWorkHandoff} from './work';
+import {GunnerMotion} from './gunnerMotion';
+import {playerCameraPose,type PlayerCameraMode} from './playerCamera';
+import {stabilizerExitPhase,stabilizerStation,rearJackApproach} from './staging';
+import {workDone,workPhase} from './work';
 import { departurePose, arrivalPose, isCrewTap } from './rig';
 import { buildPitLane, PIT_LANE_LAYOUT } from './environment';
 import { CREW, CORNER_POSITIONS, gunnerKneelingPose, supportCrewClear, supportHandAnchors, type Crew } from './crew';
 type KneelingLeg = {thigh:THREE.Mesh;shin:THREE.Mesh;foot:THREE.Mesh;knee:THREE.Mesh};
-type Actor = { spec: Crew; group: THREE.Group; body: THREE.Group; arms: THREE.Group[]; legs: THREE.Group[]; kneelingLegs?:KneelingLeg[]; tool?: THREE.Group; forearms: THREE.Group[]; hands: THREE.Mesh[]; carry: THREE.Group; selectionRing: THREE.Mesh; selectionGlow: THREE.Mesh; ring: THREE.Mesh; glow: THREE.Mesh; suit: THREE.MeshStandardMaterial };
+type Actor = { spec: Crew; group: THREE.Group; body: THREE.Group; head:THREE.Group; arms: THREE.Group[]; legs: THREE.Group[]; kneelingLegs?:KneelingLeg[]; tool?: THREE.Group; socket?:THREE.Group; forearms: THREE.Group[]; hands: THREE.Mesh[]; carry: THREE.Group; selectionRing: THREE.Mesh; selectionGlow: THREE.Mesh; ring: THREE.Mesh; glow: THREE.Mesh; suit: THREE.MeshStandardMaterial };
 type WheelCorner = { key: string; x: number; z: number; wheel: THREE.Group; old: THREE.Group; fresh: THREE.Group };
 
 export type CrewSelection = {name:string;role:string}|null;
 export type PitView = NonNullable<ReturnType<typeof createPitGarageScene>>;
-export function createPitGarageScene(element: HTMLElement, options: {quality?:'low'|'high';renderer?:THREE.WebGLRenderer;manual?:boolean;marker?:{current:HTMLDivElement|null};tooltip?:{current:HTMLButtonElement|null};setSelected?:(selection:CrewSelection)=>void;setFallback?:(fallback:boolean)=>void;onTaskCue?:(taskId:string)=>void}={}) {
+export function createPitGarageScene(element: HTMLElement, options: {quality?:'low'|'high';renderer?:THREE.WebGLRenderer;manual?:boolean;marker?:{current:HTMLDivElement|null};tooltip?:{current:HTMLButtonElement|null};setSelected?:(selection:CrewSelection)=>void;setFallback?:(fallback:boolean)=>void;onTaskCue?:(taskId:string)=>void;onCameraModeChange?:(mode:PlayerCameraMode)=>void}={}) {
  const quality=options.quality??'high'; const manual=options.manual??false;
  const sceneDebug = new URLSearchParams(window.location.search).has('sceneDebug');
  const contactDebug=sceneDebug&&(!manual||new URLSearchParams(window.location.search).has('contactDebug'));
@@ -32,6 +35,8 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
  const crewMotion=new CrewMotion();
  const wheelHandling=new WheelHandling();
  const departureMotion=new DepartureMotion();
+ const gunnerMotion=new GunnerMotion();
+ const gunCueTimes=new Map<string,number>();let gunCueRound:string|null=null;
  const fittedGrips=new Map<string,THREE.Vector3[]>();
  const gunNutAnchors=new Map<string,THREE.Vector3>();
  let attachmentRound:string|null=null;
@@ -41,7 +46,7 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
  const deselect=()=>{selectedActor.current=null;setSelected(null);renderInvalidated=true;};
  const update=(room?:Room|null,playerId?:string|null,sceneActive=true,presentationTime?:number,serverNow?:number,clockOffsetOverride?:number,poseRevision=0)=>{
   const prior=latest.current; renderInvalidated=true;
-  if(prior.poseRevision!==poseRevision){crewMotion.reset();wheelHandling.reset();departureMotion.reset();fittedGrips.clear();gunNutAnchors.clear();}
+  if(prior.poseRevision!==poseRevision){crewMotion.reset();wheelHandling.reset();departureMotion.reset();gunnerMotion.reset();gunCueTimes.clear();fittedGrips.clear();gunNutAnchors.clear();}
   if(prior.room?.id!==room?.id || prior.room?.players.find(p=>p.id===prior.playerId)?.role!==room?.players.find(p=>p.id===playerId)?.role) deselect();
   latest.current={room,playerId,sceneActive,presentationTime,clockOffset:clockOffsetOverride??(room?.solo?0:serverNow===undefined?prior.clockOffset:serverNow-Date.now()),poseRevision};
   // Replay rebuilds the deterministic event clock; live retains visible phases.
@@ -91,7 +96,9 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
     controls.enabled = !manual;
     controls.enableDamping = !motion.matches; controls.dampingFactor = .075; controls.enablePan = false;
     controls.minDistance = 10; controls.maxDistance = 24; controls.minPolarAngle = .04; controls.maxPolarAngle = 1.35; controls.rotateSpeed = .65; controls.zoomSpeed = .5;
+    let cameraMode:PlayerCameraMode='overview';
     const resetCamera = () => {
+      cameraMode='overview';controls.enabled=true;options.onCameraModeChange?.('overview');camera.near=.1;camera.fov=39;camera.updateProjectionMatrix();
       userCamera=false;
       arrivalUserOrbit=false;
       landingCameraStartedAt=null;
@@ -116,7 +123,12 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
     });
     controls.addEventListener('end', () => { renderer.domElement.style.cursor = 'grab'; });
     if (!manual) window.addEventListener('pit-camera-reset', resetCamera);
+    const setPlayerCamera=(mode:PlayerCameraMode)=>{
+      if(mode==='overview'){resetCamera();return;}
+      cameraMode=mode;controls.enabled=false;userCamera=true;arrivalCameraActive=false;renderInvalidated=true;options.onCameraModeChange?.(mode);
+    };
     const setCameraView = (view: 'top'|'diagonal'|'front') => {
+      cameraMode='overview';controls.enabled=true;options.onCameraModeChange?.('overview');
       userCamera=true;arrivalCameraActive=false;
       controls.target.set(0, .35, 0);
       const positions = {top:[0,19,-.02],diagonal:[11,12,-15],front:[.7,5.2,-18]} as const;
@@ -124,6 +136,7 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
     };
     const cameraViewEvent = (event: Event) => { const view=(event as CustomEvent).detail; if(view==='top'||view==='diagonal'||view==='front')setCameraView(view); };
     const setCrewCloseup=(role:string,view:'top'|'diagonal'|'front')=>{
+      cameraMode='overview';controls.enabled=true;options.onCameraModeChange?.('overview');
       const crew=CREW.find(c=>c.role===role)??CREW.find(c=>c.support===(role.startsWith('NOSE')?'nose':'sidepod')&&Math.sign(c.x)===(role.endsWith('LEFT')?-1:1));
       if(!crew)return;userCamera=true;arrivalCameraActive=false;controls.minDistance=2;
       const x=crew.support==='nose'?crew.x:crew.support==='sidepod'?crew.x:crew.x*.82,z=crew.z;
@@ -301,11 +314,15 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
         const arm = new THREE.Group(); arm.position.set(side * .26, 1.03, 0); body.add(arm); arms.push(arm);
         box(arm, suit, 0, -.195, 0, .17, .39, .2); const fore = new THREE.Group(); fore.position.y = -.39; arm.add(fore); forearms.push(fore); box(fore, suit, 0, -.17, 0, .14, .34, .16); box(fore, white, 0, -.31, 0, .145, .065, .17); const hand = mesh(sphereGeo, black, fore, 0, -.39, 0, .09, .095, .09); hands.push(hand);
       }
-      mesh(sphereGeo, suit, body, 0, 1.29, -.008, .235, .253, .23); mesh(sphereGeo, black, body, 0, 1.31, -.196, .198, .1, .065); box(body, white, 0, 1.44, -.02, .075, .035, .31); box(body, graphite, 0, 1.13, -.12, .25, .06, .15);
-      let tool: THREE.Group | undefined;
+      const head=new THREE.Group();body.add(head);
+      mesh(sphereGeo, suit, head, 0, 1.29, -.008, .235, .253, .23); mesh(sphereGeo, black, head, 0, 1.31, -.196, .198, .1, .065); box(head, white, 0, 1.44, -.02, .075, .035, .31); box(head, graphite, 0, 1.13, -.12, .25, .06, .15);
+      let tool: THREE.Group | undefined;let socket:THREE.Group|undefined;
       if (spec.kind === 'gun') {
         tool = new THREE.Group(); tool.position.set(0, .6, -.6); body.add(tool); box(tool, metal, 0, 0, -.1, .15, .14, .34); box(tool, black, 0, -.11, 0, .085, .21, .1);
         const barrel = mesh(cylinderGeo, darkMetal, tool, 0, 0, -.32, .055, .18, .055); barrel.rotation.x = Math.PI / 2; box(tool, red, 0, .08, -.1, .13, .045, .17);
+        socket=new THREE.Group();socket.position.z=-.41;tool.add(socket);
+        const bit=mesh(cylinderGeo,metal,socket,0,0,0,.052,.05,.052);bit.rotation.x=Math.PI/2;
+        box(socket,white,.033,0,-.026,.024,.075,.012);
       }
       if (spec.kind === 'release') box(arms[1], black, 0, -.48, -.09, .26, .035, .31);
       if (spec.kind === 'ambient' && index > 18) box(arms[0], graphite, 0, -.45, -.09, .23, .045, .3);
@@ -314,7 +331,7 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
       ring.userData.animated = true; glow.userData.animated = true;
       const carry = new THREE.Group(); carry.position.set(0, .72, -.66); body.add(carry); const selectionRing = mesh(ringGeo, selectionCyan, group, 0, .045, 0, .55, .55, .55); selectionRing.rotation.x = -Math.PI / 2; selectionRing.castShadow = false; selectionRing.visible = false; selectionRing.userData.animated = true;
       const selectionGlow = mesh(cylinderGeo, selectionWash, group, 0, .04, 0, .54, .025, .54); selectionGlow.castShadow = false; selectionGlow.visible = false; selectionGlow.userData.animated = true;
-      return { spec, group, body, arms, forearms, hands, carry, legs, kneelingLegs, tool, ring, glow, selectionRing, selectionGlow, suit };
+      return { spec, group, body, head, arms, forearms, hands, carry, legs, kneelingLegs, tool, socket, ring, glow, selectionRing, selectionGlow, suit };
     });
     // Batch static geometry per material inside each independently animated group.
     // All shoulder, hip, tool, wheel and jack pivots remain separate and editable.
@@ -336,7 +353,6 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
       }
     }
     // Cache immutable role categories once; no per-pair closure or string search in each frame.
-    const mobileCrew = actors.map(actor => actor.spec.kind === 'gun');
     const picks = actors.map((actor, index) => {
       const hit = mesh(boxGeo, basic('#ffffff', 0), actor.group, 0, .83, 0, .79, 1.75, .79);
       hit.userData.animated = true; hit.userData.actorIndex = index; hit.castShadow = false; return hit;
@@ -376,7 +392,7 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
     const resize = () => {
       renderInvalidated=true;
       const width = element.clientWidth; const height = element.clientHeight; if (!width || !height) return;
-      const mobile = !manual && width / height < .95; if (mobile !== mobileLayout) { mobileLayout = mobile; resetCamera(); }
+      const mobile = !manual && width / height < .95; if (mobile !== mobileLayout) { mobileLayout = mobile; if(cameraMode==='overview')resetCamera(); }
       if (!manual) renderer.setSize(width, height, false); camera.aspect = width / height; camera.fov = width / height < .85 ? 54 : width / height > 2.25 ? 34 : 39; camera.updateProjectionMatrix();
     };
     const observer = new ResizeObserver(resize); observer.observe(element); resize();
@@ -403,7 +419,7 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
         cameraRoundId=newRoundId;
         userCamera=false;arrivalCameraActive=false;
         arrivalUserOrbit=false;landingCameraStartedAt=null;
-        if (!manual) resetCamera();
+        if (!manual&&cameraMode==='overview') resetCamera();
       }
       if(presentationTime!==undefined && presentationTime===lastPresentationTime && !renderInvalidated)return;
       lastPresentationTime=presentationTime; renderInvalidated=false;
@@ -416,7 +432,7 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
       // The car stays the OrbitControls tracking anchor throughout 3-2-1.
       // Dragging/orbiting changes only the angle: it must not freeze the target
       // at the approach road while the car continues into the pit box.
-      const approaching=!manual&&!userCamera&&room?.round&&now>=room.round.goAt-3000&&now<room.round.goAt;
+      const approaching=!manual&&cameraMode==='overview'&&!userCamera&&room?.round&&now>=room.round.goAt-3000&&now<room.round.goAt;
       if(approaching){
         const mobile=element.clientWidth/element.clientHeight<.95;
         const target=new THREE.Vector3(mobile?0:.6,.38,mobile?-1.8:.4)
@@ -495,7 +511,7 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
         // Rear operator and trolley approach together. After lowering, pull
         // away from the axle before clearing sideways, outside carrier routes.
         jack.group.position.x = jack.front ? 3.5 * retreat : -Math.max(3.5 * retreat,2.2 * clearBeforeArrival);
-        jack.group.position.z=(jack.front?-3.12:2.35)+(jack.front?-3:3)*retreat;
+        jack.group.position.z=(jack.front?-3.12:2.35)+(jack.front?-3:3)*retreat+(jack.front?0:rearJackApproach(clearBeforeArrival).z);
         const height = jack.front ? frontHeight : rearHeight; const prefix = jack.front ? 'FRONT' : 'REAR'; const taskId = localActive.includes(`${prefix}_LOWER`) || active(`${prefix}_LOWER`) ? `${prefix}_LOWER` : `${prefix}_LIFT`;
         const pumping = localActive.includes(taskId) || active(taskId); const p = localActive.includes(taskId) ? localPhase(taskId) ?? 0 : progress(taskId) ?? 0;
         jack.plate.position.y = .23 + height; jack.piston.scale.y = .2 + height; jack.handle.rotation.x = pumping ? Math.sin(p * Math.PI * 3) * .23 - .12 : -height * .7;
@@ -504,11 +520,16 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
       redLampMat.color.set(green ? '#301919' : '#ff392c');
       greenLampMat.color.set(green ? '#18db67' : '#172b22');
       if(attachmentRound!==(room?.round?.id??null)){attachmentRound=room?.round?.id??null;fittedGrips.clear();gunNutAnchors.clear();}
-      const wheelFrames=new Map(corners.map(corner=>[corner.key,wheelHandling.sample(room?.round?.id??null,corner.key,workNow,workTasks.get(`${corner.key}_GUN_LOOSEN`),workTasks.get(`${corner.key}_WHEEL_OFF`),workTasks.get(`${corner.key}_WHEEL_ON`))]));
+      if(gunCueRound!==(room?.round?.id??null)){gunCueRound=room?.round?.id??null;gunCueTimes.clear();}
+      const gunFrames=new Map(corners.map(corner=>[corner.key,gunnerMotion.sample(room?.round?.id??null,corner.key,workNow,workTasks.get(corner.key.startsWith('F')?'FRONT_LIFT':'REAR_LIFT'),workTasks.get(`${corner.key}_GUN_LOOSEN`),workTasks.get(`${corner.key}_WHEEL_ON`),workTasks.get(`${corner.key}_GUN_TIGHTEN`),arrival.entry>=.999,wheelHandling.fitted(corner.key),wheelHandling.extracted(corner.key),wheelHandling.clearForGunner(corner.key,workNow))]));
+      const wheelFrames=new Map(corners.map(corner=>[corner.key,wheelHandling.sample(room?.round?.id??null,corner.key,workNow,workTasks.get(`${corner.key}_GUN_LOOSEN`),workTasks.get(`${corner.key}_WHEEL_OFF`),workTasks.get(`${corner.key}_WHEEL_ON`),gunFrames.get(corner.key)!.loosenClear)]));
+      const supportExit=stabilizerExitPhase(room?.round?.tasks??[],workNow);
+      const rearApproach=rearJackApproach(clearBeforeArrival);
       const mine = room?.players.find(player => player.id === playerId);
       if (marker.current) marker.current.style.display = mine ? 'block' : 'none';
       for (let index = 0; index < actors.length; index++) {
         const actor = actors[index]; const { spec, group, body, arms, legs } = actor;
+        const actorRetreat=spec.kind==='gun'?retreat*gunFrames.get(spec.role!.slice(0,2))!.retreatGuard:retreat;
         const ownTasks = roleTasks.get(spec.role??'')??noTasks;
         const immediate = ownTasks.find(task => localActive.includes(task.id));
         let task=immediate; if(!task)for(const candidate of ownTasks)if(animation.posePhase(candidate.id,now)!==null)task=candidate; if(!task&&spec.kind==='on')task=ownTasks.find(t=>t.enabledAt!==null&&t.enabledAt<=workNow); const available = arrival.arrived && ownTasks.some(task => task.enabledAt !== null && workNow >= task.enabledAt && (task.completedAt === null || workNow < task.completedAt)); const complete = ownTasks.length > 0 && ownTasks.every(task => workComplete(task.id));
@@ -519,15 +540,15 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
         actor.suit.emissive.set(isYou ? '#a76a03' : isSelected ? '#12655f' : '#000000'); actor.suit.emissiveIntensity = isYou && available ? .24 : isYou ? .1 : isSelected ? .32 : 0;
         group.position.set(spec.x, 0, spec.z); group.rotation.y = spec.angle ?? 0; body.position.y = motion.matches ? 0 : Math.sin(t * 1.4) * .012; body.rotation.set(0, 0, 0); legs.forEach(leg => { leg.rotation.set(0, 0, 0); });
         actor.forearms.forEach(fore => fore.rotation.set(0, 0, 0));
-        arms.forEach((arm, side) => { arm.rotation.x = .15 + (motion.matches ? 0 : Math.sin(t * 1.6 + side) * .025); arm.rotation.z = side === 0 ? -.09 : .09; });
+        arms.forEach((arm, side) => { arm.rotation.set(.15+(motion.matches?0:Math.sin(t*1.6+side)*.025),0,side===0?-.09:.09); });
         if (spec.kind === 'gun') {
           const corner=spec.role!.slice(0,2);
-          const handoff=gunnerWorkHandoff(workTasks.get(`${corner}_GUN_LOOSEN`),workTasks.get(`${corner}_GUN_TIGHTEN`),workNow);
-          const pose=gunnerKneelingPose(task?p:0);const standing=Math.max(retreat,clearBeforeArrival,handoff);
+          const handoff=gunFrames.get(corner)!.stance;
+          const pose=gunnerKneelingPose(0);const standing=Math.max(actorRetreat,clearBeforeArrival,handoff);
           // 1.25m also clears the OFF carrier's outward-leaning helmet. The
           // shorter .85m proposal cleared hips but intersected that head sweep.
-          group.position.x+=Math.sign(spec.x)*1.25*handoff;
-          body.position.set(0,mix(pose.torsoY,0,standing),mix(pose.torsoZ,0,standing));body.rotation.x=mix(pose.lean,-.03,standing);
+          group.position.x+=Math.sign(spec.x)*1.25*handoff;group.position.z+=.20+.35*Math.sin(Math.PI*handoff);
+          body.position.set(0,mix(-.12,0,standing),mix(.04,0,standing));body.rotation.x=mix(.08,0,standing);
           actor.kneelingLegs?.forEach((leg,i)=>{
             const anchor=pose.legs[i],side=i===0?-1:1;
             const hip=new THREE.Vector3(...anchor.hip).lerp(new THREE.Vector3(side*.115,.56,0),standing);
@@ -537,7 +558,6 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
             leg.knee.position.copy(knee);leg.foot.position.set(...anchor.foot).lerp(new THREE.Vector3(side*.115,.075,-.065),standing);
           });
           arms.forEach(arm=>{arm.rotation.x=.85;});
-          group.position.x+=Math.sign(spec.x)*.23*smooth(((progress(`${corner}_GUN_TIGHTEN`)??0)-.75)/.25);
         } else if (spec.kind === 'off' || spec.kind === 'on') {
           const corner=corners.find(c=>spec.role?.startsWith(c.key))!,frame=wheelFrames.get(corner.key)!;
           const height=corner.key.startsWith('F')?frontHeight:rearHeight;
@@ -548,50 +568,31 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
           actor.kneelingLegs?.forEach((leg,i)=>{
             const anchor=pose.legs[i],side=i===0?-1:1;
             const hip=new THREE.Vector3(...anchor.hip).lerp(new THREE.Vector3(side*.115,.56,0),standing);
-            const knee=(i===0?new THREE.Vector3(-.19,.30,-.18):new THREE.Vector3(...anchor.knee)).lerp(new THREE.Vector3(side*.115,.31,-.025),standing);
-            const ankle=(i===0?new THREE.Vector3(-.19,.10,-.18):new THREE.Vector3(...anchor.ankle)).lerp(new THREE.Vector3(side*.115,.10,0),standing);
+            const knee=(i===0?new THREE.Vector3(-.19,.30,-.18):new THREE.Vector3(.24,.095,.10)).lerp(new THREE.Vector3(side*.115,.31,-.025),standing);
+            const ankle=(i===0?new THREE.Vector3(-.19,.10,-.18):new THREE.Vector3(.39,.10,.23)).lerp(new THREE.Vector3(side*.115,.10,0),standing);
             for(const [part,a,b]of [[leg.thigh,hip,knee],[leg.shin,knee,ankle]]as const){part.position.copy(a).add(b).multiplyScalar(.5);part.scale.y=a.distanceTo(b);part.quaternion.setFromUnitVectors(new THREE.Vector3(0,-1,0),b.clone().sub(a).normalize());}
-            leg.knee.position.copy(knee);leg.foot.position.copy(i===0?new THREE.Vector3(-.19,.075,-.22):new THREE.Vector3(...anchor.foot)).lerp(new THREE.Vector3(side*.115,.075,-.065),standing);
+            leg.knee.position.copy(knee);leg.foot.position.copy(i===0?new THREE.Vector3(-.19,.075,-.22):new THREE.Vector3(.40,.075,.27)).lerp(new THREE.Vector3(side*.115,.075,-.065),standing);
           });
           arms.forEach(arm=>{arm.rotation.x=.3;});
         } else if (spec.kind === 'jack') {
           body.rotation.x = -.16 - work * .23; body.position.y -= work * .1; arms.forEach(arm => { arm.rotation.x = .9 + (task ? Math.sin(p * Math.PI * 3) * .28 : 0); });
           // Front jack stands planted ahead of the car's nose before arrival.
           // The rear jack still advances into position as the car stops.
-          group.position.x = spec.role === 'FRONT_JACK' ? 3.5 * retreat : -Math.max(3.5 * retreat,2.2 * clearBeforeArrival);
-          group.position.z=spec.z+(spec.role==='FRONT_JACK'?-3:3)*retreat;
+          group.position.x = spec.role === 'FRONT_JACK' ? 3.5 * retreat : -Math.max(3.5 * retreat,-rearApproach.x);
+          group.position.z=spec.z+(spec.role==='FRONT_JACK'?-3:3)*retreat+(spec.role==='REAR_JACK'?rearApproach.z:0);
         } else if (spec.kind === 'release') {
           const signal=releaseGesture(releaseTask?.completedAt,workNow);
           arms[1].rotation.x=.6+signal*2.15;arms[1].rotation.z=.15-signal*.65;group.rotation.y+=(signal*.3);
         } else { body.rotation.x = spec.support === 'sidepod' ? -.11 : spec.support==='nose'?-.055:index < 19 ? -.18 : -.025;
           if(spec.support==='nose'){body.position.z=.13;legs.forEach(leg=>{leg.position.z=.07;});}
-          if (index < 19) arms.forEach(arm => { arm.rotation.x = .75; }); if (released) { arms[0].rotation.x = 1.8; group.position.x += Math.sign(spec.x) * .3; } }
-        if (spec.kind !== 'jack' && spec.kind !== 'off' && spec.kind !== 'on' && spec.kind !== 'release') group.position.x = mix(group.position.x, Math.sign(spec.x || 1) * Math.max(Math.abs(group.position.x),2.7), Math.max(retreat, clearBeforeArrival));
+          if (index < 19) arms.forEach(arm => { arm.rotation.x = .75; }); if (released&&!spec.support) { arms[0].rotation.x = 1.8; group.position.x += Math.sign(spec.x) * .3; } }
+        if(spec.support==='sidepod'){const station=stabilizerStation(Math.sign(spec.x),spec.z,clearBeforeArrival,supportExit);group.position.x=station.x;group.position.z=station.z;}
+        if (spec.kind !== 'jack' && spec.kind !== 'off' && spec.kind !== 'on' && spec.kind !== 'release' && spec.support!=='sidepod') group.position.x = mix(group.position.x, Math.sign(spec.x || 1) * Math.max(Math.abs(group.position.x),2.7), Math.max(actorRetreat, clearBeforeArrival));
 
       }
-      // Resolve carrier / waiting / handoff crowding before attaching tools and hands.
-      // Support crew and jack operators keep their contact stations; mobile crew yield outward.
-      // Collision broadphase: reject the overwhelmingly common distant pair
-      // before hypot/sqrt. Keep the V24 outward-only collision response, while
-      // broadphase to reduce cost without changing the final separation.
-      // Fixed stations (jacks/support) are never moved by this solver.
-      for (let pass=0; pass<32; pass++) {
-        let moved=false;
-        for (let i=0;i<actors.length;i++) for(let j=i+1;j<actors.length;j++) {
-          if (!mobileCrew[i] && !mobileCrew[j]) continue;
-          const a=actors[i], b=actors[j];
-          const dx=b.group.position.x-a.group.position.x, dz=b.group.position.z-a.group.position.z;
-          const sameCorner=a.spec.role?.slice(0,2)===b.spec.role?.slice(0,2);const spacing=sameCorner ? .90 : 1.35;
-          if (Math.abs(dx)>=spacing || Math.abs(dz)>=spacing) continue;
-          const distance=Math.hypot(dx,dz);
-          if (distance>=spacing) continue;
-          const mover=mobileCrew[j]?b:a;
-          mover.group.position.x+=Math.sign(mover.spec.x||1)*(spacing-distance+.02);
-          moved=true;
-        }
-        if (!moved) break;
-      }
-      const motionTargets=actors.map((actor,i)=>({x:actor.group.position.x,z:actor.group.position.z,fixed:!mobileCrew[i],exact:actor.spec.kind==='off'||actor.spec.kind==='on'}));
+      // Contact stations and reserved corridors are kinematic. A generic
+      // avoidance solver must not push a gunner away from the nut every frame.
+      const motionTargets=actors.map(actor=>({x:actor.group.position.x,z:actor.group.position.z,fixed:true,exact:['gun','off','on','release'].includes(actor.spec.kind)}));
       const positions=crewMotion.sample(room?.round?.id??null,now,motionTargets);
       if(sceneDebug)element.dataset.motionLag=String(Math.max(...positions.map((p,i)=>Math.hypot(p.x-motionTargets[i].x,p.z-motionTargets[i].z))));
       actors.forEach((actor,i)=>{actor.group.position.x=positions[i].x;actor.group.position.z=positions[i].z;});
@@ -604,6 +605,18 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
       drive=departureMotion.sample(room?.round?.id??null,now,released?departure.drive:0,laneClear);
       car.position.z=arrival.carZ+drive*PIT_LANE_LAYOUT.exitZ;
       scene.updateMatrixWorld(true);
+      const world = (object: THREE.Object3D, offset = new THREE.Vector3()) => object.localToWorld(offset.clone());
+      const followed=mine?actors.find(a=>a.spec.role===mine.role):undefined;
+      for(const actor of actors)actor.head.visible=!(cameraMode==='first-person'&&actor===followed);
+      if(cameraMode!=='overview'&&followed){
+        const root=followed.group.position,head=world(followed.body,new THREE.Vector3(0,1.29,-.008));
+        const forward=new THREE.Vector3(0,0,-1).applyQuaternion(followed.group.quaternion);
+        const pose=playerCameraPose(cameraMode,root,head,forward);
+        camera.position.set(pose.position.x,pose.position.y,pose.position.z);camera.lookAt(pose.target.x,pose.target.y,pose.target.z);
+        camera.fov=pose.fov;camera.near=pose.near;camera.updateProjectionMatrix();camera.updateMatrixWorld();
+        if(marker.current&&cameraMode==='first-person')marker.current.style.visibility='hidden';
+      }
+      if(sceneDebug)element.dataset.playerCamera=JSON.stringify({mode:cameraMode,role:followed?.spec.role,position:camera.position.toArray(),fov:camera.fov});
         if (marker.current && mine) {
           const actor=actors.find(a=>a.spec.role===mine.role)!;const group=actor.group;
           const ownTasks=roleTasks.get(mine.role)??noTasks;
@@ -612,11 +625,10 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
           markerPosition.set(group.position.x, 1.77 + (available && !motion.matches ? Math.sin(now * .004) * .035 : 0), group.position.z).project(camera);
           const x = (markerPosition.x * .5 + .5) * element.clientWidth; const y = (-markerPosition.y * .5 + .5) * element.clientHeight;
           const labelX = THREE.MathUtils.clamp(x, marker.current.offsetWidth / 2 + 8, element.clientWidth - marker.current.offsetWidth / 2 - 8); marker.current.style.setProperty('--you-pointer-offset', `${x-labelX}px`);
-          marker.current.style.transform = `translate(${labelX}px, ${y}px) translate(-50%, -100%)`; marker.current.style.visibility = markerPosition.z > 1 || markerPosition.z < -1 ? 'hidden' : 'visible';
+          marker.current.style.transform = `translate(${labelX}px, ${y}px) translate(-50%, -100%)`; marker.current.style.visibility = cameraMode==='first-person'||markerPosition.z > 1 || markerPosition.z < -1 ? 'hidden' : 'visible';
           marker.current.dataset.state = immediate ? 'accepted' : available ? 'ready' : complete ? 'done' : 'waiting';
           marker.current.style.boxShadow = immediate ? '0 0 0 5px #ffd45733, 0 0 28px #ffd457aa' : available ? '0 0 20px #ffd45777' : '0 3px 15px #0008, 0 0 16px #ffd45745';
         }
-      const world = (object: THREE.Object3D, offset = new THREE.Vector3()) => object.localToWorld(offset.clone());
       let maxGripError = 0;
       const poseHands = (actor: Actor, targets: THREE.Vector3[]) => {
         targets.forEach((target, i) => {
@@ -625,7 +637,10 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
           const shoulder = world(arm); const delta = target.clone().sub(shoulder); const distance = delta.length();
           const d = Math.min(.778, Math.max(.02, distance)); const direction = delta.normalize();
           // Equal-length two-bone IK, elbow bends away from the torso.
-          const bend = new THREE.Vector3(0, -1, 0).addScaledVector(direction, direction.y).normalize();
+          const pole=new THREE.Vector3(i===0?-.7:.7,-.15,-.4).applyQuaternion(actor.body.getWorldQuaternion(new THREE.Quaternion()));
+          const bend=pole.addScaledVector(direction,-pole.dot(direction));
+          if(bend.lengthSq()<1e-8){bend.set(0,0,1).applyQuaternion(actor.body.getWorldQuaternion(new THREE.Quaternion()));bend.addScaledVector(direction,-bend.dot(direction));}
+          bend.normalize();
           const elbow = shoulder.clone().addScaledVector(direction, d / 2).addScaledVector(bend, Math.sqrt(.39 ** 2 - (d / 2) ** 2));
           const localElbow = actor.body.worldToLocal(elbow.clone()).sub(arm.position);
           arm.quaternion.setFromUnitVectors(new THREE.Vector3(0, -1, 0), localElbow.normalize()); arm.updateWorldMatrix(true, true);
@@ -665,30 +680,25 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
         }
         const gunner = actors.find(a => a.spec.role === `${corner.key}_GUNNER`)!;
         if (gunner.tool) {
-          const gunTask=[`${corner.key}_GUN_LOOSEN`,`${corner.key}_GUN_TIGHTEN`].find(id=>{const task=workTasks.get(id);return task?.enabledAt!==null&&task?.enabledAt!==undefined&&workNow>=task.enabledAt&&!workComplete(id);});
-          const gunPhase=gunTask?workProgress(gunTask)??0:0;
-          const handoff=gunnerWorkHandoff(workTasks.get(`${corner.key}_GUN_LOOSEN`),workTasks.get(`${corner.key}_GUN_TIGHTEN`),workNow);
-          // A ready gun is visibly retracted while the bot's measured delay runs.
-          // The thrust is tied to the accepted loosen/tighten receipt, never unlock.
-          const thrustPhase=gunTask?.endsWith('TIGHTEN')?(gunPhase-.22)/.78:gunPhase;
-          const thrust=gunTask?smooth(thrustPhase/.2)*(1-smooth((gunPhase-.65)/.35)):0;
+          const shot=gunFrames.get(corner.key)!;
+          const stow=Math.max(shot.stow,clearBeforeArrival,retreat*shot.retreatGuard);
           const liveNut=hub.clone().add(new THREE.Vector3(side*.22,0,0));
-          if(gunTask||!gunNutAnchors.has(corner.key))gunNutAnchors.set(corner.key,liveNut);
-          const nut=(gunTask?liveNut:gunNutAnchors.get(corner.key)!).clone();
-          const muzzleBase = nut.clone().add(new THREE.Vector3(side*(.41+.18*(1-thrust)),.10*(1-thrust)+(gunTask?Math.sin(gunPhase*95)*.006:0),0));
-          // One body-local held pose for handoff, final tighten and departure.
-          // Never retarget the lowering wheel after the gunner has finished.
-          const held = world(gunner.body, new THREE.Vector3(0,.69,-.42));
-          muzzleBase.lerp(held, Math.max(handoff,clearBeforeArrival,retreat));
-          const shoulders = world(gunner.body,new THREE.Vector3(0,1.03,0));
-          const reach = muzzleBase.clone().sub(shoulders);
-          if(reach.length()>.50) muzzleBase.copy(shoulders).add(reach.setLength(.50));
-          gunner.tool.position.copy(gunner.body.worldToLocal(muzzleBase));
-          const aimTarget=nut.clone().lerp(muzzleBase.clone().add(new THREE.Vector3(-side*.1,.4,0)),handoff);
-          const aim = gunner.body.worldToLocal(aimTarget).sub(gunner.tool.position).normalize();
-          gunner.tool.quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, -1), aim);
-          gunner.tool.updateWorldMatrix(true, true);
-          const gunGrips=gunGripAnchors;
+          const working=shot.firing||shot.pending||!workComplete(`${corner.key}_GUN_${shot.operation==='tighten'?'TIGHTEN':'LOOSEN'}`);
+          if(working||!gunNutAnchors.has(corner.key))gunNutAnchors.set(corner.key,liveNut);
+          const nut=(working?liveNut:gunNutAnchors.get(corner.key)!).clone();
+          const engaged=new THREE.Vector3(side*Math.sqrt(.41**2-.15**2),.15,0);
+          const retracted=new THREE.Vector3(side*.58,.22,0);
+          const muzzleBase=nut.clone().add(retracted.lerp(engaged,shot.approach));
+          const held=world(gunner.body,new THREE.Vector3(0,.69,-.42));
+          muzzleBase.lerp(held,stow);
+          const workDirection=nut.clone().sub(muzzleBase).normalize();
+          const heldDirection=world(gunner.body,new THREE.Vector3(0,1.09,-.52)).sub(held).normalize();
+          const direction=workDirection.lerp(heldDirection,stow).normalize();
+          gunner.tool.position.copy(gunner.body.worldToLocal(muzzleBase.clone()));
+          const aim=gunner.body.worldToLocal(muzzleBase.clone().add(direction)).sub(gunner.tool.position).normalize();
+          gunner.tool.quaternion.setFromUnitVectors(new THREE.Vector3(0,0,-1),aim);
+          gunner.tool.updateWorldMatrix(true,true);
+          const gunGrips=side<0?[gunGripAnchors[1],gunGripAnchors[0]]:gunGripAnchors;
           // Project the rigid tool into the intersection of BOTH arm reach spheres.
           // Translating the whole gun preserves the two handles; no floating gloves.
           for(let pass=0;pass<12;pass++){let adjusted=false;for(let i=0;i<2;i++){
@@ -700,6 +710,12 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
             }
           }
           if(!adjusted)break; }
+          const muzzle=world(gunner.tool,new THREE.Vector3(0,0,-.41));
+          const spinning=shot.firing&&muzzle.distanceTo(nut)<.025&&stow<.05;
+          const cueId=`${corner.key}_GUN_${shot.operation==='tighten'?'TIGHTEN':'LOOSEN'}`,cueReceipt=animation.receipt(cueId);
+          if(spinning&&cueReceipt&&(cueReceipt.endsAt>now||shot.pending)&&!gunCueTimes.has(cueId))gunCueTimes.set(cueId,now);
+          if(gunner.socket&&spinning)gunner.socket.rotation.z=shot.rotation;
+          gunner.tool.userData.contact=muzzle.distanceTo(nut);gunner.tool.userData.spinning=spinning;gunner.tool.userData.operation=shot.operation;
           poseHands(gunner,gunGrips.map(anchor=>world(gunner.tool!,anchor)));
           if (heldToolErrors) heldToolErrors[gunner.spec.role!] = Math.max(...gunGrips.map((anchor,i)=>world(gunner.hands[i]).distanceTo(world(gunner.tool!,anchor))));
           // Never leave the gun across the departure corridor.
@@ -708,10 +724,11 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
       }
       let supportContactError = 0;
       for (const actor of actors) {
-        if (!actor.spec.support || arrival.entry < .999 || retreat > .001) continue;
+        if (!actor.spec.support || arrival.entry < .999 || (actor.spec.support==='sidepod'?supportExit>=.18:retreat>.001)) continue;
         const axleLift = actor.spec.support === 'nose' ? frontHeight : (frontHeight + rearHeight) / 2;
         const anchors = supportHandAnchors(actor.spec, axleLift).map(([x,y,z])=>new THREE.Vector3(x,y,z));
-        poseHands(actor, anchors);
+        const release=actor.spec.support==='sidepod'?smooth(supportExit/.18):0;
+        poseHands(actor,anchors.map((a,i)=>a.lerp(world(actor.hands[i]),release)));
         supportContactError = Math.max(supportContactError, ...anchors.map((anchor,index)=>world(actor.hands[index]).distanceTo(anchor)));
       }
       for (const jack of jacks) {
@@ -735,6 +752,24 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
         }
       }
       if (sceneDebug) {
+      const probeCache=new Map(actors.map(actor=>{
+        const points=[.61,.84,1.03,1.29].map((y,i)=>({point:world(actor.body,new THREE.Vector3(0,y,0)),radius:i===3?.235:.21}));
+        if(actor.kneelingLegs)for(const leg of actor.kneelingLegs)points.push({point:world(leg.foot),radius:.14},{point:world(leg.knee),radius:.095});
+        else for(const x of [-.115,.115])points.push({point:world(actor.group,new THREE.Vector3(x,.075,-.065)),radius:.14});
+        return [actor,points] as const;
+      }));
+      const bodyPair=(a:Actor,b:Actor)=>{
+        let result={clearance:Infinity,a:[] as number[],b:[] as number[],radii:[] as number[]};
+        for(const p of probeCache.get(a)!)for(const q of probeCache.get(b)!){const clearance=p.point.distanceTo(q.point)-p.radius-q.radius;if(clearance<result.clearance)result={clearance,a:p.point.toArray(),b:q.point.toArray(),radii:[p.radius,q.radius]};}
+        return result;
+      };
+      const bodyClearance=(a:Actor,b:Actor)=>bodyPair(a,b).clearance;
+      element.dataset.crewSafety=JSON.stringify({
+        gunPairs:actors.filter(a=>a.spec.kind==='gun').flatMap(a=>actors.filter(b=>b!==a&&(b.spec.role?.slice(0,2)===a.spec.role?.slice(0,2)||b.spec.support==='sidepod'&&Math.sign(b.spec.x)===Math.sign(a.spec.x))).map(b=>({pair:`${a.spec.role}/${b.spec.role??'Stabilizer'}`,...bodyPair(a,b),aRoot:a.group.position.toArray(),bRoot:b.group.position.toArray(),stance:gunFrames.get(a.spec.role!.slice(0,2))!.stance}))),
+        gunners:actors.filter(a=>a.spec.kind==='gun').map(a=>({role:a.spec.role,position:a.group.position.toArray(),hands:a.hands.map(h=>world(h).toArray()),head:world(a.body,new THREE.Vector3(0,1.29,-.008)).toArray(),shoulders:a.arms.map(x=>world(x).toArray()),elbows:a.forearms.map(x=>world(x).toArray()),contact:a.tool?.userData.contact,spinning:a.tool?.userData.spinning,operation:a.tool?.userData.operation,rotor:a.socket?.rotation.z})),
+        handlerSupport:actors.filter(a=>a.spec.kind==='on').flatMap(a=>actors.filter(b=>b.spec.support==='sidepod').map(b=>({pair:`${a.spec.role}/${Math.sign(b.spec.x)}`,clearance:bodyClearance(a,b)}))),
+        rearJackRL:Math.min(...actors.filter(a=>a.spec.role==='RL_WHEEL_OFF').flatMap(a=>[...a.kneelingLegs!.flatMap(l=>[world(l.foot),world(l.knee)]),...[.61,.84,1.03,1.29].map(y=>world(a.body,new THREE.Vector3(0,y,0)))].map(point=>new THREE.Box3().setFromObject(jacks.find(j=>!j.front)!.group).distanceToPoint(point))))
+      });
       element.dataset.releaseGreen=String(green);
       element.dataset.wheelRig=JSON.stringify(corners.map(corner=>{
         const frame=wheelFrames.get(corner.key)!;
@@ -784,7 +819,7 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
       element.dataset.toolPairs=JSON.stringify(toolPairs);
       }
       element.dataset.crewTargets = JSON.stringify(actors.map(a => { const point = new THREE.Vector3(a.group.position.x, 1.35, a.group.position.z).project(camera); return { role: a.spec.role ?? 'SUPPORT', x: (point.x * .5 + .5) * element.clientWidth, y: (-point.y * .5 + .5) * element.clientHeight }; }));
-      element.dataset.gunnerPoses=JSON.stringify(actors.filter(a=>a.spec.kind==='gun').map(a=>({role:a.spec.role,tightenPhase:progress(`${a.spec.role!.slice(0,2)}_GUN_TIGHTEN`),tightenDone:done(`${a.spec.role!.slice(0,2)}_GUN_TIGHTEN`),position:a.group.position.toArray(),hands:a.hands.map(h=>world(h).toArray()),tool:a.tool?world(a.tool).toArray():null,torso:[a.body.position.y,a.body.position.z,a.body.rotation.x],head:world(a.body,new THREE.Vector3(0,1.29,-.008)).toArray(),feet:a.kneelingLegs?.map(leg=>world(leg.foot).toArray()),knees:a.kneelingLegs?.map(leg=>world(leg.knee).toArray())})));
+      element.dataset.gunnerPoses=JSON.stringify(actors.filter(a=>a.spec.kind==='gun').map(a=>({role:a.spec.role,tightenPhase:progress(`${a.spec.role!.slice(0,2)}_GUN_TIGHTEN`),tightenDone:done(`${a.spec.role!.slice(0,2)}_GUN_TIGHTEN`),position:a.group.position.toArray(),hands:a.hands.map(h=>world(h).toArray()),tool:a.tool?world(a.tool).toArray():null,contact:a.tool?.userData.contact,spinning:a.tool?.userData.spinning,operation:a.tool?.userData.operation,rotor:a.socket?.rotation.z,torso:[a.body.position.y,a.body.position.z,a.body.rotation.x],head:world(a.body,new THREE.Vector3(0,1.29,-.008)).toArray(),feet:a.kneelingLegs?.map(leg=>world(leg.foot).toArray()),knees:a.kneelingLegs?.map(leg=>world(leg.knee).toArray())})));
       element.dataset.crewBodyPositions=JSON.stringify(actors.map(a=>({role:a.spec.role??a.spec.support??'SUPPORT',x:a.group.position.x,z:a.group.position.z,centres:[.61,.84,1.03,1.29].map(y=>world(a.body,new THREE.Vector3(0,y,0)).toArray())})));
       const carPoint=world(car,new THREE.Vector3(0,.5,0)).project(camera);
       element.dataset.carViewport=JSON.stringify({x:(carPoint.x*.5+.5)*element.clientWidth,y:(-carPoint.y*.5+.5)*element.clientHeight,visible:Math.abs(carPoint.x)<1&&Math.abs(carPoint.y)<1&&Math.abs(carPoint.z)<1});
@@ -793,8 +828,12 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
       } // sceneDebug only — no JSON/DOM allocation every live animation frame
       try { renderer.render(scene, camera); } catch { setFallback(true); disposed = true; return; }
       // Sound follows this exact rendered pose clock, never the snapshot DONE clock.
-      if(options.onTaskCue)for(const taskId of liveAudio.poll(room?.round?.id??null,now,animation.allReceipts())){
-        if(sceneDebug)element.dataset.lastTaskCue=JSON.stringify({taskId,now,startsAt:animation.receipt(taskId)?.startsAt,endsAt:animation.receipt(taskId)?.endsAt});
+      const audibleReceipts=options.onTaskCue?Array.from(animation.allReceipts()).flatMap(receipt=>{
+        if(!receipt.taskId.includes('_GUN_'))return [receipt];
+        const startsAt=gunCueTimes.get(receipt.taskId);return startsAt===undefined?[]:[{...receipt,startsAt,endsAt:startsAt+140}];
+      }):[];
+      if(options.onTaskCue)for(const taskId of liveAudio.poll(room?.round?.id??null,now,audibleReceipts)){
+        if(sceneDebug){const receipt=audibleReceipts.find(r=>r.taskId===taskId);element.dataset.lastTaskCue=JSON.stringify({taskId,now,startsAt:receipt?.startsAt,endsAt:receipt?.endsAt});}
         options.onTaskCue(taskId);
       }
     }
@@ -805,5 +844,5 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
       geometries.forEach(geometry => geometry.dispose()); materials.forEach(mat => mat.dispose()); textures.forEach(texture => texture.dispose()); if (!options.renderer) { renderer.dispose(); renderer.domElement.remove(); }
     };
 
-    return { update, render: draw, deselect, setCameraView, setCrewCloseup, dispose };
+    return { update, render: draw, deselect, setCameraView, setCrewCloseup, setPlayerCamera, dispose };
 }

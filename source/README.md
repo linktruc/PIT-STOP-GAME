@@ -1,3 +1,7 @@
+# Current release: V24.8
+
+See [V24_8_GUNNER_CAMERAS.md](docs/V24_8_GUNNER_CAMERAS.md) for gunner contact strokes, reserved crew/tool lanes and the three player camera modes.
+
 # Current release: V24.7
 
 See [V24_7_WHEEL_CONTACT_AND_RELEASE.md](V24_7_WHEEL_CONTACT_AND_RELEASE.md) for contact-driven wheel handling, clear handler poses and stable fast release.

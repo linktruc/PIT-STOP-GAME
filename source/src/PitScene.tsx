@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import type { Room } from './types';
 import { LiveSceneAudio } from './scene/liveAudio';
+import type {PlayerCameraMode} from './scene/playerCamera';
 import { teamCrewColor } from './scene/colors';
 import { CREW, CORNER_POSITIONS } from './scene/crew';
 import { createPitGarageScene, type PitView, type CrewSelection } from './scene/garage';
-type Props={room?:Room|null;playerId?:string|null;quality?:'low'|'high';className?:string;active?:boolean;presentationTime?:number;serverNow?:number;clockOffset?:number;poseRevision?:number;onTaskCue?:(taskId:string)=>void};
+type Props={room?:Room|null;playerId?:string|null;quality?:'low'|'high';className?:string;active?:boolean;presentationTime?:number;serverNow?:number;clockOffset?:number;poseRevision?:number;onTaskCue?:(taskId:string)=>void;cameraMode?:PlayerCameraMode;onCameraModeChange?:(mode:PlayerCameraMode)=>void};
 function description(room?: Room | null, playerId?: string | null, presentationTime?: number) {
   const player = room?.players.find(item => item.id === playerId);
   return `Interactive 3D pit lane. Drag to rotate. 22 crew members, 15 core roles. ${player ? `You are ${player.role.replaceAll('_', ' ').toLowerCase()}. Gold YOU marker shows your crew member. ` : ''}${room ? `${room.name}. ${room.round?.tasks.filter(task => task.status === 'DONE' && (presentationTime===undefined || task.completedAt!==null && task.completedAt<=presentationTime)).length ?? 0} of 21 actions complete.` : 'Pit crew ready.'}`;
@@ -41,12 +42,13 @@ function Fallback({ room, playerId, presentationTime }: { room?: Room | null; pl
 }
 
 
-export default function PitScene({room,playerId,quality='high',className='',active=true,presentationTime,serverNow,clockOffset,poseRevision,onTaskCue}:Props) {
+export default function PitScene({room,playerId,quality='high',className='',active=true,presentationTime,serverNow,clockOffset,poseRevision,onTaskCue,cameraMode='overview',onCameraModeChange}:Props) {
  const host=useRef<HTMLDivElement>(null),marker=useRef<HTMLDivElement>(null),tooltip=useRef<HTMLButtonElement>(null);
- const view=useRef<PitView|null>(null);const latest=useRef({room,playerId,active,presentationTime,serverNow,clockOffset,poseRevision,onTaskCue});latest.current={room,playerId,active,presentationTime,serverNow,clockOffset,poseRevision,onTaskCue};
+ const view=useRef<PitView|null>(null);const latest=useRef({room,playerId,active,presentationTime,serverNow,clockOffset,poseRevision,onTaskCue,cameraMode,onCameraModeChange});latest.current={room,playerId,active,presentationTime,serverNow,clockOffset,poseRevision,onTaskCue,cameraMode,onCameraModeChange};
  const fallbackAudio=useRef(new LiveSceneAudio());
  const [selected,setSelected]=useState<CrewSelection>(null);const [fallback,setFallback]=useState(false);
- useEffect(()=>{if(!host.current)return;const world=createPitGarageScene(host.current,{quality,marker,tooltip,setSelected,setFallback,onTaskCue:taskId=>latest.current.onTaskCue?.(taskId)});view.current=world;if(world)world.update(latest.current.room,latest.current.playerId,latest.current.active,latest.current.presentationTime,latest.current.serverNow,latest.current.clockOffset,latest.current.poseRevision);return()=>{world?.dispose();view.current=null;};},[quality]);
+ useEffect(()=>{if(!host.current)return;const world=createPitGarageScene(host.current,{quality,marker,tooltip,setSelected,setFallback,onTaskCue:taskId=>latest.current.onTaskCue?.(taskId),onCameraModeChange:mode=>latest.current.onCameraModeChange?.(mode)});view.current=world;if(world)world.update(latest.current.room,latest.current.playerId,latest.current.active,latest.current.presentationTime,latest.current.serverNow,latest.current.clockOffset,latest.current.poseRevision);world?.setPlayerCamera(latest.current.cameraMode);return()=>{world?.dispose();view.current=null;};},[quality]);
+ useEffect(()=>{view.current?.setPlayerCamera(cameraMode);},[cameraMode]);
  useEffect(()=>{view.current?.update(room,playerId,active,presentationTime,serverNow,clockOffset,poseRevision);},[room,playerId,active,presentationTime,serverNow,clockOffset,poseRevision]);
  useEffect(()=>{
   if(!fallback||presentationTime!==undefined)return;

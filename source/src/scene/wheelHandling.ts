@@ -12,10 +12,13 @@ export class WheelHandling {
  private round:string|null=null;
  private states=new Map<string,State>();
  reset(){this.states.clear();this.round=null;}
- sample(round:string|null,key:string,now:number,loosen:Task|undefined,off:Task|undefined,on:Task|undefined):WheelHandlingFrame{
+ clearForGunner(key:string,now:number){const at=this.states.get(key)?.carryAt;return at!==null&&at!==undefined&&smooth((now-at)/900)>=.6;}
+ extracted(key:string){return (this.states.get(key)?.extract??0)>=1;}
+ fitted(key:string){return (this.states.get(key)?.fit??0)>=1;}
+ sample(round:string|null,key:string,now:number,loosen:Task|undefined,off:Task|undefined,on:Task|undefined,canExtract=true):WheelHandlingFrame{
   if(round!==this.round){this.states.clear();this.round=round;}
   const looseP=workPhase(loosen,now)??0,offP=workPhase(off,now)??0;
-  const offPrep=smooth((looseP-.5)/.45),onPrep=smooth((offP-.2)/.45);
+  const offPrep=Math.min(canExtract?1:.10,smooth((looseP-.5)/.45)),onPrep=smooth((offP-.2)/.45);
   const end=off?.completedAt??off?.dueAt;
   const extract=off?.enabledAt!==null&&off?.enabledAt!==undefined&&now>=off.enabledAt&&end!==null&&end!==undefined
    ? off.ownerId===null?smooth((now-Math.max(off.enabledAt,end-Math.min(120,(end-off.enabledAt)*.45)))/Math.max(1,Math.min(120,(end-off.enabledAt)*.45))):Number(now>=end):0;
@@ -28,9 +31,9 @@ export class WheelHandling {
   }else{
    const dt=Math.max(0,now-state!.at);state!.at=now;
    const hadOffContact=state!.offPrep>=.999,hadOnContact=state!.onPrep>=.999,hadExtracted=state!.extract>=1;
-   state!.offPrep=toward(state!.offPrep,offPrep,dt/140);
-   state!.onPrep=toward(state!.onPrep,onPrep,dt/220);
-   if(hadOffContact)state!.extract=toward(state!.extract,Math.max(state!.extract,extract),dt/100);
+   state!.offPrep=toward(state!.offPrep,Math.max(state!.offPrep,offPrep),dt/140);
+   state!.onPrep=toward(state!.onPrep,Math.max(state!.onPrep,onPrep),dt/220);
+   if(hadOffContact&&canExtract)state!.extract=toward(state!.extract,Math.max(state!.extract,extract),dt/100);
    if(state!.extract>=1&&state!.carryAt===null)state!.carryAt=now;
    if(hadExtracted&&hadOnContact)state!.fit=toward(state!.fit,Math.max(state!.fit,fit),dt/80);
    if(state!.fit>=1&&state!.fitAt===null)state!.fitAt=now;
@@ -42,7 +45,7 @@ export class WheelHandling {
 }
 export function offWheelStation(corner:{x:number;z:number},frame:WheelHandlingFrame,height=.27){
  const side=Math.sign(corner.x),pickupX=.76+.06*clamp(height/.27),pickupZ=.40+.06*clamp(height/.27);
- const prepX=.95+(pickupX-.95)*frame.offPrep,prepZ=1.05+(pickupZ-1.05)*frame.offPrep;
+ const prepX=.95+(pickupX-.95)*frame.offPrep,prepZ=1.20+(pickupZ-1.20)*frame.offPrep;
  const heldX=prepX+(1.2-prepX)*frame.extract,heldZ=prepZ+(.95-prepZ)*frame.extract;
  return {x:corner.x+side*(heldX+(5.04-heldX)*frame.carry),z:corner.z+heldZ+(1.1-heldZ)*frame.carry,crouch:frame.offPrep*(1-frame.extract)+frame.lower*(1-frame.release)};
 }

@@ -1,0 +1,1178 @@
+[
+  {
+    "role": "FL_GUNNER",
+    "delay": 36,
+    "maxWheelStep": 0.31927167115170135,
+    "maxCarBacktrack": 0,
+    "maxSignalStep": 0,
+    "maxSignalArmStep": 0.21461353086419765,
+    "maxGrip": 2.808666774861361e-15,
+    "minOwnClear": 0.04870998698257353,
+    "minOtherClear": 0.1256398508982499,
+    "minWheelPairClear": 0.0924755954878842,
+    "worstOther": {
+      "clock": 9460,
+      "wheel": "FLfresh",
+      "other": "nose",
+      "clearance": 0.1256398508982499
+    },
+    "worstGrip": {
+      "clock": 12180,
+      "wheel": "RLold",
+      "frame": {
+        "offPrep": 1,
+        "onPrep": 1,
+        "extract": 1,
+        "fit": 1,
+        "carry": 1,
+        "lower": 0.11807580174927114,
+        "release": 0,
+        "onRelease": 1,
+        "onRetreat": 1
+      },
+      "owner": {
+        "kind": "off",
+        "position": [
+          -6.16,
+          0,
+          2.5200000000000005
+        ],
+        "yaw": -1.5707963267948966,
+        "hands": [
+          [
+            -5.809999999999998,
+            0.8445772594752196,
+            2.2700000000000005
+          ],
+          [
+            -5.8100000000000005,
+            0.8445772594752186,
+            2.7700000000000005
+          ]
+        ],
+        "gripError": 2.808666774861361e-15,
+        "clearance": [
+          {
+            "role": "FL_GUNNER",
+            "value": 3.7684303786099336
+          },
+          {
+            "role": "FL_WHEEL_OFF",
+            "value": 2.380314613949985
+          },
+          {
+            "role": "FL_WHEEL_ON",
+            "value": 4.941087328809104
+          },
+          {
+            "role": "FR_GUNNER",
+            "value": 8.140844528322129
+          },
+          {
+            "role": "FR_WHEEL_OFF",
+            "value": 11.506327523203758
+          },
+          {
+            "role": "FR_WHEEL_ON",
+            "value": 9.16758540850193
+          },
+          {
+            "role": "RL_GUNNER",
+            "value": 2.346552106841909
+          },
+          {
+            "role": "RL_WHEEL_OFF",
+            "value": 0.20284842440955553
+          },
+          {
+            "role": "RL_WHEEL_ON",
+            "value": 2.6382534626465697
+          },
+          {
+            "role": "RR_GUNNER",
+            "value": 7.572295343011799
+          },
+          {
+            "role": "RR_WHEEL_OFF",
+            "value": 11.219530510848399
+          },
+          {
+            "role": "RR_WHEEL_ON",
+            "value": 8.144837358744947
+          },
+          {
+            "role": "FRONT_JACK",
+            "value": 10.278650104835991
+          },
+          {
+            "role": "REAR_JACK",
+            "value": 4.149852015976508
+          },
+          {
+            "role": "RELEASE_CONTROLLER",
+            "value": 11.598308713888652
+          },
+          {
+            "role": "sidepod",
+            "value": 4.211935419085203
+          },
+          {
+            "role": "sidepod",
+            "value": 6.578778852557103
+          },
+          {
+            "role": "nose",
+            "value": 5.884230925183052
+          },
+          {
+            "role": "nose",
+            "value": 8.844774115857536
+          },
+          {
+            "role": "ambient",
+            "value": 1.8863033809033123
+          },
+          {
+            "role": "ambient",
+            "value": 13.45226785052008
+          },
+          {
+            "role": "ambient",
+            "value": 3.7555139050204125
+          }
+        ]
+      }
+    },
+    "contacts": [],
+    "scoreUnchanged": true
+  },
+  {
+    "role": "FRONT_JACK",
+    "delay": 0,
+    "maxWheelStep": 0.3084653191608417,
+    "maxCarBacktrack": 0,
+    "maxSignalStep": 0,
+    "maxSignalArmStep": 0.2145753086419755,
+    "maxGrip": 2.808666774861361e-15,
+    "minOwnClear": 0.04870998698257353,
+    "minOtherClear": 0.1256398508982499,
+    "minWheelPairClear": 0.047585530012054456,
+    "worstOther": {
+      "clock": 9460,
+      "wheel": "FLfresh",
+      "other": "nose",
+      "clearance": 0.1256398508982499
+    },
+    "worstGrip": {
+      "clock": 12020,
+      "wheel": "RLold",
+      "frame": {
+        "offPrep": 1,
+        "onPrep": 1,
+        "extract": 1,
+        "fit": 1,
+        "carry": 1,
+        "lower": 0.11807580174927114,
+        "release": 0,
+        "onRelease": 1,
+        "onRetreat": 1
+      },
+      "owner": {
+        "kind": "off",
+        "position": [
+          -6.16,
+          0,
+          2.5200000000000005
+        ],
+        "yaw": -1.5707963267948966,
+        "hands": [
+          [
+            -5.809999999999998,
+            0.8445772594752196,
+            2.2700000000000005
+          ],
+          [
+            -5.8100000000000005,
+            0.8445772594752186,
+            2.7700000000000005
+          ]
+        ],
+        "gripError": 2.808666774861361e-15,
+        "clearance": [
+          {
+            "role": "FL_GUNNER",
+            "value": 3.7736075025094373
+          },
+          {
+            "role": "FL_WHEEL_OFF",
+            "value": 2.380314613949985
+          },
+          {
+            "role": "FL_WHEEL_ON",
+            "value": 4.941087328809104
+          },
+          {
+            "role": "FR_GUNNER",
+            "value": 8.13321749867812
+          },
+          {
+            "role": "FR_WHEEL_OFF",
+            "value": 11.506327523203758
+          },
+          {
+            "role": "FR_WHEEL_ON",
+            "value": 9.16758540850193
+          },
+          {
+            "role": "RL_GUNNER",
+            "value": 2.3546817511051583
+          },
+          {
+            "role": "RL_WHEEL_OFF",
+            "value": 0.20284842440955553
+          },
+          {
+            "role": "RL_WHEEL_ON",
+            "value": 2.6382534626465697
+          },
+          {
+            "role": "RR_GUNNER",
+            "value": 7.5641054728003825
+          },
+          {
+            "role": "RR_WHEEL_OFF",
+            "value": 11.219530510848399
+          },
+          {
+            "role": "RR_WHEEL_ON",
+            "value": 8.144837358744947
+          },
+          {
+            "role": "FRONT_JACK",
+            "value": 8.519613213178191
+          },
+          {
+            "role": "REAR_JACK",
+            "value": 5.009485403159131
+          },
+          {
+            "role": "RELEASE_CONTROLLER",
+            "value": 11.586954845312915
+          },
+          {
+            "role": "sidepod",
+            "value": 4.211888735123443
+          },
+          {
+            "role": "sidepod",
+            "value": 6.578881867959591
+          },
+          {
+            "role": "nose",
+            "value": 6.114656719017925
+          },
+          {
+            "role": "nose",
+            "value": 8.499257771528564
+          },
+          {
+            "role": "ambient",
+            "value": 1.790266467746493
+          },
+          {
+            "role": "ambient",
+            "value": 13.33243225540126
+          },
+          {
+            "role": "ambient",
+            "value": 3.686887393357795
+          }
+        ]
+      }
+    },
+    "contacts": [],
+    "scoreUnchanged": true
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "delay": 0,
+    "maxWheelStep": 0.3378664825045543,
+    "maxCarBacktrack": 0,
+    "maxSignalStep": 0,
+    "maxSignalArmStep": 0.21468148148148147,
+    "maxGrip": 2.808666774861361e-15,
+    "minOwnClear": 0.04870998698257353,
+    "minOtherClear": 0.1256398508982499,
+    "minWheelPairClear": 0.156872727272727,
+    "worstOther": {
+      "clock": 9460,
+      "wheel": "FLfresh",
+      "other": "nose",
+      "clearance": 0.1256398508982499
+    },
+    "worstGrip": {
+      "clock": 12580,
+      "wheel": "RLold",
+      "frame": {
+        "offPrep": 1,
+        "onPrep": 1,
+        "extract": 1,
+        "fit": 1,
+        "carry": 1,
+        "lower": 0.11807580174927114,
+        "release": 0,
+        "onRelease": 1,
+        "onRetreat": 1
+      },
+      "owner": {
+        "kind": "off",
+        "position": [
+          -6.16,
+          0,
+          2.5200000000000005
+        ],
+        "yaw": -1.5707963267948966,
+        "hands": [
+          [
+            -5.809999999999998,
+            0.8445772594752196,
+            2.2700000000000005
+          ],
+          [
+            -5.8100000000000005,
+            0.8445772594752186,
+            2.7700000000000005
+          ]
+        ],
+        "gripError": 2.808666774861361e-15,
+        "clearance": [
+          {
+            "role": "FL_GUNNER",
+            "value": 3.763474446072536
+          },
+          {
+            "role": "FL_WHEEL_OFF",
+            "value": 2.380314613949985
+          },
+          {
+            "role": "FL_WHEEL_ON",
+            "value": 4.941087328809104
+          },
+          {
+            "role": "FR_GUNNER",
+            "value": 8.148161038127386
+          },
+          {
+            "role": "FR_WHEEL_OFF",
+            "value": 11.506327523203758
+          },
+          {
+            "role": "FR_WHEEL_ON",
+            "value": 9.16758540850193
+          },
+          {
+            "role": "RL_GUNNER",
+            "value": 2.3387549509260164
+          },
+          {
+            "role": "RL_WHEEL_OFF",
+            "value": 0.20284842440955553
+          },
+          {
+            "role": "RL_WHEEL_ON",
+            "value": 2.6382534626465697
+          },
+          {
+            "role": "RR_GUNNER",
+            "value": 7.580150694742415
+          },
+          {
+            "role": "RR_WHEEL_OFF",
+            "value": 11.219530510848399
+          },
+          {
+            "role": "RR_WHEEL_ON",
+            "value": 8.144837358744947
+          },
+          {
+            "role": "FRONT_JACK",
+            "value": 12.842851868731932
+          },
+          {
+            "role": "REAR_JACK",
+            "value": 4.070102085422
+          },
+          {
+            "role": "RELEASE_CONTROLLER",
+            "value": 11.603336472111502
+          },
+          {
+            "role": "sidepod",
+            "value": 4.215969246529789
+          },
+          {
+            "role": "sidepod",
+            "value": 6.581242991369419
+          },
+          {
+            "role": "nose",
+            "value": 5.603273263916617
+          },
+          {
+            "role": "nose",
+            "value": 9.333852435690593
+          },
+          {
+            "role": "ambient",
+            "value": 1.9047427545974434
+          },
+          {
+            "role": "ambient",
+            "value": 13.474521828572033
+          },
+          {
+            "role": "ambient",
+            "value": 3.768852435318117
+          }
+        ]
+      }
+    },
+    "contacts": [],
+    "scoreUnchanged": true
+  },
+  {
+    "role": "FL_WHEEL_ON",
+    "delay": 0,
+    "maxWheelStep": 0.31440730450325105,
+    "maxCarBacktrack": 0,
+    "maxSignalStep": 0,
+    "maxSignalArmStep": 0.21468148148148147,
+    "maxGrip": 2.808666774861361e-15,
+    "minOwnClear": 0.04870998698257353,
+    "minOtherClear": 0.1256398508982499,
+    "minWheelPairClear": 0.09718408779149507,
+    "worstOther": {
+      "clock": 9460,
+      "wheel": "FLfresh",
+      "other": "nose",
+      "clearance": 0.1256398508982499
+    },
+    "worstGrip": {
+      "clock": 13060,
+      "wheel": "RLold",
+      "frame": {
+        "offPrep": 1,
+        "onPrep": 1,
+        "extract": 1,
+        "fit": 1,
+        "carry": 1,
+        "lower": 0.11807580174927114,
+        "release": 0,
+        "onRelease": 1,
+        "onRetreat": 1
+      },
+      "owner": {
+        "kind": "off",
+        "position": [
+          -6.16,
+          0,
+          2.5200000000000005
+        ],
+        "yaw": -1.5707963267948966,
+        "hands": [
+          [
+            -5.809999999999998,
+            0.8445772594752196,
+            2.2700000000000005
+          ],
+          [
+            -5.8100000000000005,
+            0.8445772594752186,
+            2.7700000000000005
+          ]
+        ],
+        "gripError": 2.808666774861361e-15,
+        "clearance": [
+          {
+            "role": "FL_GUNNER",
+            "value": 3.763474446072536
+          },
+          {
+            "role": "FL_WHEEL_OFF",
+            "value": 2.380314613949985
+          },
+          {
+            "role": "FL_WHEEL_ON",
+            "value": 4.941087328809104
+          },
+          {
+            "role": "FR_GUNNER",
+            "value": 8.148161038127386
+          },
+          {
+            "role": "FR_WHEEL_OFF",
+            "value": 11.506327523203758
+          },
+          {
+            "role": "FR_WHEEL_ON",
+            "value": 9.16758540850193
+          },
+          {
+            "role": "RL_GUNNER",
+            "value": 2.3387549509260164
+          },
+          {
+            "role": "RL_WHEEL_OFF",
+            "value": 0.20284842440955553
+          },
+          {
+            "role": "RL_WHEEL_ON",
+            "value": 2.6382534626465697
+          },
+          {
+            "role": "RR_GUNNER",
+            "value": 7.580150694742415
+          },
+          {
+            "role": "RR_WHEEL_OFF",
+            "value": 11.219530510848399
+          },
+          {
+            "role": "RR_WHEEL_ON",
+            "value": 8.144837358744947
+          },
+          {
+            "role": "FRONT_JACK",
+            "value": 12.80421057864187
+          },
+          {
+            "role": "REAR_JACK",
+            "value": 4.05962385837131
+          },
+          {
+            "role": "RELEASE_CONTROLLER",
+            "value": 11.602990113633904
+          },
+          {
+            "role": "sidepod",
+            "value": 4.212161972909824
+          },
+          {
+            "role": "sidepod",
+            "value": 6.578903397358983
+          },
+          {
+            "role": "nose",
+            "value": 5.606778760817442
+          },
+          {
+            "role": "nose",
+            "value": 9.326882878273025
+          },
+          {
+            "role": "ambient",
+            "value": 1.9044584873460573
+          },
+          {
+            "role": "ambient",
+            "value": 13.474225864364518
+          },
+          {
+            "role": "ambient",
+            "value": 3.768863902727819
+          }
+        ]
+      }
+    },
+    "contacts": [],
+    "scoreUnchanged": true
+  },
+  {
+    "role": "RELEASE_CONTROLLER",
+    "delay": 0,
+    "maxWheelStep": 0.2845206109443148,
+    "maxCarBacktrack": 0,
+    "maxSignalStep": 0,
+    "maxSignalArmStep": 0.21468148148148147,
+    "maxGrip": 2.808666774861361e-15,
+    "minOwnClear": 0.04870998698257353,
+    "minOtherClear": 0.1256398508982499,
+    "minWheelPairClear": 0.09718408779149507,
+    "worstOther": {
+      "clock": 9460,
+      "wheel": "FLfresh",
+      "other": "nose",
+      "clearance": 0.1256398508982499
+    },
+    "worstGrip": {
+      "clock": 13060,
+      "wheel": "RLold",
+      "frame": {
+        "offPrep": 1,
+        "onPrep": 1,
+        "extract": 1,
+        "fit": 1,
+        "carry": 1,
+        "lower": 0.11807580174927114,
+        "release": 0,
+        "onRelease": 1,
+        "onRetreat": 0.529984
+      },
+      "owner": {
+        "kind": "off",
+        "position": [
+          -6.16,
+          0,
+          2.5200000000000005
+        ],
+        "yaw": -1.5707963267948966,
+        "hands": [
+          [
+            -5.809999999999998,
+            0.8445772594752196,
+            2.2700000000000005
+          ],
+          [
+            -5.8100000000000005,
+            0.8445772594752186,
+            2.7700000000000005
+          ]
+        ],
+        "gripError": 2.808666774861361e-15,
+        "clearance": [
+          {
+            "role": "FL_GUNNER",
+            "value": 4.2486419782370515
+          },
+          {
+            "role": "FL_WHEEL_OFF",
+            "value": 2.380314613949985
+          },
+          {
+            "role": "FL_WHEEL_ON",
+            "value": 4.99445113136632
+          },
+          {
+            "role": "FR_GUNNER",
+            "value": 7.446394295918478
+          },
+          {
+            "role": "FR_WHEEL_OFF",
+            "value": 11.506327523203758
+          },
+          {
+            "role": "FR_WHEEL_ON",
+            "value": 8.665332089159177
+          },
+          {
+            "role": "RL_GUNNER",
+            "value": 2.761777559748041
+          },
+          {
+            "role": "RL_WHEEL_OFF",
+            "value": 0.20284842440955553
+          },
+          {
+            "role": "RL_WHEEL_ON",
+            "value": 2.9373501139510014
+          },
+          {
+            "role": "RR_GUNNER",
+            "value": 6.694728451537581
+          },
+          {
+            "role": "RR_WHEEL_OFF",
+            "value": 11.219530510848399
+          },
+          {
+            "role": "RR_WHEEL_ON",
+            "value": 7.654954918821523
+          },
+          {
+            "role": "FRONT_JACK",
+            "value": 8.295287541351254
+          },
+          {
+            "role": "REAR_JACK",
+            "value": 5.153156893697217
+          },
+          {
+            "role": "RELEASE_CONTROLLER",
+            "value": 11.586121582699738
+          },
+          {
+            "role": "sidepod",
+            "value": 4.212161972909824
+          },
+          {
+            "role": "sidepod",
+            "value": 6.578903397358983
+          },
+          {
+            "role": "nose",
+            "value": 6.14471641000336
+          },
+          {
+            "role": "nose",
+            "value": 8.456598356370941
+          },
+          {
+            "role": "ambient",
+            "value": 1.6980182501637162
+          },
+          {
+            "role": "ambient",
+            "value": 13.211011447068248
+          },
+          {
+            "role": "ambient",
+            "value": 3.621505578866685
+          }
+        ]
+      }
+    },
+    "contacts": [],
+    "scoreUnchanged": true
+  },
+  {
+    "role": "FL_GUNNER",
+    "delay": 2000,
+    "maxWheelStep": 0.3084653191608417,
+    "maxCarBacktrack": 0,
+    "maxSignalStep": 0,
+    "maxSignalArmStep": 0.21425679012345755,
+    "maxGrip": 2.808666774861361e-15,
+    "minOwnClear": 0.04870998698257353,
+    "minOtherClear": 0.1256398508982499,
+    "minWheelPairClear": 0.047585530012054456,
+    "worstOther": {
+      "clock": 9460,
+      "wheel": "FLfresh",
+      "other": "nose",
+      "clearance": 0.1256398508982499
+    },
+    "worstGrip": {
+      "clock": 15020,
+      "wheel": "RLold",
+      "frame": {
+        "offPrep": 1,
+        "onPrep": 1,
+        "extract": 1,
+        "fit": 0.48232650546473393,
+        "carry": 1,
+        "lower": 0.11807580174927114,
+        "release": 0,
+        "onRelease": 0,
+        "onRetreat": 0
+      },
+      "owner": {
+        "kind": "off",
+        "position": [
+          -6.16,
+          0,
+          2.5200000000000005
+        ],
+        "yaw": -1.5707963267948966,
+        "hands": [
+          [
+            -5.809999999999998,
+            0.8445772594752196,
+            2.2700000000000005
+          ],
+          [
+            -5.8100000000000005,
+            0.8445772594752186,
+            2.7700000000000005
+          ]
+        ],
+        "gripError": 2.808666774861361e-15,
+        "clearance": [
+          {
+            "role": "FL_GUNNER",
+            "value": 3.964522860622622
+          },
+          {
+            "role": "FL_WHEEL_OFF",
+            "value": 2.380314613949985
+          },
+          {
+            "role": "FL_WHEEL_ON",
+            "value": 4.615729901804717
+          },
+          {
+            "role": "FR_GUNNER",
+            "value": 7.719284822003446
+          },
+          {
+            "role": "FR_WHEEL_OFF",
+            "value": 11.506327523203758
+          },
+          {
+            "role": "FR_WHEEL_ON",
+            "value": 8.132109440487312
+          },
+          {
+            "role": "RL_GUNNER",
+            "value": 2.5656373562962473
+          },
+          {
+            "role": "RL_WHEEL_OFF",
+            "value": 0.20284842440955553
+          },
+          {
+            "role": "RL_WHEEL_ON",
+            "value": 2.862986947367701
+          },
+          {
+            "role": "RR_GUNNER",
+            "value": 7.087843627513379
+          },
+          {
+            "role": "RR_WHEEL_OFF",
+            "value": 11.219530510848399
+          },
+          {
+            "role": "RR_WHEEL_ON",
+            "value": 7.180199876937865
+          },
+          {
+            "role": "FRONT_JACK",
+            "value": 8.294436015778386
+          },
+          {
+            "role": "REAR_JACK",
+            "value": 5.151460584229375
+          },
+          {
+            "role": "RELEASE_CONTROLLER",
+            "value": 11.586121582699738
+          },
+          {
+            "role": "sidepod",
+            "value": 4.211808380267064
+          },
+          {
+            "role": "sidepod",
+            "value": 6.580302979594801
+          },
+          {
+            "role": "nose",
+            "value": 6.144760916872297
+          },
+          {
+            "role": "nose",
+            "value": 8.456598356370941
+          },
+          {
+            "role": "ambient",
+            "value": 1.6972227299225864
+          },
+          {
+            "role": "ambient",
+            "value": 13.21145709288687
+          },
+          {
+            "role": "ambient",
+            "value": 3.620991430388166
+          }
+        ]
+      }
+    },
+    "contacts": [],
+    "scoreUnchanged": true
+  },
+  {
+    "role": "FL_WHEEL_OFF",
+    "delay": 8000,
+    "maxWheelStep": 0.3192716711517011,
+    "maxCarBacktrack": 0,
+    "maxSignalStep": 0,
+    "maxSignalArmStep": 0.21468148148148147,
+    "maxGrip": 2.808666774861361e-15,
+    "minOwnClear": 0.04870998698257353,
+    "minOtherClear": 0.1256398508982499,
+    "minWheelPairClear": 0.09718408779149507,
+    "worstOther": {
+      "clock": 9460,
+      "wheel": "FLfresh",
+      "other": "nose",
+      "clearance": 0.1256398508982499
+    },
+    "worstGrip": {
+      "clock": 13060,
+      "wheel": "RLold",
+      "frame": {
+        "offPrep": 1,
+        "onPrep": 1,
+        "extract": 1,
+        "fit": 1,
+        "carry": 1,
+        "lower": 0.11807580174927114,
+        "release": 0,
+        "onRelease": 1,
+        "onRetreat": 0.529984
+      },
+      "owner": {
+        "kind": "off",
+        "position": [
+          -6.16,
+          0,
+          2.5200000000000005
+        ],
+        "yaw": -1.5707963267948966,
+        "hands": [
+          [
+            -5.809999999999998,
+            0.8445772594752196,
+            2.2700000000000005
+          ],
+          [
+            -5.8100000000000005,
+            0.8445772594752186,
+            2.7700000000000005
+          ]
+        ],
+        "gripError": 2.808666774861361e-15,
+        "clearance": [
+          {
+            "role": "FL_GUNNER",
+            "value": 3.8443660139448
+          },
+          {
+            "role": "FL_WHEEL_OFF",
+            "value": 4.073973848057499
+          },
+          {
+            "role": "FL_WHEEL_ON",
+            "value": 4.6085786980205805
+          },
+          {
+            "role": "FR_GUNNER",
+            "value": 7.446394295918478
+          },
+          {
+            "role": "FR_WHEEL_OFF",
+            "value": 11.506327523203758
+          },
+          {
+            "role": "FR_WHEEL_ON",
+            "value": 8.665332089159177
+          },
+          {
+            "role": "RL_GUNNER",
+            "value": 2.761777559748041
+          },
+          {
+            "role": "RL_WHEEL_OFF",
+            "value": 0.20284842440955553
+          },
+          {
+            "role": "RL_WHEEL_ON",
+            "value": 2.9373501139510014
+          },
+          {
+            "role": "RR_GUNNER",
+            "value": 6.694728451537581
+          },
+          {
+            "role": "RR_WHEEL_OFF",
+            "value": 11.219530510848399
+          },
+          {
+            "role": "RR_WHEEL_ON",
+            "value": 7.654954918821523
+          },
+          {
+            "role": "FRONT_JACK",
+            "value": 8.295287541351254
+          },
+          {
+            "role": "REAR_JACK",
+            "value": 5.153156893697217
+          },
+          {
+            "role": "RELEASE_CONTROLLER",
+            "value": 11.586121582699738
+          },
+          {
+            "role": "sidepod",
+            "value": 4.212161972909824
+          },
+          {
+            "role": "sidepod",
+            "value": 6.578903397358983
+          },
+          {
+            "role": "nose",
+            "value": 6.14471641000336
+          },
+          {
+            "role": "nose",
+            "value": 8.456598356370941
+          },
+          {
+            "role": "ambient",
+            "value": 1.6980182501637162
+          },
+          {
+            "role": "ambient",
+            "value": 13.211011447068248
+          },
+          {
+            "role": "ambient",
+            "value": 3.621505578866685
+          }
+        ]
+      }
+    },
+    "contacts": [],
+    "scoreUnchanged": true
+  },
+  {
+    "role": "FL_WHEEL_ON",
+    "delay": 8000,
+    "maxWheelStep": 0.2845206109443148,
+    "maxCarBacktrack": 0,
+    "maxSignalStep": 0,
+    "maxSignalArmStep": 0.21468148148148147,
+    "maxGrip": 2.808666774861361e-15,
+    "minOwnClear": 0.04870998698257353,
+    "minOtherClear": 0.1256398508982499,
+    "minWheelPairClear": 0.09718408779149507,
+    "worstOther": {
+      "clock": 9460,
+      "wheel": "FLfresh",
+      "other": "nose",
+      "clearance": 0.1256398508982499
+    },
+    "worstGrip": {
+      "clock": 13060,
+      "wheel": "RLold",
+      "frame": {
+        "offPrep": 1,
+        "onPrep": 1,
+        "extract": 1,
+        "fit": 1,
+        "carry": 1,
+        "lower": 0.11807580174927114,
+        "release": 0,
+        "onRelease": 1,
+        "onRetreat": 0.529984
+      },
+      "owner": {
+        "kind": "off",
+        "position": [
+          -6.16,
+          0,
+          2.5200000000000005
+        ],
+        "yaw": -1.5707963267948966,
+        "hands": [
+          [
+            -5.809999999999998,
+            0.8445772594752196,
+            2.2700000000000005
+          ],
+          [
+            -5.8100000000000005,
+            0.8445772594752186,
+            2.7700000000000005
+          ]
+        ],
+        "gripError": 2.808666774861361e-15,
+        "clearance": [
+          {
+            "role": "FL_GUNNER",
+            "value": 3.8443660139448
+          },
+          {
+            "role": "FL_WHEEL_OFF",
+            "value": 2.380314613949985
+          },
+          {
+            "role": "FL_WHEEL_ON",
+            "value": 4.604331908988043
+          },
+          {
+            "role": "FR_GUNNER",
+            "value": 7.446394295918478
+          },
+          {
+            "role": "FR_WHEEL_OFF",
+            "value": 11.506327523203758
+          },
+          {
+            "role": "FR_WHEEL_ON",
+            "value": 8.665332089159177
+          },
+          {
+            "role": "RL_GUNNER",
+            "value": 2.761777559748041
+          },
+          {
+            "role": "RL_WHEEL_OFF",
+            "value": 0.20284842440955553
+          },
+          {
+            "role": "RL_WHEEL_ON",
+            "value": 2.9373501139510014
+          },
+          {
+            "role": "RR_GUNNER",
+            "value": 6.694728451537581
+          },
+          {
+            "role": "RR_WHEEL_OFF",
+            "value": 11.219530510848399
+          },
+          {
+            "role": "RR_WHEEL_ON",
+            "value": 7.654954918821523
+          },
+          {
+            "role": "FRONT_JACK",
+            "value": 8.295287541351254
+          },
+          {
+            "role": "REAR_JACK",
+            "value": 5.153156893697217
+          },
+          {
+            "role": "RELEASE_CONTROLLER",
+            "value": 11.586121582699738
+          },
+          {
+            "role": "sidepod",
+            "value": 4.212161972909824
+          },
+          {
+            "role": "sidepod",
+            "value": 6.578903397358983
+          },
+          {
+            "role": "nose",
+            "value": 6.14471641000336
+          },
+          {
+            "role": "nose",
+            "value": 8.456598356370941
+          },
+          {
+            "role": "ambient",
+            "value": 1.6980182501637162
+          },
+          {
+            "role": "ambient",
+            "value": 13.211011447068248
+          },
+          {
+            "role": "ambient",
+            "value": 3.621505578866685
+          }
+        ]
+      }
+    },
+    "contacts": [],
+    "scoreUnchanged": true
+  }
+]

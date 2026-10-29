@@ -1,11 +1,9 @@
-# PIT STOP GAME - V24.7
+# PIT STOP GAME - V24.8
 
 The repository root contains the production build for static hosting. Keep the Netlify publish directory at the repository root.
 
-Editable application source, tests, build scripts and version reports are in `source/`. See `source/V24_7_WHEEL_CONTACT_AND_RELEASE.md` for the latest change and validation details.
+Editable application source, tests and build scripts are in `source/`. See [V24.8 release notes](source/docs/V24_8_GUNNER_CAMERAS.md).
 
-V24.7 couples wheel movement to actual hand contact, keeps tyres outside crew bodies and stabilizes the release controller and car departure. The ten team colors, gray support uniforms and Solo reference correction are retained. This release includes the V24.2 animation and V24.3 old-wheel placement fixes.
+V24.8 restores gun contact strokes, fixes gunner/support/rear jack clearance, and adds first-person and elevated third-person player cameras alongside Overview. Official game timing, the ten crew colors and gray support uniforms are preserved.
 
-The existing deployed public connection settings are preserved in `config.js` and `source/public/config.js`.
-
-To rebuild, run `npm ci` and `npm run build` from `source/`. Publish the contents of `source/dist/`.
+The existing public connection settings remain in `config.js` and `source/public/config.js`. Rebuild with `npm ci` and `npm run build` from `source/`; publish the contents of `source/dist/`.

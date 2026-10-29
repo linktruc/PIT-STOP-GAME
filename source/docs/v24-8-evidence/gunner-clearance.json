@@ -1,0 +1,318 @@
+[
+  {
+    "role": "FL_GUNNER",
+    "delay": 36,
+    "maxGrip": 3.011959563148489e-15,
+    "maxBoneError": 3.3306690738754696e-16,
+    "maxGunStep": 0.1504541267449519,
+    "minGunClear": 0.028337112792686747,
+    "minSupportClear": 0.3432575701945463,
+    "minJackClear": 0.2964101164824918,
+    "minHeadHand": 0.5653110526711123,
+    "spins": {
+      "FL_GUNNER/loosen": 9,
+      "FR_GUNNER/loosen": 7,
+      "RL_GUNNER/loosen": 7,
+      "RR_GUNNER/loosen": 7,
+      "FL_GUNNER/tighten": 7,
+      "FR_GUNNER/tighten": 7,
+      "RL_GUNNER/tighten": 7,
+      "RR_GUNNER/tighten": 7
+    },
+    "rotations": {
+      "FL_GUNNER/loosen": 9,
+      "FR_GUNNER/loosen": 7,
+      "RL_GUNNER/loosen": 7,
+      "RR_GUNNER/loosen": 7,
+      "FL_GUNNER/tighten": 7,
+      "FR_GUNNER/tighten": 7,
+      "RL_GUNNER/tighten": 7,
+      "RR_GUNNER/tighten": 7
+    },
+    "reversals": {
+      "FL_GUNNER": 3,
+      "FR_GUNNER": 3,
+      "RL_GUNNER": 3,
+      "RR_GUNNER": 3
+    },
+    "worstGun": {
+      "clock": 11000,
+      "pair": "FR_GUNNER/FR_WHEEL_OFF",
+      "clearance": 0.028337112792686747,
+      "a": [
+        2.3325679461279467,
+        0.075,
+        -0.8777523615336136
+      ],
+      "b": [
+        2.0547857142857144,
+        0.075,
+        -0.7439285714285715
+      ],
+      "radii": [
+        0.14,
+        0.14
+      ],
+      "aRoot": [
+        2.5789225589225593,
+        0,
+        -1.03001700799826
+      ],
+      "bRoot": [
+        2.0384285714285717,
+        0,
+        -0.5597142857142858
+      ],
+      "stance": 0.5031380471380472
+    },
+    "worstSupport": {
+      "clock": 11480,
+      "pair": "RL_WHEEL_ON/-1",
+      "clearance": 0.3432575701945463
+    },
+    "worstJack": {
+      "clock": 10140,
+      "clearance": 0.2964101164824918
+    },
+    "gunCues": 8,
+    "cueErrors": [],
+    "scoreUnchanged": true
+  },
+  {
+    "role": "FRONT_JACK",
+    "delay": 0,
+    "maxGrip": 2.6296119242823513e-15,
+    "maxBoneError": 3.885780586188048e-16,
+    "maxGunStep": 0.1504541267449519,
+    "minGunClear": 0.03224204048913493,
+    "minSupportClear": 0.343257567870486,
+    "minJackClear": 0.2964101164824918,
+    "minHeadHand": 0.5834684033409846,
+    "spins": {
+      "FL_GUNNER/loosen": 10,
+      "FR_GUNNER/loosen": 10,
+      "RL_GUNNER/loosen": 10,
+      "RR_GUNNER/loosen": 10,
+      "FL_GUNNER/tighten": 7,
+      "FR_GUNNER/tighten": 7,
+      "RL_GUNNER/tighten": 7,
+      "RR_GUNNER/tighten": 7
+    },
+    "rotations": {
+      "FL_GUNNER/loosen": 10,
+      "FR_GUNNER/loosen": 10,
+      "RL_GUNNER/loosen": 10,
+      "RR_GUNNER/loosen": 10,
+      "FL_GUNNER/tighten": 7,
+      "FR_GUNNER/tighten": 7,
+      "RL_GUNNER/tighten": 7,
+      "RR_GUNNER/tighten": 7
+    },
+    "reversals": {
+      "FL_GUNNER": 3,
+      "FR_GUNNER": 3,
+      "RL_GUNNER": 3,
+      "RR_GUNNER": 3
+    },
+    "worstGun": {
+      "clock": 10560,
+      "pair": "FR_GUNNER/FR_WHEEL_OFF",
+      "clearance": 0.03224204048913493,
+      "a": [
+        2.094345379437603,
+        0.075,
+        -0.9020577212597165
+      ],
+      "b": [
+        2.0255,
+        0.075,
+        -0.5975000000000001
+      ],
+      "radii": [
+        0.14,
+        0.14
+      ],
+      "aRoot": [
+        2.394539767366566,
+        0,
+        -1.0653853352177225
+      ],
+      "bRoot": [
+        2.057,
+        0,
+        -0.4540000000000002
+      ],
+      "stance": 0.3556318138932526
+    },
+    "worstSupport": {
+      "clock": 11400,
+      "pair": "RL_WHEEL_ON/-1",
+      "clearance": 0.343257567870486
+    },
+    "worstJack": {
+      "clock": 10140,
+      "clearance": 0.2964101164824918
+    },
+    "gunCues": 8,
+    "cueErrors": [],
+    "scoreUnchanged": true
+  },
+  {
+    "role": "FL_WHEEL_ON",
+    "delay": 0,
+    "maxGrip": 2.6296119242823513e-15,
+    "maxBoneError": 2.7755575615628914e-16,
+    "maxGunStep": 0.15060810439963881,
+    "minGunClear": 0.03224204048913493,
+    "minSupportClear": 0.353758628696656,
+    "minJackClear": 0.2964101164824918,
+    "minHeadHand": 0.5653110526711123,
+    "spins": {
+      "FL_GUNNER/loosen": 16,
+      "FR_GUNNER/loosen": 16,
+      "RL_GUNNER/loosen": 16,
+      "RR_GUNNER/loosen": 16,
+      "FL_GUNNER/tighten": 7,
+      "FR_GUNNER/tighten": 7,
+      "RL_GUNNER/tighten": 7,
+      "RR_GUNNER/tighten": 7
+    },
+    "rotations": {
+      "FL_GUNNER/loosen": 16,
+      "FR_GUNNER/loosen": 16,
+      "RL_GUNNER/loosen": 16,
+      "RR_GUNNER/loosen": 16,
+      "FL_GUNNER/tighten": 7,
+      "FR_GUNNER/tighten": 7,
+      "RL_GUNNER/tighten": 7,
+      "RR_GUNNER/tighten": 7
+    },
+    "reversals": {
+      "FL_GUNNER": 3,
+      "FR_GUNNER": 3,
+      "RL_GUNNER": 3,
+      "RR_GUNNER": 3
+    },
+    "worstGun": {
+      "clock": 11260,
+      "pair": "FR_GUNNER/FR_WHEEL_OFF",
+      "clearance": 0.03224204048913493,
+      "a": [
+        2.094345379437603,
+        0.075,
+        -0.9020577212597165
+      ],
+      "b": [
+        2.0255,
+        0.075,
+        -0.5975000000000001
+      ],
+      "radii": [
+        0.14,
+        0.14
+      ],
+      "aRoot": [
+        2.394539767366566,
+        0,
+        -1.0653853352177225
+      ],
+      "bRoot": [
+        2.057,
+        0,
+        -0.4540000000000002
+      ],
+      "stance": 0.3556318138932526
+    },
+    "worstSupport": {
+      "clock": 12180,
+      "pair": "RL_WHEEL_ON/-1",
+      "clearance": 0.353758628696656
+    },
+    "worstJack": {
+      "clock": 10140,
+      "clearance": 0.2964101164824918
+    },
+    "gunCues": 8,
+    "cueErrors": [],
+    "scoreUnchanged": true
+  },
+  {
+    "role": "FL_GUNNER",
+    "delay": 2000,
+    "maxGrip": 2.5341311739065124e-15,
+    "maxBoneError": 3.3306690738754696e-16,
+    "maxGunStep": 0.1504541267449519,
+    "minGunClear": 0.007301576275282828,
+    "minSupportClear": 0.3432575706351907,
+    "minJackClear": 0.2964101164824918,
+    "minHeadHand": 0.5653110526711123,
+    "spins": {
+      "FL_GUNNER/loosen": 107,
+      "FR_GUNNER/loosen": 7,
+      "RL_GUNNER/loosen": 7,
+      "RR_GUNNER/loosen": 7,
+      "FL_GUNNER/tighten": 101,
+      "FR_GUNNER/tighten": 55,
+      "RL_GUNNER/tighten": 55,
+      "RR_GUNNER/tighten": 55
+    },
+    "rotations": {
+      "FL_GUNNER/loosen": 107,
+      "FR_GUNNER/loosen": 7,
+      "RL_GUNNER/loosen": 7,
+      "RR_GUNNER/loosen": 7,
+      "FL_GUNNER/tighten": 101,
+      "FR_GUNNER/tighten": 55,
+      "RL_GUNNER/tighten": 55,
+      "RR_GUNNER/tighten": 55
+    },
+    "reversals": {
+      "FL_GUNNER": 3,
+      "FR_GUNNER": 3,
+      "RL_GUNNER": 3,
+      "RR_GUNNER": 3
+    },
+    "worstGun": {
+      "clock": 12960,
+      "pair": "FR_GUNNER/FR_WHEEL_OFF",
+      "clearance": 0.007301576275282828,
+      "a": [
+        2.3094749968824044,
+        0.075,
+        -0.8768780545439472
+      ],
+      "b": [
+        2.0547857142857144,
+        0.075,
+        -0.7439285714285715
+      ],
+      "radii": [
+        0.14,
+        0.14
+      ],
+      "aRoot": [
+        2.5610487591969076,
+        0,
+        -1.0302151289921326
+      ],
+      "bRoot": [
+        2.0384285714285717,
+        0,
+        -0.5597142857142858
+      ],
+      "stance": 0.48883900735752595
+    },
+    "worstSupport": {
+      "clock": 15400,
+      "pair": "RL_WHEEL_ON/-1",
+      "clearance": 0.3432575706351907
+    },
+    "worstJack": {
+      "clock": 10140,
+      "clearance": 0.2964101164824918
+    },
+    "gunCues": 8,
+    "cueErrors": [],
+    "scoreUnchanged": true
+  }
+]
