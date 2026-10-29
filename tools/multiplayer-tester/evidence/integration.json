@@ -1,0 +1,18 @@
+{
+  "passed": [
+    "local token and origin checks",
+    "scan and room selection",
+    "five isolated identities",
+    "auto ready",
+    "two work stages exactly once",
+    "rematch auto ready and repeat action labels",
+    "running-round leave confirmation",
+    "stop during startup",
+    "private token absent from exported status",
+    "mobile layout"
+  ],
+  "members": 5,
+  "actions": 15,
+  "leaves": 5,
+  "errors": []
+}

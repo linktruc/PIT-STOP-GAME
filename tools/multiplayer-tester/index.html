@@ -1,0 +1,14 @@
+<!doctype html><html lang="vi"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Pit Stop · Multiplayer Tester</title><link rel="stylesheet" href="/style.css"><body>
+<main><header><span class="eyebrow">PIT STOP · LOCAL TEST TOOL</span><h1>Multiplayer Tester</h1><p>Nhiều người chơi mô phỏng, mỗi người một phiên riêng. Bạn giữ quyền bắt đầu lượt chơi.</p></header>
+<section class="card"><form id="form"><label class="wide">Link game / link mời<input id="url" type="url" required placeholder="https://…/#rooms"></label><button id="scan" type="button" class="secondary">Tải phòng</button>
+<label class="wide">Phòng đang chờ<select id="rooms"><option value="">Chọn sau khi tải phòng, hoặc nhập tên bên dưới</option></select></label>
+<label>Tên phòng<input id="room" required maxlength="40" placeholder="Ví dụ: test"></label><label>Host (khi trùng tên phòng)<input id="host" maxlength="24" placeholder="Không bắt buộc"></label>
+<label>Số phiên<input id="count" type="number" min="1" max="14" value="5" required></label><label>Tiền tố tên<input id="prefix" value="Test Crew" maxlength="20" required></label>
+<label>Phản ứng nhanh nhất (ms)<input id="min" type="number" min="30" max="15000" value="450" required></label><label>Phản ứng chậm nhất (ms)<input id="max" type="number" min="30" max="15000" value="1100" required></label>
+<label class="check wide"><input id="visible" type="checkbox"> Hiện cửa sổ trình duyệt của các phiên test</label>
+<div class="wide actions"><button id="start" type="submit">Bắt đầu test</button><button id="stop" type="button" class="danger" disabled>Dừng và rời phòng</button></div></form>
+<p class="hint">Tạo phòng trong game trước. Đợi đủ phiên Ready ở đây rồi bấm Start round trong game. Role do máy chủ phân công. Dừng sẽ cho các phiên rời phòng; lượt đang chạy có thể bị hủy theo luật game.</p></section>
+<div class="status" role="status"><i id="dot"></i><strong id="status">Đang kết nối công cụ…</strong><span id="summary"></span></div><p id="error" role="alert"></p>
+<section class="card"><h2>Người chơi mô phỏng</h2><div class="table-wrap"><table><thead><tr><th>Tên</th><th>Role</th><th>Trạng thái</th><th>Action</th><th>RPC gần nhất</th></tr></thead><tbody id="players"><tr><td colspan="5">Chưa có phiên test.</td></tr></tbody></table></div><p class="hint">RPC là thời gian gửi/nhận request, có gồm đường mạng và máy chủ. Các phiên dùng bản đồ 2D nhẹ để giảm tải máy; màn hình game của bạn vẫn dùng 3D.</p></section>
+<section class="card"><div class="row"><h2>Nhật ký</h2><button id="export" class="secondary">Lưu log JSON</button></div><pre id="log" aria-live="off"></pre></section>
+<footer><span>Đóng tab điều khiển không tự dừng các phiên. Dùng “Thoát app” khi xong.</span><button id="quit" class="secondary">Thoát app</button></footer></main><script type="module" src="/app.js"></script></body></html>

@@ -1,0 +1,1 @@
+{"name":"pit-stop-multiplayer-tester","version":"1.0.0","private":true,"type":"module","scripts":{"start":"node server.mjs","test":"node --test tests/*.test.mjs"},"dependencies":{"playwright-core":"1.62.1"}}
