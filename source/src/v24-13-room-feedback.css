@@ -1,0 +1,5 @@
+.host-control-note{grid-column:1/-1;margin:0;text-align:center;font-size:10px;line-height:1.25;color:#b4c6cf}
+.host-control-note[data-host=true]{color:#f3d48b}
+.result-overlay>.host-control-note{margin-top:7px;text-align:left}
+.crew-lockout-tag{white-space:nowrap}
+@media(max-width:600px),(max-height:560px){.view-crew .host-control-note{display:block;font-size:9px;line-height:12px}.view-crew .result-overlay>.host-control-note{margin-top:4px}}

@@ -1,0 +1,955 @@
+{
+  "report": [
+    {
+      "quality": "high",
+      "mode": "overview",
+      "crew": [
+        {
+          "role": "FL_GUNNER",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "FL_WHEEL_OFF",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "FL_WHEEL_ON",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "FR_GUNNER",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "FR_WHEEL_OFF",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "FR_WHEEL_ON",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "RL_GUNNER",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "RL_WHEEL_OFF",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "RL_WHEEL_ON",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "RR_GUNNER",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "RR_WHEEL_OFF",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "RR_WHEEL_ON",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "FRONT_JACK",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "REAR_JACK",
+          "human": true,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "RELEASE_CONTROLLER",
+          "human": true,
+          "humanWaiting": false,
+          "remaining": 1000,
+          "locked": true,
+          "humanVisible": false,
+          "redVisible": true,
+          "bodyRed": true
+        }
+      ],
+      "labels": [
+        "LOCKOUT 1.0s"
+      ]
+    },
+    {
+      "quality": "high",
+      "mode": "first-person",
+      "crew": [
+        {
+          "role": "FL_GUNNER",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "FL_WHEEL_OFF",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "FL_WHEEL_ON",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "FR_GUNNER",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "FR_WHEEL_OFF",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "FR_WHEEL_ON",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "RL_GUNNER",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "RL_WHEEL_OFF",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "RL_WHEEL_ON",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "RR_GUNNER",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "RR_WHEEL_OFF",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "RR_WHEEL_ON",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "FRONT_JACK",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "REAR_JACK",
+          "human": true,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "RELEASE_CONTROLLER",
+          "human": true,
+          "humanWaiting": false,
+          "remaining": 1000,
+          "locked": true,
+          "humanVisible": false,
+          "redVisible": true,
+          "bodyRed": true
+        }
+      ],
+      "labels": [
+        "LOCKOUT 1.0s"
+      ]
+    },
+    {
+      "quality": "high",
+      "mode": "third-person",
+      "crew": [
+        {
+          "role": "FL_GUNNER",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "FL_WHEEL_OFF",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "FL_WHEEL_ON",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "FR_GUNNER",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "FR_WHEEL_OFF",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "FR_WHEEL_ON",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "RL_GUNNER",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "RL_WHEEL_OFF",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "RL_WHEEL_ON",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "RR_GUNNER",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "RR_WHEEL_OFF",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "RR_WHEEL_ON",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "FRONT_JACK",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "REAR_JACK",
+          "human": true,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "RELEASE_CONTROLLER",
+          "human": true,
+          "humanWaiting": false,
+          "remaining": 1000,
+          "locked": true,
+          "humanVisible": false,
+          "redVisible": true,
+          "bodyRed": true
+        }
+      ],
+      "labels": []
+    },
+    {
+      "quality": "low",
+      "mode": "overview",
+      "crew": [
+        {
+          "role": "FL_GUNNER",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "FL_WHEEL_OFF",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "FL_WHEEL_ON",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "FR_GUNNER",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "FR_WHEEL_OFF",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "FR_WHEEL_ON",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "RL_GUNNER",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "RL_WHEEL_OFF",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "RL_WHEEL_ON",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "RR_GUNNER",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "RR_WHEEL_OFF",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "RR_WHEEL_ON",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "FRONT_JACK",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "REAR_JACK",
+          "human": true,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "RELEASE_CONTROLLER",
+          "human": true,
+          "humanWaiting": false,
+          "remaining": 1000,
+          "locked": true,
+          "humanVisible": false,
+          "redVisible": true,
+          "bodyRed": true
+        }
+      ],
+      "labels": [
+        "LOCKOUT 1.0s"
+      ]
+    },
+    {
+      "quality": "low",
+      "mode": "first-person",
+      "crew": [
+        {
+          "role": "FL_GUNNER",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "FL_WHEEL_OFF",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "FL_WHEEL_ON",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "FR_GUNNER",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "FR_WHEEL_OFF",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "FR_WHEEL_ON",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "RL_GUNNER",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "RL_WHEEL_OFF",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "RL_WHEEL_ON",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "RR_GUNNER",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "RR_WHEEL_OFF",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "RR_WHEEL_ON",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "FRONT_JACK",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "REAR_JACK",
+          "human": true,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "RELEASE_CONTROLLER",
+          "human": true,
+          "humanWaiting": false,
+          "remaining": 1000,
+          "locked": true,
+          "humanVisible": false,
+          "redVisible": true,
+          "bodyRed": true
+        }
+      ],
+      "labels": [
+        "LOCKOUT 1.0s"
+      ]
+    },
+    {
+      "quality": "low",
+      "mode": "third-person",
+      "crew": [
+        {
+          "role": "FL_GUNNER",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "FL_WHEEL_OFF",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "FL_WHEEL_ON",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "FR_GUNNER",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "FR_WHEEL_OFF",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "FR_WHEEL_ON",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "RL_GUNNER",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "RL_WHEEL_OFF",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "RL_WHEEL_ON",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "RR_GUNNER",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "RR_WHEEL_OFF",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "RR_WHEEL_ON",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "FRONT_JACK",
+          "human": false,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "REAR_JACK",
+          "human": true,
+          "humanWaiting": false,
+          "remaining": 0,
+          "locked": false,
+          "humanVisible": false,
+          "redVisible": false,
+          "bodyRed": false
+        },
+        {
+          "role": "RELEASE_CONTROLLER",
+          "human": true,
+          "humanWaiting": false,
+          "remaining": 1000,
+          "locked": true,
+          "humanVisible": false,
+          "redVisible": true,
+          "bodyRed": true
+        }
+      ],
+      "labels": []
+    }
+  ],
+  "errors": []
+}

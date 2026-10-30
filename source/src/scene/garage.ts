@@ -387,7 +387,7 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
       if(Math.hypot(event.clientX-down.x,event.clientY-down.y)>4)lookGestureMoved=true;
       const other=[...lookPointers.entries()].find(([id])=>id!==event.pointerId)?.[1];
       if(other){const before=Math.hypot(previous.x-other.x,previous.y-other.y),after=Math.hypot(event.clientX-other.x,event.clientY-other.y);if(after>1)playerCameraRig.zoom(before/after);}
-      else playerCameraRig.drag(event.clientX-previous.x,event.clientY-previous.y);
+      else playerCameraRig.drag(event.clientX-previous.x,event.clientY-previous.y,event.pointerType);
       lookPointers.set(event.pointerId,{x:event.clientX,y:event.clientY});renderInvalidated=true;event.preventDefault();
     };
     const endLook=(event:PointerEvent)=>{lookPointers.delete(event.pointerId);if(renderer.domElement.hasPointerCapture(event.pointerId))renderer.domElement.releasePointerCapture(event.pointerId);};
@@ -569,7 +569,7 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
         actor.selectionRing.scale.setScalar(highlight.locked ? .61 : .55);
         actor.ring.visible = isYou; actor.glow.visible = isYou; actor.ring.scale.setScalar(.48 + (available && !motion.matches ? Math.sin(now * .005) * .025 : 0));
         (actor.glow.material as THREE.MeshBasicMaterial).opacity = available ? .24 : complete ? .08 : .13;
-        actor.suit.emissive.set(isYou ? '#a76a03' : isSelected ? '#12655f' : '#000000'); actor.suit.emissiveIntensity = isYou && available ? .24 : isYou ? .1 : isSelected ? .32 : 0;
+        actor.suit.emissive.set(highlight.locked ? '#ff1028' : isYou ? '#a76a03' : isSelected ? '#12655f' : '#000000'); actor.suit.emissiveIntensity = highlight.locked ? .8 : isYou && available ? .24 : isYou ? .1 : isSelected ? .32 : 0;
         group.position.set(spec.x, 0, spec.z); group.rotation.y = spec.angle ?? 0; body.position.y = motion.matches ? 0 : Math.sin(t * 1.4) * .012; body.rotation.set(0, 0, 0); legs.forEach(leg => { leg.rotation.set(0, 0, 0); });
         actor.forearms.forEach(fore => fore.rotation.set(0, 0, 0));
         arms.forEach((arm, side) => { arm.rotation.set(.15+(motion.matches?0:Math.sin(t*1.6+side)*.025),0,side===0?-.09:.09); });
@@ -651,7 +651,7 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
         if(marker.current&&cameraMode==='first-person')marker.current.style.visibility='hidden';
       }
       lockoutBadges.forEach((label,i)=>{if(!label)return;const h=crewHighlight(room,actors[i].spec.role,highlightNow);if(!h.locked){label.style.display='none';return;}
-        const point=world(actors[i].group,new THREE.Vector3(0,1.83,0)).project(camera),x=(point.x*.5+.5)*element.clientWidth,y=(-point.y*.5+.5)*element.clientHeight;
+        const point=world(actors[i].body,new THREE.Vector3(0,1.68,0)).project(camera),x=(point.x*.5+.5)*element.clientWidth,y=(-point.y*.5+.5)*element.clientHeight;
         label.style.display=point.z>-1&&point.z<1&&x>=0&&x<=element.clientWidth&&y>=0&&y<=element.clientHeight?'block':'none';label.style.left=x+'px';label.style.top=y+'px';const text=`LOCKOUT ${(Math.ceil(h.remaining/100)/10).toFixed(1)}s`;if(label.textContent!==text)label.textContent=text;
       });
       if(sceneDebug)element.dataset.playerCamera=JSON.stringify({mode:cameraMode,role:followed?.spec.role,position:camera.position.toArray(),fov:camera.fov});
@@ -790,7 +790,7 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
         }
       }
       if (sceneDebug) {
-      element.dataset.crewHighlights=JSON.stringify(actors.filter(a=>a.spec.role).map(a=>({role:a.spec.role,...crewHighlight(room,a.spec.role,highlightNow),humanVisible:a.humanRing.visible,redVisible:a.selectionRing.visible&&(a.selectionRing.material as THREE.MeshBasicMaterial).color.getHexString()==='ff2d40'})));
+      element.dataset.crewHighlights=JSON.stringify(actors.filter(a=>a.spec.role).map(a=>({role:a.spec.role,...crewHighlight(room,a.spec.role,highlightNow),humanVisible:a.humanRing.visible,redVisible:a.selectionRing.visible&&(a.selectionRing.material as THREE.MeshBasicMaterial).color.getHexString()==='ff2d40',bodyRed:a.suit.emissive.getHexString()==='ff1028'&&a.suit.emissiveIntensity>0})));
       const probeCache=new Map(actors.map(actor=>{
         const points=[.61,.84,1.03,1.29].map((y,i)=>({point:world(actor.body,new THREE.Vector3(0,y,0)),radius:i===3?.235:.21}));
         if(actor.kneelingLegs)for(const leg of actor.kneelingLegs)points.push({point:world(leg.foot),radius:.14},{point:world(leg.knee),radius:.095});

@@ -1,4 +1,8 @@
-# Current release: V24.12
+# Current release: V24.13
+
+See [cross-device cameras and room feedback notes](docs/V24_13_CROSS_DEVICE_ROOM_FEEDBACK.md). This release adds no SQL migration.
+
+# Previous release: V24.12
 
 See [camera, Watch Live, highlight and offline cleanup notes](docs/V24_12_CAMERAS_WATCH_PRESENCE.md). Apply `supabase/V24_12_OFFLINE_CLEANUP.sql` in Supabase SQL Editor once to expire offline memberships and schedule unattended cleanup.
 

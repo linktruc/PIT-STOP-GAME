@@ -1,0 +1,130 @@
+[
+  {
+    "mode": "first-person",
+    "pointer": "mouse",
+    "dx": 150,
+    "dy": 0,
+    "yaw": 0.7499999999999998,
+    "pitch": 0
+  },
+  {
+    "mode": "first-person",
+    "pointer": "mouse",
+    "dx": -150,
+    "dy": 0,
+    "yaw": -0.7499999999999998,
+    "pitch": 0
+  },
+  {
+    "mode": "first-person",
+    "pointer": "mouse",
+    "dx": 0,
+    "dy": 30,
+    "yaw": 0,
+    "pitch": -0.15000000000000013
+  },
+  {
+    "mode": "first-person",
+    "pointer": "mouse",
+    "dx": 0,
+    "dy": -30,
+    "yaw": 0,
+    "pitch": 0.15000000000000008
+  },
+  {
+    "mode": "first-person",
+    "pointer": "touch",
+    "dx": 150,
+    "dy": 0,
+    "yaw": -0.75,
+    "pitch": 0
+  },
+  {
+    "mode": "first-person",
+    "pointer": "touch",
+    "dx": -150,
+    "dy": 0,
+    "yaw": 0.7500000000000002,
+    "pitch": 0
+  },
+  {
+    "mode": "first-person",
+    "pointer": "touch",
+    "dx": 0,
+    "dy": 30,
+    "yaw": 0,
+    "pitch": 0.15
+  },
+  {
+    "mode": "first-person",
+    "pointer": "touch",
+    "dx": 0,
+    "dy": -30,
+    "yaw": 0,
+    "pitch": -0.15000000000000002
+  },
+  {
+    "mode": "third-person",
+    "pointer": "mouse",
+    "dx": 150,
+    "dy": 0,
+    "yaw": -0.7499999999999998,
+    "pitch": 0
+  },
+  {
+    "mode": "third-person",
+    "pointer": "mouse",
+    "dx": -150,
+    "dy": 0,
+    "yaw": 0.7499999999999998,
+    "pitch": 0
+  },
+  {
+    "mode": "third-person",
+    "pointer": "mouse",
+    "dx": 0,
+    "dy": 30,
+    "yaw": 0,
+    "pitch": 0.15000000000000013
+  },
+  {
+    "mode": "third-person",
+    "pointer": "mouse",
+    "dx": 0,
+    "dy": -30,
+    "yaw": 0,
+    "pitch": -0.15000000000000013
+  },
+  {
+    "mode": "third-person",
+    "pointer": "touch",
+    "dx": 150,
+    "dy": 0,
+    "yaw": 0.7500000000000002,
+    "pitch": 0
+  },
+  {
+    "mode": "third-person",
+    "pointer": "touch",
+    "dx": -150,
+    "dy": 0,
+    "yaw": -0.75,
+    "pitch": 0
+  },
+  {
+    "mode": "third-person",
+    "pointer": "touch",
+    "dx": 0,
+    "dy": 30,
+    "yaw": 0,
+    "pitch": 0.1499999999999999
+  },
+  {
+    "mode": "third-person",
+    "pointer": "touch",
+    "dx": 0,
+    "dy": -30,
+    "yaw": 0,
+    "pitch": -0.15000000000000002
+  }
+]

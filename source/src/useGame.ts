@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { api } from './api';
 import type { Snapshot } from './types';
 import { nextSyncDelay, RefreshCoalescer } from './syncPolicy';
+import { roomNotices } from './roomNotices';
 
 const initial: Snapshot = { rooms: [], leaderboard: [], serverNow: Date.now(), identity: { playerId: null, isAdmin: false } };
 export function useGame(watching = false) {
@@ -71,13 +72,8 @@ export function useGame(watching = false) {
     if (prior && !room && !intentionalLeave.current && ++missing.current < 2) { coalescer.current?.request(); return; }
     missing.current = 0;
     if (prior && !room && !intentionalLeave.current) setNotice('Your crew membership ended. You may have been removed or exceeded the 5-minute offline limit.');
-    if (prior && room?.id === prior.id) {
-      const before = prior.players.find(player => player.id === old.identity.playerId);
-      const after = room.players.find(player => player.id === next.identity.playerId);
-      if (after?.role !== before?.role && !room.solo) setNotice(after?.roleNotice ?? 'Your role changed to keep a human jack in the crew. Check your role and mark Ready again.');
-      else if (after?.roleNotice && after.roleNotice !== before?.roleNotice) setNotice(after.roleNotice);
-      if (prior.hostId !== room.hostId) setNotice(`Host transferred to ${room.players.find(player => player.id === room.hostId)?.nickname ?? 'another crew member'}.`);
-    }
+    const messages=roomNotices(prior,room,next.identity.playerId);
+    if(messages.length)setNotice(messages.join(' '));
     const unknown = unresolved.current;
     if (unknown && (next.rooms.find(item => item.id === unknown.room)?.round?.tasks.find(task => task.id === unknown.task) || !next.rooms.some(item => item.id === unknown.room))) { unresolved.current = null; setBusy(''); }
     latest.current = next.serverNow; if(!pushed)offset.current = next.local ? 0 : next.serverNow - (sentAt + Date.now()) / 2;
@@ -87,7 +83,7 @@ export function useGame(watching = false) {
   const schedule = useCallback(() => {
     if (poll.current) clearTimeout(poll.current);
     if (!alive.current) return;
-    const delay = document.hidden ? 60000 : nextSyncDelay(snapshot.current, observer.current, Date.now() + offset.current, failures.current);
+    const delay = document.hidden ? 60000 : nextSyncDelay(snapshot.current, observer.current, Date.now() + offset.current, failures.current,Math.random,!api.hasBackend||!!snapshot.current.local||api.realtimeConnected);
     poll.current = setTimeout(() => { void refreshRef.current(true); }, delay);
   }, []);
   const refresh = useCallback(async (heartbeat = false) => {

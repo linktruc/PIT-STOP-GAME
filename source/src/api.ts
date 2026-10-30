@@ -36,6 +36,7 @@ export function publicUpdate(payload:{new?:Record<string,unknown>}):PublicUpdate
 // Invalidate older reads when Auth or destructive global data changes. This is
 // transport ordering only; the database remains the source of authorization.
 let globalRevision = 0;
+const realtimeChannels=new Set<string>();
 let authFlight: Promise<void> | null = null;
 async function ensurePlayer(): Promise<void> {
   if (!client) return;
@@ -78,6 +79,7 @@ export const api = {
   isConfigured: configured,
   /** Administration always targets the real Supabase project, including during Solo. */
   hasBackend: Boolean(client),
+  get realtimeConnected(){return realtimeChannels.size>0;},
   multiplayerUnavailableReason: configurationError ?? (!client ? 'Online multiplayer is unavailable. Configure the Supabase project URL and public key in config.js.' : null),
   get globalRevision() { return globalRevision; },
   getGlobalState: globalSnapshot,
@@ -126,11 +128,13 @@ export const api = {
   subscribe: (callback: (update?:PublicUpdate) => void): (() => void) => {
     listeners.add(callback);
     if (!client) return () => { listeners.delete(callback); };
-    const channel = client.channel(`pit-global-${crypto.randomUUID()}`)
-      .on('postgres_changes', { event: '*', schema: 'public', table: 'pit_public_state' }, payload=>callback(publicUpdate(payload)))
-      .subscribe((status) => { if (status === 'SUBSCRIBED' || status === 'CHANNEL_ERROR' || status === 'TIMED_OUT') callback(); });
-    const authSubscription = client.auth.onAuthStateChange(() => callback());
-    return () => { listeners.delete(callback); void client!.removeChannel(channel); authSubscription.data.subscription.unsubscribe(); };
+    let listening=true;
+    const channelId=`pit-global-${crypto.randomUUID()}`;
+    const channel = client.channel(channelId)
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'pit_public_state' }, payload=>{if(listening)callback(publicUpdate(payload));})
+      .subscribe((status) => { if(!listening)return;if(status==='SUBSCRIBED')realtimeChannels.add(channelId);else realtimeChannels.delete(channelId);if (status === 'SUBSCRIBED' || status === 'CHANNEL_ERROR' || status === 'TIMED_OUT' || status==='CLOSED') callback(); });
+    const authSubscription = client.auth.onAuthStateChange(() => {if(listening)callback();});
+    return () => { listening=false;listeners.delete(callback); realtimeChannels.delete(channelId);void client!.removeChannel(channel); authSubscription.data.subscription.unsubscribe(); };
   },
   signInAdmin: async (username: string, password: string): Promise<void> => {
     checkConfig();

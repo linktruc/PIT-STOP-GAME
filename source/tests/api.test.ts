@@ -51,6 +51,16 @@ describe('production transport identity boundaries', () => {
     expect(mock.rpc.mock.calls.map((call) => call[0])).toEqual(['pit_state', 'pit_call']);
   });
 
+  it('tracks realtime health through errors, reconnect and unsubscribe without stale callbacks',async()=>{
+    let status:(value:string)=>void=()=>{};
+    const channel={on:vi.fn(()=>channel),subscribe:vi.fn(callback=>{status=callback;return channel;})};
+    mock.createClient.mockReturnValue({channel:()=>channel,removeChannel:vi.fn(),auth:{onAuthStateChange:()=>({data:{subscription:{unsubscribe:vi.fn()}}})}});
+    const {api}=await import('../src/api'),callback=vi.fn(),stop=api.subscribe(callback);
+    expect(api.realtimeConnected).toBe(false);status('SUBSCRIBED');expect(api.realtimeConnected).toBe(true);
+    status('CHANNEL_ERROR');expect(api.realtimeConnected).toBe(false);status('SUBSCRIBED');expect(api.realtimeConnected).toBe(true);
+    stop();expect(api.realtimeConnected).toBe(false);callback.mockClear();status('SUBSCRIBED');status('CLOSED');expect(api.realtimeConnected).toBe(false);expect(callback).not.toHaveBeenCalled();
+  });
+
   it('authenticates playing commands and sends no client authority over timestamp or identity', async () => {
     const { api } = await import('../src/api');
     await api.call('action', 'room', { taskId: 'FRONT_LIFT', requestId: 'request' });
