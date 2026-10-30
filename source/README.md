@@ -1,4 +1,12 @@
-# Current release: V24.13
+# Current release: V24.15
+
+See [natural drag camera directions](docs/V24_15_DRAG_DIRECTION.md). Netlify packaging uses the supplied V24.15 source. No SQL migration is introduced.
+
+# Previous release: V24.14
+
+See [unified camera drag controls](docs/V24_14_UNIFIED_PLAYER_CAMERA_DRAG.md). Cam 1 and Cam 3 now use the same mouse/touch drag direction and size-adjusted sensitivity. No SQL migration required.
+
+# Previous release: V24.13
 
 See [cross-device cameras and room feedback notes](docs/V24_13_CROSS_DEVICE_ROOM_FEEDBACK.md). This release adds no SQL migration.
 

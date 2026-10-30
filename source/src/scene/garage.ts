@@ -387,7 +387,7 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
       if(Math.hypot(event.clientX-down.x,event.clientY-down.y)>4)lookGestureMoved=true;
       const other=[...lookPointers.entries()].find(([id])=>id!==event.pointerId)?.[1];
       if(other){const before=Math.hypot(previous.x-other.x,previous.y-other.y),after=Math.hypot(event.clientX-other.x,event.clientY-other.y);if(after>1)playerCameraRig.zoom(before/after);}
-      else playerCameraRig.drag(event.clientX-previous.x,event.clientY-previous.y,event.pointerType);
+      else playerCameraRig.drag(event.clientX-previous.x,event.clientY-previous.y,event.pointerType,renderer.domElement.clientHeight);
       lookPointers.set(event.pointerId,{x:event.clientX,y:event.clientY});renderInvalidated=true;event.preventDefault();
     };
     const endLook=(event:PointerEvent)=>{lookPointers.delete(event.pointerId);if(renderer.domElement.hasPointerCapture(event.pointerId))renderer.domElement.releasePointerCapture(event.pointerId);};

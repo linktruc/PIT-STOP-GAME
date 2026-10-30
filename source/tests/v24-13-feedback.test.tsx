@@ -8,16 +8,16 @@ import {createSoloRound} from '../src/engine';
 import type {Room,Snapshot,Player} from '../src/types';
 const player=(id:string,role:Player['role']='FRONT_JACK'):Player=>({id,role,nickname:id,ready:false,joinedAt:0});
 const room=(players:Player[]=[player('host'),player('you','FL_GUNNER')]):Room=>({id:'room',teamId:'team',hostId:'host',name:'Test',code:'TEST',color:'#f4493b',status:'WAITING',round:null,players,updatedAt:0});
-describe('Device-specific free look',()=>{
+describe('Unified drag-the-scene free look',()=>{
  it.each([
-  ['first-person','mouse',1,-1],['first-person','touch',-1,1],
-  ['third-person','mouse',-1,1],['third-person','touch',1,1],
- ] as const)('%s / %s uses requested axes for every swipe direction',(mode,pointer,xSign,ySign)=>{
+  ['first-person','mouse'],['first-person','touch'],
+  ['third-person','mouse'],['third-person','touch'],
+ ] as const)('%s / %s uses drag-scene horizontal axes for every swipe direction',(mode,pointer)=>{
   for(const [dx,dy] of [[100,0],[-100,0],[0,30],[0,-30]]){
    const rig=new PlayerCameraRig(),root={x:0,y:0,z:0},head={x:0,y:1.3,z:0},forward={x:0,y:0,z:-1};
    const a=rig.sample(mode,root,head,forward,0,'you');rig.drag(dx,dy,pointer);
    let b=a;for(let t=16;t<=800;t+=16)b=rig.sample(mode,root,head,forward,t,'you');
-   expect(b.yaw-a.yaw).toBeCloseTo(dx*.005*xSign,3);expect(b.pitch-a.pitch).toBeCloseTo(dy*.005*ySign,3);
+   expect(b.yaw-a.yaw).toBeCloseTo(-dx*.005,3);expect(b.pitch-a.pitch).toBeCloseTo(-dy*.005,3);
    rig.turn(.2,0);for(let t=816;t<=1600;t+=16)rig.sample(mode,root,head,forward,t,'you');
    expect(rig.sample(mode,root,head,forward,1616,'you').yaw).toBeGreaterThan(b.yaw+.15);
   }

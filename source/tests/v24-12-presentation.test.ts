@@ -5,10 +5,10 @@ import {crewHighlight} from '../src/scene/highlights';
 import type {Room} from '../src/types';
 const root={x:0,y:0,z:0},head={x:0,y:1.3,z:0},forward={x:0,y:0,z:-1};
 describe('V24.12 presentation',()=>{
- it.each(['first-person','third-person'] as const)('%s keeps keyboard turning with current mouse drag axes',mode=>{
+ it.each(['first-person','third-person'] as const)('%s keeps keyboard turning with consistent non-inverted mouse drag axes',mode=>{
   const rig=new PlayerCameraRig(),a=rig.sample(mode,root,head,forward,0,'you');rig.drag(100,30);
   let b=a;for(let t=16;t<=1000;t+=16)b=rig.sample(mode,root,head,forward,t,'you');
-  expect(b.yaw-a.yaw).toBeCloseTo(mode==='third-person'?-.5:.5,3);expect(b.pitch-a.pitch).toBeCloseTo(mode==='third-person'?.15:-.15,3);
+  expect(b.yaw-a.yaw).toBeCloseTo(-.5,3);expect(b.pitch-a.pitch).toBeCloseTo(-.15,3);
   rig.turn(.2,.1);let c=b;for(let t=1000;t<=1600;t+=16)c=rig.sample(mode,root,head,forward,t,'you');expect(c.yaw).toBeGreaterThan(b.yaw);
  });
  it.each([60,144])('keeps fair preview cadence at %i Hz without refresh-rate aliasing',hz=>{
