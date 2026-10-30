@@ -17,6 +17,7 @@ export class PlayerCameraRig {
  private yaw=new SmoothValue();private pitch=new SmoothValue();private distance=new SmoothValue(4.2);
  private wantedYaw=0;private wantedPitch=0;private wantedDistance=4.2;
  reset(){this.at=null;}
+ drag(dx:number,dy:number){this.turn(dx*.005,-dy*.005);}
  turn(horizontal:number,vertical:number){this.wantedYaw+=horizontal;this.wantedPitch=Math.max(this.mode==='first-person'?-1.25:.12,Math.min(this.mode==='first-person'?1.25:1.48,this.wantedPitch+vertical));}
  zoom(scale:number){if(this.mode==='third-person')this.wantedDistance=Math.max(1.7,Math.min(7.5,this.wantedDistance*scale));}
  sample(mode:Exclude<PlayerCameraMode,'overview'>,root:Point,head:Point,forward:Point,now:number,identity:string){

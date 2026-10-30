@@ -148,7 +148,7 @@ alter table pit_private.members alter column role set default '';
 alter table pit_private.members add column if not exists role_notice text;
 create table if not exists pit_private.settings (
   id boolean primary key default true check(id),
-  lobby_grace_ms integer not null default 900000 check(lobby_grace_ms between 180000 and 86400000),
+  lobby_grace_ms integer not null default 300000 check(lobby_grace_ms between 180000 and 86400000),
   disconnected_after_ms integer not null default 45000 check(disconnected_after_ms between 15000 and 180000)
 );
 insert into pit_private.settings(id) values(true) on conflict do nothing;
@@ -484,6 +484,18 @@ begin
 end
 $fn$;
 
+-- Offline membership expires in every room phase, before a returning client renews it.
+create or replace function pit_private.expire_offline_members(p_now numeric) returns void
+language plpgsql set search_path = pg_catalog
+as $fn$
+declare v_member record;
+begin
+  for v_member in select m.id from pit_private.members m
+    where m.active and m.last_seen_at<=p_now-300000 order by m.joined_at,m.id
+  loop perform pit_private.remove_member(v_member.id,'DISCONNECTED',p_now); end loop;
+end
+$fn$;
+
 create or replace function public.pit_call(p_op text,p_room uuid default null,p_payload jsonb default '{}'::jsonb) returns jsonb
 language plpgsql security definer set search_path = pg_catalog set row_security = off
 as $fn$
@@ -501,14 +513,10 @@ begin
   if v_uid is null and p_op<>'heartbeat' then raise exception 'Sign in before joining or playing'; end if;
   select exists(select 1 from pit_private.admins where user_id=v_uid) into v_admin;
 
+  perform pit_private.expire_offline_members(v_now);
   if v_uid is not null and p_room is not null then
     update pit_private.members set last_seen_at=v_now where user_id=v_uid and room_id=p_room and active;
   end if;
-  -- An unattended waiting host cannot strand a room. Running players keep their
-  -- exact roles when disconnected; reconnect can recover without a score change.
-  for v_row in select m.id from pit_private.members m join pit_private.rooms r on r.id=m.room_id
-    where m.active and r.status='WAITING' and m.last_seen_at<v_now-coalesce((select lobby_grace_ms from pit_private.settings where id),900000) order by m.joined_at,m.id
-  loop perform pit_private.remove_member(v_row.id,'DISCONNECTED',v_now); end loop;
   for v_row in select id from pit_private.rounds where status in ('COUNTDOWN','RUNNING') order by id
   loop perform pit_private.reconcile_round(v_row.id,v_now); end loop;
 
@@ -1018,6 +1026,42 @@ begin
   end if;
 end
 $fn$;
+
+-- V24.12: autonomous cleanup also runs when nobody opens the game.
+alter table pit_private.settings alter column lobby_grace_ms set default 300000;
+update pit_private.settings set lobby_grace_ms=300000 where id;
+
+create or replace function pit_private.cleanup_presence() returns void
+language plpgsql security definer set search_path = pg_catalog set row_security = off
+as $fn$
+declare v_now numeric; v_snapshot jsonb;
+begin
+  perform pg_advisory_xact_lock(734012981);
+  v_now:=pit_private.clock_ms();
+  perform pit_private.expire_offline_members(v_now);
+  v_snapshot:=pit_private.public_snapshot(v_now);
+  insert into public.pit_public_state(id,state,updated_at) values('global',v_snapshot,clock_timestamp())
+    on conflict(id) do update set state=excluded.state,updated_at=excluded.updated_at
+      where public.pit_public_state.state is distinct from excluded.state;
+end
+$fn$;
+revoke all on function pit_private.expire_offline_members(numeric) from public,anon,authenticated;
+revoke all on function pit_private.cleanup_presence() from public,anon,authenticated;
+
+-- Supabase SQL Editor (project owner): https://supabase.com/docs/guides/cron/install
+-- Local PostgreSQL runtimes without pg_cron still clean up on every public RPC.
+do $cron$
+begin
+  if exists(select 1 from pg_available_extensions where name='pg_cron') then
+    execute 'create extension if not exists pg_cron with schema pg_catalog';
+    execute $job$select cron.schedule('pit-offline-cleanup','* * * * *',
+      'select pit_private.cleanup_presence();')$job$;
+  else
+    raise notice 'pg_cron unavailable: enable Supabase Cron for unattended cleanup';
+  end if;
+end
+$cron$;
+select pit_private.cleanup_presence();
 
 -- Avoid changing any already-completed result or reassigning joined members.
 commit;

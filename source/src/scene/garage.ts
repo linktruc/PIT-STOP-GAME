@@ -11,13 +11,14 @@ import {DepartureMotion,releaseGesture} from './departure';
 import {GunnerMotion} from './gunnerMotion';
 import {PlayerCameraRig,type PlayerCameraMode} from './playerCamera';
 import {AxleMotion} from './axleMotion';
+import {crewHighlight} from './highlights';
 import {stabilizerExitPhase,stabilizerStation,rearJackApproach} from './staging';
 import {workDone,workPhase} from './work';
 import { departurePose, arrivalPose, isCrewTap } from './rig';
 import { buildPitLane, PIT_LANE_LAYOUT } from './environment';
 import { CREW, CORNER_POSITIONS, gunnerKneelingPose, supportCrewClear, supportHandAnchors, type Crew } from './crew';
 type KneelingLeg = {thigh:THREE.Mesh;shin:THREE.Mesh;foot:THREE.Mesh;knee:THREE.Mesh};
-type Actor = { spec: Crew; group: THREE.Group; body: THREE.Group; head:THREE.Group; arms: THREE.Group[]; legs: THREE.Group[]; kneelingLegs?:KneelingLeg[]; tool?: THREE.Group; socket?:THREE.Group; forearms: THREE.Group[]; hands: THREE.Mesh[]; carry: THREE.Group; selectionRing: THREE.Mesh; selectionGlow: THREE.Mesh; ring: THREE.Mesh; glow: THREE.Mesh; suit: THREE.MeshStandardMaterial };
+type Actor = { spec: Crew; group: THREE.Group; body: THREE.Group; head:THREE.Group; arms: THREE.Group[]; legs: THREE.Group[]; kneelingLegs?:KneelingLeg[]; tool?: THREE.Group; socket?:THREE.Group; forearms: THREE.Group[]; hands: THREE.Mesh[]; carry: THREE.Group; selectionRing: THREE.Mesh; selectionGlow: THREE.Mesh; humanRing:THREE.Mesh; ring: THREE.Mesh; glow: THREE.Mesh; suit: THREE.MeshStandardMaterial };
 type WheelCorner = { key: string; x: number; z: number; wheel: THREE.Group; old: THREE.Group; fresh: THREE.Group };
 
 export type CrewSelection = {name:string;role:string}|null;
@@ -177,7 +178,7 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
     const red = material('#ed242f', .38, .2); const darkRed = material('#a70f25', .5, .15); const white = material('#f3eee4', .4, .1);
     const graphite = material('#202a36', .56, .3); const rubber = material('#11171e', .96, .03); const metal = material('#9cabb4', .3, .72);
     const darkMetal = material('#3f505f', .5, .5); const black = material('#080e17', .22, .4); const gold = basic('#ffcf47');
-    const selectionCyan = basic('#6ce8d9'); const selectionWash = basic('#56ded3', .18);
+    const humanBlue=basic('#65d9ff');humanBlue.toneMapped=false;
     const boxGeo = new THREE.BoxGeometry(1, 1, 1); geometries.add(boxGeo);
     const sphereGeo = new THREE.IcosahedronGeometry(1, 1); geometries.add(sphereGeo);
     const cylinderGeo = new THREE.CylinderGeometry(1, 1, 1, 12); geometries.add(cylinderGeo);
@@ -341,9 +342,10 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
       const ring = mesh(ringGeo, gold, group, 0, .035, 0, .48, .48, .48); ring.rotation.x = -Math.PI / 2; ring.castShadow = false; ring.visible = false;
       const glow = mesh(cylinderGeo, basic('#ffd354', .12), group, 0, .035, 0, .47, .025, .47); glow.castShadow = false; glow.visible = false;
       ring.userData.animated = true; glow.userData.animated = true;
-      const carry = new THREE.Group(); carry.position.set(0, .72, -.66); body.add(carry); const selectionRing = mesh(ringGeo, selectionCyan, group, 0, .045, 0, .55, .55, .55); selectionRing.rotation.x = -Math.PI / 2; selectionRing.castShadow = false; selectionRing.visible = false; selectionRing.userData.animated = true;
-      const selectionGlow = mesh(cylinderGeo, selectionWash, group, 0, .04, 0, .54, .025, .54); selectionGlow.castShadow = false; selectionGlow.visible = false; selectionGlow.userData.animated = true;
-      return { spec, group, body, head, arms, forearms, hands, carry, legs, kneelingLegs, tool, socket, ring, glow, selectionRing, selectionGlow, suit };
+      const carry = new THREE.Group(); carry.position.set(0, .72, -.66); body.add(carry); const selectionRing = mesh(ringGeo, basic('#6ce8d9'), group, 0, .045, 0, .55, .55, .55); selectionRing.rotation.x = -Math.PI / 2; selectionRing.castShadow = false; selectionRing.visible = false; selectionRing.userData.animated = true;(selectionRing.material as THREE.MeshBasicMaterial).toneMapped=false;
+      const selectionGlow = mesh(cylinderGeo, basic('#56ded3',.18), group, 0, .04, 0, .54, .025, .54); selectionGlow.castShadow = false; selectionGlow.visible = false; selectionGlow.userData.animated = true;(selectionGlow.material as THREE.MeshBasicMaterial).toneMapped=false;
+      const humanRing=mesh(ringGeo,humanBlue,group,0,.03,0,.65,.65,.65);humanRing.rotation.x=-Math.PI/2;humanRing.castShadow=false;humanRing.visible=false;humanRing.userData.animated=true;
+      return { spec, group, body, head, arms, forearms, hands, carry, legs, kneelingLegs, tool, socket, ring, glow, selectionRing, selectionGlow, humanRing, suit };
     });
     // Batch static geometry per material inside each independently animated group.
     // All shoulder, hip, tool, wheel and jack pivots remain separate and editable.
@@ -369,6 +371,9 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
       const hit = mesh(boxGeo, basic('#ffffff', 0), actor.group, 0, .83, 0, .79, 1.75, .79);
       hit.userData.animated = true; hit.userData.actorIndex = index; hit.castShadow = false; return hit;
     });
+    const lockoutBadges=manual?[]:actors.map(actor=>{
+      if(!actor.spec.role)return null;const node=document.createElement('div');node.className='crew-lockout-tag';node.setAttribute('aria-hidden','true');node.style.cssText='display:none;position:absolute;z-index:8;pointer-events:none;color:#fff;background:#ad141f;border:1px solid #ff7070;padding:3px 6px;border-radius:5px;font:700 10px Arial,sans-serif;white-space:nowrap;transform:translate(-50%,-100%)';element.append(node);return node;
+    });
     let down = { x: 0, y: 0, time: 0 }; const raycaster = new THREE.Raycaster();
     const lookPointers=new Map<number,{x:number;y:number}>();let lookGestureMoved=false;
     const pointerDown = (event: PointerEvent) => {
@@ -382,7 +387,7 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
       if(Math.hypot(event.clientX-down.x,event.clientY-down.y)>4)lookGestureMoved=true;
       const other=[...lookPointers.entries()].find(([id])=>id!==event.pointerId)?.[1];
       if(other){const before=Math.hypot(previous.x-other.x,previous.y-other.y),after=Math.hypot(event.clientX-other.x,event.clientY-other.y);if(after>1)playerCameraRig.zoom(before/after);}
-      else playerCameraRig.turn(-(event.clientX-previous.x)*.005,(event.clientY-previous.y)*.005);
+      else playerCameraRig.drag(event.clientX-previous.x,event.clientY-previous.y);
       lookPointers.set(event.pointerId,{x:event.clientX,y:event.clientY});renderInvalidated=true;event.preventDefault();
     };
     const endLook=(event:PointerEvent)=>{lookPointers.delete(event.pointerId);if(renderer.domElement.hasPointerCapture(event.pointerId))renderer.domElement.releasePointerCapture(event.pointerId);};
@@ -456,6 +461,7 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
       lastPresentationTime=presentationTime; renderInvalidated=false;
       const now = presentationTime ?? sceneClock.read(frameNow, Date.now() + clockOffset);
       const workNow=now;
+      const highlightNow=presentationTime??Date.now()+clockOffset;
       const workTasks=new Map((room?.round?.tasks??[]).map(task=>[task.id,task]));
       const workComplete=(id:string)=>workDone(workTasks.get(id),workNow);
       const arrival = arrivalPose(room?.round?.goAt, now);
@@ -555,7 +561,12 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
         const ownTasks = roleTasks.get(spec.role??'')??noTasks;
         const available = arrival.arrived && ownTasks.some(task => task.enabledAt !== null && workNow >= task.enabledAt && (task.completedAt === null || workNow < task.completedAt)); const complete = ownTasks.length > 0 && ownTasks.every(task => workComplete(task.id));
         const t = now * .001 + index * .83; const isYou = !!spec.role && mine?.role === spec.role;
-        const isSelected = selectedActor.current === index && !isYou; actor.selectionRing.visible = isSelected; actor.selectionGlow.visible = isSelected;
+        const highlight=crewHighlight(room,spec.role,highlightNow),isSelected=selectedActor.current===index&&!isYou;
+        actor.humanRing.visible=highlight.humanWaiting;
+        (actor.selectionRing.material as THREE.MeshBasicMaterial).color.set(highlight.locked?'#ff2d40':'#6ce8d9');
+        (actor.selectionGlow.material as THREE.MeshBasicMaterial).color.set(highlight.locked?'#ed273e':'#56ded3');
+        actor.selectionRing.visible=isSelected||highlight.locked;actor.selectionGlow.visible=isSelected||highlight.locked;
+        actor.selectionRing.scale.setScalar(highlight.locked ? .61 : .55);
         actor.ring.visible = isYou; actor.glow.visible = isYou; actor.ring.scale.setScalar(.48 + (available && !motion.matches ? Math.sin(now * .005) * .025 : 0));
         (actor.glow.material as THREE.MeshBasicMaterial).opacity = available ? .24 : complete ? .08 : .13;
         actor.suit.emissive.set(isYou ? '#a76a03' : isSelected ? '#12655f' : '#000000'); actor.suit.emissiveIntensity = isYou && available ? .24 : isYou ? .1 : isSelected ? .32 : 0;
@@ -639,6 +650,10 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
         camera.fov=pose.fov;camera.near=pose.near;camera.updateProjectionMatrix();camera.updateMatrixWorld();
         if(marker.current&&cameraMode==='first-person')marker.current.style.visibility='hidden';
       }
+      lockoutBadges.forEach((label,i)=>{if(!label)return;const h=crewHighlight(room,actors[i].spec.role,highlightNow);if(!h.locked){label.style.display='none';return;}
+        const point=world(actors[i].group,new THREE.Vector3(0,1.83,0)).project(camera),x=(point.x*.5+.5)*element.clientWidth,y=(-point.y*.5+.5)*element.clientHeight;
+        label.style.display=point.z>-1&&point.z<1&&x>=0&&x<=element.clientWidth&&y>=0&&y<=element.clientHeight?'block':'none';label.style.left=x+'px';label.style.top=y+'px';const text=`LOCKOUT ${(Math.ceil(h.remaining/100)/10).toFixed(1)}s`;if(label.textContent!==text)label.textContent=text;
+      });
       if(sceneDebug)element.dataset.playerCamera=JSON.stringify({mode:cameraMode,role:followed?.spec.role,position:camera.position.toArray(),fov:camera.fov});
         if (marker.current && mine) {
           const actor=actors.find(a=>a.spec.role===mine.role)!;const group=actor.group;
@@ -775,6 +790,7 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
         }
       }
       if (sceneDebug) {
+      element.dataset.crewHighlights=JSON.stringify(actors.filter(a=>a.spec.role).map(a=>({role:a.spec.role,...crewHighlight(room,a.spec.role,highlightNow),humanVisible:a.humanRing.visible,redVisible:a.selectionRing.visible&&(a.selectionRing.material as THREE.MeshBasicMaterial).color.getHexString()==='ff2d40'})));
       const probeCache=new Map(actors.map(actor=>{
         const points=[.61,.84,1.03,1.29].map((y,i)=>({point:world(actor.body,new THREE.Vector3(0,y,0)),radius:i===3?.235:.21}));
         if(actor.kneelingLegs)for(const leg of actor.kneelingLegs)points.push({point:world(leg.foot),radius:.14},{point:world(leg.knee),radius:.095});
@@ -866,6 +882,7 @@ export function createPitGarageScene(element: HTMLElement, options: {quality?:'l
       disposed = true; cancelAnimationFrame(frame); observer.disconnect(); intersection.disconnect(); window.removeEventListener('pit-camera-reset', resetCamera); window.removeEventListener('pit-camera-view', cameraViewEvent); controls.removeEventListener('change', onCameraChange); controls.dispose();
       renderer.domElement.removeEventListener('pointerdown', pointerDown); renderer.domElement.removeEventListener('pointerup', pointerUp); renderer.domElement.removeEventListener('keydown', keyCamera); renderer.domElement.removeEventListener('webglcontextlost', lost);
       renderer.domElement.removeEventListener('pointermove',pointerMove);renderer.domElement.removeEventListener('pointercancel',endLook);renderer.domElement.removeEventListener('lostpointercapture',endLook);renderer.domElement.removeEventListener('wheel',wheelLook);lookPointers.clear();
+      lockoutBadges.forEach(label=>label?.remove());
       geometries.forEach(geometry => geometry.dispose()); materials.forEach(mat => mat.dispose()); textures.forEach(texture => texture.dispose()); if (!options.renderer) { renderer.dispose(); renderer.domElement.remove(); }
     };
 

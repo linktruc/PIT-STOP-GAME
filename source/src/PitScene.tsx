@@ -3,6 +3,7 @@ import type { Room } from './types';
 import { LiveSceneAudio } from './scene/liveAudio';
 import type {PlayerCameraMode} from './scene/playerCamera';
 import { teamCrewColor } from './scene/colors';
+import { crewHighlight } from './scene/highlights';
 import { CREW, CORNER_POSITIONS } from './scene/crew';
 import { createPitGarageScene, type PitView, type CrewSelection } from './scene/garage';
 type Props={room?:Room|null;playerId?:string|null;quality?:'low'|'high';className?:string;active?:boolean;presentationTime?:number;serverNow?:number;clockOffset?:number;poseRevision?:number;onTaskCue?:(taskId:string)=>void;cameraMode?:PlayerCameraMode;onCameraModeChange?:(mode:PlayerCameraMode)=>void};
@@ -11,7 +12,9 @@ function description(room?: Room | null, playerId?: string | null, presentationT
   return `Interactive 3D pit lane. Drag to rotate. 22 crew members, 15 core roles. ${player ? `You are ${player.role.replaceAll('_', ' ').toLowerCase()}. Gold YOU marker shows your crew member. ` : ''}${room ? `${room.name}. ${room.round?.tasks.filter(task => task.status === 'DONE' && (presentationTime===undefined || task.completedAt!==null && task.completedAt<=presentationTime)).length ?? 0} of 21 actions complete.` : 'Pit crew ready.'}`;
 }
 
-function Fallback({ room, playerId, presentationTime }: { room?: Room | null; playerId?: string | null; presentationTime?:number }) {
+function Fallback({ room, playerId, presentationTime,clockOffset=0 }: { room?: Room | null; playerId?: string | null; presentationTime?:number;clockOffset?:number }) {
+  const [now,setNow]=useState(Date.now);
+  useEffect(()=>{const timer=setInterval(()=>setNow(Date.now()),100);return()=>clearInterval(timer);},[]);
   const mine = room?.players.find(player => player.id === playerId)?.role;
   const tasks = (room?.round?.tasks ?? []).map(task=>presentationTime===undefined?task:{...task,status:task.completedAt!==null&&task.completedAt<=presentationTime?'DONE':task.enabledAt!==null&&task.enabledAt<=presentationTime?'AVAILABLE':'LOCKED'});
   return <div className="pit-scene-fallback" style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 55% 50%, #283b3d, #10171e 75%)', display: 'grid', placeItems: 'center' }}>
@@ -28,10 +31,13 @@ function Fallback({ room, playerId, presentationTime }: { room?: Room | null; pl
         return <rect key={key} x={x - .22} y={z - .39} width=".44" height=".78" rx=".1" opacity={off && !on ? .14 : 1} fill="#0b1017" stroke={on ? '#70e5b7' : '#596775'} strokeWidth=".06" />;
       })}
       {CREW.map((crew, index) => {
+        const highlight=crewHighlight(room,crew.role,presentationTime??now+clockOffset);
         const you = !!crew.role && crew.role === mine;
         const available = tasks.some(task => task.role === crew.role && task.status === 'AVAILABLE');
         const complete = tasks.some(task => task.role === crew.role) && tasks.filter(task => task.role === crew.role).every(task => task.status === 'DONE');
         return <g key={index} transform={`translate(${crew.x} ${crew.z})`}>
+          {highlight.humanWaiting&&<circle r=".45" fill="none" stroke="#65d9ff" strokeWidth=".055"/>}
+          {highlight.locked&&<><circle r=".46" fill="#ed273e44" stroke="#ff2d40" strokeWidth=".065"/><text y="-.76" textAnchor="middle" fill="#ff5360" fontSize=".2" fontWeight="bold">LOCKOUT {(Math.ceil(highlight.remaining/100)/10).toFixed(1)}s</text></>}
           {you && <><circle r=".38" fill="#efc74d22" stroke="#ffda57" strokeWidth=".05" /><text className="you-marker" y="-.51" textAnchor="middle" fill="#ffda57" fontSize=".22" fontWeight="bold">YOU{available ? ' • READY' : complete ? ' ✓' : ''}</text></>}
           <rect x="-.18" y="-.08" width=".36" height=".37" rx=".07" fill={crew.role ? teamCrewColor(room) ?? '#e9343b' : '#5e6d79'} /><circle cy="-.13" r=".16" fill={crew.role ? teamCrewColor(room) ?? '#fa453c' : '#5e6d79'} /><path d="M-.11 -.12H.11" stroke="#111e2b" strokeWidth=".1" />
         </g>;
@@ -59,6 +65,6 @@ export default function PitScene({room,playerId,quality='high',className='',acti
  const myRole=room?.players.find(p=>p.id===playerId)?.role??'';
  return <div ref={host} className={`pit-scene ${className}`} role="region" aria-label={description(room,playerId,presentationTime)} data-player-role={myRole} data-crew-count="22" data-core-crew="15" data-support-crew="7" style={{position:'relative',width:'100%',height:'100%',overflow:'hidden',isolation:'isolate'}}>
  {selected&&<button ref={tooltip} className="crew-tooltip" aria-label={`Selected crew: ${selected.name}, ${selected.role}. Click to close.`} onClick={()=>view.current?.deselect()}><strong>{selected.name}</strong><span>{selected.role}</span></button>}
- {fallback?<Fallback room={room} playerId={playerId} presentationTime={presentationTime}/>:<div ref={marker} className="you-marker" aria-label={`YOU: ${myRole.replaceAll('_',' ').toLowerCase()}`} style={{position:'absolute',top:0,left:0,pointerEvents:'none',display:myRole?'block':'none',zIndex:5,background:'#ffd457',color:'#1d2630',font:'900 12px Arial,sans-serif',letterSpacing:1,padding:'6px 12px',borderRadius:5}}>YOU<span aria-hidden="true" style={{position:'absolute',left:'calc(50% - 5px + var(--you-pointer-offset, 0px))',bottom:-5,width:10,height:10,background:'#ffd457',transform:'rotate(45deg)'}}/></div>}
+ {fallback?<Fallback room={room} playerId={playerId} presentationTime={presentationTime} clockOffset={clockOffset}/>:<div ref={marker} className="you-marker" aria-label={`YOU: ${myRole.replaceAll('_',' ').toLowerCase()}`} style={{position:'absolute',top:0,left:0,pointerEvents:'none',display:myRole?'block':'none',zIndex:5,background:'#ffd457',color:'#1d2630',font:'900 12px Arial,sans-serif',letterSpacing:1,padding:'6px 12px',borderRadius:5}}>YOU<span aria-hidden="true" style={{position:'absolute',left:'calc(50% - 5px + var(--you-pointer-offset, 0px))',bottom:-5,width:10,height:10,background:'#ffd457',transform:'rotate(45deg)'}}/></div>}
  </div>;
 }

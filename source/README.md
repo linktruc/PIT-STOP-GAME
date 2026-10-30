@@ -1,4 +1,8 @@
-# Current release: V24.11
+# Current release: V24.12
+
+See [camera, Watch Live, highlight and offline cleanup notes](docs/V24_12_CAMERAS_WATCH_PRESENCE.md). Apply `supabase/V24_12_OFFLINE_CLEANUP.sql` in Supabase SQL Editor once to expire offline memberships and schedule unattended cleanup.
+
+# Previous release: V24.11
 
 See [compact mobile HUD notes](docs/V24_11_COMPACT_MOBILE_HUD.md) for the smaller phone HUD and top-row camera switch.
 

@@ -70,7 +70,7 @@ export function useGame(watching = false) {
     }
     if (prior && !room && !intentionalLeave.current && ++missing.current < 2) { coalescer.current?.request(); return; }
     missing.current = 0;
-    if (prior && !room && !intentionalLeave.current) setNotice('Your crew membership ended. You may have been removed or exceeded the 15-minute lobby grace period.');
+    if (prior && !room && !intentionalLeave.current) setNotice('Your crew membership ended. You may have been removed or exceeded the 5-minute offline limit.');
     if (prior && room?.id === prior.id) {
       const before = prior.players.find(player => player.id === old.identity.playerId);
       const after = room.players.find(player => player.id === next.identity.playerId);
