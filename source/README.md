@@ -1,3 +1,7 @@
+# Current release: V24.11
+
+See [compact mobile HUD notes](docs/V24_11_COMPACT_MOBILE_HUD.md) for the smaller phone HUD and top-row camera switch.
+
 # Current release: V24.10
 
 See [multiplayer latency notes](docs/V24_10_MULTIPLAYER_ACTION_LATENCY.md) for direct action dispatch, realtime room updates and responsive action feedback. No SQL migration is required.

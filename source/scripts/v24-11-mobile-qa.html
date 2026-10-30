@@ -1,0 +1,21 @@
+<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><div id="root"></div><script type="module">
+window.PIT_CONFIG={hudHostingBadge:'none'};localStorage.setItem('pit-v7-quality','low');localStorage.setItem('pit-v7-volume','0');localStorage.setItem('pit-v7-muted','true');
+const {api}=await import('/src/api.ts');const {createSoloRound,reconcile,submitAction}=await import('/src/engine.ts');
+let clock=Date.now(),push;Date.now=()=>clock;location.hash='crew';
+function make(stage='waiting',solo=true,role='FR_GUNNER'){
+ clock+=1000;const players=[{id:'you',role,nickname:'QA',ready:false,joinedAt:0}];
+ let round=null,status='WAITING';
+ if(stage!=='waiting'){
+  round=createSoloRound(players,stage==='countdown'?clock+1000:clock-3000,'qa-'+clock);reconcile(round,clock);status=stage==='countdown'?'COUNTDOWN':'RUNNING';
+  if(stage==='completed'){
+   let now=round.goAt;for(let i=0;i<100&&round.status!=='COMPLETED';i++){reconcile(round,now);const available=round.tasks.filter(t=>t.status==='AVAILABLE');now=Math.max(now,Math.min(...available.map(t=>t.ownerId?t.enabledAt+500:t.dueAt??Infinity)));reconcile(round,now);for(const t of round.tasks.filter(t=>t.ownerId&&t.status==='AVAILABLE'))submitAction(round,'you',t.id,now,t.id);}
+   status='COMPLETED';
+  }
+  if(stage==='penalty'){round.penalties={you:{at:clock,until:clock+2000}};}
+ }
+ return {rooms:[{id:'room',teamId:'team',solo,name:solo?'SOLO TEST — NOT RANKED':'Test mobile team with a long name',color:'#f4493b',hostId:'you',status,players,round,updatedAt:clock}],leaderboard:[],serverNow:clock,identity:{playerId:'you',isAdmin:false},local:solo};
+}
+let current=make();api.hasBackend=true;api.getState=async()=>structuredClone(current);api.getGlobalState=async()=>structuredClone(current);api.subscribe=callback=>{push=callback;return()=>{};};api.call=async()=>structuredClone(current);
+window.showStage=(stage,solo=true,role='FR_GUNNER')=>{current=make(stage,solo,role);push?.();};
+await import('/src/main.tsx');
+</script>
