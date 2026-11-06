@@ -1,8 +1,0 @@
-node_modules/
-dist/
-artifacts/
-coverage/
-*.log
-*.tsbuildinfo
-.env*
-!.env.example
