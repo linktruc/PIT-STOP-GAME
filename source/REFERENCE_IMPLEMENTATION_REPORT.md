@@ -1,9 +1,0 @@
-# V11.3 visual reference boundary
-
-The [merged specification](docs/v11-spec/Codex_Pit_Stop_Simulator_V11_3_Merged_Master_Prompt_EN.txt) is a focused corrective pass over V10.3. Its final integrated clarification makes the gunner's kneeling/crouching body pose the priority: grounded feet and knee, balanced hips/torso and a readable low-poly silhouette. Gun grip refinement is secondary.
-
-Real F1 photographs remain references for the outdoor pit-lane environment: concrete apron, adjacent travel lane, painted stop box, booms, garages, trackside depth and atmosphere. They do not prescribe a replacement of the game's playable crew staging. Existing wheel-carrier choreography remains the reference except for necessary contact anchors. Nose support uses the closer V8 placement as a narrow reference; middle support must stay near the sidepod with its torso outside the car and explicit hand contacts.
-
-The editable V8 and V10.3 source copies were available in the workspace for comparison. `docs/v11-evidence/choreography/report.json` records the source-verified V8/V10/V11 coordinate audit. V10 full-scene baseline renders are retained in the current evidence directory; no new V8 close-up render or matched V10/V11 gunner close-up pair is claimed. The corrected pass provides 24 gunner action/angle views, 12 support views and three actual shared-factory recordings. [V11_FIX_REPORT.md](V11_FIX_REPORT.md) and [TEST_REPORT.md](TEST_REPORT.md) record implementation and verification limits. The original V10.3 photo-to-environment mapping is preserved as `docs/history/REFERENCE_IMPLEMENTATION_REPORT_V10_3.md`.
-
-Reference photographs, real sponsor marks, commercial models and broadcast footage are not included as application assets. Car, crew, tools, environment, audio and interface remain procedural or original code. New evidence is packaged under `docs/v11-evidence/`; earlier complete evidence folders remain in their original version archives.

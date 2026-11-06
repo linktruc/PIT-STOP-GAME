@@ -1,7 +1,0 @@
-node_modules/
-dist/
-artifacts/
-coverage/
-*.log
-.env*
-!.env.example

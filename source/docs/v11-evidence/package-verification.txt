@@ -1,7 +1,0 @@
-
-> pit-crew-two-second-challenge@11.3.0 verify:packages
-> python3 scripts/verify_packages.py
-
-PASS Netlify archive: 27 files; roots, config order, assets/fonts/licenses and integrity
-PASS source archive: 349 files; complete current code/tests/evidence, versions, backend and exclusions
-PASS SHA-256 manifest and exact fresh backend setup/001 match

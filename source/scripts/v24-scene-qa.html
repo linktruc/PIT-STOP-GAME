@@ -1,9 +1,0 @@
-<!doctype html><html><body style="margin:0"><div id="scene" style="height:100vh;width:100vw;position:relative"></div><script type="module">
-import {createPitGarageScene} from '/src/scene/garage.ts';
-import {createSoloRound,submitAction,reconcile} from '/src/engine.ts';
-const el=document.querySelector('#scene');const view=createPitGarageScene(el,{quality:'low'});
-const player={id:'you',role:'FRONT_JACK',nickname:'You',ready:true,joinedAt:0};
-let round=createSoloRound([player],10000,'qa');
-const room={id:'qa',teamId:'qa',solo:true,name:'QA',color:'#f00',code:'QA',hostId:'you',status:'RUNNING',players:[player],round,updatedAt:0};
-window.qa={reset(role){player.role=role;round=createSoloRound([player],10000,role);room.round=round;this.round=round;},show(time){view.update(structuredClone(room),'you',true,time,time);},round,room,view,submitAction,reconcile};window.qa.show(7000);
-</script></body></html>
